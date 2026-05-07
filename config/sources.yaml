@@ -36,3 +36,94 @@ sources:
     url: "https://www.reddit.com/r/bevy/"
     type: "reddit"
     note: ""
+
+  # === 游戏开发新闻/媒体（2026-05 验证活跃） ===
+
+  - name: "80.lv"
+    url: "https://80.lv/"
+    type: "news"
+    note: "游戏美术与技术开发，RSS可用"
+
+  - name: "GameFromScratch"
+    url: "https://gamefromscratch.com/"
+    type: "news"
+    note: "游戏引擎评测与开发教程，RSS可用"
+
+  - name: "GamesIndustry.biz"
+    url: "https://www.gamesindustry.biz/"
+    type: "news"
+    note: "游戏产业商业新闻"
+
+  - name: "触乐"
+    url: "https://www.chuapp.com/"
+    type: "news"
+    note: "国内游戏媒体，含开发者访谈"
+
+  - name: "机核网"
+    url: "https://www.gcores.com/"
+    type: "news"
+    note: "游戏文化与设计深度内容"
+
+  - name: "Famitsu"
+    url: "https://www.famitsu.com/"
+    type: "news"
+    note: "日本权威游戏媒体"
+
+  - name: "4Gamer.net"
+    url: "https://www.4gamer.net/"
+    type: "news"
+    note: "日本游戏新闻与开发者访谈"
+
+  # === 游戏开发社区/论坛（2026-05 验证活跃） ===
+
+  - name: "indienova"
+    url: "https://indienova.com/"
+    type: "community"
+    note: "国内独立游戏开发者社区"
+
+  - name: "GameRes 游资网"
+    url: "https://www.gameres.com/"
+    type: "community"
+    note: "国内游戏开发技术论坛"
+
+  # === 待验证活跃度（被Cloudflare/JS拦截，可能活跃） ===
+
+  - name: "Game Developer"
+    url: "https://www.gamedeveloper.com/"
+    type: "news"
+    note: "行业权威开发媒体，被Cloudflare拦截需浏览器访问"
+
+  - name: "TIGSource Forums"
+    url: "https://forums.tigsource.com/"
+    type: "forum"
+    note: "历史悠久的独立开发者论坛，被Cloudflare拦截"
+
+  - name: "IndieDB"
+    url: "https://www.indiedb.com/"
+    type: "community"
+    note: "独立游戏展示社区，被Cloudflare拦截"
+
+  - name: "Reddit r/gamedev"
+    url: "https://www.reddit.com/r/gamedev/"
+    type: "forum"
+    note: "活跃游戏开发讨论社区，API受限"
+
+  - name: "Reddit r/indiegaming"
+    url: "https://www.reddit.com/r/indiegaming/"
+    type: "forum"
+    note: "独立游戏展示与讨论，API受限"
+
+  - name: "奶牛关"
+    url: "https://cowlevel.net/"
+    type: "community"
+    note: "国内游戏开发者社区，SPA需JS渲染"
+
+  - name: "游戏葡萄"
+    url: "https://youxiputao.com/"
+    type: "news"
+    note: "国内游戏产业新闻，主站为展示页，内容在微信/B站"
+
+  # === 不活跃/不可达（未加入） ===
+  # Lost Garden - 2025-05 停更
+  # Game Design Advance - 2021 年停更
+  # itch.io Community - DNS不可达
