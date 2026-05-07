@@ -1,0 +1,6 @@
+# IDE
+.zed/
+
+# OS
+.DS_Store
+Thumbs.db

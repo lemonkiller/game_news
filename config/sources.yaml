@@ -1,0 +1,38 @@
+# 信息源配置
+# AI搜索时覆盖这里列出的所有网站
+
+sources:
+  - name: "Godot论坛"
+    url: "https://forum.godotengine.org/"
+    type: "forum"
+    note: ""
+
+  - name: "Love2D论坛"
+    url: "https://www.love2d.org/forums/"
+    type: "forum"
+    note: ""
+
+  - name: "MonoGame社区"
+    url: "https://community.monogame.net/"
+    type: "forum"
+    note: "暂无AI相关内容"
+
+  - name: "Reddit r/aigamedev"
+    url: "https://www.reddit.com/r/aigamedev/"
+    type: "reddit"
+    note: "当前不可访问"
+
+  - name: "Unity论坛"
+    url: "https://forum.unity.com/"
+    type: "forum"
+    note: ""
+
+  - name: "Unreal论坛"
+    url: "https://forums.unrealengine.com/"
+    type: "forum"
+    note: ""
+
+  - name: "Reddit r/bevy"
+    url: "https://www.reddit.com/r/bevy/"
+    type: "reddit"
+    note: ""
