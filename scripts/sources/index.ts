@@ -44,6 +44,17 @@ import {
 import { defold } from "./defold";
 import { o3de } from "./o3de";
 import {
+	redBlobGames,
+	gameWisdom,
+	catnapGames,
+	ratKing,
+	pushToTalk,
+	distractionware,
+	designerNotes,
+	chawfoo,
+	qiGeDan,
+} from "./design-blogs";
+import {
 	steamTopSellers,
 	steamNewReleases,
 	steamSpecials,
@@ -147,6 +158,16 @@ export const allSources: NewsSource[] = [
 	concernedApe,
 	capcomNews,
 	ludeon,
+	/* 设计博客 */
+	redBlobGames,
+	gameWisdom,
+	catnapGames,
+	ratKing,
+	pushToTalk,
+	distractionware,
+	designerNotes,
+	chawfoo,
+	qiGeDan,
 	/* 社区 */
 	redditGamedev,
 	redditGameDesign,
