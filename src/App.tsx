@@ -10,6 +10,7 @@ const LANG_LABELS: Record<Lang, string> = {
 	zh: "中文",
 	en: "English",
 	ja: "日本語",
+	steam: "Steam",
 };
 
 const LANG_MAP: Record<string, Lang> = {
@@ -31,6 +32,12 @@ const LANG_MAP: Record<string, Lang> = {
 	PlayTank: "en",
 	JGallant: "en",
 	Necromanov: "zh",
+	"Steam 热销": "steam",
+	"Steam 新品": "steam",
+	"Steam 特惠": "steam",
+	"Steam 即将推出": "steam",
+	"Steam 热销 (US)": "steam",
+	"Steam 热销 (JP)": "steam",
 	机核网: "zh",
 
 	游戏陀螺: "zh",
@@ -68,7 +75,7 @@ export default function App() {
 
 	const langCounts = useMemo(() => {
 		const sources = data.sources as Record<string, NewsItem[]>;
-		const counts: Record<Lang, number> = { all: 0, zh: 0, en: 0, ja: 0 };
+		const counts: Record<Lang, number> = { all: 0, zh: 0, en: 0, ja: 0, steam: 0 };
 		for (const [name, items] of Object.entries(sources)) {
 			const l = LANG_MAP[name] || "en";
 			counts[l] += items.length;
