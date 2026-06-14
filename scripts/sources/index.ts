@@ -28,6 +28,7 @@ import { frictional } from "./frictional";
 import { rawFury } from "./raw-fury";
 import { concernedApe } from "./concerned-ape";
 import { capcomNews } from "./capcom-news";
+import { ludeon } from "./ludeon";
 import { defold } from "./defold";
 import { o3de } from "./o3de";
 import {
@@ -134,6 +135,7 @@ export const allSources: NewsSource[] = [
 	rawFury,
 	concernedApe,
 	capcomNews,
+	ludeon,
 	/* 引擎 */
 	unityBlog,
 	godotReleases,

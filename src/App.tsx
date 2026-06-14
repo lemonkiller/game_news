@@ -52,6 +52,7 @@ const LANG_MAP: Record<string, Lang> = {
 	"Raw Fury": "company",
 	ConcernedApe: "company",
 	Capcom: "company",
+	"Ludeon Studios": "company",
 	"Flax Engine": "engine",
 	HaxeFlixel: "engine",
 	"Ren'Py": "engine",
