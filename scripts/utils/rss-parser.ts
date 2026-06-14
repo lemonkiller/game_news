@@ -1,4 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
+import type { NewsItem } from "./types";
 
 const parser = new XMLParser({
 	ignoreAttributes: false,
@@ -63,6 +64,17 @@ export function getGUID(item: RSSItem): string {
 	if (typeof item.guid === "string") return item.guid;
 	if (item.guid?.["#text"]) return item.guid["#text"];
 	return item.link || item.title;
+}
+
+/** 将 RSSItem[] 转为 NewsItem[]，保留 pubDate */
+export function toNewsItems(items: RSSItem[]): NewsItem[] {
+	return items.map((item) => ({
+		id: getGUID(item),
+		title: item.title,
+		url: item.link,
+		pubDate: item.pubDate,
+		extra: { info: relativeTime(item.pubDate) },
+	}));
 }
 
 /** 相对时间 */

@@ -3,6 +3,7 @@ export interface NewsItem {
 	id: string;
 	title: string;
 	url: string;
+	pubDate?: string; // ISO 日期字符串，用于排序
 	extra?: {
 		info?: string; // 热度/时间等辅助信息
 		hover?: string; // 鼠标悬停预览文本
