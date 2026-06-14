@@ -32,7 +32,7 @@ const LANG_MAP: Record<string, Lang> = {
 	JGallant: "en",
 	Necromanov: "en",
 	机核网: "zh",
-	
+
 	游戏陀螺: "zh",
 	游戏茶馆: "zh",
 	"Indienova 独立游戏": "zh",
