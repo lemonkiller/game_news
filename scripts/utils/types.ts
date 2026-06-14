@@ -17,7 +17,7 @@ export interface NewsSource {
 }
 
 /** 语言标签 */
-export type Lang = "all" | "zh" | "en" | "ja";
+export type Lang = "all" | "zh" | "en" | "ja" | "steam";
 
 /** 抓取结果汇总 */
 export interface FetchResult {

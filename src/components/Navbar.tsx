@@ -15,7 +15,7 @@ export default function Navbar({
 	updatedAt,
 	labels,
 }: NavbarProps) {
-	const langs: Lang[] = ["all", "zh", "en", "ja"];
+	const langs: Lang[] = ["all", "zh", "en", "ja", "steam"];
 	return (
 		<nav className="navbar">
 			<div className="navbar-left">
