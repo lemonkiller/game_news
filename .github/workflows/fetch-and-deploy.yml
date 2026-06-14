@@ -2,16 +2,23 @@ name: Fetch and Deploy
 
 on:
   schedule:
-    - cron: "0 8,20 * * *"
+    - cron: '0 8,20 * * *'
   workflow_dispatch:
   push:
     branches: [master]
 
+# 允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   fetch-and-deploy:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,9 +30,12 @@ jobs:
         run: npm run fetch
       - name: 构建前端
         run: npm run build
-      - name: 部署到 GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+
+      - name: 上传 Pages 制品
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          keep_files: false
+          path: ./dist
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
