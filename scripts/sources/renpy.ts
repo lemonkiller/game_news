@@ -6,11 +6,11 @@ import {
 } from "../utils/rss-parser";
 import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
-export const maniaHero: NewsSource = {
-	name: "ManiaHero",
-	lang: "zh",
+export const renpy: NewsSource = {
+	name: "Ren'Py",
+	lang: "engine",
 	fetch: async () => {
-		const xml = await fetchText("https://maniahero.com/feed/");
+		const xml = await fetchText("https://www.renpy.org/feed/");
 		const items = parseRSS(xml);
 		return items.slice(0, 5).map((item) => ({
 			id: getGUID(item),

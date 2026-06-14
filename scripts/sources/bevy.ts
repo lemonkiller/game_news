@@ -1,10 +1,10 @@
 import type { NewsSource } from "../utils/types";
-export const godotReleases: NewsSource = {
-	name: "Godot Releases",
+export const bevy: NewsSource = {
+	name: "Bevy Engine",
 	lang: "engine",
 	fetch: async () => {
 		const xml = await (
-			await fetch("https://github.com/godotengine/godot/releases.atom", {
+			await fetch("https://bevyengine.org/atom.xml", {
 				headers: { "User-Agent": "Mozilla/5.0" },
 			})
 		).text();
@@ -22,15 +22,12 @@ export const godotReleases: NewsSource = {
 			const desc = e.match(/<summary[^>]*>([^<]*)<\/summary>/)?.[1];
 			items.push({ title, link, id, date, desc });
 		}
-		return items.slice(0, 10).map((item: any) => ({
+		return items.slice(0, 5).map((item: any) => ({
 			id: item.id,
 			title: item.title,
 			url: item.link,
 			extra: {
 				info: item.date ? new Date(item.date).toLocaleDateString("zh-CN") : "",
-				hover: item.desc
-					? item.desc.replace(/<[^>]*>/g, "").slice(0, 200)
-					: undefined,
 			},
 		}));
 	},
