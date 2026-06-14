@@ -22,9 +22,26 @@ const LANG_MAP: Record<string, Lang> = {
 	"Hacker News": "en",
 	"Godot Releases": "en",
 	"Reddit r/gamedev": "en",
+	GameFromScratch: "en",
+	IndieGamesPlus: "en",
+	"Raph Koster": "en",
+	"Dan Felder": "en",
+	ChaoticStupid: "en",
+	ManiaHero: "en",
+	PlayTank: "en",
+	JGallant: "en",
+	Necromanov: "en",
 	机核网: "zh",
+
 	游戏陀螺: "zh",
 	游戏茶馆: "zh",
+	"Indienova 独立游戏": "zh",
+	GameLook: "zh",
+	狐王驾虎: "zh",
+	博毅创为: "zh",
+	云风: "zh",
+	增荣博客: "zh",
+
 	"4Gamer.net": "ja",
 	AUTOMATON: "ja",
 	電ファミニコゲーマー: "ja",
@@ -33,6 +50,9 @@ const LANG_MAP: Record<string, Lang> = {
 	IndieGamesJapan: "ja",
 	"IGDA Japan": "ja",
 	"IndieGamesJp.dev": "ja",
+	"Game Coding Classics": "ja",
+	ARASHIYAMA: "ja",
+	"OSAKANA LABO": "ja",
 };
 
 export default function App() {
@@ -68,7 +88,7 @@ export default function App() {
 			/>
 			<main className="columns">
 				{entries.map(([name, items]) => (
-					<CardColumn key={name} name={name} items={items} />
+					<CardColumn key={name} name={name} items={items.slice(0, 5)} />
 				))}
 			</main>
 			<Footer />
