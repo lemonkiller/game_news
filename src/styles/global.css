@@ -163,18 +163,6 @@ a {
 
 .column-cards {
 	flex: 1;
-	overflow-y: auto;
-	max-height: 70vh;
-}
-.column-cards::-webkit-scrollbar {
-	width: 4px;
-}
-.column-cards::-webkit-scrollbar-track {
-	background: transparent;
-}
-.column-cards::-webkit-scrollbar-thumb {
-	background: var(--border);
-	border-radius: 2px;
 }
 
 /* 新闻卡片 */
