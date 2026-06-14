@@ -1,9 +1,5 @@
-# IDE
-.zed/
-
-# 子智能体临时文件
-progress.md
-
-# OS
-.DS_Store
-Thumbs.db
+node_modules/
+dist/
+data/
+*.local
+AGENTS.md
