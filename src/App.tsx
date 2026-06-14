@@ -113,16 +113,46 @@ const LANG_MAP: Record<string, Lang> = {
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
 
-	// 只显示有数据的非空列
+	/** 将 extra.info 的相对时间文本近似解析为时间戳，用于排序 */
+	function parseInfoToTs(info: string | undefined): number {
+		if (!info) return 0;
+		if (info.includes("刚刚")) return Date.now();
+		const m = info.match(/(\d+)\s*分钟前/);
+		if (m) return Date.now() - parseInt(m[1]) * 60000;
+		const h = info.match(/(\d+)\s*小时前/);
+		if (h) return Date.now() - parseInt(h[1]) * 3600000;
+		const d = info.match(/(\d+)\s*天前/);
+		if (d) return Date.now() - parseInt(d[1]) * 86400000;
+		return 0;
+	}
+
+	/** 获取一列中最新一条的时间戳 */
+	function columnMaxTs(items: NewsItem[]): number {
+		let max = 0;
+		for (const item of items) {
+			// 优先用 pubDate
+			if (item.pubDate) {
+				const ts = new Date(item.pubDate).getTime();
+				if (!isNaN(ts) && ts > max) max = ts;
+			}
+			// 回退到 extra.info 的文本解析
+			const fallback = parseInfoToTs(item.extra?.info);
+			if (fallback > max) max = fallback;
+		}
+		return max;
+	}
+
+	// 只显示有数据的非空列，按最新更新时间降序排列
 	const entries = useMemo(() => {
-		const sources = data.sources as Record<string, NewsItem[]>;
+		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		return Object.entries(sources)
 			.filter(([, items]) => items.length > 0)
-			.filter(([name]) => lang === "all" || LANG_MAP[name] === lang);
+			.filter(([name]) => lang === "all" || LANG_MAP[name] === lang)
+			.sort((a, b) => columnMaxTs(b[1]) - columnMaxTs(a[1]));
 	}, [lang]);
 
 	const langCounts = useMemo(() => {
-		const sources = data.sources as Record<string, NewsItem[]>;
+		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const counts: Record<Lang, number> = {
 			all: 0,
 			zh: 0,
