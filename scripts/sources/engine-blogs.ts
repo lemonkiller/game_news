@@ -8,7 +8,7 @@ import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
 export const unityBlog: NewsSource = {
 	name: "Unity Blog",
-	lang: "en",
+	lang: "engine",
 	fetch: async () => {
 		const xml = await fetchText("https://unity.com/blog/feed");
 		const items = parseRSS(xml);

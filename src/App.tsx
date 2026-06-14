@@ -11,6 +11,8 @@ const LANG_LABELS: Record<Lang, string> = {
 	en: "English",
 	ja: "日本語",
 	steam: "Steam",
+	engine: "引擎",
+	company: "公司",
 };
 
 const LANG_MAP: Record<string, Lang> = {
@@ -19,25 +21,37 @@ const LANG_MAP: Record<string, Lang> = {
 	"PC Gamer": "en",
 	"Rock Paper Shotgun": "en",
 	VG247: "en",
-	"Unity Blog": "en",
+	"Unity Blog": "engine",
 	"Hacker News": "en",
-	"Godot Releases": "en",
+	"Godot Releases": "engine",
 	"Reddit r/gamedev": "en",
 	GameFromScratch: "en",
 	IndieGamesPlus: "en",
 	"Raph Koster": "en",
 	"Dan Felder": "en",
 	ChaoticStupid: "en",
-	ManiaHero: "en",
+	ManiaHero: "zh",
 	PlayTank: "en",
 	JGallant: "en",
+	IndieDB: "en",
+	"Games by Mason": "en",
+	"Top Hat Games": "en",
+	"Lost Garden": "en",
+	"Gamedev Unchained": "en",
 	Necromanov: "zh",
 	"Steam 热销": "steam",
 	"Steam 新品": "steam",
 	"Steam 特惠": "steam",
 	"Steam 即将推出": "steam",
+	"Steam 热销 (CN)": "steam",
 	"Steam 热销 (US)": "steam",
 	"Steam 热销 (JP)": "steam",
+	"Flax Engine": "engine",
+	HaxeFlixel: "engine",
+	"Ren'Py": "engine",
+	"Bevy Engine": "engine",
+	"Godot Blog": "engine",
+	"Humble Bundle": "company",
 	机核网: "zh",
 
 	游戏陀螺: "zh",
@@ -48,6 +62,8 @@ const LANG_MAP: Record<string, Lang> = {
 	博毅创为: "zh",
 	云风: "zh",
 	增荣博客: "zh",
+	触乐: "zh",
+	"鵺 游戏设计": "zh",
 
 	"4Gamer.net": "ja",
 	AUTOMATON: "ja",
@@ -60,6 +76,8 @@ const LANG_MAP: Record<string, Lang> = {
 	"Game Coding Classics": "ja",
 	ARASHIYAMA: "ja",
 	"OSAKANA LABO": "ja",
+	"Aiming 開発者ブログ": "ja",
+	"GREE Tech": "ja",
 };
 
 export default function App() {
@@ -75,7 +93,15 @@ export default function App() {
 
 	const langCounts = useMemo(() => {
 		const sources = data.sources as Record<string, NewsItem[]>;
-		const counts: Record<Lang, number> = { all: 0, zh: 0, en: 0, ja: 0, steam: 0 };
+		const counts: Record<Lang, number> = {
+			all: 0,
+			zh: 0,
+			en: 0,
+			ja: 0,
+			steam: 0,
+			engine: 0,
+			company: 0,
+		};
 		for (const [name, items] of Object.entries(sources)) {
 			const l = LANG_MAP[name] || "en";
 			counts[l] += items.length;
