@@ -6,11 +6,11 @@ import {
 } from "../utils/rss-parser";
 import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
-export const humbleBundle: NewsSource = {
-	name: "Humble Bundle",
-	lang: "en",
+export const o3de: NewsSource = {
+	name: "O3DE",
+	lang: "engine",
 	fetch: async () => {
-		const xml = await fetchText("https://blog.humblebundle.com/feed/");
+		const xml = await fetchText("https://www.o3de.org/feed/");
 		const items = parseRSS(xml);
 		return items.slice(0, 5).map((item) => ({
 			id: getGUID(item),

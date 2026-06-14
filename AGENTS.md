@@ -13,7 +13,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 ## 开发流程
 
-1. **搜索可用源** -- 并行搜索中英日三语游戏开发/设计相关网站、博客、RSS
+1. **搜索可用源** -- 使用webaio并行搜索中英日三语游戏开发/设计相关网站、博客、RSS
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
 3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
 4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组

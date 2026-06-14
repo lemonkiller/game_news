@@ -1,69 +1,64 @@
-import {
-	parseRSS,
-	getGUID,
-	relativeTime,
-	stripHtml,
-} from "../utils/rss-parser";
-import { fetchText } from "../utils/fetcher";
-import type { NewsSource } from "../utils/types";
+import { fetchJSON } from "../utils/fetcher";
+import type { NewsSource, NewsItem } from "../utils/types";
 
+async function fetchCategory(
+	cc: string,
+	category: string,
+): Promise<NewsItem[]> {
+	try {
+		const data = await fetchJSON<any>(
+			"https://store.steampowered.com/api/featuredcategories?cc=" + cc,
+		);
+		const cat = data[category] || data.specials;
+		if (!cat || !cat.items) return [];
+		return cat.items.slice(0, 10).map((item: any) => ({
+			id: String(item.id),
+			title: item.name,
+			url: "https://store.steampowered.com/app/" + item.id,
+			extra: {
+				info: item.discounted ? (item.final_price / 100).toFixed(2) + "元" : "",
+			},
+		}));
+	} catch {
+		return [];
+	}
+}
+
+// Steam 总榜（CN 区）
 export const steamTopSellers: NewsSource = {
 	name: "Steam 热销",
 	lang: "steam",
-	fetch: async () => {
-		const xml = await fetchText(
-			"https://store.steampowered.com/feeds/topsellers.xml",
-		);
-		const items = parseRSS(xml);
-		return items.slice(0, 10).map((item) => ({
-			id: getGUID(item),
-			title: item.title,
-			url: item.link,
-			extra: {
-				info: relativeTime(item.pubDate),
-				hover: item.description
-					? stripHtml(item.description).slice(0, 200)
-					: undefined,
-			},
-		}));
-	},
+	fetch: () => fetchCategory("CN", "top_sellers"),
 };
-
 export const steamNewReleases: NewsSource = {
 	name: "Steam 新品",
 	lang: "steam",
-	fetch: async () => {
-		const xml = await fetchText(
-			"https://store.steampowered.com/feeds/newreleases.xml",
-		);
-		const items = parseRSS(xml);
-		return items.slice(0, 10).map((item) => ({
-			id: getGUID(item),
-			title: item.title,
-			url: item.link,
-			extra: {
-				info: relativeTime(item.pubDate),
-				hover: item.description
-					? stripHtml(item.description).slice(0, 200)
-					: undefined,
-			},
-		}));
-	},
+	fetch: () => fetchCategory("CN", "new_releases"),
 };
-
 export const steamSpecials: NewsSource = {
 	name: "Steam 特惠",
 	lang: "steam",
-	fetch: async () => {
-		const xml = await fetchText(
-			"https://store.steampowered.com/feeds/specials.xml",
-		);
-		const items = parseRSS(xml);
-		return items.slice(0, 10).map((item) => ({
-			id: getGUID(item),
-			title: item.title,
-			url: item.link,
-			extra: { info: item.description ? item.description.slice(0, 80) : "" },
-		}));
-	},
+	fetch: () => fetchCategory("CN", "specials"),
+};
+export const steamComingSoon: NewsSource = {
+	name: "Steam 即将推出",
+	lang: "steam",
+	fetch: () => fetchCategory("CN", "coming_soon"),
+};
+
+// 各地区热销
+export const steamTopCN: NewsSource = {
+	name: "Steam 热销 (CN)",
+	lang: "steam",
+	fetch: () => fetchCategory("CN", "top_sellers"),
+};
+export const steamTopUS: NewsSource = {
+	name: "Steam 热销 (US)",
+	lang: "steam",
+	fetch: () => fetchCategory("US", "top_sellers"),
+};
+export const steamTopJP: NewsSource = {
+	name: "Steam 热销 (JP)",
+	lang: "steam",
+	fetch: () => fetchCategory("JP", "top_sellers"),
 };

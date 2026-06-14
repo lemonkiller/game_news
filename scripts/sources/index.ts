@@ -23,7 +23,23 @@ import { topHatGames } from "./top-hat-games";
 import { lostGarden } from "./lost-garden";
 import { gamedevUnchained } from "./gamedev-unchained";
 import { humbleBundle } from "./humble-bundle";
-import { steamTopSellers, steamNewReleases, steamSpecials } from "./steam";
+import { playstationBlog } from "./playstation-blog";
+import { frictional } from "./frictional";
+import { rawFury } from "./raw-fury";
+import { concernedApe } from "./concerned-ape";
+import { capcomNews } from "./capcom-news";
+import { ludeon } from "./ludeon";
+import { defold } from "./defold";
+import { o3de } from "./o3de";
+import {
+	steamTopSellers,
+	steamNewReleases,
+	steamSpecials,
+	steamComingSoon,
+	steamTopCN,
+	steamTopUS,
+	steamTopJP,
+} from "./steam";
 import { gcores } from "./gcores";
 import { youxituoluo } from "./youxituoluo";
 import { youxichaguan } from "./youxichaguan";
@@ -109,7 +125,17 @@ export const allSources: NewsSource[] = [
 	steamTopSellers,
 	steamNewReleases,
 	steamSpecials,
+	steamComingSoon,
+	steamTopCN,
+	steamTopUS,
+	steamTopJP,
 	humbleBundle,
+	playstationBlog,
+	frictional,
+	rawFury,
+	concernedApe,
+	capcomNews,
+	ludeon,
 	/* 引擎 */
 	unityBlog,
 	godotReleases,
@@ -118,4 +144,6 @@ export const allSources: NewsSource[] = [
 	renpy,
 	bevy,
 	godotBlog,
+	defold,
+	o3de,
 ];
