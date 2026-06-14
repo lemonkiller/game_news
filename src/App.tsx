@@ -30,7 +30,7 @@ const LANG_MAP: Record<string, Lang> = {
 	ManiaHero: "en",
 	PlayTank: "en",
 	JGallant: "en",
-	Necromanov: "en",
+	Necromanov: "zh",
 	机核网: "zh",
 
 	游戏陀螺: "zh",

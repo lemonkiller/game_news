@@ -8,7 +8,7 @@ import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
 export const necromanov: NewsSource = {
 	name: "Necromanov",
-	lang: "en",
+	lang: "zh",
 	fetch: async () => {
 		const xml = await fetchText("https://necromanov.wordpress.com/feed/");
 		const items = parseRSS(xml);
