@@ -13,6 +13,7 @@ const LANG_LABELS: Record<Lang, string> = {
 	steam: "Steam",
 	engine: "引擎",
 	company: "公司",
+	community: "社区",
 };
 
 const LANG_MAP: Record<string, Lang> = {
@@ -59,6 +60,17 @@ const LANG_MAP: Record<string, Lang> = {
 	"Bevy Engine": "engine",
 	"Godot Blog": "engine",
 	"Defold Engine": "engine",
+	"r/gamedev": "community",
+	"r/GameDesign": "community",
+	"r/IndieDev": "community",
+	ResetEra: "community",
+	"NGA 游戏策划": "community",
+	"NGA 独立游戏": "community",
+	"NGA 游戏技术": "community",
+	"NGA 程序技术": "community",
+	"Qiita ゲーム開発": "community",
+	"Qiita Unity": "community",
+	"Zenn gamedev": "community",
 	O3DE: "engine",
 
 	机核网: "zh",
@@ -110,6 +122,7 @@ export default function App() {
 			steam: 0,
 			engine: 0,
 			company: 0,
+			community: 0,
 		};
 		for (const [name, items] of Object.entries(sources)) {
 			const l = LANG_MAP[name] || "en";

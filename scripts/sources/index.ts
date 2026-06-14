@@ -1,7 +1,6 @@
 import type { NewsSource } from "../utils/types";
 import { gamesIndustry } from "./games-industry";
 import { eightyLevel } from "./80-level";
-import { redditGamedev } from "./reddit-gamedev";
 import { unityBlog } from "./engine-blogs";
 import { hackerNews } from "./hacker-news";
 import { godotReleases } from "./godot-releases";
@@ -29,6 +28,19 @@ import { rawFury } from "./raw-fury";
 import { concernedApe } from "./concerned-ape";
 import { capcomNews } from "./capcom-news";
 import { ludeon } from "./ludeon";
+import {
+	redditGamedev,
+	redditGameDesign,
+	redditIndieDev,
+	resetera,
+	ngaGameDesign,
+	ngaIndie,
+	ngaGameTech,
+	ngaDev,
+	qiitaGameDev,
+	qiitaUnity,
+	zennGamedev,
+} from "./community";
 import { defold } from "./defold";
 import { o3de } from "./o3de";
 import {
@@ -80,7 +92,6 @@ export const allSources: NewsSource[] = [
 	rockPaperShotgun,
 	vg247,
 	hackerNews,
-	redditGamedev,
 	gameFromScratch,
 	indieGamesPlus,
 	raphKoster,
@@ -136,6 +147,18 @@ export const allSources: NewsSource[] = [
 	concernedApe,
 	capcomNews,
 	ludeon,
+	/* 社区 */
+	redditGamedev,
+	redditGameDesign,
+	redditIndieDev,
+	resetera,
+	ngaGameDesign,
+	ngaIndie,
+	ngaGameTech,
+	ngaDev,
+	qiitaGameDev,
+	qiitaUnity,
+	zennGamedev,
 	/* 引擎 */
 	unityBlog,
 	godotReleases,
