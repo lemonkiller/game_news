@@ -157,8 +157,9 @@ body::before {
 }
 
 .navbar-info {
-	font-size: 14px;
-	color: var(--gb-dark);
+	font-size: 15px;
+	color: var(--text-primary);
+	font-family: var(--font-body);
 	margin-left: auto;
 	white-space: nowrap;
 }

@@ -8,7 +8,7 @@ import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
 export const humbleBundle: NewsSource = {
 	name: "Humble Bundle",
-	lang: "company",
+	lang: "en",
 	fetch: async () => {
 		const xml = await fetchText("https://blog.humblebundle.com/feed/");
 		const items = parseRSS(xml);

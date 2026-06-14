@@ -9,7 +9,7 @@ export const bevy: NewsSource = {
 			})
 		).text();
 		const items: any[] = [];
-		const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+		const entryRegex = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
 		let match;
 		while ((match = entryRegex.exec(xml)) !== null) {
 			const e = match[1];

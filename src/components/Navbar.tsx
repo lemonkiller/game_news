@@ -65,7 +65,11 @@ export default function Navbar({
 function formatTime(iso: string): string {
 	try {
 		const d = new Date(iso);
-		return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+		const month = d.getMonth() + 1;
+		const day = d.getDate();
+		const hours = String(d.getHours()).padStart(2, "0");
+		const mins = String(d.getMinutes()).padStart(2, "0");
+		return `${month}月${day}日 ${hours}:${mins}`;
 	} catch {
 		return iso;
 	}
