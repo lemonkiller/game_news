@@ -30,7 +30,15 @@ import { concernedApe } from "./concerned-ape";
 import { capcomNews } from "./capcom-news";
 import { defold } from "./defold";
 import { o3de } from "./o3de";
-import { steamTopSellers, steamNewReleases, steamSpecials, steamComingSoon, steamTopCN, steamTopUS, steamTopJP } from "./steam";
+import {
+	steamTopSellers,
+	steamNewReleases,
+	steamSpecials,
+	steamComingSoon,
+	steamTopCN,
+	steamTopUS,
+	steamTopJP,
+} from "./steam";
 import { gcores } from "./gcores";
 import { youxituoluo } from "./youxituoluo";
 import { youxichaguan } from "./youxichaguan";
@@ -120,12 +128,12 @@ export const allSources: NewsSource[] = [
 	steamTopCN,
 	steamTopUS,
 	steamTopJP,
-  humbleBundle,
-  playstationBlog,
-  frictional,
-  rawFury,
-  concernedApe,
-  capcomNews,
+	humbleBundle,
+	playstationBlog,
+	frictional,
+	rawFury,
+	concernedApe,
+	capcomNews,
 	/* 引擎 */
 	unityBlog,
 	godotReleases,
