@@ -175,7 +175,7 @@ export const cnblogsGameDev: NewsSource = {
 	fetch: () => fetchRSS("https://www.cnblogs.com/cate/gamedev/rss"),
 };
 
-/* ========== 中文社区（NGA） ==========
+/* ========== 中文社区（NGA） ========== */
 
 async function fetchNGA(fid: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
