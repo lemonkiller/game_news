@@ -1,73 +1,80 @@
 import { fetchText } from "../utils/fetcher";
 import { parseRSS, toNewsItems } from "../utils/rss-parser";
-import type { NewsSource } from "../utils/types";
+import type { NewsSource, NewsItem } from "../utils/types";
 
-/* ========== 英文社区（Reddit RSS） ========== */
+/* ========== Reddit 统一抓取（共享限流 + 缓存） ========== */
 
-// Reddit 限流较严，连续请求间至少间隔 2s
-let lastRedditFetch = 0;
+const SUBS = [
+	"gamedev",
+	"gamedesign",
+	"IndieDev",
+	"gameideas",
+	"BaseBuildingGames",
+	"4Xgaming",
+	"aigamedev",
+	"leveldesign",
+	"gameengines",
+];
 
-async function fetchRedditRSS(
-	sub: string,
-): Promise<ReturnType<typeof toNewsItems>> {
-	const now = Date.now();
-	const wait = Math.max(0, 2000 - (now - lastRedditFetch));
-	if (wait > 0) await new Promise((r) => setTimeout(r, wait));
-	lastRedditFetch = Date.now();
+// Reddit 限流：间隔 3s + 缓存避免重复请求
+let redditCache: Record<string, NewsItem[]> | null = null;
+let redditFetching = false;
+let redditQueue: Array<(v: Record<string, NewsItem[]>) => void> = [];
 
-	try {
-		const xml = await fetchText("https://www.reddit.com/r/" + sub + ".rss");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	} catch {
-		return [];
+/** 批量抓取所有 Reddit 子版，逐条间隔 3s */
+async function fetchAllRedditSubs(): Promise<Record<string, NewsItem[]>> {
+	const results: Record<string, NewsItem[]> = {};
+	for (const [i, sub] of SUBS.entries()) {
+		try {
+			// 除第一个外，每请求间至少间隔 3s
+			if (i > 0) await new Promise((r) => setTimeout(r, 3000));
+			const xml = await fetchText("https://www.reddit.com/r/" + sub + ".rss");
+			results[sub] = toNewsItems(parseRSS(xml)).slice(0, 5);
+		} catch {
+			results[sub] = [];
+		}
 	}
+	return results;
 }
 
-export const redditGamedev: NewsSource = {
-	name: "r/gamedev",
-	lang: "community",
-	fetch: () => fetchRedditRSS("gamedev"),
-};
-export const redditGameDesign: NewsSource = {
-	name: "r/GameDesign",
-	lang: "community",
-	fetch: () => fetchRedditRSS("gamedesign"),
-};
-export const redditIndieDev: NewsSource = {
-	name: "r/IndieDev",
-	lang: "community",
-	fetch: () => fetchRedditRSS("IndieDev"),
-};
-export const redditGameIdeas: NewsSource = {
-	name: "r/gameideas",
-	lang: "community",
-	fetch: () => fetchRedditRSS("gameideas"),
-};
-export const redditBaseBuilding: NewsSource = {
-	name: "r/BaseBuildingGames",
-	lang: "community",
-	fetch: () => fetchRedditRSS("BaseBuildingGames"),
-};
-export const reddit4X: NewsSource = {
-	name: "r/4Xgaming",
-	lang: "community",
-	fetch: () => fetchRedditRSS("4Xgaming"),
-};
-export const redditAIGamedev: NewsSource = {
-	name: "r/aigamedev",
-	lang: "community",
-	fetch: () => fetchRedditRSS("aigamedev"),
-};
-export const redditLevelDesign: NewsSource = {
-	name: "r/leveldesign",
-	lang: "community",
-	fetch: () => fetchRedditRSS("leveldesign"),
-};
-export const redditGameEngines: NewsSource = {
-	name: "r/gameengines",
-	lang: "community",
-	fetch: () => fetchRedditRSS("gameengines"),
-};
+/** 获取 Reddit 数据的唯一入口（带缓存） */
+function getRedditData(): Promise<Record<string, NewsItem[]>> {
+	if (redditCache) return Promise.resolve(redditCache);
+	if (redditFetching) {
+		return new Promise((resolve) => redditQueue.push(resolve));
+	}
+	redditFetching = true;
+	return fetchAllRedditSubs().then((data) => {
+		redditCache = data;
+		redditFetching = false;
+		redditQueue.forEach((resolve) => resolve(data));
+		redditQueue = [];
+		return data;
+	});
+}
+
+/* ========== Reddit 子版源 ========== */
+
+function makeRedditSource(sub: string, label: string): NewsSource {
+	return {
+		name: label,
+		lang: "community",
+		fetch: async () => {
+			const data = await getRedditData();
+			return data[sub] || [];
+		},
+	};
+}
+
+export const redditGamedev = makeRedditSource("gamedev", "r/gamedev");
+export const redditGameDesign = makeRedditSource("gamedesign", "r/GameDesign");
+export const redditIndieDev = makeRedditSource("IndieDev", "r/IndieDev");
+export const redditGameIdeas = makeRedditSource("gameideas", "r/gameideas");
+export const redditBaseBuilding = makeRedditSource("BaseBuildingGames", "r/BaseBuildingGames");
+export const reddit4X = makeRedditSource("4Xgaming", "r/4Xgaming");
+export const redditAIGamedev = makeRedditSource("aigamedev", "r/aigamedev");
+export const redditLevelDesign = makeRedditSource("leveldesign", "r/leveldesign");
+export const redditGameEngines = makeRedditSource("gameengines", "r/gameengines");
 
 /* ========== 英文论坛 ========== */
 
@@ -84,7 +91,9 @@ export const resetera: NewsSource = {
 
 /* ========== 中文社区（NGA） ========== */
 
-async function fetchNGA(fid: string): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchNGA(
+	fid: string,
+): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(
 			"https://nga.178.com/thread.php?fid=" + fid + "&lite=xml",
@@ -118,7 +127,9 @@ export const ngaDev: NewsSource = {
 
 /* ========== 日文社区 ========== */
 
-async function fetchAtom(url: string): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchAtom(
+	url: string,
+): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(url);
 		const items: any[] = [];
