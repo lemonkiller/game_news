@@ -70,11 +70,20 @@ export const redditGamedev = makeRedditSource("gamedev", "r/gamedev");
 export const redditGameDesign = makeRedditSource("gamedesign", "r/GameDesign");
 export const redditIndieDev = makeRedditSource("IndieDev", "r/IndieDev");
 export const redditGameIdeas = makeRedditSource("gameideas", "r/gameideas");
-export const redditBaseBuilding = makeRedditSource("BaseBuildingGames", "r/BaseBuildingGames");
+export const redditBaseBuilding = makeRedditSource(
+	"BaseBuildingGames",
+	"r/BaseBuildingGames",
+);
 export const reddit4X = makeRedditSource("4Xgaming", "r/4Xgaming");
 export const redditAIGamedev = makeRedditSource("aigamedev", "r/aigamedev");
-export const redditLevelDesign = makeRedditSource("leveldesign", "r/leveldesign");
-export const redditGameEngines = makeRedditSource("gameengines", "r/gameengines");
+export const redditLevelDesign = makeRedditSource(
+	"leveldesign",
+	"r/leveldesign",
+);
+export const redditGameEngines = makeRedditSource(
+	"gameengines",
+	"r/gameengines",
+);
 
 /* ========== 英文论坛 ========== */
 
@@ -91,9 +100,7 @@ export const resetera: NewsSource = {
 
 /* ========== 中文社区（NGA） ========== */
 
-async function fetchNGA(
-	fid: string,
-): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchNGA(fid: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(
 			"https://nga.178.com/thread.php?fid=" + fid + "&lite=xml",
@@ -127,9 +134,7 @@ export const ngaDev: NewsSource = {
 
 /* ========== 日文社区 ========== */
 
-async function fetchAtom(
-	url: string,
-): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchAtom(url: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(url);
 		const items: any[] = [];
@@ -165,6 +170,21 @@ export const qiitaGameDev: NewsSource = {
 	name: "Qiita ゲーム開発",
 	lang: "community",
 	fetch: () => fetchAtom("https://qiita.com/tags/ゲーム開発/feed"),
+};
+export const qiitaGameDesign: NewsSource = {
+	name: "Qiita ゲームデザイン",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/ゲームデザイン/feed"),
+};
+export const qiitaGodot: NewsSource = {
+	name: "Qiita Godot",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/Godot/feed"),
+};
+export const qiitaUnreal: NewsSource = {
+	name: "Qiita UnrealEngine",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/UnrealEngine/feed"),
 };
 export const qiitaUnity: NewsSource = {
 	name: "Qiita Unity",
