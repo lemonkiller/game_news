@@ -16,23 +16,56 @@ const SUBS = [
 	"gameengines",
 ];
 
-// Reddit 限流：间隔 3s + 缓存避免重复请求
+// Reddit 限流严重：10s 间隔 + JSON API + 重试 + 缓存
 let redditCache: Record<string, NewsItem[]> | null = null;
 let redditFetching = false;
 let redditQueue: Array<(v: Record<string, NewsItem[]>) => void> = [];
 
-/** 批量抓取所有 Reddit 子版，逐条间隔 3s */
+const REDDIT_UA = "gamedev-news/1.0 (by /u/lemonkiller)";
+
+async function fetchRedditJSON(sub: string): Promise<NewsItem[]> {
+	const url =
+		"https://www.reddit.com/r/" + sub + "/hot.json?limit=5&raw_json=1";
+	const res = await fetch(url, {
+		headers: { "User-Agent": REDDIT_UA },
+		signal: AbortSignal.timeout(15000),
+	});
+	if (!res.ok) throw new Error("HTTP " + res.status);
+	const data: any = await res.json();
+	return (data?.data?.children || []).map((c: any) => {
+		const d = c.data;
+		return {
+			id: d.id || d.permalink,
+			title: d.title || "",
+			url: "https://www.reddit.com" + d.permalink,
+			pubDate: d.created_utc
+				? new Date(d.created_utc * 1000).toISOString()
+				: undefined,
+			extra: {
+				info: d.created_utc
+					? new Date(d.created_utc * 1000).toLocaleDateString("zh-CN")
+					: "",
+			},
+		};
+	});
+}
+
+/** 批量抓取所有 Reddit 子版，逐条间隔 10s，失败重试一次 */
 async function fetchAllRedditSubs(): Promise<Record<string, NewsItem[]>> {
 	const results: Record<string, NewsItem[]> = {};
 	for (const [i, sub] of SUBS.entries()) {
-		try {
-			// 除第一个外，每请求间至少间隔 3s
-			if (i > 0) await new Promise((r) => setTimeout(r, 3000));
-			const xml = await fetchText("https://www.reddit.com/r/" + sub + ".rss");
-			results[sub] = toNewsItems(parseRSS(xml)).slice(0, 5);
-		} catch {
-			results[sub] = [];
+		let items: NewsItem[] = [];
+		for (let attempt = 0; attempt < 2; attempt++) {
+			try {
+				if (i > 0 || attempt > 0)
+					await new Promise((r) => setTimeout(r, 10000));
+				items = await fetchRedditJSON(sub);
+				break;
+			} catch {
+				// 重试（Reddit 限流时静默返回空）
+			}
 		}
+		results[sub] = items;
 	}
 	return results;
 }
@@ -98,7 +131,51 @@ export const resetera: NewsSource = {
 	},
 };
 
-/* ========== 中文社区（NGA） ========== */
+/* ========== 中文游戏开发平台 ========== */
+
+async function fetchRSS(url: string): Promise<ReturnType<typeof toNewsItems>> {
+	try {
+		const xml = await fetchText(url);
+		return toNewsItems(parseRSS(xml)).slice(0, 10);
+	} catch {
+		return [];
+	}
+}
+
+export const gameres: NewsSource = {
+	name: "GameRes 游资网",
+	lang: "zh",
+	fetch: () => fetchRSS("https://www.gameres.com/feed.xml"),
+};
+
+export const gamerboom: NewsSource = {
+	name: "游戏邦",
+	lang: "zh",
+	fetch: () => fetchRSS("https://www.gamerboom.com/feed/"),
+};
+
+export const juejinGame: NewsSource = {
+	name: "掘金 游戏开发",
+	lang: "zh",
+	fetch: () =>
+		fetchRSS(
+			"https://api.juejin.cn/recommend_api/v1/article_recommend?tag_id=游戏开发",
+		),
+};
+
+export const sfGameDev: NewsSource = {
+	name: "SegmentFault 游戏开发",
+	lang: "zh",
+	fetch: () => fetchRSS("https://segmentfault.com/t/游戏开发/rss"),
+};
+
+export const cnblogsGameDev: NewsSource = {
+	name: "博客园 游戏开发",
+	lang: "zh",
+	fetch: () => fetchRSS("https://www.cnblogs.com/cate/gamedev/rss"),
+};
+
+/* ========== 中文社区（NGA） ==========
 
 async function fetchNGA(fid: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
