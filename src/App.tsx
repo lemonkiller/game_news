@@ -89,7 +89,7 @@ const LANG_MAP: Record<string, Lang> = {
 	"NGA 游戏技术": "community",
 	"NGA 程序技术": "community",
 	"GameRes 游资网": "zh",
-	"游戏邦": "zh",
+	游戏邦: "zh",
 	"掘金 游戏开发": "zh",
 	"SegmentFault 游戏开发": "zh",
 	"博客园 游戏开发": "zh",

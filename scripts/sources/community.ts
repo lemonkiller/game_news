@@ -24,7 +24,8 @@ let redditQueue: Array<(v: Record<string, NewsItem[]>) => void> = [];
 const REDDIT_UA = "gamedev-news/1.0 (by /u/lemonkiller)";
 
 async function fetchRedditJSON(sub: string): Promise<NewsItem[]> {
-	const url = "https://www.reddit.com/r/" + sub + "/hot.json?limit=5&raw_json=1";
+	const url =
+		"https://www.reddit.com/r/" + sub + "/hot.json?limit=5&raw_json=1";
 	const res = await fetch(url, {
 		headers: { "User-Agent": REDDIT_UA },
 		signal: AbortSignal.timeout(15000),
@@ -56,7 +57,8 @@ async function fetchAllRedditSubs(): Promise<Record<string, NewsItem[]>> {
 		let items: NewsItem[] = [];
 		for (let attempt = 0; attempt < 2; attempt++) {
 			try {
-				if (i > 0 || attempt > 0) await new Promise((r) => setTimeout(r, 10000));
+				if (i > 0 || attempt > 0)
+					await new Promise((r) => setTimeout(r, 10000));
 				items = await fetchRedditJSON(sub);
 				break;
 			} catch {
@@ -131,9 +133,7 @@ export const resetera: NewsSource = {
 
 /* ========== 中文游戏开发平台 ========== */
 
-async function fetchRSS(
-	url: string,
-): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchRSS(url: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(url);
 		return toNewsItems(parseRSS(xml)).slice(0, 10);
@@ -157,7 +157,10 @@ export const gamerboom: NewsSource = {
 export const juejinGame: NewsSource = {
 	name: "掘金 游戏开发",
 	lang: "zh",
-	fetch: () => fetchRSS("https://api.juejin.cn/recommend_api/v1/article_recommend?tag_id=游戏开发"),
+	fetch: () =>
+		fetchRSS(
+			"https://api.juejin.cn/recommend_api/v1/article_recommend?tag_id=游戏开发",
+		),
 };
 
 export const sfGameDev: NewsSource = {
