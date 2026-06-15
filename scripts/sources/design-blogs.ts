@@ -53,7 +53,7 @@ export const distractionware: NewsSource = {
 	name: "Distractionware",
 	lang: "en",
 	fetch: async () => {
-		const xml = await fetchText("https://distractionware.com/blog/");
+		const xml = await fetchText("https://distractionware.com/blog/feed/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
@@ -65,15 +65,6 @@ export const designerNotes: NewsSource = {
 	lang: "zh",
 	fetch: async () => {
 		const xml = await fetchText("https://design.jskyzero.com/feed.xml");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
-export const chawfoo: NewsSource = {
-	name: "付之一笑",
-	lang: "zh",
-	fetch: async () => {
-		const xml = await fetchText("https://www.chawfoo.com/feed.xml");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };

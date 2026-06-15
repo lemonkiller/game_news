@@ -93,6 +93,16 @@ export function relativeTime(dateStr: string | undefined): string {
 	return date.toLocaleDateString("zh-CN");
 }
 
+/** 提取安全的文本内容，支持 String 或 {#text: string} 对象 */
+export function getTextContent(val: unknown): string {
+	if (typeof val === "string") return val;
+	if (val && typeof val === "object") {
+		const obj = val as Record<string, unknown>;
+		if (typeof obj["#text"] === "string") return obj["#text"];
+	}
+	return "";
+}
+
 /** 去除 HTML 标签 */
 export function stripHtml(html: string): string {
 	return html
