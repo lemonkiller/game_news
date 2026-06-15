@@ -172,20 +172,25 @@ export default function App() {
 	}, []);
 
 	return (
-		<div className="app">
-			<Navbar
-				lang={lang}
-				onLangChange={setLang}
-				counts={langCounts}
-				updatedAt={data.updatedAt}
-				labels={LANG_LABELS}
-			/>
-			<main className="columns">
-				{entries.map(([name, items]) => (
-					<CardColumn key={name} name={name} items={items.slice(0, 5)} />
-				))}
-			</main>
-			<Footer />
+		<div className="crt-wrapper">
+			<div className="crt-screen">
+				<div className="crt-vignette" />
+				<div className="app">
+					<Navbar
+						lang={lang}
+						onLangChange={setLang}
+						counts={langCounts}
+						updatedAt={data.updatedAt}
+						labels={LANG_LABELS}
+					/>
+					<main className="columns">
+						{entries.map(([name, items]) => (
+							<CardColumn key={name} name={name} items={items.slice(0, 5)} />
+						))}
+					</main>
+					<Footer />
+				</div>
+			</div>
 		</div>
 	);
 }
