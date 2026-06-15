@@ -10,7 +10,7 @@ export const insideGames: NewsSource = {
 	name: "インサイド",
 	lang: "ja",
 	fetch: async () => {
-		const xml = await fetchText("https://www.inside-games.jp/rss/");
+		const xml = await fetchText("https://www.inside-games.jp/rss/index.rdf");
 		const items = parseRSS(xml);
 		return items.slice(0, 20).map((item) => ({
 			id: getGUID(item),

@@ -3,6 +3,7 @@ import {
 	getGUID,
 	relativeTime,
 	stripHtml,
+	getTextContent,
 } from "../utils/rss-parser";
 import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
@@ -18,9 +19,10 @@ export const blogNightingale: NewsSource = {
 			url: item.link,
 			extra: {
 				info: relativeTime(item.pubDate),
-				hover: item.description
-					? stripHtml(item.description).slice(0, 200)
-					: undefined,
+				hover: (() => {
+					const desc = getTextContent(item.description);
+					return desc ? stripHtml(desc).slice(0, 200) : undefined;
+				})(),
 			},
 		}));
 	},

@@ -53,7 +53,7 @@ export const distractionware: NewsSource = {
 	name: "Distractionware",
 	lang: "en",
 	fetch: async () => {
-		const xml = await fetchText("https://distractionware.com/blog/");
+		const xml = await fetchText("https://distractionware.com/blog/feed/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
@@ -65,15 +65,6 @@ export const designerNotes: NewsSource = {
 	lang: "zh",
 	fetch: async () => {
 		const xml = await fetchText("https://design.jskyzero.com/feed.xml");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
-export const chawfoo: NewsSource = {
-	name: "付之一笑",
-	lang: "zh",
-	fetch: async () => {
-		const xml = await fetchText("https://www.chawfoo.com/feed.xml");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
@@ -251,6 +242,33 @@ export const applibotTechBlog: NewsSource = {
 	lang: "ja",
 	fetch: async () => {
 		const xml = await fetchText("https://blog.applibot.co.jp/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+export const psychologyOfGames: NewsSource = {
+	name: "Psychology of Games",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.psychologyofgames.com/feed/rss/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+export const keithBurgun: NewsSource = {
+	name: "Keith Burgun",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("http://keithburgun.net/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+export const gdkeys: NewsSource = {
+	name: "GDKeys",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://gdkeys.com/feed/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
