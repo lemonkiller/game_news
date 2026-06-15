@@ -72,6 +72,11 @@ const LANG_MAP: Record<string, Lang> = {
 	"Red Blob Games": "en",
 	"Game Wisdom": "en",
 	"Catnap Games": "en",
+	"Rampant Games": "en",
+	"Cliffski": "en",
+	"Alan Zucconi": "en",
+	"GameWorld Observer": "en",
+	"GameDev Academy": "en",
 	"Rat King": "en",
 	"Push to Talk": "en",
 	Distractionware: "en",
@@ -114,6 +119,9 @@ const LANG_MAP: Record<string, Lang> = {
 	"OSAKANA LABO": "ja",
 	"Aiming 開発者ブログ": "ja",
 	"GREE Tech": "ja",
+	"KAYAC Tech Blog": "ja",
+	"SEGA Tech Blog": "ja",
+	"Applibot Tech": "ja",
 };
 
 export default function App() {

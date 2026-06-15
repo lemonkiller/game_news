@@ -59,6 +59,14 @@ import {
 	designerNotes,
 	chawfoo,
 	qiGeDan,
+	rampantGames,
+	cliffski,
+	alanZucconi,
+	gameWorldObserver,
+	gameDevAcademy,
+	kayacTechblog,
+	segaTechBlog,
+	applibotTechBlog,
 } from "./design-blogs";
 import {
 	steamTopSellers,
@@ -174,6 +182,8 @@ export const allSources: NewsSource[] = [
 	designerNotes,
 	chawfoo,
 	qiGeDan,
+	rampantGames, cliffski, alanZucconi, gameWorldObserver, gameDevAcademy,
+	kayacTechblog, segaTechBlog, applibotTechBlog,
 	/* 社区 */
 	redditGamedev,
 	redditGameDesign,
