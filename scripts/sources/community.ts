@@ -4,9 +4,17 @@ import type { NewsSource } from "../utils/types";
 
 /* ========== 英文社区（Reddit RSS） ========== */
 
+// Reddit 限流较严，连续请求间至少间隔 2s
+let lastRedditFetch = 0;
+
 async function fetchRedditRSS(
 	sub: string,
 ): Promise<ReturnType<typeof toNewsItems>> {
+	const now = Date.now();
+	const wait = Math.max(0, 2000 - (now - lastRedditFetch));
+	if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+	lastRedditFetch = Date.now();
+
 	try {
 		const xml = await fetchText("https://www.reddit.com/r/" + sub + ".rss");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
