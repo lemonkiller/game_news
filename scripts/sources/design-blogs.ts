@@ -254,3 +254,12 @@ export const applibotTechBlog: NewsSource = {
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
+
+export const gdkeys: NewsSource = {
+	name: "GDKeys",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://gdkeys.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};

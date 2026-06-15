@@ -85,6 +85,7 @@ import {
 	leagueOfGameMakers,
 	randomascii,
 	slembcke,
+	gdkeys,
 } from "./design-blogs";
 import {
 	steamTopSellers,
@@ -218,6 +219,7 @@ export const allSources: NewsSource[] = [
 	leagueOfGameMakers,
 	randomascii,
 	slembcke,
+	gdkeys,
 	/* 社区 */
 	redditGamedev,
 	redditGameDesign,
