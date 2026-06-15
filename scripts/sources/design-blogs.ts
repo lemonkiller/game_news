@@ -138,7 +138,9 @@ export const gameDevAcademy: NewsSource = {
 
 /* ========== 平台聚合源（dev.to 标签） ========== */
 
-async function fetchDevTo(tag: string): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchDevTo(
+	tag: string,
+): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText("https://dev.to/feed/tag/" + tag);
 		return toNewsItems(parseRSS(xml)).slice(0, 5);

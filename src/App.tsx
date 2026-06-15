@@ -133,8 +133,8 @@ const LANG_MAP: Record<string, Lang> = {
 	"Más Bandwidth": "en",
 	"Nicky Case": "en",
 	"League of GameMakers": "en",
-	"randomascii": "en",
-	"Slembcke": "en",
+	randomascii: "en",
+	Slembcke: "en",
 };
 
 export default function App() {
