@@ -85,6 +85,8 @@ import {
 	leagueOfGameMakers,
 	randomascii,
 	slembcke,
+	psychologyOfGames,
+	keithBurgun,
 	gdkeys,
 } from "./design-blogs";
 import {
@@ -219,6 +221,8 @@ export const allSources: NewsSource[] = [
 	leagueOfGameMakers,
 	randomascii,
 	slembcke,
+	psychologyOfGames,
+	keithBurgun,
 	gdkeys,
 	/* 社区 */
 	redditGamedev,

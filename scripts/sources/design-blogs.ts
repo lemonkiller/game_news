@@ -255,6 +255,24 @@ export const applibotTechBlog: NewsSource = {
 	},
 };
 
+export const psychologyOfGames: NewsSource = {
+	name: "Psychology of Games",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.psychologyofgames.com/feed/rss/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+export const keithBurgun: NewsSource = {
+	name: "Keith Burgun",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("http://keithburgun.net/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
 export const gdkeys: NewsSource = {
 	name: "GDKeys",
 	lang: "en",
