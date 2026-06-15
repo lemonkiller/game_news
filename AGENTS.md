@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 50+ 数据源，GB 四色绿像素风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 70+ 数据源，GB 四色绿像素风格。
 
 ## 沟通规范
 
@@ -33,10 +33,12 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | `steam` | Steam | Steam 榜单（热销/新品/特惠） |
 | `engine` | 引擎 | 游戏引擎官方博客 |
 | `company` | 公司 | 游戏公司官方资讯 |
+| `community` | 社区 | 游戏开发论坛、Reddit 子版、社区讨论 |
 
 - 每个源只属于一个分类，不会跨标签出现
 - 引擎源不出现在语言标签中
 - Steam 源全部归入 Steam 标签
+- 社区源只出现在社区标签
 
 ## 数据源规范
 
