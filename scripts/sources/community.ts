@@ -171,6 +171,21 @@ export const qiitaGameDev: NewsSource = {
 	lang: "community",
 	fetch: () => fetchAtom("https://qiita.com/tags/ゲーム開発/feed"),
 };
+export const qiitaGameDesign: NewsSource = {
+	name: "Qiita ゲームデザイン",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/ゲームデザイン/feed"),
+};
+export const qiitaGodot: NewsSource = {
+	name: "Qiita Godot",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/Godot/feed"),
+};
+export const qiitaUnreal: NewsSource = {
+	name: "Qiita UnrealEngine",
+	lang: "community",
+	fetch: () => fetchAtom("https://qiita.com/tags/UnrealEngine/feed"),
+};
 export const qiitaUnity: NewsSource = {
 	name: "Qiita Unity",
 	lang: "community",
