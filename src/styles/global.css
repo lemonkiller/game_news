@@ -1,8 +1,7 @@
 /* ============================================
-   GameDev News - 复古 CRT 风格
+   GameDev News - 口袋妖怪红绿 GB 风格
    配色: 纯正 Game Boy 四色绿
           #0F380F #306230 #8BAC0F #9BBC0F
-   CRT 效果: 扫描线、磷光辉光、屏幕边框
    ============================================ */
 *,
 *::before,
@@ -31,41 +30,16 @@
 	--font-head: "Press Start 2P", monospace;
 	--font-body: "VT323", "Courier New", monospace;
 	--card-min-width: 320px;
-	--crt-border-color: #1a1a1a;
-}
-
-.crt-wrapper {
-	position: relative;
-	min-height: 100vh;
-	overflow: hidden;
-	background: var(--crt-border-color);
-}
-
-/* CRT 屏幕边框 — 圆角显示器效果 */
-.crt-screen {
-	position: relative;
-	min-height: 100vh;
-	background: var(--bg-page);
-	border-radius: 48px 48px 32px 32px;
-	box-shadow:
-		inset 0 0 60px rgba(0, 0, 0, 0.6),
-		inset 0 0 120px rgba(0, 0, 0, 0.3),
-		0 0 0 12px #111,
-		0 0 0 14px #333,
-		0 0 40px rgba(155, 188, 15, 0.15);
-	margin: 18px;
-	padding: 24px 0;
 }
 
 body {
 	font-family: var(--font-body);
-	background: #000;
+	background: var(--bg-page);
 	color: var(--text-primary);
 	line-height: 1.5;
 	-webkit-font-smoothing: none;
-	-moz-osx-font-smoothing: grayscale;
-	image-rendering: pixelated;
 	text-rendering: optimizeSpeed;
+	image-rendering: pixelated;
 }
 
 a {
@@ -73,53 +47,15 @@ a {
 	text-decoration: none;
 }
 
-/* === CRT 扫描线 === */
-.crt-screen::after {
+/* === GB 像素网格背景 === */
+body::before {
 	content: "";
-	position: absolute;
-	inset: 0;
-	background: repeating-linear-gradient(
-		transparent 0px,
-		transparent 2px,
-		rgba(0, 0, 0, 0.12) 2px,
-		rgba(0, 0, 0, 0.12) 4px
-	);
-	pointer-events: none;
-	z-index: 9998;
-	border-radius: inherit;
-}
-
-/* === 像素网格（GB 原味） === */
-.crt-screen::before {
-	content: "";
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	background-image:
-		linear-gradient(rgba(155, 188, 15, 0.05) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(155, 188, 15, 0.05) 1px, transparent 1px);
+		linear-gradient(rgba(155, 188, 15, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(155, 188, 15, 0.04) 1px, transparent 1px);
 	background-size: 16px 16px;
-	pointer-events: none;
-	z-index: 9997;
-	border-radius: inherit;
-}
-
-/* === 磷光辉光 (phosphor glow) === */
-.column-title,
-.navbar-title,
-.news-card-title {
-	text-shadow:
-		0 0 4px rgba(15, 56, 15, 0.3),
-		0 0 8px rgba(48, 98, 48, 0.2);
-}
-
-/* === 屏幕边框内阴影（暗角） === */
-.crt-vignette {
-	position: absolute;
-	inset: 0;
-	border-radius: inherit;
-	box-shadow:
-		inset 0 0 80px rgba(0, 0, 0, 0.5),
-		inset 0 0 200px rgba(0, 0, 0, 0.2);
 	pointer-events: none;
 	z-index: 9999;
 }
