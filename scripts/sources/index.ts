@@ -53,7 +53,8 @@ import {
 	qiitaUnreal,
 	qiitaUnity,
 	zennGamedev,
-} from "./community";import { defold } from "./defold";
+} from "./community";
+import { defold } from "./defold";
 import { o3de } from "./o3de";
 import {
 	redBlobGames,
