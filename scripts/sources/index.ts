@@ -16,7 +16,6 @@ import { maniaHero } from "./mania-hero";
 import { playTank } from "./play-tank";
 import { jgallant } from "./jgallant";
 import { necromanov } from "./necromanov";
-import { indieDB } from "./indiedb";
 import { gamesByMason } from "./games-by-mason";
 import { topHatGames } from "./top-hat-games";
 import { lostGarden } from "./lost-garden";
@@ -54,8 +53,7 @@ import {
 	qiitaUnreal,
 	qiitaUnity,
 	zennGamedev,
-} from "./community";
-import { defold } from "./defold";
+} from "./community";import { defold } from "./defold";
 import { o3de } from "./o3de";
 import {
 	redBlobGames,
@@ -118,7 +116,6 @@ import { igdaJapan } from "./igda-japan";
 import { indieGamesJpDev } from "./indiegamesjp-dev";
 import { hysblog } from "./hysblog";
 import { arashiyama } from "./arashiyama";
-import { osakanaLabo } from "./osakana-labo";
 import { aiming } from "./aiming";
 import { greeTech } from "./gree-tech";
 import {
@@ -145,7 +142,6 @@ export const allSources: NewsSource[] = [
 	maniaHero,
 	playTank,
 	jgallant,
-	indieDB,
 	gamesByMason,
 	topHatGames,
 	lostGarden,
@@ -174,7 +170,6 @@ export const allSources: NewsSource[] = [
 	indieGamesJpDev,
 	hysblog,
 	arashiyama,
-	osakanaLabo,
 	aiming,
 	greeTech,
 	/* Steam */
