@@ -84,10 +84,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"KAYAC Tech Blog": "ja",
 	"SEGA Tech Blog": "ja",
 	"Applibot Tech": "ja",
-	"dev.to gamedev": "en",
-	"dev.to gamedesign": "en",
-	"dev.to indiedev": "en",
-	"dev.to game": "en",
 	"Journal of Stuff": "en",
 	"Más Bandwidth": "en",
 	"Nicky Case": "en",
@@ -106,7 +102,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Push to Talk": "en",
 	Distractionware: "en",
 	设计者笔记: "zh",
-	奇个旦: "zh",
 	ResetEra: "en",
 	"NGA 游戏策划": "zh",
 	"NGA 独立游戏": "zh",
@@ -166,7 +161,6 @@ export default function App() {
 
 			for (const item of items) {
 				const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
-				if (!ts) continue; // 跳过无时间戳的
 				all.push({
 					...item,
 					sourceName: item.sourceName || name,

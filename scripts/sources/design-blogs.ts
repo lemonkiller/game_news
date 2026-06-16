@@ -69,15 +69,6 @@ export const designerNotes: NewsSource = {
 	},
 };
 
-export const qiGeDan: NewsSource = {
-	name: "奇个旦",
-	lang: "zh",
-	fetch: async () => {
-		const xml = await fetchText("https://www.cnblogs.com/Mr147/rss/");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
 /* ========== 新增英文设计/开发博客 ========== */
 
 export const rampantGames: NewsSource = {
@@ -125,40 +116,6 @@ export const gameDevAcademy: NewsSource = {
 		const xml = await fetchText("https://gamedevacademy.org/feed/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
-};
-
-/* ========== 平台聚合源（dev.to 标签） ========== */
-
-async function fetchDevTo(
-	tag: string,
-): Promise<ReturnType<typeof toNewsItems>> {
-	try {
-		const xml = await fetchText("https://dev.to/feed/tag/" + tag);
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	} catch {
-		return [];
-	}
-}
-
-export const devtoGamedev: NewsSource = {
-	name: "dev.to gamedev",
-	lang: "en",
-	fetch: () => fetchDevTo("gamedev"),
-};
-export const devtoGamedesign: NewsSource = {
-	name: "dev.to gamedesign",
-	lang: "en",
-	fetch: () => fetchDevTo("gamedesign"),
-};
-export const devtoIndiedev: NewsSource = {
-	name: "dev.to indiedev",
-	lang: "en",
-	fetch: () => fetchDevTo("indiedev"),
-};
-export const devtoGame: NewsSource = {
-	name: "dev.to game",
-	lang: "en",
-	fetch: () => fetchDevTo("game"),
 };
 
 /* ========== 更多英文设计/开发博客 ========== */
