@@ -92,10 +92,18 @@ import {
 	steamNewReleases,
 	steamSpecials,
 	steamComingSoon,
-	steamTopCN,
-	steamTopUS,
-	steamTopJP,
 } from "./steam";
+import {
+	mechanicsAsMetaphor,
+	level99Strategy,
+	strategyGameStudio,
+	dorophone,
+	captainOfIndustry,
+	transportFever3,
+	pocketCity,
+	jonasMeyerOhle,
+	cannibalHalfling,
+} from "./sim-strategy";
 import { gcores } from "./gcores";
 import { youxituoluo } from "./youxituoluo";
 import { youxichaguan } from "./youxichaguan";
@@ -178,9 +186,6 @@ export const allSources: NewsSource[] = [
 	steamNewReleases,
 	steamSpecials,
 	steamComingSoon,
-	steamTopCN,
-	steamTopUS,
-	steamTopJP,
 	humbleBundle,
 	playstationBlog,
 	frictional,
@@ -254,4 +259,14 @@ export const allSources: NewsSource[] = [
 	godotBlog,
 	defold,
 	o3de,
+	/* 策略 / 模拟 / 殖民类游戏设计开发 */
+	mechanicsAsMetaphor,
+	level99Strategy,
+	strategyGameStudio,
+	dorophone,
+	captainOfIndustry,
+	transportFever3,
+	pocketCity,
+	jonasMeyerOhle,
+	cannibalHalfling,
 ];

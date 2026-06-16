@@ -15,8 +15,7 @@ export default function Navbar({
 	updatedAt,
 	labels,
 }: NavbarProps) {
-	const langTabs: Lang[] = ["all", "zh", "en", "ja"];
-	const catTabs: Lang[] = ["steam", "engine", "company", "community"];
+	const tabs: Lang[] = ["all", "zh", "en", "ja", "steam"];
 
 	return (
 		<nav className="navbar">
@@ -25,36 +24,17 @@ export default function Navbar({
 				<span className="navbar-subtitle">游戏开发资讯聚合</span>
 			</div>
 
-			<div className="navbar-group">
-				<span className="navbar-group-label">语言</span>
-				<div className="navbar-tabs">
-					{langTabs.map((l) => (
-						<button
-							key={l}
-							className={`tab ${lang === l ? "active" : ""}`}
-							onClick={() => onLangChange(l)}
-						>
-							{labels[l]}
-							<span className="tab-count">{counts[l]}</span>
-						</button>
-					))}
-				</div>
-			</div>
-
-			<div className="navbar-group">
-				<span className="navbar-group-label">分类</span>
-				<div className="navbar-tabs">
-					{catTabs.map((l) => (
-						<button
-							key={l}
-							className={`tab tab-cat ${lang === l ? "active" : ""}`}
-							onClick={() => onLangChange(l)}
-						>
-							{labels[l]}
-							<span className="tab-count">{counts[l]}</span>
-						</button>
-					))}
-				</div>
+			<div className="navbar-tabs">
+				{tabs.map((l) => (
+					<button
+						key={l}
+						className={`tab ${lang === l ? "active" : ""}`}
+						onClick={() => onLangChange(l)}
+					>
+						{labels[l]}
+						<span className="tab-count">{counts[l]}</span>
+					</button>
+				))}
 			</div>
 
 			<div className="navbar-info">更新于 {formatTime(updatedAt)}</div>
