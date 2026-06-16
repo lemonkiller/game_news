@@ -276,7 +276,7 @@ body::before {
 
 .row-source {
 	font-family: var(--font-head);
-	font-size: 14px;
+	font-size: 10px;
 	color: var(--gb-dark);
 	white-space: nowrap;
 }
