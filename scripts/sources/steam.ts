@@ -11,7 +11,7 @@ async function fetchCategory(
 		);
 		const cat = data[category] || data.specials;
 		if (!cat || !cat.items) return [];
-		return cat.items.slice(0, 10).map((item: any) => ({
+		return cat.items.map((item: any) => ({
 			id: String(item.id),
 			title: item.name,
 			url: "https://store.steampowered.com/app/" + item.id,
@@ -44,21 +44,4 @@ export const steamComingSoon: NewsSource = {
 	name: "Steam 即将推出",
 	lang: "steam",
 	fetch: () => fetchCategory("CN", "coming_soon"),
-};
-
-// 各地区热销
-export const steamTopCN: NewsSource = {
-	name: "Steam 热销 (CN)",
-	lang: "steam",
-	fetch: () => fetchCategory("CN", "top_sellers"),
-};
-export const steamTopUS: NewsSource = {
-	name: "Steam 热销 (US)",
-	lang: "steam",
-	fetch: () => fetchCategory("US", "top_sellers"),
-};
-export const steamTopJP: NewsSource = {
-	name: "Steam 热销 (JP)",
-	lang: "steam",
-	fetch: () => fetchCategory("JP", "top_sellers"),
 };

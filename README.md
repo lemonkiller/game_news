@@ -1,45 +1,56 @@
 # GameDev News
 
-游戏开发资讯聚合站 -- 覆盖中英日三语 60+ 数据源，纯静态，零运维。
+游戏开发资讯聚合站 -- 覆盖中英日三语 80+ 数据源，纯静态零运维。
 
 GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
 ## 数据源一览
 
-| 分类 | 标签 | 源数 | 说明 |
-|------|------|------|------|
-| 英文 | English | ~25 | 游戏开发新闻、博客、设计文章 |
-| 中文 | 中文 | ~12 | 国内游戏媒体、开发者博客 |
-| 日文 | 日本語 | ~14 | 日本游戏资讯、公司技术博客 |
-| Steam | Steam | 7 | 热销、新品、特惠、即将推出、CN/US/JP 热销 |
-| 引擎 | 引擎 | 9 | Unity、Godot、Bevy、Defold、Flax、O3DE 等 |
-| 公司 | 公司 | 5 | PlayStation、Frictional、Raw Fury、ConcernedApe、Capcom |
+| 标签 | 源数 | 说明 |
+|------|------|------|
+| 全部 | ~84 | 全部源合并，按时间瀑布流展示 |
+| English | ~50 | 游戏开发新闻、设计博客、引擎博客、公司资讯、Reddit、dev.to |
+| 中文 | ~20 | 国内游戏媒体、独立开发者博客、NGA 版块 |
+| 日本語 | ~14 | 日本游戏资讯、Qiita / Zenn 技术博客、公司技术博客 |
+| Steam | 4 | 热销、新品、特惠、即将推出（CN 区） |
 
 完整列表见 `scripts/sources/` 目录。
+
+## 布局
+
+| 标签 | 布局 |
+|------|------|
+| 全部 / 中文 / English / 日本語 | 时间线瀑布流：所有源合并按时间排序，每 5 条一卡，2 列排列 |
+| Steam | 多列网格：每源一卡，每卡限 10 条 |
+
+每行显示格式：**标题** | **来源站点** | **更新时间**
 
 ## 如何贡献数据源
 
 **欢迎提交 PR 增加优质的游戏开发/设计相关数据源！**
 
 要求：
+
 - 内容与**游戏开发、游戏设计、游戏行业**直接相关
 - 有稳定的 RSS / Atom / API 输出
 - 已在该语言/地区被广泛认可的优质来源
 
 添加步骤：
+
 1. 在 `scripts/sources/` 下新建文件，实现 `NewsSource` 接口
 2. 在 `scripts/sources/index.ts` 中注册
-3. 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言/分类映射
+3. 在 `src/App.tsx` 的 `LANG_MAP` 中添加映射
 4. 运行 `npm run fetch` 验证数据能正常抓取
 5. 运行 `npm run build` 确认构建通过
 6. 提交 PR
 
 ## 架构
 
-- **数据抓取**：GitHub Actions 每天 8:00 / 20:00 定时运行 TypeScript Rss/API 抓取
-- **前端**：Vite + React + TypeScript，VT323 像素字体
+- **数据抓取**：GitHub Actions 每天 8:00 / 20:00 定时运行 TypeScript RSS/API 抓取
+- **前端**：Vite + React + TypeScript，VT323 / Press Start 2P 像素字体
 - **部署**：GitHub Pages，`actions/deploy-pages` 官方部署
 - **配色**：Game Boy 经典四色绿 `#0F380F #306230 #8BAC0F #9BBC0F`
+- **Fetch 顺序执行**：单源 10s 超时，失败不影响其他源
 
 ## 本地开发
 
