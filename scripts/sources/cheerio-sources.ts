@@ -87,11 +87,11 @@ export const itchDevlogs: NewsSource = {
 	name: "Itch.io Devlogs",
 	lang: "en",
 	fetch: async () => {
-		return scrapeCustom(
-			"https://itch.io/board/10021/devlogs",
-			($) => {
-				const items: any[] = [];
-				$(".community_board_post").slice(0, 10).each((_i, el) => {
+		return scrapeCustom("https://itch.io/board/10021/devlogs", ($) => {
+			const items: any[] = [];
+			$(".community_board_post")
+				.slice(0, 10)
+				.each((_i, el) => {
 					const $el = $(el);
 					const title = $el.find(".post_title a").text().trim();
 					const link = $el.find(".post_title a").attr("href") || "";
@@ -107,9 +107,8 @@ export const itchDevlogs: NewsSource = {
 						});
 					}
 				});
-				return items;
-			},
-		);
+			return items;
+		});
 	},
 };
 
@@ -124,11 +123,15 @@ export const juejinGameDev: NewsSource = {
 	name: "掘金 游戏开发(new)",
 	lang: "zh",
 	fetch: async () => {
-		return scrapeList("https://juejin.cn/game", {
-			container: ".entry-list > div",
-			title: { selector: ".title-row a" },
-			link: { selector: ".title-row a", attr: "href" },
-			date: { selector: "time", attr: "datetime" },
-		}, 10);
+		return scrapeList(
+			"https://juejin.cn/game",
+			{
+				container: ".entry-list > div",
+				title: { selector: ".title-row a" },
+				link: { selector: ".title-row a", attr: "href" },
+				date: { selector: "time", attr: "datetime" },
+			},
+			10,
+		);
 	},
 };
