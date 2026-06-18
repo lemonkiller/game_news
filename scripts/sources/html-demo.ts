@@ -37,11 +37,11 @@ export const epicGamesDev: NewsSource = {
 	name: "Epic Games Dev",
 	lang: "en",
 	fetch: async () => {
-		return scrapeCustom(
-			"https://dev.epicgames.com/community/feed",
-			($) => {
-				const items: any[] = [];
-				$("article").slice(0, 10).each((_i, el) => {
+		return scrapeCustom("https://dev.epicgames.com/community/feed", ($) => {
+			const items: any[] = [];
+			$("article")
+				.slice(0, 10)
+				.each((_i, el) => {
 					const $el = $(el);
 					const title = $el.find("h2 a").text().trim();
 					const link = $el.find("h2 a").attr("href") || "";
@@ -62,8 +62,7 @@ export const epicGamesDev: NewsSource = {
 						});
 					}
 				});
-				return items;
-			},
-		);
+			return items;
+		});
 	},
 };

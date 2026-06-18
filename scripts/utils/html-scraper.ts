@@ -61,9 +61,7 @@ export async function scrapeList(
 
 			if (!title || !link) return;
 
-			const fullLink = link.startsWith("http")
-				? link
-				: new URL(link, url).href;
+			const fullLink = link.startsWith("http") ? link : new URL(link, url).href;
 
 			let pubDate: string | undefined;
 			if (dateStr) {
