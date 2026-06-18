@@ -103,6 +103,14 @@ const LANG_MAP: Record<string, Lang> = {
 	Distractionware: "en",
 	设计者笔记: "zh",
 	ResetEra: "en",
+	"AI Gamechangers": "en",
+	"AI and Games": "en",
+	"NVIDIA Game Dev": "en",
+	"Game Developer": "en",
+	"Unreal Engine Blog": "en",
+	Kotaku: "en",
+	GameSpot: "en",
+	IGN: "en",
 	"NGA 游戏策划": "zh",
 	"NGA 独立游戏": "zh",
 	"NGA 游戏技术": "zh",
@@ -138,9 +146,9 @@ function formatRelative(pubDate: string | undefined): string {
 	if (!pubDate) return "";
 	const diff = Date.now() - new Date(pubDate).getTime();
 	if (diff < 60000) return "刚刚";
-	if (diff < 3600000) return Math.floor(diff / 60000) + "分钟前";
-	if (diff < 86400000) return Math.floor(diff / 3600000) + "小时前";
-	return Math.floor(diff / 86400000) + "天前";
+	if (diff < 3600000) return `${Math.floor(diff / 60000)}分钟前`;
+	if (diff < 86400000) return `${Math.floor(diff / 3600000)}小时前`;
+	return `${Math.floor(diff / 86400000)}天前`;
 }
 
 export default function App() {

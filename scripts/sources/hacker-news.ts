@@ -12,6 +12,7 @@ export const hackerNews: NewsSource = {
 			id: String(hit.objectID),
 			title: hit.title,
 			url: hit.url || `https://news.ycombinator.com/item?id=${hit.objectID}`,
+			pubDate: new Date(hit.created_at_i * 1000).toISOString(),
 			extra: {
 				info: `${hit.points ?? 0} 赞 · ${hit.num_comments ?? 0} 评论`,
 				hover: hit.story_text?.slice(0, 200),

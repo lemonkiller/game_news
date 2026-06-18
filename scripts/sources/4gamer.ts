@@ -15,7 +15,8 @@ export const fourGamer: NewsSource = {
 		return items.slice(0, 20).map((item) => ({
 			id: getGUID(item),
 			title: item.title,
-			url: "https://www.4gamer.net" + item.link,
+			url: `https://www.4gamer.net${item.link}`,
+			pubDate: item.pubDate,
 			extra: {
 				info: relativeTime(item.pubDate),
 				hover: item.description
