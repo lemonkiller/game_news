@@ -137,8 +137,23 @@ import {
 	gameSpot,
 	ign,
 } from "./gamedev-news";
+import {
+	zhihuGameDevColumn,
+	zhihuIndieGame,
+	zhihuAIGameDev,
+	bilibiliGameDev,
+	weiboGameDev,
+} from "./rsshub-sources";
+import {
+	gameresDesign,
+	gameresProg,
+	gameresArt,
+	itchDevlogs,
+} from "./cheerio-sources";
 
 export const allSources: NewsSource[] = [
+	/* 英文 */
+	gamesIndustry,
 	/* 英文 */
 	gamesIndustry,
 	eightyLevel,
@@ -277,4 +292,15 @@ export const allSources: NewsSource[] = [
 	kotaku,
 	gameSpot,
 	ign,
+	/* RSSHub 桥接源 */
+	zhihuGameDevColumn,
+	zhihuIndieGame,
+	zhihuAIGameDev,
+	bilibiliGameDev,
+	weiboGameDev,
+	/* cheerio HTML 抓取源 */
+	gameresDesign,
+	gameresProg,
+	gameresArt,
+	itchDevlogs,
 ];
