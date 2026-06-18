@@ -5,6 +5,7 @@
 GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 **120 个数据源**，GB 四色绿像素风格。
 
 支持三种抓取方式：
+
 - **RSS/Atom 直连**（90+ 源）
 - **RSSHub 桥接**（2000+ 网站可转 RSS）
 - **cheerio HTML 抓取**（无 RSS 的网站）
@@ -55,6 +56,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 ## 数据源规范
 
 每个源文件必须：
+
 - 实现 `NewsSource` 接口（name / lang / fetch）
 - name 用展示名（如 "触乐"、"4Gamer.net"）
 - lang 用对应分类（zh / en / ja / steam）
@@ -86,6 +88,7 @@ return scrapeList("https://example.com/news", {
 ## 抓取脚本说明
 
 `scripts/fetch-all.ts` 是抓取总入口：
+
 - 遍历 `allSources` 数组（120 个源）
 - 每个源调用 `source.fetch()`，有 10 秒超时保护
 - **增量写入**：每抓完一个源立即保存到 `data/news.json`，防止中途卡死丢失数据
@@ -96,12 +99,49 @@ return scrapeList("https://example.com/news", {
 - 默认 Node.js v20（GH 官方镜像）
 - `undici` 使用动态 `require()` 加载，兼容 Node v20/v24
 
+## 代理配置
+
+从中国网络访问海外站点（Reddit、Itch.io、RSSHub 等）需要代理。`fetcher.ts` 支持以下环境变量：
+
+| 变量 | 作用域 | 说明 |
+|------|--------|------|
+| `HTTPS_PROXY` | 全局 | 所有 fetch 请求走此代理 |
+| `HTTP_PROXY` | 全局 | HTTP 请求的代理 |
+| `REDDIT_PROXY` | 仅 Reddit | 优先级高于 `HTTPS_PROXY` |
+
+### 配置示例（Clash Verge 端口 1226）
+
+```powershell
+# Windows PowerShell
+$env:HTTPS_PROXY="http://127.0.0.1:1226"
+$env:REDDIT_PROXY="http://127.0.0.1:1226"
+npm run fetch
+```
+
+```bash
+# Linux / macOS / Git Bash
+export HTTPS_PROXY=http://127.0.0.1:1226
+export REDDIT_PROXY=http://127.0.0.1:1226
+npm run fetch
+```
+
+### 技术原理
+
+`fetchWithTimeout()` 内部通过 `undici.ProxyAgent` 实现代理，使用动态 `require()` 加载 undici，避免 Node v20（GH Actions）上因版本不兼容崩溃。当没有设置环境变量时，`undici` 不会加载，行为与原生 fetch 完全一致。
+
+### 常见场景
+
+- **本地开发（中国）**：设 `HTTPS_PROXY` 后，全部 140 个源都可正常抓取
+- **Reddit**：必须额外设置 `REDDIT_PROXY`，因为 Reddit 使用独立的 `fetch` 路径
+- **GitHub Actions**：无需任何代理配置，环境变量不存在时自动直连
+
 ## 常见问题
 
 - **Reddit**：使用 JSON API（`hot.json?limit=5`），User-Agent `gamedev-news/1.0 (by /u/lemonkiller)`，批次抓取+共享缓存+10s 间隔+失败重试。从中国网络不可达（GFW），设置 `REDDIT_PROXY` 环境变量可走代理
-- **Cloudflare 防护**：部分源（Game Developer、Unreal Blog）可能被 Cloudflare 挡，GH Actions 通常可访问
+- **Cloudflare 防护**：部分源（Game Developer、NVIDIA、Kotaku、IGN）可能被 Cloudflare 挡，即使走代理也可能 403
+- **RSSHub**：`rsshub.app` 在中国被墙，需确保代理规则覆盖此域名；也可改用其他公共实例如 `rsshub.bili.xyz`
 - **Steam API**：`store.steampowered.com/api/featuredcategories`。本地可能超时，GH Actions 更稳定
-- **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions
+- **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions 或本地代理
 - **undici 版本**：本地安装的 undici 版本可能高于 GH Node v20 内置版本，Project 使用 `require()` 动态加载避免崩溃
 - **GitHub 分支保护**：主分支有保护，推送到 `feat/xxx` 分支再开 PR 合并
 - **资源限制**：cheerio 抓取时注意合理设置选择器，避免抓取过多页面；优先使用 RSS 方案
