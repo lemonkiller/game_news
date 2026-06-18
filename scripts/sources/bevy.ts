@@ -26,6 +26,7 @@ export const bevy: NewsSource = {
 			id: item.id,
 			title: item.title,
 			url: item.link,
+			pubDate: item.date,
 			extra: {
 				info: item.date ? new Date(item.date).toLocaleDateString("zh-CN") : "",
 			},

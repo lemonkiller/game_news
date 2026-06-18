@@ -129,6 +129,14 @@ import {
 	bevy,
 	godotBlog,
 } from "./engine-sources";
+import { aiGamechangers, aiAndGames, nvidiaGameDev } from "./ai-sources";
+import {
+	gameDeveloper,
+	unrealBlog,
+	kotaku,
+	gameSpot,
+	ign,
+} from "./gamedev-news";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -259,4 +267,14 @@ export const allSources: NewsSource[] = [
 	pocketCity,
 	jonasMeyerOhle,
 	cannibalHalfling,
+	/* AI 游戏开发 */
+	aiGamechangers,
+	aiAndGames,
+	nvidiaGameDev,
+	/* 行业综合新闻 */
+	gameDeveloper,
+	unrealBlog,
+	kotaku,
+	gameSpot,
+	ign,
 ];

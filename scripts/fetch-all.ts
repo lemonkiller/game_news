@@ -3,10 +3,15 @@ import { join } from "path";
 import { allSources } from "./sources";
 import type { FetchResult } from "./utils/types";
 
-async function main() {
-	const outputDir = join(process.cwd(), "data");
-	mkdirSync(outputDir, { recursive: true });
+const outputDir = join(process.cwd(), "data");
 
+/** 将当前结果增量写入磁盘，防止后续源卡死导致数据丢失 */
+function savePartial(result: FetchResult) {
+	mkdirSync(outputDir, { recursive: true });
+	writeFileSync(join(outputDir, "news.json"), JSON.stringify(result, null, 2));
+}
+
+async function main() {
 	const result: FetchResult = {
 		updatedAt: new Date().toISOString(),
 		sources: {},
@@ -24,9 +29,8 @@ async function main() {
 			result.errors[source.name] = String(e);
 			result.sources[source.name] = [];
 		}
+		savePartial(result);
 	}
-
-	writeFileSync(join(outputDir, "news.json"), JSON.stringify(result, null, 2));
 
 	const total = Object.values(result.sources).reduce((s, v) => s + v.length, 0);
 	const errCount = Object.keys(result.errors).length;

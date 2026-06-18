@@ -1,6 +1,8 @@
 import { fetchText } from "../utils/fetcher";
 import { parseRSS, toNewsItems } from "../utils/rss-parser";
 import type { NewsSource, NewsItem } from "../utils/types";
+import { ProxyAgent } from "undici";
+import type { Dispatcher } from "undici";
 
 /* ========== Reddit 统一抓取（共享限流 + 缓存） ========== */
 
@@ -23,21 +25,57 @@ let redditQueue: Array<(v: Record<string, NewsItem[]>) => void> = [];
 
 const REDDIT_UA = "gamedev-news/1.0 (by /u/lemonkiller)";
 
-async function fetchRedditJSON(sub: string): Promise<NewsItem[]> {
-	const url =
-		"https://www.reddit.com/r/" + sub + "/hot.json?limit=5&raw_json=1";
-	const res = await fetch(url, {
-		headers: { "User-Agent": REDDIT_UA },
-		signal: AbortSignal.timeout(15000),
-	});
-	if (!res.ok) throw new Error("HTTP " + res.status);
+/** 从环境变量读取 Reddit 代理（REDDIT_PROXY > HTTPS_PROXY > HTTP_PROXY） */
+function getRedditProxy(): string | undefined {
+	return (
+		process.env.REDDIT_PROXY ||
+		process.env.HTTPS_PROXY ||
+		process.env.HTTP_PROXY
+	);
+}
+
+/** 创建一个带 proxy 的 fetch 包装（proxy 为空时直接用原生 fetch） */
+function createRedditFetch() {
+	const proxyUrl = getRedditProxy();
+	let dispatcher: Dispatcher | undefined;
+	if (proxyUrl) {
+		try {
+			dispatcher = new ProxyAgent(proxyUrl);
+		} catch {
+			// proxy 配置无效时静默降级
+		}
+	}
+	return async (url: string, options?: RequestInit): Promise<Response> => {
+		const opts: any = {
+			...options,
+			headers: {
+				"User-Agent": REDDIT_UA,
+				Accept: "application/json",
+				...options?.headers,
+			},
+		};
+		if (dispatcher) {
+			opts.dispatcher = dispatcher;
+		}
+		return fetch(url, opts);
+	};
+}
+
+/** 用多种策略尝试抓取 Reddit（直连 → proxy 回退） */
+async function fetchRedditJSON(
+	sub: string,
+	fetchFn: ReturnType<typeof createRedditFetch>,
+): Promise<NewsItem[]> {
+	const url = `https://www.reddit.com/r/${sub}/hot.json?limit=5&raw_json=1`;
+	const res = await fetchFn(url, { signal: AbortSignal.timeout(15000) });
+	if (!res.ok) throw new Error(`HTTP ${res.status}`);
 	const data: any = await res.json();
 	return (data?.data?.children || []).map((c: any) => {
 		const d = c.data;
 		return {
 			id: d.id || d.permalink,
 			title: d.title || "",
-			url: "https://www.reddit.com" + d.permalink,
+			url: `https://www.reddit.com${d.permalink}`,
 			pubDate: d.created_utc
 				? new Date(d.created_utc * 1000).toISOString()
 				: undefined,
@@ -50,24 +88,64 @@ async function fetchRedditJSON(sub: string): Promise<NewsItem[]> {
 	});
 }
 
-/** 批量抓取所有 Reddit 子版，逐条间隔 10s，失败重试一次 */
-async function fetchAllRedditSubs(): Promise<Record<string, NewsItem[]>> {
+/** 使用给定 fetchFn 批量抓取所有子版 */
+async function fetchAllSubsWith(
+	fetchFn: ReturnType<typeof createRedditFetch>,
+): Promise<Record<string, NewsItem[]>> {
 	const results: Record<string, NewsItem[]> = {};
 	for (const [i, sub] of SUBS.entries()) {
 		let items: NewsItem[] = [];
 		for (let attempt = 0; attempt < 2; attempt++) {
 			try {
-				if (i > 0 || attempt > 0)
+				if (i > 0 || attempt > 0) {
 					await new Promise((r) => setTimeout(r, 10000));
-				items = await fetchRedditJSON(sub);
+				}
+				items = await fetchRedditJSON(sub, fetchFn);
 				break;
 			} catch {
-				// 重试（Reddit 限流时静默返回空）
+				/* 重试 - Reddit 请求失败，等下次循环再试 */
 			}
 		}
 		results[sub] = items;
 	}
 	return results;
+}
+
+/** 批量抓取所有 Reddit 子版（自动选择策略） */
+async function fetchAllRedditSubs(): Promise<Record<string, NewsItem[]>> {
+	const directFetch = createRedditFetch();
+
+	// 策略 1：直连（GH Actions 环境）
+	try {
+		const testRes = await directFetch(
+			"https://www.reddit.com/r/gamedev/hot.json?limit=1&raw_json=1",
+			{ signal: AbortSignal.timeout(5000) },
+		);
+		if (testRes.ok) {
+			return await fetchAllSubsWith(directFetch);
+		}
+	} catch {
+		// 直连失败，继续回退
+	}
+
+	// 策略 2：如果有 proxy 配置，通过 proxy 重试
+	const proxyUrl = getRedditProxy();
+	if (proxyUrl) {
+		console.log(`  [Reddit] 直连失败，尝试通过 proxy: ${proxyUrl}`);
+		const proxyFetch = createRedditFetch();
+		try {
+			return await fetchAllSubsWith(proxyFetch);
+		} catch {
+			console.log("  [Reddit] proxy 方式也失败");
+		}
+	} else {
+		console.log(
+			"  [Reddit] 直连不可达，且未配置代理（设置 REDDIT_PROXY 环境变量可启用）",
+		);
+	}
+
+	// 全部失败，返回空
+	return Object.fromEntries(SUBS.map((sub) => [sub, []]));
 }
 
 /** 获取 Reddit 数据的唯一入口（带缓存） */
@@ -80,7 +158,9 @@ function getRedditData(): Promise<Record<string, NewsItem[]>> {
 	return fetchAllRedditSubs().then((data) => {
 		redditCache = data;
 		redditFetching = false;
-		redditQueue.forEach((resolve) => resolve(data));
+		for (const resolve of redditQueue) {
+			resolve(data);
+		}
 		redditQueue = [];
 		return data;
 	});
@@ -180,7 +260,7 @@ export const cnblogsGameDev: NewsSource = {
 async function fetchNGA(fid: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(
-			"https://nga.178.com/thread.php?fid=" + fid + "&lite=xml",
+			`https://nga.178.com/thread.php?fid=${fid}&lite=xml`,
 		);
 		return toNewsItems(parseRSS(xml)).slice(0, 10);
 	} catch {
@@ -214,10 +294,9 @@ export const ngaDev: NewsSource = {
 async function fetchAtom(url: string): Promise<ReturnType<typeof toNewsItems>> {
 	try {
 		const xml = await fetchText(url);
-		const items: any[] = [];
+		const items: Array<Record<string, string>> = [];
 		const entryRe = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-		let m;
-		while ((m = entryRe.exec(xml)) !== null) {
+		for (let m = entryRe.exec(xml); m !== null; m = entryRe.exec(xml)) {
 			const e = m[1];
 			const title = e.match(/<title[^>]*>([^<]*)<\/title>/)?.[1] || "";
 			const link = e.match(/<link[^>]*href="([^"]*)"/)?.[1] || "";
@@ -225,7 +304,7 @@ async function fetchAtom(url: string): Promise<ReturnType<typeof toNewsItems>> {
 			const date =
 				e.match(/<published[^>]*>([^<]*)<\/published>/)?.[1] ||
 				e.match(/<updated[^>]*>([^<]*)<\/updated>/)?.[1];
-			items.push({ id, title, link, pubDate: date });
+			items.push({ id, title, link, pubDate: date || "" });
 		}
 		return items.slice(0, 10).map((item: any) => ({
 			id: item.id,

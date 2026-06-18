@@ -17,6 +17,7 @@ export const chuapp: NewsSource = {
 			id: getGUID(item),
 			title: item.title,
 			url: item.link,
+			pubDate: item.pubDate,
 			extra: {
 				info: relativeTime(item.pubDate),
 				hover: item.description

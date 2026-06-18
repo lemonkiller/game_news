@@ -8,10 +8,9 @@ export const defold: NewsSource = {
 				headers: { "User-Agent": "Mozilla/5.0" },
 			})
 		).text();
-		const items: any[] = [];
+		const items: Array<Record<string, string | undefined>> = [];
 		const re = /<entry>([\s\S]*?)<\/entry>/g;
-		let m;
-		while ((m = re.exec(xml)) !== null) {
+		for (let m = re.exec(xml); m !== null; m = re.exec(xml)) {
 			const e = m[1];
 			items.push({
 				title: e.match(/<title[^>]*>([^<]*)<\/title>/)?.[1] || "",
@@ -24,6 +23,7 @@ export const defold: NewsSource = {
 			id: i.id,
 			title: i.title,
 			url: i.link,
+			pubDate: i.date,
 			extra: {
 				info: i.date ? new Date(i.date).toLocaleDateString("zh-CN") : "",
 			},
