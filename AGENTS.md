@@ -138,8 +138,10 @@ npm run fetch
 ## 常见问题
 
 - **Reddit**：使用 JSON API（`hot.json?limit=5`），User-Agent `gamedev-news/1.0 (by /u/lemonkiller)`，批次抓取+共享缓存+10s 间隔+失败重试。从中国网络不可达（GFW），设置 `REDDIT_PROXY` 环境变量可走代理
-- **Cloudflare 防护**：部分源（Game Developer、NVIDIA、Kotaku、IGN）可能被 Cloudflare 挡，即使走代理也可能 403
-- **RSSHub**：`rsshub.app` 在中国被墙，需确保代理规则覆盖此域名；也可改用其他公共实例如 `rsshub.bili.xyz`
+- **Cloudflare 防护**：部分源（Game Developer、Kotaku、IGN）被 Cloudflare / 反爬系统挡住，即使走代理也可能 403。这些源在 GH Actions 上可能因 IP 不同而可用
+- **RSSHub**：`rsshub.app` 在中国被墙，需确保代理规则覆盖此域名。可尝试其他公共实例：`rsshub.bili.xyz`、`rsshub.artsanity.dev`、`rsshub.rcsection.com`
+- **NVIDIA Game Dev**：大 Feed（~770KB），通过代理可正常抓取 100 条
+- **GameRes 论坛**：`bbs.gameres.com` 当前返回「系统维护中」，恢复后可用 cheerio 抓取
 - **Steam API**：`store.steampowered.com/api/featuredcategories`。本地可能超时，GH Actions 更稳定
 - **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions 或本地代理
 - **undici 版本**：本地安装的 undici 版本可能高于 GH Node v20 内置版本，Project 使用 `require()` 动态加载避免崩溃
