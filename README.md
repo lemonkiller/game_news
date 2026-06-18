@@ -1,6 +1,6 @@
 # GameDev News
 
-游戏开发资讯聚合站 -- 覆盖中英日三语 80+ 数据源，纯静态零运维。
+游戏开发资讯聚合站 -- 覆盖中英日三语 **120 个数据源**，纯静态零运维。
 
 GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
@@ -8,11 +8,27 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
 | 标签 | 源数 | 说明 |
 |------|------|------|
-| 全部 | ~84 | 全部源合并，按时间瀑布流展示 |
-| English | ~50 | 游戏开发新闻、设计博客、引擎博客、公司资讯、Reddit、dev.to |
-| 中文 | ~20 | 国内游戏媒体、独立开发者博客、NGA 版块 |
-| 日本語 | ~14 | 日本游戏资讯、Qiita / Zenn 技术博客、公司技术博客 |
+| 全部 | 116 | 全部非 Steam 源合并，按时间瀑布流展示 |
+| English | 72 | 行业媒体 / 设计博客 / 引擎 / 工作室 / AI 专题 |
+| 中文 | 23 | 游戏媒体 / 独立博客 / NGA / 掘金 / SegmentFault |
+| 日本語 | 21 | 游戏媒体 / Qiita / Zenn / 公司技术博客 |
 | Steam | 4 | 热销、新品、特惠、即将推出（CN 区） |
+
+### 新增 AI 专题源
+
+| 源名 | 说明 |
+|------|------|
+| AI Gamechangers | AI 在游戏行业的应用周报 |
+| AI and Games | Tommy Thompson 博士主持的游戏 AI 深度分析 |
+| NVIDIA Game Dev | NVIDIA GPU/AI 游戏开发技术文章 |
+
+### 新增行业综合源
+
+| 源名 | 说明 |
+|------|------|
+| Game Developer | 原 Gamasutra，游戏行业深度分析 |
+| Unreal Engine Blog | Epic 官方博客 |
+| Kotaku / GameSpot / IGN | 综合游戏新闻媒体 |
 
 完整列表见 `scripts/sources/` 目录。
 
@@ -25,28 +41,18 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
 每行显示格式：**标题** | **来源站点** | **更新时间**
 
-## 如何贡献数据源
+## 三种抓取方式
 
-**欢迎提交 PR 增加优质的游戏开发/设计相关数据源！**
+项目支持灵活的数据采集方案：
 
-要求：
-
-- 内容与**游戏开发、游戏设计、游戏行业**直接相关
-- 有稳定的 RSS / Atom / API 输出
-- 已在该语言/地区被广泛认可的优质来源
-
-添加步骤：
-
-1. 在 `scripts/sources/` 下新建文件，实现 `NewsSource` 接口
-2. 在 `scripts/sources/index.ts` 中注册
-3. 在 `src/App.tsx` 的 `LANG_MAP` 中添加映射
-4. 运行 `npm run fetch` 验证数据能正常抓取
-5. 运行 `npm run build` 确认构建通过
-6. 提交 PR
+1. **RSS/Atom 直连** -- 90+ 源原生支持，`fetchText()` + `parseRSS()` 一行搞定
+2. **RSSHub 桥接** -- 2000+ 网站（知乎、B站、微博等）可通过 `https://rsshub.app/` 转为 RSS，直接用方式 1 消费
+3. **cheerio HTML 抓取** -- 对完全没有 RSS/API 的网站，用 CSS 选择器提取内容（`scripts/utils/html-scraper.ts`）
 
 ## 架构
 
-- **数据抓取**：GitHub Actions 每天 8:00 / 20:00 定时运行 TypeScript RSS/API 抓取
+- **数据抓取**：GitHub Actions 定时运行 TypeScript 脚本（`npm run fetch`）
+- **增量保存**：每抓完一个源即写入磁盘，防止中途卡死丢失数据
 - **前端**：Vite + React + TypeScript，VT323 / Press Start 2P 像素字体
 - **部署**：GitHub Pages，`actions/deploy-pages` 官方部署
 - **配色**：Game Boy 经典四色绿 `#0F380F #306230 #8BAC0F #9BBC0F`
@@ -58,7 +64,7 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 # 1. 安装依赖
 npm install
 
-# 2. 抓取数据
+# 2. 抓取数据（国内网络部分源不可达，GH Actions 上更完整）
 npm run fetch
 
 # 3. 启动开发服务器
@@ -67,6 +73,35 @@ npm run dev
 # 4. 构建
 npm run build
 ```
+
+### 从中国网络抓取 Reddit
+
+Reddit 被 GFW 屏蔽，本地抓取时会自动跳过。如需获取 Reddit 内容：
+
+```bash
+# 设置代理环境变量
+export REDDIT_PROXY="http://your-proxy:port"
+npm run fetch
+```
+
+## 如何贡献数据源
+
+**欢迎提交 PR 增加优质的游戏开发/设计相关数据源！**
+
+要求：
+
+- 内容与**游戏开发、游戏设计、游戏行业、AI+游戏**直接相关
+- 优先选择有稳定 RSS / Atom 输出的源
+- 无 RSS 的站点可用 `scripts/utils/html-scraper.ts` 通过 HTML 抓取
+
+添加步骤：
+
+1. 在 `scripts/sources/` 下新建源文件，实现 `NewsSource` 接口
+2. 在 `scripts/sources/index.ts` 中注册
+3. 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射
+4. 运行 `npm run fetch` 验证数据能正常抓取
+5. 运行 `npm run build` 确认构建通过
+6. 提交 PR
 
 ## 许可
 

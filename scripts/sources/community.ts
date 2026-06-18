@@ -1,8 +1,6 @@
 import { fetchText } from "../utils/fetcher";
 import { parseRSS, toNewsItems } from "../utils/rss-parser";
 import type { NewsSource, NewsItem } from "../utils/types";
-import { ProxyAgent } from "undici";
-import type { Dispatcher } from "undici";
 
 /* ========== Reddit 统一抓取（共享限流 + 缓存） ========== */
 
@@ -37,27 +35,26 @@ function getRedditProxy(): string | undefined {
 /** 创建一个带 proxy 的 fetch 包装（proxy 为空时直接用原生 fetch） */
 function createRedditFetch() {
 	const proxyUrl = getRedditProxy();
-	let dispatcher: Dispatcher | undefined;
+	const opts: any = {
+		headers: {
+			"User-Agent": REDDIT_UA,
+			Accept: "application/json",
+		},
+	};
 	if (proxyUrl) {
 		try {
-			dispatcher = new ProxyAgent(proxyUrl);
+			// 动态加载 undici（Node v20 兼容性处理）
+			// eslint-disable-next-line @typescript-eslint/no-require-imports
+			const undici = require("undici");
+			if (undici.ProxyAgent) {
+				opts.dispatcher = new undici.ProxyAgent(proxyUrl);
+			}
 		} catch {
-			// proxy 配置无效时静默降级
+			/* undici 不可用时降级为直连 */
 		}
 	}
 	return async (url: string, options?: RequestInit): Promise<Response> => {
-		const opts: any = {
-			...options,
-			headers: {
-				"User-Agent": REDDIT_UA,
-				Accept: "application/json",
-				...options?.headers,
-			},
-		};
-		if (dispatcher) {
-			opts.dispatcher = dispatcher;
-		}
-		return fetch(url, opts);
+		return fetch(url, { ...opts, ...options });
 	};
 }
 

@@ -2,5 +2,4 @@ node_modules/
 dist/
 data/
 *.local
-AGENTS.md
 GameDevNews静态版方案.md
