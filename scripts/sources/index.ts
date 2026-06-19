@@ -11,7 +11,6 @@ import { danFelder } from "./dan-felder";
 import { chaoticStupid } from "./chaotic-stupid";
 import { maniaHero } from "./mania-hero";
 import { playTank } from "./play-tank";
-import { jgallant } from "./jgallant";
 import { necromanov } from "./necromanov";
 import { gamesByMason } from "./games-by-mason";
 import { topHatGames } from "./top-hat-games";
@@ -24,15 +23,6 @@ import { capcomNews } from "./capcom-news";
 import { ludeon } from "./ludeon";
 import {
 	resetera,
-	ngaGameDesign,
-	ngaIndie,
-	ngaGameTech,
-	ngaDev,
-	gameres,
-	gamerboom,
-	juejinGame,
-	sfGameDev,
-	cnblogsGameDev,
 	qiitaGameDev,
 	qiitaGameDesign,
 	qiitaGodot,
@@ -117,7 +107,6 @@ import {
 	aiGamechangers,
 	sorceressGames,
 	generativeGamedev,
-	yuKaiChou,
 	ryanFitzpatrick,
 	borisTheBrave,
 } from "./ai-sources";
@@ -169,7 +158,6 @@ export const allSources: NewsSource[] = [
 	chaoticStupid,
 	maniaHero,
 	playTank,
-	jgallant,
 	gamesByMason,
 	topHatGames,
 	lostGarden,
@@ -233,15 +221,6 @@ export const allSources: NewsSource[] = [
 	gdkeys,
 	/* 社区 */
 	resetera,
-	ngaGameDesign,
-	ngaIndie,
-	ngaGameTech,
-	ngaDev,
-	gameres,
-	gamerboom,
-	juejinGame,
-	sfGameDev,
-	cnblogsGameDev,
 	qiitaGameDev,
 	qiitaGameDesign,
 	qiitaGodot,
@@ -292,7 +271,6 @@ export const allSources: NewsSource[] = [
 	nvidiaGameDev,
 	sorceressGames,
 	generativeGamedev,
-	yuKaiChou,
 	ryanFitzpatrick,
 	borisTheBrave,
 	/* 行业综合新闻 */

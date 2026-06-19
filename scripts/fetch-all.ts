@@ -5,6 +5,7 @@ import type { FetchResult, NewsItem } from "./utils/types";
 
 const outputDir = join(process.cwd(), "data");
 const dataPath = join(outputDir, "news.json");
+const CONCURRENCY = 8; // 每批并发抓取数
 
 /** 读取上次抓取的老数据，用于抓取失败时兜底 */
 function readOldData(): Record<string, NewsItem[]> {
@@ -19,8 +20,8 @@ function readOldData(): Record<string, NewsItem[]> {
 	return {};
 }
 
-/** 将当前结果增量写入磁盘，防止后续源卡死导致数据丢失 */
-function savePartial(result: FetchResult) {
+/** 将当前结果写入磁盘 */
+function saveResult(result: FetchResult) {
 	mkdirSync(outputDir, { recursive: true });
 	writeFileSync(dataPath, JSON.stringify(result, null, 2));
 }
@@ -34,35 +35,48 @@ async function main() {
 		errors: {},
 	};
 
-	for (const source of allSources) {
-		process.stdout.write(`[${source.name}] 抓取中...`);
+	let completed = 0;
+	const total = allSources.length;
+	let errored = 0;
+
+	/** 处理单个源 */
+	async function fetchSource(source: (typeof allSources)[0]) {
+		process.stdout.write(`[${++completed}/${total}] ${source.name}...`);
 		try {
 			const items = await source.fetch();
 			if (items.length > 0 || !result.sources[source.name]) {
-				// 新数据有效，或旧数据不存在 → 使用新数据
 				result.sources[source.name] = items;
-				console.log(` 完成: ${items.length} 条`);
+				process.stdout.write(` ${items.length} 条\n`);
 			} else {
-				// 新数据为空但旧数据存在 → 保留旧数据
-				console.log(
-					` 完成: 0 条，保留旧数据 ${result.sources[source.name].length} 条`,
+				process.stdout.write(
+					` 0 条，保留旧数据 ${result.sources[source.name].length} 条\n`,
 				);
 			}
 		} catch (e) {
-			console.log(` 失败`);
+			errored++;
+			process.stdout.write(` 失败\n`);
 			result.errors[source.name] = String(e);
 			if (!result.sources[source.name]) {
-				// 旧数据也不存在时设为空
 				result.sources[source.name] = [];
 			}
-			// 旧数据存在则保留不动
 		}
-		savePartial(result);
 	}
 
-	const total = Object.values(result.sources).reduce((s, v) => s + v.length, 0);
-	const errCount = Object.keys(result.errors).length;
-	console.log(`\n完成! 共 ${total} 条新闻，${errCount} 个源失败`);
+	// 分批并行
+	for (let i = 0; i < allSources.length; i += CONCURRENCY) {
+		const batch = allSources.slice(i, i + CONCURRENCY);
+		await Promise.allSettled(batch.map(fetchSource));
+		// 每批完成后保存一次
+		saveResult(result);
+	}
+
+	const totalItems = Object.values(result.sources).reduce(
+		(s, v) => s + v.length,
+		0,
+	);
+	console.log(
+		`\n完成！共 ${totalItems} 条新闻，${errored} 个源失败，${total} 个源已处理`,
+	);
 }
 
 main().catch((e) => {
