@@ -109,7 +109,7 @@ const LANG_MAP: Record<string, Lang> = {
 	"Generative GameDev": "en",
 	"Yu-kai Chou": "en",
 	"Ryan Fitzpatrick": "en",
-	"BorisTheBrave": "en",
+	BorisTheBrave: "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
 	"AMD GPUOpen": "en",

@@ -124,6 +124,7 @@ import {
 	bevy,
 	godotBlog,
 } from "./engine-sources";
+import { linkSource } from "./link-sources";
 import {
 	aiAndGames,
 	nvidiaGameDev,
@@ -286,4 +287,6 @@ export const allSources: NewsSource[] = [
 	gameDevDigest,
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,
+	/* 网址标签（无 RSS 工具/资源链接） */
+	linkSource,
 ];
