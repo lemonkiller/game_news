@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import CardColumn from "./components/CardColumn";
 import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
+import { relativeTime } from "../scripts/utils/rss-parser";
+import { getLinksByCategory } from "../scripts/sources/link-sources";
 
 const LANG_LABELS: Record<Lang, string> = {
 	all: "全部",
@@ -11,13 +13,12 @@ const LANG_LABELS: Record<Lang, string> = {
 	en: "English",
 	ja: "日本語",
 	steam: "Steam",
+	links: "网址",
 };
 
 const LANG_MAP: Record<string, Lang> = {
 	"GamesIndustry.biz": "en",
 	"80 Level": "en",
-	"PC Gamer": "en",
-	"Rock Paper Shotgun": "en",
 	VG247: "en",
 	"Unity Blog": "en",
 	"Hacker News": "en",
@@ -41,8 +42,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Steam 特惠": "steam",
 	"Steam 即将推出": "steam",
 
-	"Humble Bundle": "en",
-	"PlayStation Blog": "en",
 	"Frictional Games": "en",
 	"Raw Fury": "en",
 	ConcernedApe: "en",
@@ -103,14 +102,15 @@ const LANG_MAP: Record<string, Lang> = {
 	Distractionware: "en",
 	设计者笔记: "zh",
 	ResetEra: "en",
-	"AI Gamechangers": "en",
 	"AI and Games": "en",
 	"NVIDIA Game Dev": "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
-	"GameRes 策划": "zh",
-	"GameRes 程序": "zh",
-	"GameRes 美术": "zh",
+	"AMD GPUOpen": "en",
+	"Blender Dev Blog": "en",
+	"Game Dev Digest": "en",
+	"Game Dev Essentials": "en",
+	"Blender News": "en",
 	"NGA 游戏策划": "zh",
 	"NGA 独立游戏": "zh",
 	"NGA 游戏技术": "zh",
@@ -141,20 +141,17 @@ const LANG_MAP: Record<string, Lang> = {
 	"Cannibal Halfling": "en",
 };
 
-/** 格式化 pubDate 为相对时间文本 */
-function formatRelative(pubDate: string | undefined): string {
-	if (!pubDate) return "";
-	const diff = Date.now() - new Date(pubDate).getTime();
-	if (diff < 60000) return "刚刚";
-	if (diff < 3600000) return `${Math.floor(diff / 60000)}分钟前`;
-	if (diff < 86400000) return `${Math.floor(diff / 3600000)}小时前`;
-	return `${Math.floor(diff / 86400000)}天前`;
-}
-
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
 
 	const isSteam = lang === "steam";
+	const isLinks = lang === "links";
+
+	/** 所有链接数据（按分类分组） */
+	const linkCategories = useMemo(() => {
+		if (!isLinks) return [];
+		return Object.entries(getLinksByCategory());
+	}, [isLinks]);
 
 	/** 按时间线模式：合并非 steam 源，排序，每 5 条一组 */
 	const timelineChunks = useMemo(() => {
@@ -188,7 +185,7 @@ export default function App() {
 
 	/** Steam 模式：按源分列 */
 	const entries = useMemo(() => {
-		if (!isSteam) return [];
+		if (isSteam) return [];
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		return Object.entries(sources)
 			.filter(([, items]) => items.length > 0)
@@ -211,6 +208,10 @@ export default function App() {
 			counts[l] = (counts[l] || 0) + items.length;
 			counts.all += items.length;
 		}
+		const links = getLinksByCategory();
+		const linkCount = Object.values(links).flat().length;
+		counts.links = linkCount;
+		counts.all += linkCount;
 		return counts as Record<Lang, number>;
 	}, []);
 
@@ -223,7 +224,31 @@ export default function App() {
 				updatedAt={data.updatedAt}
 				labels={LANG_LABELS}
 			/>
-			{isSteam ? (
+			{isLinks ? (
+				<main className="links-page">
+					{linkCategories.map(([category, items]) => (
+						<section key={category} className="link-category">
+							<h2 className="link-category-title">{category}</h2>
+							{items.map((link) => (
+								<a
+									key={link.id}
+									className="link-item"
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									title={link.desc}
+								>
+									<span className="link-item-name">{link.title}</span>
+									<span className="link-item-desc">{link.desc}</span>
+									<span className="link-item-url">
+										{new URL(link.url).hostname}
+									</span>
+								</a>
+							))}
+						</section>
+					))}
+				</main>
+			) : isSteam ? (
 				<main className="columns">
 					{entries.map(([name, items]) => (
 						<CardColumn key={name} name={name} items={items} />
@@ -245,7 +270,7 @@ export default function App() {
 									<span className="row-title">{item.title}</span>
 									<span className="row-source">{item.sourceName}</span>
 									<span className="row-time">
-										{item.extra?.info || formatRelative(item.pubDate)}
+										{item.extra?.info || relativeTime(item.pubDate)}
 									</span>
 								</a>
 							))}

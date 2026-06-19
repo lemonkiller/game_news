@@ -124,17 +124,15 @@ import {
 	bevy,
 	godotBlog,
 } from "./engine-sources";
-import { aiGamechangers, aiAndGames, nvidiaGameDev } from "./ai-sources";
+import { aiAndGames, nvidiaGameDev } from "./ai-sources";
+import { unrealBlog, gridSageGames } from "./gamedev-news";
 import {
-	unrealBlog,
-	gridSageGames,
-} from "./gamedev-news";
-import {
-	gameresDesign,
-	gameresProg,
-	gameresArt,
-	itchDevlogs,
-} from "./cheerio-sources";
+	amdGpuOpen,
+	blenderDevBlog,
+	blenderNews,
+	gameDevDigest,
+} from "./dev-tools";
+import { gameDevEssentials } from "./game-design-blogs";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -261,15 +259,16 @@ export const allSources: NewsSource[] = [
 	jonasMeyerOhle,
 	cannibalHalfling,
 	/* AI 游戏开发 */
-	aiGamechangers,
 	aiAndGames,
 	nvidiaGameDev,
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,
-	/* cheerio HTML 抓取源 */
-	gameresDesign,
-	gameresProg,
-	gameresArt,
-	itchDevlogs,
+	/* 开发工具 */
+	amdGpuOpen,
+	blenderDevBlog,
+	blenderNews,
+	gameDevDigest,
+	/* 游戏设计/开发博客 */
+	gameDevEssentials,
 ];

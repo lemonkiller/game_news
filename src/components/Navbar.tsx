@@ -15,7 +15,7 @@ export default function Navbar({
 	updatedAt,
 	labels,
 }: NavbarProps) {
-	const tabs: Lang[] = ["all", "zh", "en", "ja", "steam"];
+	const tabs: Lang[] = ["all", "zh", "en", "ja", "steam", "links"];
 
 	return (
 		<nav className="navbar">
