@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import CardColumn from "./components/CardColumn";
 import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
+import { relativeTime } from "../scripts/utils/rss-parser";
 
 const LANG_LABELS: Record<Lang, string> = {
 	all: "全部",
@@ -16,8 +17,6 @@ const LANG_LABELS: Record<Lang, string> = {
 const LANG_MAP: Record<string, Lang> = {
 	"GamesIndustry.biz": "en",
 	"80 Level": "en",
-	"PC Gamer": "en",
-	"Rock Paper Shotgun": "en",
 	VG247: "en",
 	"Unity Blog": "en",
 	"Hacker News": "en",
@@ -41,8 +40,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Steam 特惠": "steam",
 	"Steam 即将推出": "steam",
 
-	"Humble Bundle": "en",
-	"PlayStation Blog": "en",
 	"Frictional Games": "en",
 	"Raw Fury": "en",
 	ConcernedApe: "en",
@@ -103,14 +100,10 @@ const LANG_MAP: Record<string, Lang> = {
 	Distractionware: "en",
 	设计者笔记: "zh",
 	ResetEra: "en",
-	"AI Gamechangers": "en",
 	"AI and Games": "en",
 	"NVIDIA Game Dev": "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
-	"GameRes 策划": "zh",
-	"GameRes 程序": "zh",
-	"GameRes 美术": "zh",
 	"NGA 游戏策划": "zh",
 	"NGA 独立游戏": "zh",
 	"NGA 游戏技术": "zh",
@@ -141,15 +134,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Cannibal Halfling": "en",
 };
 
-/** 格式化 pubDate 为相对时间文本 */
-function formatRelative(pubDate: string | undefined): string {
-	if (!pubDate) return "";
-	const diff = Date.now() - new Date(pubDate).getTime();
-	if (diff < 60000) return "刚刚";
-	if (diff < 3600000) return `${Math.floor(diff / 60000)}分钟前`;
-	if (diff < 86400000) return `${Math.floor(diff / 3600000)}小时前`;
-	return `${Math.floor(diff / 86400000)}天前`;
-}
 
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
@@ -245,7 +229,7 @@ export default function App() {
 									<span className="row-title">{item.title}</span>
 									<span className="row-source">{item.sourceName}</span>
 									<span className="row-time">
-										{item.extra?.info || formatRelative(item.pubDate)}
+										{item.extra?.info || relativeTime(item.pubDate)}
 									</span>
 								</a>
 							))}

@@ -124,17 +124,9 @@ import {
 	bevy,
 	godotBlog,
 } from "./engine-sources";
-import { aiGamechangers, aiAndGames, nvidiaGameDev } from "./ai-sources";
-import {
-	unrealBlog,
-	gridSageGames,
-} from "./gamedev-news";
-import {
-	gameresDesign,
-	gameresProg,
-	gameresArt,
-	itchDevlogs,
-} from "./cheerio-sources";
+import { aiAndGames, nvidiaGameDev } from "./ai-sources";
+import { unrealBlog, gridSageGames } from "./gamedev-news";
+
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -261,15 +253,9 @@ export const allSources: NewsSource[] = [
 	jonasMeyerOhle,
 	cannibalHalfling,
 	/* AI 游戏开发 */
-	aiGamechangers,
 	aiAndGames,
 	nvidiaGameDev,
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,
-	/* cheerio HTML 抓取源 */
-	gameresDesign,
-	gameresProg,
-	gameresArt,
-	itchDevlogs,
 ];
