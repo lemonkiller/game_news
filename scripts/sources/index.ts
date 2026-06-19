@@ -23,15 +23,6 @@ import { concernedApe } from "./concerned-ape";
 import { capcomNews } from "./capcom-news";
 import { ludeon } from "./ludeon";
 import {
-	redditGamedev,
-	redditGameDesign,
-	redditIndieDev,
-	redditGameIdeas,
-	redditBaseBuilding,
-	reddit4X,
-	redditAIGamedev,
-	redditLevelDesign,
-	redditGameEngines,
 	resetera,
 	ngaGameDesign,
 	ngaIndie,
@@ -77,12 +68,7 @@ import {
 	keithBurgun,
 	gdkeys,
 } from "./design-blogs";
-import {
-	steamTopSellers,
-	steamNewReleases,
-	steamSpecials,
-	steamComingSoon,
-} from "./steam";
+
 import {
 	mechanicsAsMetaphor,
 	level99Strategy,
@@ -214,11 +200,7 @@ export const allSources: NewsSource[] = [
 	arashiyama,
 	aiming,
 	greeTech,
-	/* Steam */
-	steamTopSellers,
-	steamNewReleases,
-	steamSpecials,
-	steamComingSoon,
+
 	frictional,
 	rawFury,
 	concernedApe,
@@ -250,15 +232,6 @@ export const allSources: NewsSource[] = [
 	keithBurgun,
 	gdkeys,
 	/* 社区 */
-	redditGamedev,
-	redditGameDesign,
-	redditIndieDev,
-	redditGameIdeas,
-	redditBaseBuilding,
-	reddit4X,
-	redditAIGamedev,
-	redditLevelDesign,
-	redditGameEngines,
 	resetera,
 	ngaGameDesign,
 	ngaIndie,
