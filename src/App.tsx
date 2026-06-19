@@ -134,7 +134,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Cannibal Halfling": "en",
 };
 
-
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
 

@@ -1,6 +1,6 @@
 # GameDev News
 
-游戏开发资讯聚合站 -- 覆盖中英日三语 **120 个数据源**，纯静态零运维。
+游戏开发资讯聚合站 -- 覆盖中英日三语 **~100 个游戏开发/设计数据源**，纯静态零运维。
 
 GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
@@ -8,27 +8,14 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
 | 标签 | 源数 | 说明 |
 |------|------|------|
-| 全部 | 116 | 全部非 Steam 源合并，按时间瀑布流展示 |
-| English | 72 | 行业媒体 / 设计博客 / 引擎 / 工作室 / AI 专题 |
-| 中文 | 23 | 游戏媒体 / 独立博客 / NGA / 掘金 / SegmentFault |
-| 日本語 | 21 | 游戏媒体 / Qiita / Zenn / 公司技术博客 |
+| 全部 | ~90 | 全部非 Steam 源合并，按时间瀑布流展示 |
+| English | ~56 | 行业媒体 / 设计博客 / 引擎 / 工作室 / AI 专题 |
+| 中文 | ~19 | 游戏媒体 / 独立博客 / 游戏公司技术博客 |
+| 日本語 | ~17 | 游戏媒体 / Qiita / 公司技术博客 |
 | Steam | 4 | 热销、新品、特惠、即将推出（CN 区） |
 
-### 新增 AI 专题源
-
-| 源名 | 说明 |
-|------|------|
-| AI Gamechangers | AI 在游戏行业的应用周报 |
-| AI and Games | Tommy Thompson 博士主持的游戏 AI 深度分析 |
-| NVIDIA Game Dev | NVIDIA GPU/AI 游戏开发技术文章 |
-
-### 新增行业综合源
-
-| 源名 | 说明 |
-|------|------|
-| Game Developer | 原 Gamasutra，游戏行业深度分析 |
-| Unreal Engine Blog | Epic 官方博客 |
-| Kotaku / GameSpot / IGN | 综合游戏新闻媒体 |
+> 聚焦 **游戏开发/游戏设计** 领域，所有源均经过人工审核确认与游戏开发直接相关。
+> 已剔除消费级游戏新闻媒体（IGN、Kotaku、GameSpot、PC Gamer、RPS 等）。
 
 完整列表见 `scripts/sources/` 目录。
 
@@ -41,13 +28,12 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 
 每行显示格式：**标题** | **来源站点** | **更新时间**
 
-## 三种抓取方式
+## 抓取方式
 
-项目支持灵活的数据采集方案：
+项目主要使用 **RSS/Atom 直连**（语法简洁，稳定可靠）：
 
-1. **RSS/Atom 直连** -- 90+ 源原生支持，`fetchText()` + `parseRSS()` 一行搞定
-2. **RSSHub 桥接** -- 2000+ 网站（知乎、B站、微博等）可通过 `https://rsshub.app/` 转为 RSS，直接用方式 1 消费
-3. **cheerio HTML 抓取** -- 对完全没有 RSS/API 的网站，用 CSS 选择器提取内容（`scripts/utils/html-scraper.ts`）
+1. **RSS/Atom 直连** -- 绝大部分源原生支持，`fetchText()` + `parseRSS()` 一行搞定
+2. **cheerio HTML 抓取**（备用方案） -- 对完全没有 RSS/API 的网站，用 CSS 选择器提取内容（`scripts/utils/html-scraper.ts`，示例见 `scripts/examples/html-scraping-demo.ts`）
 
 ## 架构
 
@@ -56,7 +42,7 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 - **前端**：Vite + React + TypeScript，VT323 / Press Start 2P 像素字体
 - **部署**：GitHub Pages，`actions/deploy-pages` 官方部署
 - **配色**：Game Boy 经典四色绿 `#0F380F #306230 #8BAC0F #9BBC0F`
-- **Fetch 顺序执行**：单源 10s 超时，失败不影响其他源
+- **Fetch 顺序执行**：单源 10s 超时，失败不影响其他源，每源完成后增量写入磁盘
 
 ## 本地开发
 
