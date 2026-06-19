@@ -22,12 +22,15 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 1. **搜索可用源** -- 使用 webaio 并行搜索中英日三语游戏开发/设计相关网站、博客、RSS
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
-3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
-4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组
-5. **更新前端映射** -- 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射
-6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过
-7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
-8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
+3. **分流处理**：
+   - **能抓取的源** → 创建抓取源文件（`scripts/sources/`），注册到 `allSources`，进入瀑布流
+   - **无法抓取的源**（无 RSS / Cloudflare / 反爬等）→ 添加到 `scripts/sources/link-sources.ts` 的 `links` 数组，进入「网址」标签
+4. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
+5. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组
+6. **更新前端映射** -- 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射
+7. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过
+8. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
+9. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
 
 ## 布局说明
 
@@ -38,9 +41,11 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | English | 同上 | en 类源 |
 | 日本語 | 同上 | ja 类源 |
 | Steam | 多列网格，每源一卡，每卡限 10 条 | Steam 榜单（热销/新品/特惠/即将推出） |
+| 网址 | 单栏全宽链接列表，按分类分组展示 | 无 RSS 的工具/资源站，静态链接 |
 
 - 非 Steam 标签：所有源合并，按 `pubDate` 降序，每 5 条切一块渲染为一张卡片
 - Steam 标签：保持按源分列的传统卡片布局
+- 网址标签：纯静态展示，不参与抓取
 
 ## 分类体系
 

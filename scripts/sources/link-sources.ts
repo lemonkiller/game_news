@@ -22,7 +22,7 @@ const links: LinkEntry[] = [
 		url: "https://www.aseprite.org/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "专业的像素画 & 精灵动图编辑器",
+		desc: "专业的像素画 & 精灵动图编辑器，支持图层/帧动画/调色板，Steam 有售",
 	},
 	{
 		id: "link-tiled",
@@ -30,7 +30,7 @@ const links: LinkEntry[] = [
 		url: "https://www.mapeditor.org/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "免费灵活的 2D 网格地图编辑器",
+		desc: "免费灵活的 2D 网格地图编辑器，支持正交/等距/六边形地图，多引擎导出",
 	},
 	{
 		id: "link-spine",
@@ -38,7 +38,7 @@ const links: LinkEntry[] = [
 		url: "http://esotericsoftware.com/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "2D 骨骼动画编辑，主流引擎皆可集成",
+		desc: "2D 骨骼动画编辑器，被 Unity/UE/Godot/Cocos 等主流引擎广泛集成",
 	},
 	{
 		id: "link-texturepacker",
@@ -46,7 +46,7 @@ const links: LinkEntry[] = [
 		url: "https://www.codeandweb.com/texturepacker",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "Sprite 帧图打包工具，支持多种引擎导出",
+		desc: "Sprite 帧图打包 & 图集优化工具，支持 Unity/UE/Cocos/Phaser 等引擎导出",
 	},
 	{
 		id: "link-pyxeledit",
@@ -54,7 +54,7 @@ const links: LinkEntry[] = [
 		url: "http://pyxeledit.com/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "专为像素画 & 关卡地图设计的编辑器",
+		desc: "专为像素画设计的编辑器，内置瓷砖地图编辑 & 逐帧动画功能",
 	},
 	{
 		id: "link-piskel",
@@ -62,7 +62,7 @@ const links: LinkEntry[] = [
 		url: "https://www.piskelapp.com/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "免费的在线像素画 / 帧图编辑工具",
+		desc: "免费在线像素画编辑器，无需安装即可制作精灵图和逐帧动画",
 	},
 	{
 		id: "link-blender",
@@ -70,7 +70,7 @@ const links: LinkEntry[] = [
 		url: "https://www.blender.org/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "开源 3D 建模/动画/渲染全流程工具",
+		desc: "开源 3D 建模/雕刻/材质/动画/渲染/合成全流程，游戏资产管线标配",
 	},
 	{
 		id: "link-krita",
@@ -78,7 +78,7 @@ const links: LinkEntry[] = [
 		url: "https://krita.org/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "开源的数字绘画软件，适合概念设计与材质绘制",
+		desc: "开源数字绘画软件，笔刷引擎强大，适合游戏概念设计与材质贴图绘制",
 	},
 	{
 		id: "link-material-maker",
@@ -86,7 +86,7 @@ const links: LinkEntry[] = [
 		url: "https://www.materialmaker.org/",
 		category: "图形/美术工具",
 		lang: "en",
-		desc: "节点式 PBR 材质生成工具，类似 Substance Designer",
+		desc: "开源节点式 PBR 材质生成工具，类似 Substance Designer，可导出到 Godot/UE",
 	},
 
 	/* ===== 音频工具 ===== */
@@ -96,7 +96,7 @@ const links: LinkEntry[] = [
 		url: "https://lmms.io/",
 		category: "音频工具",
 		lang: "en",
-		desc: "开源的数字音频工作站（DAW）",
+		desc: "开源数字音频工作站（DAW），支持 MIDI/VST/LADSPA，可制作游戏配乐",
 	},
 	{
 		id: "link-audacity",
@@ -104,7 +104,7 @@ const links: LinkEntry[] = [
 		url: "https://www.audacityteam.org/",
 		category: "音频工具",
 		lang: "en",
-		desc: "免费音频录制 & 编辑软件",
+		desc: "免费开源音频录制 & 多轨编辑，用于游戏音效剪辑/去噪/格式转换",
 	},
 	{
 		id: "link-boscaceoil",
@@ -112,7 +112,7 @@ const links: LinkEntry[] = [
 		url: "https://boscaceoil.net/",
 		category: "音频工具",
 		lang: "en",
-		desc: "初学者友好的音乐作曲工具",
+		desc: "蓝调音乐作曲工具，初学者友好，可快速生成循环背景音乐旋律",
 	},
 	{
 		id: "link-sfxr",
@@ -120,7 +120,7 @@ const links: LinkEntry[] = [
 		url: "https://sfxr.me/",
 		category: "音频工具",
 		lang: "en",
-		desc: "在线游戏音效生成器（8bit 风格）",
+		desc: "在线 8bit/16bit 游戏音效生成器，调节参数即时试听并导出 WAV",
 	},
 	{
 		id: "link-musescore",
@@ -128,7 +128,7 @@ const links: LinkEntry[] = [
 		url: "https://musescore.org/",
 		category: "音频工具",
 		lang: "en",
-		desc: "开源乐谱编辑 & 导出工具",
+		desc: "开源乐谱编辑器，可谱写 MIDI 并导出为音频文件或印刷式乐谱 PDF",
 	},
 
 	/* ===== 素材资源 ===== */
@@ -138,7 +138,7 @@ const links: LinkEntry[] = [
 		url: "https://opengameart.org/",
 		category: "素材资源",
 		lang: "en",
-		desc: "免费游戏美术资源库（多种许可证）",
+		desc: "最大的免费游戏美术库，含精灵/纹理/模型/音效，多种 CC 许可证",
 	},
 	{
 		id: "link-freesound",
@@ -146,7 +146,7 @@ const links: LinkEntry[] = [
 		url: "https://freesound.org/",
 		category: "素材资源",
 		lang: "en",
-		desc: "CC 许可的音效 & 音频片段库",
+		desc: "CC 许可音效共享平台，收录数万条真实世界录音和合成音效片段",
 	},
 	{
 		id: "link-game-icons",
@@ -154,7 +154,7 @@ const links: LinkEntry[] = [
 		url: "https://game-icons.net/",
 		category: "素材资源",
 		lang: "en",
-		desc: "免费可商用的游戏图标集（SVG）",
+		desc: "数千款免费可商用游戏 SVG 图标，支持按颜色/大小批量导出",
 	},
 	{
 		id: "link-kenney",
@@ -162,7 +162,7 @@ const links: LinkEntry[] = [
 		url: "https://kenney.nl/",
 		category: "素材资源",
 		lang: "en",
-		desc: "高质量免费游戏素材包（CC0）",
+		desc: "高质量免费游戏素材包（CC0），涵盖 UI/图标/角色/环境/字体等",
 	},
 	{
 		id: "link-textures",
@@ -170,7 +170,7 @@ const links: LinkEntry[] = [
 		url: "https://www.textures.com/",
 		category: "素材资源",
 		lang: "en",
-		desc: "海量 PBR 材质贴图库",
+		desc: "海量 PBR 材质贴图库，涵盖各类地面/墙面/金属/木纹等游戏材质",
 	},
 	{
 		id: "link-itchio-assets",
@@ -178,7 +178,7 @@ const links: LinkEntry[] = [
 		url: "https://itch.io/game-assets",
 		category: "素材资源",
 		lang: "en",
-		desc: "独立开发者的付费/免费游戏素材市场",
+		desc: "独立开发者交易平台，数千款付费/免费游戏素材涵盖 2D/3D/音频/代码",
 	},
 
 	/* ===== 学习资源 ===== */
@@ -188,7 +188,7 @@ const links: LinkEntry[] = [
 		url: "https://learnopengl.com/",
 		category: "学习资源",
 		lang: "en",
-		desc: "现代 OpenGL 图形编程入门教程",
+		desc: "现代 OpenGL 图形编程入门教程，从 shader 到 PBR 渲染一应俱全",
 	},
 	{
 		id: "link-gp-patterns",
@@ -196,7 +196,7 @@ const links: LinkEntry[] = [
 		url: "https://gameprogrammingpatterns.com/",
 		category: "学习资源",
 		lang: "en",
-		desc: "游戏编程设计模式在线全书",
+		desc: "游戏编程设计模式在线全书，涵盖命令/观察者/对象池/状态机等经典模式",
 	},
 	{
 		id: "link-redblob",
@@ -204,15 +204,15 @@ const links: LinkEntry[] = [
 		url: "https://www.redblobgames.com/",
 		category: "学习资源",
 		lang: "en",
-		desc: "交互式游戏算法教程（寻路/噪声/几何等）",
+		desc: "交互式可视化游戏算法教程，A* 寻路/六边形网格/程序化生成等",
 	},
 	{
 		id: "link-lazyfoo",
-		title: "Lazy Foo' SDL Tutorials",
+		title: "Lazy Foo' SDL",
 		url: "https://lazyfoo.net/",
 		category: "学习资源",
 		lang: "en",
-		desc: "SDL 2D 游戏编程入门教程",
+		desc: "SDL 2D 游戏编程入门教程，从窗口创建到粒子系统，完整 C++ 指南",
 	},
 	{
 		id: "link-gdc",
@@ -220,7 +220,7 @@ const links: LinkEntry[] = [
 		url: "https://www.gdconf.com/",
 		category: "学习资源",
 		lang: "en",
-		desc: "游戏开发者大会（GDC）演讲录像 & 幻灯片",
+		desc: "游戏开发者大会演讲录像与幻灯片，了解游戏工业最新实践的第一现场",
 	},
 	{
 		id: "link-pikuma",
@@ -228,7 +228,7 @@ const links: LinkEntry[] = [
 		url: "https://pikuma.com/",
 		category: "学习资源",
 		lang: "en",
-		desc: "游戏数学/物理/图形学底层教程",
+		desc: "游戏数学/物理/图形学底层原理教程，从零实现软渲染器和游戏引擎",
 	},
 
 	/* ===== 社区 ===== */
@@ -238,7 +238,7 @@ const links: LinkEntry[] = [
 		url: "https://gamedev.net/",
 		category: "社区",
 		lang: "en",
-		desc: "游戏开发者社区，论坛/文章/博客",
+		desc: "老牌游戏开发者社区，活跃论坛/技术文章/博客/资源分享",
 	},
 	{
 		id: "link-tigsource",
@@ -246,7 +246,7 @@ const links: LinkEntry[] = [
 		url: "https://www.tigsource.com/",
 		category: "社区",
 		lang: "en",
-		desc: "独立游戏论坛，Devlog & 开发讨论",
+		desc: "经典独立游戏论坛，开发者发布 Devlog 与开发讨论的首选地之一",
 	},
 	{
 		id: "link-reddit-gamedev",
@@ -254,15 +254,15 @@ const links: LinkEntry[] = [
 		url: "https://www.reddit.com/r/gamedev/",
 		category: "社区",
 		lang: "en",
-		desc: "Reddit 游戏开发社区，每日问答 & 分享",
+		desc: "Reddit 最大的游戏开发社区，每日海量问答/经验分享/作品展示",
 	},
 	{
 		id: "link-gamedev-discord",
-		title: "Game Dev League (Discord)",
+		title: "Game Dev League",
 		url: "https://discord.gg/gamedev",
 		category: "社区",
 		lang: "en",
-		desc: "最大的游戏开发者 Discord 社区",
+		desc: "Discord 上最大的游戏开发者社群，按引擎/工种分频道讨论",
 	},
 	{
 		id: "link-indienova",
@@ -270,7 +270,7 @@ const links: LinkEntry[] = [
 		url: "https://indienova.com/",
 		category: "社区",
 		lang: "zh",
-		desc: "中文独立游戏社区，资讯/博客/开发日志",
+		desc: "中文独立游戏社区，提供资讯/开发日志/游戏素材资源等综合信息",
 	},
 	{
 		id: "link-qiita-game",
@@ -278,7 +278,7 @@ const links: LinkEntry[] = [
 		url: "https://qiita.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0%E9%96%8B%E7%99%BA",
 		category: "社区",
 		lang: "ja",
-		desc: "Qiita 上的游戏开发技术文章标签",
+		desc: "日本最大技术博客平台上的游戏开发标签，收录大量 Unity/UE 实战文章",
 	},
 ];
 
@@ -302,11 +302,6 @@ export const linkSource: NewsSource = {
 		}));
 	},
 };
-
-/** 获取所有链接原始数据（供前端分组使用） */
-export function getAllLinks(): LinkEntry[] {
-	return links;
-}
 
 /** 按分类分组 */
 export function getLinksByCategory(): Record<string, LinkEntry[]> {
