@@ -126,6 +126,7 @@ import {
 } from "./engine-sources";
 import { aiAndGames, nvidiaGameDev } from "./ai-sources";
 import { unrealBlog, gridSageGames } from "./gamedev-news";
+import { amdGpuOpen, blenderDevBlog, gameDevDigest } from "./dev-tools";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -257,4 +258,8 @@ export const allSources: NewsSource[] = [
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,
+	/* 开发工具 */
+	amdGpuOpen,
+	blenderDevBlog,
+	gameDevDigest,
 ];
