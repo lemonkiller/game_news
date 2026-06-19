@@ -137,6 +137,33 @@ import {
 } from "./ai-sources";
 import { unrealBlog, gridSageGames } from "./gamedev-news";
 import {
+	orfeasEl,
+	ogre3d,
+	nvidiaUe,
+	zennGameEngine,
+	zennUnreal,
+	zennGodot,
+	zennUnity,
+	zennBevy,
+	devtoGameEngine,
+	devtoGodot,
+	devtoUnreal,
+	devtoUnity,
+	devtoRendering,
+	devtoVulkan,
+	devtoWebGPU,
+	devtoOpenGL,
+} from "./engine-tech";
+import {
+	indieDevGames,
+	chaoticanWriter,
+	newToNarrative,
+	zennGameDesign,
+	zennStory,
+	zennUIUX,
+	zennWriting,
+} from "./design-tech";
+import {
 	amdGpuOpen,
 	blenderDevBlog,
 	blenderNews,
@@ -258,6 +285,24 @@ export const allSources: NewsSource[] = [
 	godotBlog,
 	defold,
 	o3de,
+	orfeasEl,
+	ogre3d,
+	nvidiaUe,
+	/* 引擎技术博客（日文） */
+	zennGameEngine,
+	zennUnreal,
+	zennGodot,
+	zennUnity,
+	zennBevy,
+	/* 引擎技术博客（英文 Dev.to 标签） */
+	devtoGameEngine,
+	devtoGodot,
+	devtoUnreal,
+	devtoUnity,
+	devtoRendering,
+	devtoVulkan,
+	devtoWebGPU,
+	devtoOpenGL,
 	/* 策略 / 模拟 / 殖民类游戏设计开发 */
 	mechanicsAsMetaphor,
 	level99Strategy,
@@ -287,6 +332,14 @@ export const allSources: NewsSource[] = [
 	gameDevDigest,
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,
+	/* 游戏设计/叙事/世界观 */
+	indieDevGames,
+	chaoticanWriter,
+	newToNarrative,
+	zennGameDesign,
+	zennStory,
+	zennUIUX,
+	zennWriting,
 	/* 网址标签（无 RSS 工具/资源链接） */
 	linkSource,
 ];
