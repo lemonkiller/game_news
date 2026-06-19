@@ -137,10 +137,7 @@ import {
 	gameSpot,
 	ign,
 } from "./gamedev-news";
-import {
-	doubanGameDev,
-	doubanIndieGame,
-} from "./rsshub-sources";
+import { doubanGameDev, doubanIndieGame } from "./rsshub-sources";
 import {
 	gameresDesign,
 	gameresProg,
