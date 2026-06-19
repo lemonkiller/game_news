@@ -138,11 +138,10 @@ import {
 	ign,
 } from "./gamedev-news";
 import {
-	zhihuGameDevColumn,
-	zhihuIndieGame,
-	zhihuAIGameDev,
-	bilibiliGameDev,
-	weiboGameDev,
+	zhihuDaily,
+	zhihuHotlist,
+	doubanGameDev,
+	doubanIndieGame,
 } from "./rsshub-sources";
 import {
 	gameresDesign,
@@ -293,11 +292,10 @@ export const allSources: NewsSource[] = [
 	gameSpot,
 	ign,
 	/* RSSHub 桥接源 */
-	zhihuGameDevColumn,
-	zhihuIndieGame,
-	zhihuAIGameDev,
-	bilibiliGameDev,
-	weiboGameDev,
+	zhihuDaily,
+	zhihuHotlist,
+	doubanGameDev,
+	doubanIndieGame,
 	/* cheerio HTML 抓取源 */
 	gameresDesign,
 	gameresProg,
