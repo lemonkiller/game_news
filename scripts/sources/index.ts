@@ -104,7 +104,6 @@ import { linkSource } from "./link-sources";
 import {
 	aiAndGames,
 	nvidiaGameDev,
-	aiGamechangers,
 	sorceressGames,
 	generativeGamedev,
 	ryanFitzpatrick,
@@ -266,7 +265,6 @@ export const allSources: NewsSource[] = [
 	jonasMeyerOhle,
 	cannibalHalfling,
 	/* AI 游戏开发 */
-	aiGamechangers,
 	aiAndGames,
 	nvidiaGameDev,
 	sorceressGames,
