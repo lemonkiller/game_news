@@ -132,6 +132,7 @@ import {
 	blenderNews,
 	gameDevDigest,
 } from "./dev-tools";
+import { gameDevEssentials } from "./game-design-blogs";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -268,4 +269,6 @@ export const allSources: NewsSource[] = [
 	blenderDevBlog,
 	blenderNews,
 	gameDevDigest,
+	/* 游戏设计/开发博客 */
+	gameDevEssentials,
 ];
