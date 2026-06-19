@@ -346,6 +346,9 @@ export const qiitaUnity: NewsSource = {
 };
 export const zennGamedev: NewsSource = {
 	name: "Zenn gamedev",
-	lang: "community",
-	fetch: () => fetchAtom("https://zenn.dev/topics/gamedev/feed"),
+	lang: "ja",
+	fetch: async () => {
+		const xml = await fetchText("https://zenn.dev/topics/gamedev/feed");
+		return toNewsItems(parseRSS(xml)).slice(0, 10);
+	},
 };

@@ -17,7 +17,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
 3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
 4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组（注意 linkSource 也需注册）
-5. **更新前端映射** -- 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射
+5. **更新前端映射** -- 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射；新增的源名必须在 `LANG_MAP` 中注册，否则不会显示
 6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过 + `npx tsc --noEmit` 类型检查
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
 8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
@@ -69,13 +69,86 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - 网址链接源（linkSource 的 name 为 "开发工具链接"）只出现在"网址"标签下，不得出现在信息流中。App.tsx 的 timelineChunks 中需跳过 `name === "开发工具链接"`
 - 新添 RSS 源需同时在 `src/App.tsx` 的 `LANG_MAP` 注册、在 `data/news.json` 中留空后会通过 fetch 自动填充
 - 添加无 RSS 的网站/工具/社区时，加入 `link-sources.ts` 对应分类
+- **lang 字段注意事项**：
+  - community.ts 中的源过去使用 `lang: "community"`，现在必须改为 `lang: "zh"` / `"en"` / `"ja"` 之一，否则不会被 `LANG_MAP` 匹配
+  - 参见 zennGamedev 改为 `lang: "ja"` 的先例
 
-## 名言系统
+## 名言系统（三语版）
 
-- `scripts/utils/quotes.ts` 存放 99 条游戏开发/设计相关名言（中文翻译版）
-- 每次切换标签页时随机选取一条显示在导航栏右侧
-- 每条名言含 quote（正文）、author（作者）、source（来源/作品，可选）
+`scripts/utils/quotes.ts` 存放 99 条游戏开发/设计名言。
+
+### 数据结构
+
+每条名言包含三个语言版本：
+
+```typescript
+export interface Quote {
+  zh: string;  // 中文翻译
+  en: string;  // 英文原文
+  ja: string;  // 日文翻译
+  author: string;
+  source?: string; // 来源/作品（可选）
+}
+```
+
+### 新增名言的步骤
+
+1. 打开 `scripts/utils/quotes.ts`
+2. 在 `quotes` 数组中添加新条目，填写三个语言字段
+3. 尽可能找到可靠的英文原文（而非从中文回译）
+4. 日文翻译参考日本游戏开发社区的惯用表述
+5. 确认 author 包含中英双语（如 "宫本茂（Shigeru Miyamoto）"）
+6. 运行 `npx tsc --noEmit` 确认类型正确
+
+### 显示逻辑
+
+- 每次切换标签页时，随机选取一条显示在导航栏右侧
+- 根据浏览器检测到的 UI 语言自动显示对应语言版本
 - 鼠标悬停名言显示作者和来源
+
+## 多语言本地化系统（i18n）
+
+站点 UI 根据浏览器语言自动切换（zh / en / ja），无需手动选择。
+
+### 架构
+
+```
+src/i18n/index.ts      ← 语言检测 + 所有 UI 字符串
+src/components/
+  Navbar.tsx           ← 从 i18n 模块读取标题/标签/提示
+  Footer.tsx           ← 从 i18n 模块读取页脚文字
+src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
+```
+
+### 工作原理
+
+1. `detectLanguage()` 读取 `navigator.language`，匹配 `zh` → 中文，`ja` → 日文，其他 → 英文（默认）
+2. 结果作为 `uiLang` 属性传递给 `Navbar` 和 `Footer`
+3. 各组件根据 `uiLang` 从对应的语言映射中取字符串
+4. 标签名、导航标题、"更新于"前缀、时间格式、页脚全部跟随 `uiLang`
+5. 名言根据 `uiLang` 自动切换 `q.zh` / `q.en` / `q.ja` 字段
+
+### 修改 UI 字符串的位置
+
+所有 UI 字符串集中在 `src/i18n/index.ts`：
+
+```typescript
+export const NAV_TITLE: Record<UiLang, string> = { zh: "游戏新闻", en: "Game News", ja: "ゲームニュース" };
+export const TAB_LABELS: Record<UiLang, Record<string, string>> = { ... };
+export const TAB_TIPS: Record<UiLang, Record<string, string>> = { ... };
+export const FOOTER_TEXT: Record<UiLang, string> = { ... };
+```
+
+需要改动 UI 文案时只改这个文件即可。
+
+### 新增语言支持
+
+要新增第四种语言（如韩语 `ko`）：
+
+1. 在 `src/i18n/index.ts` 中 `UiLang` 类型加入 `"ko"`
+2. 在 `detectLanguage()` 中添加 `nav.startsWith("ko")` 判断
+3. 在所有 `Record<UiLang, ...>` 对象中添加 `ko` 条目
+4. 更新 `TAB_LABELS`、`TAB_TIPS`、`NAV_TITLE`、`NAV_SUBTITLE_PREFIX`、`FOOTER_TEXT` 等
 
 ## 常见问题
 
@@ -90,6 +163,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - **抓取失败保留旧数据**：fetch-all.ts 实现了读上次 news.json、若新数据为空或抓取报错则保留旧数据不覆盖的兜底逻辑
 - **新装依赖**：更新 `html-scraper.ts` 等使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：需确保 `tsconfig.json` 的 `include` 包含 `data` 目录
+- **RSS 源的 lang 字段**：community.ts 中的源必须使用 `"zh"`/`"en"`/`"ja"`，不要用 `"community"`
 
 ## 项目设置
 

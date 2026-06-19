@@ -6,14 +6,7 @@ import type { NewsItem, Lang } from "../scripts/utils/types";
 import { relativeTime } from "../scripts/utils/rss-parser";
 import { getLinksByCategory } from "../scripts/sources/link-sources";
 import { quotes } from "../scripts/utils/quotes";
-
-const LANG_LABELS: Record<Lang, string> = {
-	all: "全部",
-	zh: "中文",
-	en: "English",
-	ja: "日本語",
-	links: "网址",
-};
+import { detectLanguage, TAB_LABELS } from "./i18n";
 
 const LANG_MAP: Record<string, Lang> = {
 	"GamesIndustry.biz": "en",
@@ -29,7 +22,7 @@ const LANG_MAP: Record<string, Lang> = {
 	ChaoticStupid: "en",
 	ManiaHero: "zh",
 	PlayTank: "en",
-	JGallant: "en",
+
 	"Games by Mason": "en",
 	"Top Hat Games": "en",
 	"Lost Garden": "en",
@@ -119,12 +112,11 @@ const LANG_MAP: Record<string, Lang> = {
 	Distractionware: "en",
 	设计者笔记: "zh",
 	ResetEra: "en",
-	"AI Gamechangers": "en",
 	"AI and Games": "en",
 	"NVIDIA Game Dev": "en",
 	"Sorceress Games": "en",
 	"Generative GameDev": "en",
-	"Yu-kai Chou": "en",
+
 	"Ryan Fitzpatrick": "en",
 	BorisTheBrave: "en",
 	"Unreal Engine Blog": "en",
@@ -134,15 +126,7 @@ const LANG_MAP: Record<string, Lang> = {
 	"Game Dev Digest": "en",
 	"Game Dev Essentials": "en",
 	"Blender News": "en",
-	"NGA 游戏策划": "zh",
-	"NGA 独立游戏": "zh",
-	"NGA 游戏技术": "zh",
-	"NGA 程序技术": "zh",
-	"GameRes 游资网": "zh",
-	游戏邦: "zh",
-	"掘金 游戏开发": "zh",
-	"SegmentFault 游戏开发": "zh",
-	"博客园 游戏开发": "zh",
+
 	"Qiita ゲーム開発": "ja",
 	"Qiita ゲームデザイン": "ja",
 	"Qiita Godot": "ja",
@@ -164,6 +148,8 @@ const LANG_MAP: Record<string, Lang> = {
 	"Cannibal Halfling": "en",
 };
 
+const uiLang = detectLanguage();
+
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
 	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
@@ -171,6 +157,8 @@ export default function App() {
 	useEffect(() => {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
 	}, [lang]);
+
+	const labels = uiLang ? TAB_LABELS[uiLang] : TAB_LABELS.en;
 
 	const isLinks = lang === "links";
 
@@ -230,9 +218,10 @@ export default function App() {
 				lang={lang}
 				onLangChange={setLang}
 				counts={langCounts}
-				labels={LANG_LABELS}
+				labels={labels}
 				updatedAt={data.updatedAt}
 				quote={dailyQuote}
+				uiLang={uiLang}
 			/>
 			{isLinks ? (
 				<main className="links-page">
@@ -284,7 +273,7 @@ export default function App() {
 					))}
 				</main>
 			)}
-			<Footer />
+			<Footer uiLang={uiLang} />
 		</div>
 	);
 }
