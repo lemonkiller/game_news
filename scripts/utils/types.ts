@@ -19,7 +19,7 @@ export interface NewsSource {
 }
 
 /** 语言标签 */
-export type Lang = "all" | "zh" | "en" | "ja" | "steam";
+export type Lang = "all" | "zh" | "en" | "ja" | "steam" | "links";
 
 /** 抓取结果汇总 */
 export interface FetchResult {

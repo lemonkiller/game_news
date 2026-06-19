@@ -5,6 +5,7 @@ import CardColumn from "./components/CardColumn";
 import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
 import { relativeTime } from "../scripts/utils/rss-parser";
+import { getLinksByCategory } from "../scripts/sources/link-sources";
 
 const LANG_LABELS: Record<Lang, string> = {
 	all: "全部",
@@ -12,6 +13,7 @@ const LANG_LABELS: Record<Lang, string> = {
 	en: "English",
 	ja: "日本語",
 	steam: "Steam",
+	links: "网址",
 };
 
 const LANG_MAP: Record<string, Lang> = {
@@ -142,6 +144,13 @@ export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
 
 	const isSteam = lang === "steam";
+	const isLinks = lang === "links";
+
+	/** 所有链接数据（按分类分组） */
+	const linkCategories = useMemo(() => {
+		if (!isLinks) return [];
+		return Object.entries(getLinksByCategory());
+	}, [isLinks]);
 
 	/** 按时间线模式：合并非 steam 源，排序，每 5 条一组 */
 	const timelineChunks = useMemo(() => {
@@ -175,7 +184,7 @@ export default function App() {
 
 	/** Steam 模式：按源分列 */
 	const entries = useMemo(() => {
-		if (!isSteam) return [];
+		if (isSteam) return [];
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		return Object.entries(sources)
 			.filter(([, items]) => items.length > 0)
@@ -198,6 +207,10 @@ export default function App() {
 			counts[l] = (counts[l] || 0) + items.length;
 			counts.all += items.length;
 		}
+		const links = getLinksByCategory();
+		const linkCount = Object.values(links).flat().length;
+		counts.links = linkCount;
+		counts.all += linkCount;
 		return counts as Record<Lang, number>;
 	}, []);
 
@@ -210,7 +223,31 @@ export default function App() {
 				updatedAt={data.updatedAt}
 				labels={LANG_LABELS}
 			/>
-			{isSteam ? (
+			{isLinks ? (
+				<main className="links-page">
+					{linkCategories.map(([category, items]) => (
+						<section key={category} className="link-category">
+							<h2 className="link-category-title">{category}</h2>
+							{items.map((link) => (
+								<a
+									key={link.id}
+									className="link-item"
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									title={link.desc}
+								>
+									<span className="link-item-name">{link.title}</span>
+									<span className="link-item-desc">{link.desc}</span>
+									<span className="link-item-url">
+										{new URL(link.url).hostname}
+									</span>
+								</a>
+							))}
+						</section>
+					))}
+				</main>
+			) : isSteam ? (
 				<main className="columns">
 					{entries.map(([name, items]) => (
 						<CardColumn key={name} name={name} items={items} />

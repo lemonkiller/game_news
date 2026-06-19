@@ -305,6 +305,88 @@ body::before {
 	}
 }
 
+/* === 网址标签页（链接分类展示，双栏） === */
+.links-page {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	padding: 20px 24px 32px;
+	max-width: 1600px;
+	margin: 0 auto;
+	width: 100%;
+	align-items: start;
+}
+
+.link-category {
+	background: var(--bg-nav);
+	border: 2px solid var(--gb-darkest);
+	overflow: hidden;
+	break-inside: avoid;
+}
+
+.link-category-title {
+	font-family: var(--font-head);
+	font-size: 9px;
+	padding: 10px 14px;
+	background: var(--bg-nav);
+	color: var(--gb-lightest);
+	border-bottom: 2px solid var(--gb-dark);
+	letter-spacing: 0.5px;
+}
+
+.link-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 14px;
+	border-bottom: 1px solid var(--gb-dark);
+	background: var(--bg-card);
+	color: var(--gb-darkest);
+	cursor: pointer;
+	transition: all 0.08s steps(2);
+	text-decoration: none;
+}
+.link-item:last-child {
+	border-bottom: none;
+}
+.link-item:hover {
+	background: var(--gb-lightest);
+	padding-left: 17px;
+}
+
+.link-item-name {
+	font-size: 17px;
+	font-weight: bold;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.link-item-desc {
+	font-size: 15px;
+	color: var(--gb-dark);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	flex: 1;
+	min-width: 0;
+}
+
+.link-item-url {
+	font-size: 11px;
+	font-family: var(--font-body);
+	color: var(--gb-dark);
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+	.links-page {
+		grid-template-columns: 1fr;
+		padding: 14px 16px 24px;
+	}
+}
+
 /* === 页脚 === */
 .footer {
 	text-align: center;

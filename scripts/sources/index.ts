@@ -126,7 +126,12 @@ import {
 } from "./engine-sources";
 import { aiAndGames, nvidiaGameDev } from "./ai-sources";
 import { unrealBlog, gridSageGames } from "./gamedev-news";
-import { amdGpuOpen, blenderDevBlog, blenderNews, gameDevDigest } from "./dev-tools";
+import {
+	amdGpuOpen,
+	blenderDevBlog,
+	blenderNews,
+	gameDevDigest,
+} from "./dev-tools";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
