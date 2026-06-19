@@ -4,9 +4,6 @@ import { eightyLevel } from "./80-level";
 import { unityBlog } from "./engine-blogs";
 import { hackerNews } from "./hacker-news";
 import { godotReleases } from "./godot-releases";
-import { pcGamer } from "./pcgamer";
-import { rockPaperShotgun } from "./rockpapershotgun";
-import { vg247 } from "./vg247";
 import { gameFromScratch } from "./game-from-scratch";
 import { indieGamesPlus } from "./indie-games-plus";
 import { raphKoster } from "./raph-koster";
@@ -20,8 +17,6 @@ import { gamesByMason } from "./games-by-mason";
 import { topHatGames } from "./top-hat-games";
 import { lostGarden } from "./lost-garden";
 import { gamedevUnchained } from "./gamedev-unchained";
-import { humbleBundle } from "./humble-bundle";
-import { playstationBlog } from "./playstation-blog";
 import { frictional } from "./frictional";
 import { rawFury } from "./raw-fury";
 import { concernedApe } from "./concerned-ape";
@@ -131,18 +126,9 @@ import {
 } from "./engine-sources";
 import { aiGamechangers, aiAndGames, nvidiaGameDev } from "./ai-sources";
 import {
-	gameDeveloper,
 	unrealBlog,
-	kotaku,
-	gameSpot,
-	ign,
+	gridSageGames,
 } from "./gamedev-news";
-import {
-	zhihuDaily,
-	zhihuHotlist,
-	doubanGameDev,
-	doubanIndieGame,
-} from "./rsshub-sources";
 import {
 	gameresDesign,
 	gameresProg,
@@ -153,12 +139,7 @@ import {
 export const allSources: NewsSource[] = [
 	/* 英文 */
 	gamesIndustry,
-	/* 英文 */
-	gamesIndustry,
 	eightyLevel,
-	pcGamer,
-	rockPaperShotgun,
-	vg247,
 	hackerNews,
 	gameFromScratch,
 	indieGamesPlus,
@@ -203,8 +184,6 @@ export const allSources: NewsSource[] = [
 	steamNewReleases,
 	steamSpecials,
 	steamComingSoon,
-	humbleBundle,
-	playstationBlog,
 	frictional,
 	rawFury,
 	concernedApe,
@@ -286,16 +265,8 @@ export const allSources: NewsSource[] = [
 	aiAndGames,
 	nvidiaGameDev,
 	/* 行业综合新闻 */
-	gameDeveloper,
 	unrealBlog,
-	kotaku,
-	gameSpot,
-	ign,
-	/* RSSHub 桥接源 */
-	zhihuDaily,
-	zhihuHotlist,
-	doubanGameDev,
-	doubanIndieGame,
+	gridSageGames,
 	/* cheerio HTML 抓取源 */
 	gameresDesign,
 	gameresProg,
