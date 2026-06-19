@@ -68,6 +68,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - fetch 返回 `NewsItem[]`，RSS 源建议最多 5 条，Steam 榜单不限，linkSource 为静态全量
 - 单源超时 10 秒，失败不影响其他源
 - `link-sources.ts` 作为静态源返回 `LinkEntry[]`，需注册到 `index.ts` 的 `allSources`
+- 网址链接源（linkSource 的 name 为 "开发工具链接"）只出现在"网址"标签下，不得出现在信息流（全部/中文/EN/日本語）中。App.tsx 的 timelineChunks 中需跳过 `name === "开发工具链接"`
 
 ## 常见问题
 
@@ -79,5 +80,6 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - **GitHub 分支保护**：主分支有保护，推送到 `feat/xxx` 分支再开 PR 合并
 - **Git 推送超时**：国内网络间歇性阻断 GitHub，可使用 `GIT_HTTP_TIMEOUT=3` 环境变量加速失败重试
 - **npm run fetch 超时**：120+ 源中有大量不可达，本地抓取可能超时。可用 node 脚本单独抓取特定源更新数据
+- **Steam 等源间歇性抓取失败**：fetch-all.ts 实现了抓取失败时自动保留旧数据的兜底逻辑（读上次的 news.json，若新数据为空或抓取报错则保留旧数据不覆盖）
 - **新装依赖**：更新 `html-scraper.ts` 等使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：运行此命令需确保 `tsconfig.json` 的 `include` 包含 `data` 目录（否则无法解析 JSON import）

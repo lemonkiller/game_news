@@ -168,6 +168,7 @@ export default function App() {
 		for (const [name, items] of Object.entries(sources)) {
 			const l = LANG_MAP[name] || "en";
 			if (l === "steam") continue;
+			if (name === "开发工具链接") continue; // 网址标签专用，不出现在信息流
 			if (lang !== "all" && l !== lang) continue;
 
 			for (const item of items) {
