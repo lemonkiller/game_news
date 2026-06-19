@@ -111,8 +111,6 @@ const LANG_MAP: Record<string, Lang> = {
 	Kotaku: "en",
 	GameSpot: "en",
 	IGN: "en",
-	"豆瓣 游戏开发": "zh",
-	"豆瓣 独立游戏": "zh",
 	"GameRes 策划": "zh",
 	"GameRes 程序": "zh",
 	"GameRes 美术": "zh",

@@ -137,7 +137,6 @@ import {
 	gameSpot,
 	ign,
 } from "./gamedev-news";
-import { doubanGameDev, doubanIndieGame } from "./rsshub-sources";
 import {
 	gameresDesign,
 	gameresProg,
@@ -286,9 +285,6 @@ export const allSources: NewsSource[] = [
 	kotaku,
 	gameSpot,
 	ign,
-	/* RSSHub 桥接源 */
-	doubanGameDev,
-	doubanIndieGame,
 	/* cheerio HTML 抓取源 */
 	gameresDesign,
 	gameresProg,
