@@ -9,11 +9,11 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 | 标签 | 源数 | 说明 |
 |------|------|------|
 | 全部 | ~90 | 全部非 Steam 源合并，按时间瀑布流展示 |
-| English | ~56 | 行业媒体 / 设计博客 / 引擎 / 工作室 / AI 专题 / 开发工具 |
+| English | ~58 | 行业媒体 / 设计博客 / 引擎 / 工作室 / AI 专题 / 开发工具 |
 | 中文 | ~19 | 游戏媒体 / 独立博客 / 游戏公司技术博客 |
 | 日本語 | ~17 | 游戏媒体 / Qiita / 公司技术博客 |
 | Steam | 4 | 热销、新品、特惠、即将推出（CN 区） |
-| 网址 | 38 | 无 RSS 的开发工具/资源站，按分类展示静态链接 |
+| 网址 | 42 | 无 RSS 的开发工具/资源站，按分类展示静态链接 |
 
 > 聚焦 **游戏开发/游戏设计** 领域，所有源均经过人工审核确认与游戏开发直接相关。
 > 已剔除消费级游戏新闻媒体（IGN、Kotaku、GameSpot、PC Gamer、RPS 等）。
@@ -27,6 +27,7 @@ GB 经典四色绿像素风格，口袋妖怪红绿配色。
 | AMD GPUOpen | 开发工具 | GPU 渲染/图形调试/性能分析工具资讯 |
 | Blender Dev Blog | 开发工具 | Blender 开发进展，资产管线相关 |
 | Blender News | 开发工具 | Blender 版本发布/路线图/行业合作 |
+| Game Dev Essentials | 游戏设计 | 游戏开发商业与设计文章（发行/融资/招聘） |
 | Game Dev Digest | 开发工具 | Unity 开发工具每周摘要 |
 | AI and Games | AI 专题 | Tommy Thompson 主持的游戏 AI 深度分析 |
 | NVIDIA Game Dev | AI 专题 | NVIDIA GPU/AI 游戏开发技术文章 |
@@ -100,8 +101,10 @@ npm run fetch
 
 添加步骤：
 
-1. 在 `scripts/sources/` 下新建源文件，实现 `NewsSource` 接口
-2. 在 `scripts/sources/index.ts` 中注册
+1. 搜索可用源，用 `fetch` 测试 RSS 可用性
+2. **分流处理**：
+   - **能抓取** → 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口，注册到 `index.ts`
+   - **不能抓取**（无 RSS / Cloudflare 等）→ 添加到 `scripts/sources/link-sources.ts` 的 `links` 数组
 3. 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射
 4. 运行 `npm run fetch` 验证数据能正常抓取
 5. 运行 `npm run build` 确认构建通过
