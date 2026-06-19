@@ -15,11 +15,13 @@ import { parseRSS, toNewsItems } from "../utils/rss-parser";
 import type { NewsSource } from "../utils/types";
 
 /** 默认 RSSHub 实例（环境变量 RSSHUB_INSTANCE 可覆盖） */
-const RSSHUB =
-	process.env.RSSHUB_INSTANCE || "https://rsshub.ktachibana.party";
+const RSSHUB = process.env.RSSHUB_INSTANCE || "https://rsshub.ktachibana.party";
 
 /** 通用 RSSHub 抓取函数，带 fallback 实例 */
-async function fetchRSSHub(path: string, max = 10): Promise<ReturnType<typeof toNewsItems>> {
+async function fetchRSSHub(
+	path: string,
+	max = 10,
+): Promise<ReturnType<typeof toNewsItems>> {
 	const instances = [
 		RSSHUB,
 		"https://rsshub.pseudoyu.com",
@@ -37,30 +39,6 @@ async function fetchRSSHub(path: string, max = 10): Promise<ReturnType<typeof to
 	}
 	return [];
 }
-
-// ====== 知乎 ======
-
-/**
- * 知乎日报 - 每日精选内容
- * 路由: /zhihu/daily
- * 知乎反爬严格，仅日报路由相对稳定
- */
-export const zhihuDaily: NewsSource = {
-	name: "知乎日报",
-	lang: "zh",
-	fetch: () => fetchRSSHub("/zhihu/daily", 10),
-};
-
-/**
- * 知乎热榜
- * 路由: /zhihu/hotlist
- * 可能受限于实例的请求频率
- */
-export const zhihuHotlist: NewsSource = {
-	name: "知乎热榜",
-	lang: "zh",
-	fetch: () => fetchRSSHub("/zhihu/hotlist", 10),
-};
 
 // ====== 豆瓣小组 ======
 

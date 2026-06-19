@@ -138,8 +138,6 @@ import {
 	ign,
 } from "./gamedev-news";
 import {
-	zhihuDaily,
-	zhihuHotlist,
 	doubanGameDev,
 	doubanIndieGame,
 } from "./rsshub-sources";
@@ -292,8 +290,6 @@ export const allSources: NewsSource[] = [
 	gameSpot,
 	ign,
 	/* RSSHub 桥接源 */
-	zhihuDaily,
-	zhihuHotlist,
 	doubanGameDev,
 	doubanIndieGame,
 	/* cheerio HTML 抓取源 */
