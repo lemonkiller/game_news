@@ -107,6 +107,7 @@ const LANG_MAP: Record<string, Lang> = {
 	"AMD GPUOpen": "en",
 	"Blender Dev Blog": "en",
 	"Game Dev Digest": "en",
+	"Blender News": "en",
 	"NGA 游戏策划": "zh",
 	"NGA 独立游戏": "zh",
 	"NGA 游戏技术": "zh",

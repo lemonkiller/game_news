@@ -42,3 +42,15 @@ export const gameDevDigest: NewsSource = {
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
+
+/**
+ * Blender 官方新闻 - Blender 版本发布、路线图与行业合作
+ */
+export const blenderNews: NewsSource = {
+	name: "Blender News",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.blender.org/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
