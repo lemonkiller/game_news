@@ -124,7 +124,16 @@ import {
 	bevy,
 	godotBlog,
 } from "./engine-sources";
-import { aiAndGames, nvidiaGameDev } from "./ai-sources";
+import {
+	aiAndGames,
+	nvidiaGameDev,
+	aiGamechangers,
+	sorceressGames,
+	generativeGamedev,
+	yuKaiChou,
+	ryanFitzpatrick,
+	borisTheBrave,
+} from "./ai-sources";
 import { unrealBlog, gridSageGames } from "./gamedev-news";
 import {
 	amdGpuOpen,
@@ -259,8 +268,14 @@ export const allSources: NewsSource[] = [
 	jonasMeyerOhle,
 	cannibalHalfling,
 	/* AI 游戏开发 */
+	aiGamechangers,
 	aiAndGames,
 	nvidiaGameDev,
+	sorceressGames,
+	generativeGamedev,
+	yuKaiChou,
+	ryanFitzpatrick,
+	borisTheBrave,
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,
