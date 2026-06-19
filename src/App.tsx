@@ -1,18 +1,17 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import data from "../data/news.json";
 import Navbar from "./components/Navbar";
-import CardColumn from "./components/CardColumn";
 import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
 import { relativeTime } from "../scripts/utils/rss-parser";
 import { getLinksByCategory } from "../scripts/sources/link-sources";
+import { quotes } from "../scripts/utils/quotes";
 
 const LANG_LABELS: Record<Lang, string> = {
 	all: "全部",
 	zh: "中文",
 	en: "English",
 	ja: "日本語",
-	steam: "Steam",
 	links: "网址",
 };
 
@@ -23,7 +22,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Unity Blog": "en",
 	"Hacker News": "en",
 	"Godot Releases": "en",
-	"Reddit r/gamedev": "en",
 	GameFromScratch: "en",
 	IndieGamesPlus: "en",
 	"Raph Koster": "en",
@@ -37,10 +35,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Lost Garden": "en",
 	"Gamedev Unchained": "en",
 	Necromanov: "zh",
-	"Steam 热销": "steam",
-	"Steam 新品": "steam",
-	"Steam 特惠": "steam",
-	"Steam 即将推出": "steam",
 
 	"Frictional Games": "en",
 	"Raw Fury": "en",
@@ -172,8 +166,12 @@ const LANG_MAP: Record<string, Lang> = {
 
 export default function App() {
 	const [lang, setLang] = useState<Lang>("all");
+	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
 
-	const isSteam = lang === "steam";
+	useEffect(() => {
+		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+	}, [lang]);
+
 	const isLinks = lang === "links";
 
 	/** 所有链接数据（按分类分组） */
@@ -182,15 +180,13 @@ export default function App() {
 		return Object.entries(getLinksByCategory());
 	}, [isLinks]);
 
-	/** 按时间线模式：合并非 steam 源，排序，每 5 条一组 */
+	/** 按时间线模式：合并所有源，排序，每 5 条一组 */
 	const timelineChunks = useMemo(() => {
-		if (isSteam) return [];
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const all: (NewsItem & { _ts: number })[] = [];
 
 		for (const [name, items] of Object.entries(sources)) {
 			const l = LANG_MAP[name] || "en";
-			if (l === "steam") continue;
 			if (name === "开发工具链接") continue; // 网址标签专用，不出现在信息流
 			if (lang !== "all" && l !== lang) continue;
 
@@ -211,24 +207,7 @@ export default function App() {
 			chunks.push(all.slice(i, i + 5));
 		}
 		return chunks;
-	}, [lang, isSteam]);
-
-	/** Steam 模式：按源分列 */
-	const entries = useMemo(() => {
-		if (isSteam) return [];
-		const sources = data.sources as unknown as Record<string, NewsItem[]>;
-		return Object.entries(sources)
-			.filter(([, items]) => items.length > 0)
-			.filter(([name]) => LANG_MAP[name] === "steam")
-			.sort((a, b) => {
-				const ta = a[1][0]?.pubDate ? new Date(a[1][0].pubDate).getTime() : 0;
-				const tb = b[1][0]?.pubDate ? new Date(b[1][0].pubDate).getTime() : 0;
-				return tb - ta;
-			})
-			.map(
-				([name, items]) => [name, items.slice(0, 10)] as [string, NewsItem[]],
-			);
-	}, [isSteam]);
+	}, [lang]);
 
 	const langCounts = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
@@ -251,38 +230,35 @@ export default function App() {
 				lang={lang}
 				onLangChange={setLang}
 				counts={langCounts}
-				updatedAt={data.updatedAt}
 				labels={LANG_LABELS}
+				updatedAt={data.updatedAt}
+				quote={dailyQuote}
 			/>
 			{isLinks ? (
 				<main className="links-page">
-					{linkCategories.map(([category, items]) => (
-						<section key={category} className="link-category">
-							<h2 className="link-category-title">{category}</h2>
-							{items.map((link) => (
-								<a
-									key={link.id}
-									className="link-item"
-									href={link.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									title={link.desc}
-								>
-									<span className="link-item-name">{link.title}</span>
-									<span className="link-item-desc">{link.desc}</span>
-									<span className="link-item-url">
-										{new URL(link.url).hostname}
-									</span>
-								</a>
-							))}
-						</section>
-					))}
-				</main>
-			) : isSteam ? (
-				<main className="columns">
-					{entries.map(([name, items]) => (
-						<CardColumn key={name} name={name} items={items} />
-					))}
+					<div className="links-content">
+						{linkCategories.map(([category, items]) => (
+							<section key={category} className="link-category">
+								<h2 className="link-category-title">{category}</h2>
+								{items.map((link) => (
+									<a
+										key={link.id}
+										className="link-item"
+										href={link.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										title={link.desc}
+									>
+										<span className="link-item-name">{link.title}</span>
+										<span className="link-item-desc">{link.desc}</span>
+										<span className="link-item-url">
+											{new URL(link.url).hostname}
+										</span>
+									</a>
+								))}
+							</section>
+						))}
+					</div>
 				</main>
 			) : (
 				<main className="timeline">

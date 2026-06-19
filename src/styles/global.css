@@ -67,12 +67,15 @@ body::before {
 	z-index: 100;
 	background: var(--bg-nav);
 	border-bottom: 3px solid var(--gb-light);
-	padding: 12px 24px;
+	padding: 10px 24px;
+	box-shadow: var(--shadow);
+}
+
+.navbar-row {
 	display: flex;
 	align-items: center;
 	gap: 20px;
 	flex-wrap: wrap;
-	box-shadow: var(--shadow);
 }
 
 .navbar-left {
@@ -83,14 +86,15 @@ body::before {
 
 .navbar-title {
 	font-family: var(--font-head);
-	font-size: 13px;
-	letter-spacing: 1px;
+	font-size: 18px;
+	letter-spacing: 2px;
 	color: var(--gb-lightest);
 	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .navbar-subtitle {
-	font-size: 16px;
+	font-family: var(--font-body);
+	font-size: 14px;
 	color: var(--gb-light);
 }
 
@@ -313,6 +317,23 @@ body::before {
 	width: 100%;
 }
 
+/* 导航栏名言 */
+.navbar-quote {
+	overflow: hidden;
+	flex: 1;
+	min-width: 100px;
+}
+
+.navbar-quote-text {
+	font-family: var(--font-body);
+	font-size: 14px;
+	color: var(--gb-light);
+	font-style: italic;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+}
 .link-category {
 	margin-bottom: 20px;
 	border: 2px solid var(--gb-darkest);
