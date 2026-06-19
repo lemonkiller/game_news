@@ -52,10 +52,11 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | Lang 类型 | 标签名 | 源数 | 说明 |
 |-----------|--------|------|------|
 | `all` | 全部 | ~90 | 所有非 Steam 源合并（按时间排序） |
-| `zh` | 中文 | ~19 | 游戏媒体 + 独立博客 + NGA + 掘金等 |
-| `en` | English | ~56 | 行业媒体 + 设计博客 + 引擎 + 工作室 + AI 专题 |
+| `zh` | 中文 | ~19 | 游戏媒体 + 独立博客 + 游戏公司技术博客 |
+| `en` | English | ~56 | 行业媒体 + 设计博客 + 引擎 + 工作室 + AI 专题 + 开发工具 |
 | `ja` | 日本語 | ~17 | 游戏媒体 + Qiita/Zenn + 公司技术博客 |
 | `steam` | Steam | 4 | Steam 榜单（热销/新品/特惠/即将推出） |
+| `links` | 网址 | 38 | 无 RSS 的开发工具/资源站，静态链接按分类展示 |
 
 - 每个源只属于一个语言分类，不会跨标签出现
 
@@ -150,3 +151,4 @@ npm run fetch
 - **GitHub 分支保护**：主分支有保护，推送到 `feat/xxx` 分支再开 PR 合并
 - **优先 RSS**：添加新源时优先选择有稳定 RSS 的站点；cheerio 抓取仅作备用
 - **示例文件**：cheerio 用法示例在 `scripts/examples/html-scraping-demo.ts`
+- **网址标签**：无 RSS 的站点添加到 `scripts/sources/link-sources.ts`，在前端「网址」标签按分类展示
