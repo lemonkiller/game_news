@@ -184,7 +184,7 @@ export default function App() {
 
 			for (const item of items) {
 				if (!item.url) continue; // 跳过无链接条目
-			const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
+				const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
 				all.push({
 					...item,
 					sourceName: item.sourceName || name,
