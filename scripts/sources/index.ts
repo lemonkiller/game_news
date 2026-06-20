@@ -130,9 +130,16 @@ import {
 	zennWriting,
 } from "./design-tech";
 import {
+	mickWest,
+	qiitaGameAI,
+	wpboxDev,
+} from "./game-ai-sources";
+import {
 	amdGpuOpen,
 	blenderDevBlog,
 	blenderNews,
+	asepriteBlog,
+	panda3d,
 	vsCodeBlog,
 	githubBlog,
 	jetbrainsBlog,
@@ -266,11 +273,18 @@ export const allSources: NewsSource[] = [
 	amdGpuOpen,
 	blenderDevBlog,
 	blenderNews,
+	asepriteBlog,
+	panda3d,
 	vsCodeBlog,
 	githubBlog,
 	jetbrainsBlog,
 	stackOverflowBlog,
 	pragmaticEngineer,
+	/* 游戏 AI（行为树/GOAP/状态机/寻路） */
+	mickWest,
+	qiitaGameAI,
+	wpboxDev,
+
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,
 	/* 游戏设计/叙事/世界观 */

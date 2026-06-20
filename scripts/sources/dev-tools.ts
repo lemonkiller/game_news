@@ -75,6 +75,26 @@ export const stackOverflowBlog: NewsSource = {
 	},
 };
 
+/** Aseprite Blog - 开源像素画工具更新与开发日志 */
+export const asepriteBlog: NewsSource = {
+	name: "Aseprite Blog",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://blog.aseprite.org/rss");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** Panda3D - 开源 3D 游戏引擎开发博客 */
+export const panda3d: NewsSource = {
+	name: "Panda3D",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.panda3d.org/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
 /** Pragmatic Engineer - 大型科技公司工程实践、技术栈分析 */
 export const pragmaticEngineer: NewsSource = {
 	name: "Pragmatic Engineer",

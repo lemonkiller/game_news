@@ -113,6 +113,9 @@ const LANG_MAP: Record<string, Lang> = {
 	BorisTheBrave: "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
+	"Aseprite Blog": "en",
+	Panda3D: "en",
+
 	"AMD GPUOpen": "en",
 	"Blender Dev Blog": "en",
 	"Game Dev Essentials": "en",
@@ -124,6 +127,10 @@ const LANG_MAP: Record<string, Lang> = {
 	"Qiita UnrealEngine": "ja",
 	"Qiita Unity": "ja",
 	"Zenn gamedev": "ja",
+	"Qiita game AI": "ja",
+
+	"Mick West": "en",
+	"wpbox.dev": "en",
 
 	"VS Code Blog": "en",
 	"GitHub Blog": "en",
