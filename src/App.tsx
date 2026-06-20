@@ -183,7 +183,8 @@ export default function App() {
 			if (lang !== "all" && l !== lang) continue;
 
 			for (const item of items) {
-				const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
+				if (!item.url) continue; // 跳过无链接条目
+			const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
 				all.push({
 					...item,
 					sourceName: item.sourceName || name,
