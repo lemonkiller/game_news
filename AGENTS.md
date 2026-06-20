@@ -106,6 +106,22 @@ export interface Quote {
 - 根据浏览器检测到的 UI 语言自动显示对应语言版本
 - 鼠标悬停名言显示作者和来源
 
+## 黑名单（不要再添加的源）
+
+以下源已被移除或测试过但明确不适合本聚合站，记录以避免重复添加：
+
+### 前端/网页开发类
+
+- freeCodeCamp（全栈/前端教程，非游戏开发）
+- Smashing Magazine（前端/网页设计杂志）
+- CSS-Tricks（前端/CSS 技术）
+
+### Dev.to 平台
+
+所有 dev.to 标签源全部移除。理由：内容质量偏低，社区内容混杂，不适合聚合展示。
+涉及的标签：gameengine / godot / unrealengine / unity / rendering / vulkan / webgpu / opengl
+连带移除：Game Dev Digest（基于 dev.to 标签）
+
 ## 多语言本地化系统（i18n）
 
 站点 UI 根据浏览器语言自动切换（zh / en / ja），无需手动选择。

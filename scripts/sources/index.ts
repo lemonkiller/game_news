@@ -119,14 +119,6 @@ import {
 	zennGodot,
 	zennUnity,
 	zennBevy,
-	devtoGameEngine,
-	devtoGodot,
-	devtoUnreal,
-	devtoUnity,
-	devtoRendering,
-	devtoVulkan,
-	devtoWebGPU,
-	devtoOpenGL,
 } from "./engine-tech";
 import {
 	indieDevGames,
@@ -141,14 +133,10 @@ import {
 	amdGpuOpen,
 	blenderDevBlog,
 	blenderNews,
-	gameDevDigest,
 	vsCodeBlog,
 	githubBlog,
 	jetbrainsBlog,
 	stackOverflowBlog,
-	freeCodeCampSource,
-	smashingMagazine,
-	cssTricks,
 	pragmaticEngineer,
 } from "./dev-tools";
 import { gameDevEssentials } from "./game-design-blogs";
@@ -253,15 +241,7 @@ export const allSources: NewsSource[] = [
 	zennGodot,
 	zennUnity,
 	zennBevy,
-	/* 引擎技术博客（英文 Dev.to 标签） */
-	devtoGameEngine,
-	devtoGodot,
-	devtoUnreal,
-	devtoUnity,
-	devtoRendering,
-	devtoVulkan,
-	devtoWebGPU,
-	devtoOpenGL,
+	/* 引擎技术博客（英文 Dev.to 标签 - 已全部移除 2026-06） */
 	/* 策略 / 模拟 / 殖民类游戏设计开发 */
 	mechanicsAsMetaphor,
 	level99Strategy,
@@ -286,14 +266,10 @@ export const allSources: NewsSource[] = [
 	amdGpuOpen,
 	blenderDevBlog,
 	blenderNews,
-	gameDevDigest,
 	vsCodeBlog,
 	githubBlog,
 	jetbrainsBlog,
 	stackOverflowBlog,
-	freeCodeCampSource,
-	smashingMagazine,
-	cssTricks,
 	pragmaticEngineer,
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,

@@ -22,14 +22,7 @@ export const blenderDevBlog: NewsSource = {
 	},
 };
 
-export const gameDevDigest: NewsSource = {
-	name: "Game Dev Digest",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText("https://dev.to/feed/gamedevdigest");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
+// Game Dev Digest 已移除——基于 dev.to，明确不要 (2026-06)
 
 export const blenderNews: NewsSource = {
 	name: "Blender News",
@@ -78,36 +71,6 @@ export const stackOverflowBlog: NewsSource = {
 	lang: "en",
 	fetch: async () => {
 		const xml = await fetchText("https://stackoverflow.blog/feed/");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
-/** freeCodeCamp - 全栈开发教程、编程文化 */
-export const freeCodeCampSource: NewsSource = {
-	name: "freeCodeCamp",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText("https://www.freecodecamp.org/news/rss/");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
-/** Smashing Magazine - 前端/网页开发与设计 */
-export const smashingMagazine: NewsSource = {
-	name: "Smashing Magazine",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText("https://www.smashingmagazine.com/feed/");
-		return toNewsItems(parseRSS(xml)).slice(0, 5);
-	},
-};
-
-/** CSS-Tricks - 前端/CSS 技术博客 */
-export const cssTricks: NewsSource = {
-	name: "CSS-Tricks",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText("https://css-tricks.com/feed/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };
