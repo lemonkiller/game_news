@@ -129,11 +129,7 @@ import {
 	zennUIUX,
 	zennWriting,
 } from "./design-tech";
-import {
-	mickWest,
-	qiitaGameAI,
-	wpboxDev,
-} from "./game-ai-sources";
+import { mickWest, qiitaGameAI, wpboxDev } from "./game-ai-sources";
 import {
 	amdGpuOpen,
 	blenderDevBlog,
