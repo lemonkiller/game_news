@@ -129,6 +129,10 @@ const LANG_MAP: Record<string, Lang> = {
 	"Zenn gamedev": "ja",
 	"Qiita game AI": "ja",
 
+	"24indie": "en",
+	"Indie Informer": "en",
+	"GameDiscoverCo": "en",
+
 	"Mick West": "en",
 	"wpbox.dev": "en",
 

@@ -130,6 +130,7 @@ import {
 	zennWriting,
 } from "./design-tech";
 import { mickWest, qiitaGameAI, wpboxDev } from "./game-ai-sources";
+import { indie24, indieInformer, gameDiscoverCo } from "./indie-sources";
 import {
 	amdGpuOpen,
 	blenderDevBlog,
@@ -280,6 +281,11 @@ export const allSources: NewsSource[] = [
 	mickWest,
 	qiitaGameAI,
 	wpboxDev,
+
+	/* 独立游戏 */
+	indie24,
+	indieInformer,
+	gameDiscoverCo,
 
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,
