@@ -3,6 +3,7 @@ import {
 	getGUID,
 	relativeTime,
 	stripHtml,
+	toNewsItems,
 } from "../utils/rss-parser";
 import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
@@ -97,4 +98,25 @@ function makeZennSource(name: string, tag: string): NewsSource {
 export const zennGameDesign = makeZennSource("Zenn 游戏设计", "gamedesign");
 export const zennStory = makeZennSource("Zenn 创作", "story");
 export const zennUIUX = makeZennSource("Zenn UI/UX", "uiux");
+export const zennUIUXDesign = makeZennSource("Zenn UIUX设计", "uiuxdesign");
 export const zennWriting = makeZennSource("Zenn 写作", "writing");
+
+/** hanasaqotto - 日本游戏 UI/UX 设计信息站 */
+export const hanasaqutto: NewsSource = {
+	name: "hanasaqutto",
+	lang: "ja",
+	fetch: async () => {
+		const xml = await fetchText("https://hanasaqutto.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** CanIPlayThat - 游戏无障碍/UX 评测 */
+export const canIPlayThat: NewsSource = {
+	name: "Can I Play That?",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://caniplaythat.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};

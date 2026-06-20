@@ -127,6 +127,9 @@ import {
 	zennGameDesign,
 	zennStory,
 	zennUIUX,
+	zennUIUXDesign,
+	hanasaqutto,
+	canIPlayThat,
 	zennWriting,
 } from "./design-tech";
 import { mickWest, qiitaGameAI, wpboxDev } from "./game-ai-sources";
@@ -296,6 +299,9 @@ export const allSources: NewsSource[] = [
 	zennGameDesign,
 	zennStory,
 	zennUIUX,
+	zennUIUXDesign,
+	hanasaqutto,
+	canIPlayThat,
 	zennWriting,
 	/* 网址标签（无 RSS 工具/资源链接） */
 	linkSource,

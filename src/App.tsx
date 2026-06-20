@@ -55,6 +55,9 @@ const LANG_MAP: Record<string, Lang> = {
 	"Zenn 游戏设计": "ja",
 	"Zenn 创作": "ja",
 	"Zenn UI/UX": "ja",
+	"Zenn UIUX设计": "ja",
+	hanasaqutto: "ja",
+	"Can I Play That?": "en",
 	"Zenn 写作": "ja",
 
 	机核网: "zh",
