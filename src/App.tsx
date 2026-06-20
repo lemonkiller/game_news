@@ -131,7 +131,7 @@ const LANG_MAP: Record<string, Lang> = {
 
 	"24indie": "en",
 	"Indie Informer": "en",
-	"GameDiscoverCo": "en",
+	GameDiscoverCo: "en",
 
 	"Mick West": "en",
 	"wpbox.dev": "en",
