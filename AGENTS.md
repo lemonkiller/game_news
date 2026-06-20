@@ -122,6 +122,11 @@ export interface Quote {
 涉及的标签：gameengine / godot / unrealengine / unity / rendering / vulkan / webgpu / opengl
 连带移除：Game Dev Digest（基于 dev.to 标签）
 
+### AI/大模型工具（不直接相关游戏开发）
+
+- Ollama（本地 LLM 运行工具）
+- Anthropic Engineering Blog（Claude 工程博客）
+
 ## 多语言本地化系统（i18n）
 
 站点 UI 根据浏览器语言自动切换（zh / en / ja），无需手动选择。
