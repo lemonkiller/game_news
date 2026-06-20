@@ -1013,6 +1013,32 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "开源数字绘画软件，笔刷引擎强大，适合游戏概念设计与材质贴图绘制",
 	},
+
+	/* ===== 通用开发工具 ===== */
+	{
+		id: "link-zed",
+		title: "Zed Editor",
+		url: "https://zed.dev/blog",
+		category: "游戏编程/架构",
+		lang: "en",
+		desc: "高性能 Rust 代码编辑器，Atom/树型游标原班人马打造，内置 AI 与协作",
+	},
+	{
+		id: "link-ollama",
+		title: "Ollama",
+		url: "https://ollama.com/blog",
+		category: "游戏编程/架构",
+		lang: "en",
+		desc: "本地运行大语言模型（Llama/DeepSeek/Qwen等）最流行的开源工具",
+	},
+	{
+		id: "link-anthropic",
+		title: "Anthropic Engineering Blog",
+		url: "https://www.anthropic.com/engineering",
+		category: "游戏编程/架构",
+		lang: "en",
+		desc: "Claude 开发商 Anthropic 的工程博客，AI 编程/Agent 系统设计实践",
+	},
 	{
 		id: "link-material-maker",
 		title: "Material Maker",

@@ -2,14 +2,8 @@ import { fetchText } from "../utils/fetcher";
 import { parseRSS, toNewsItems } from "../utils/rss-parser";
 import type { NewsSource } from "../utils/types";
 
-/**
- * 游戏开发工具类源
- * GPU 调试/性能分析、资产管线、引擎工具等
- */
+// ===== 原有游戏开发工具源 =====
 
-/**
- * AMD GPUOpen - GPU 渲染、图形调试、性能分析工具
- */
 export const amdGpuOpen: NewsSource = {
 	name: "AMD GPUOpen",
 	lang: "en",
@@ -19,9 +13,6 @@ export const amdGpuOpen: NewsSource = {
 	},
 };
 
-/**
- * Blender Developers Blog - Blender 开发进展，资产管线工具
- */
 export const blenderDevBlog: NewsSource = {
 	name: "Blender Dev Blog",
 	lang: "en",
@@ -31,9 +22,6 @@ export const blenderDevBlog: NewsSource = {
 	},
 };
 
-/**
- * Game Dev Digest - Unity 开发工具每周摘要
- */
 export const gameDevDigest: NewsSource = {
 	name: "Game Dev Digest",
 	lang: "en",
@@ -43,14 +31,93 @@ export const gameDevDigest: NewsSource = {
 	},
 };
 
-/**
- * Blender 官方新闻 - Blender 版本发布、路线图与行业合作
- */
 export const blenderNews: NewsSource = {
 	name: "Blender News",
 	lang: "en",
 	fetch: async () => {
 		const xml = await fetchText("https://www.blender.org/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+// ===== 通用开发工具源（游戏开发也能用得上） =====
+
+/** VS Code Blog - 微软代码编辑器更新、扩展生态、AI 功能 */
+export const vsCodeBlog: NewsSource = {
+	name: "VS Code Blog",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://code.visualstudio.com/feed.xml");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** GitHub Blog - 版本管理、CI/CD、协作工具更新 */
+export const githubBlog: NewsSource = {
+	name: "GitHub Blog",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://github.blog/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** JetBrains Blog - IDE 全家桶更新、开发工具趋势 */
+export const jetbrainsBlog: NewsSource = {
+	name: "JetBrains Blog",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://blog.jetbrains.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** Stack Overflow Blog - 开发者社区趋势、技术调研 */
+export const stackOverflowBlog: NewsSource = {
+	name: "Stack Overflow Blog",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://stackoverflow.blog/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** freeCodeCamp - 全栈开发教程、编程文化 */
+export const freeCodeCampSource: NewsSource = {
+	name: "freeCodeCamp",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.freecodecamp.org/news/rss/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** Smashing Magazine - 前端/网页开发与设计 */
+export const smashingMagazine: NewsSource = {
+	name: "Smashing Magazine",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://www.smashingmagazine.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** CSS-Tricks - 前端/CSS 技术博客 */
+export const cssTricks: NewsSource = {
+	name: "CSS-Tricks",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://css-tricks.com/feed/");
+		return toNewsItems(parseRSS(xml)).slice(0, 5);
+	},
+};
+
+/** Pragmatic Engineer - 大型科技公司工程实践、技术栈分析 */
+export const pragmaticEngineer: NewsSource = {
+	name: "Pragmatic Engineer",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://blog.pragmaticengineer.com/rss/");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);
 	},
 };

@@ -142,6 +142,14 @@ import {
 	blenderDevBlog,
 	blenderNews,
 	gameDevDigest,
+	vsCodeBlog,
+	githubBlog,
+	jetbrainsBlog,
+	stackOverflowBlog,
+	freeCodeCampSource,
+	smashingMagazine,
+	cssTricks,
+	pragmaticEngineer,
 } from "./dev-tools";
 import { gameDevEssentials } from "./game-design-blogs";
 
@@ -279,6 +287,14 @@ export const allSources: NewsSource[] = [
 	blenderDevBlog,
 	blenderNews,
 	gameDevDigest,
+	vsCodeBlog,
+	githubBlog,
+	jetbrainsBlog,
+	stackOverflowBlog,
+	freeCodeCampSource,
+	smashingMagazine,
+	cssTricks,
+	pragmaticEngineer,
 	/* 游戏设计/开发博客 */
 	gameDevEssentials,
 	/* 游戏设计/叙事/世界观 */

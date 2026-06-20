@@ -134,6 +134,15 @@ const LANG_MAP: Record<string, Lang> = {
 	"Qiita Unity": "ja",
 	"Zenn gamedev": "ja",
 
+	"VS Code Blog": "en",
+	"GitHub Blog": "en",
+	"JetBrains Blog": "en",
+	"Stack Overflow Blog": "en",
+	freeCodeCamp: "en",
+	"Smashing Magazine": "en",
+	"CSS-Tricks": "en",
+	"Pragmatic Engineer": "en",
+
 	"Psychology of Games": "en",
 	"Keith Burgun": "en",
 	GDKeys: "en",
