@@ -502,6 +502,22 @@ const links: LinkEntry[] = [
 		desc: "对话系统工具，VS Code 编辑器+语法高亮+预览，集成 Unity/Godot",
 	},
 	{
+		id: "link-twine",
+		title: "Twine",
+		url: "https://twinery.org/",
+		category: "叙事/对话工具",
+		lang: "en",
+		desc: "开源非线性叙事/互动小说创作工具，可视化分支故事编辑器",
+	},
+	{
+		id: "link-storyflow-editor",
+		title: "StoryFlow Editor",
+		url: "https://storyflow-editor.com/",
+		category: "叙事/对话工具",
+		lang: "en",
+		desc: "节点式对话编辑器，支持 Unity/Unreal/Godot，开源 MIT 许可",
+	},
+	{
 		id: "link-newtonarrative",
 		title: "New to Narrative",
 		url: "https://newtonarrative.com/",
@@ -1024,6 +1040,22 @@ const links: LinkEntry[] = [
 		desc: "高性能 Rust 代码编辑器，Atom/树型游标原班人马打造，内置 AI 与协作",
 	},
 	// Ollama 和 Anthropic Engineering Blog 已移除（不直接相关游戏开发）
+	{
+		id: "link-renderdoc",
+		title: "RenderDoc",
+		url: "https://renderdoc.org/",
+		category: "图形/渲染编程",
+		lang: "en",
+		desc: "开源 GPU 调试器，抓帧分析渲染管线，游戏图形调试标配工具",
+	},
+	{
+		id: "link-gimp",
+		title: "GIMP",
+		url: "https://www.gimp.org/",
+		category: "图形/美术工具",
+		lang: "en",
+		desc: "开源图像编辑软件，功能接近 Photoshop，适合贴图编辑与概念图",
+	},
 	{
 		id: "link-material-maker",
 		title: "Material Maker",
