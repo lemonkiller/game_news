@@ -369,6 +369,7 @@ body::before {
 }
 .news-source {
 	font-size: 14px;
+	font-weight: 400;
 	color: var(--gb-dark);
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -378,6 +379,7 @@ body::before {
 .news-title {
 	font-size: 17px;
 	font-family: inherit;
+	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -463,15 +465,16 @@ body::before {
 .link-item-name {
 	font-size: 17px;
 	font-family: inherit;
+	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	max-width: 200px;
 	line-height: 1.3;
 }
 
 .link-item-desc {
 	font-size: 14px;
+	font-weight: 400;
 	color: var(--gb-dark);
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -494,12 +497,14 @@ body::before {
 	.links-content {
 		padding: 14px 16px 24px;
 	}
-	.link-item {
+	.link-item,
+	.news-item {
 		grid-template-columns: 1fr auto;
 		gap: 8px;
 		padding: 8px 12px;
 	}
-	.link-item-name {
+	.link-item-name,
+	.news-title {
 		font-size: 16px;
 	}
 	.link-item-desc {
