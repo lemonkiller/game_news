@@ -85,7 +85,12 @@ import { gamemakers } from "./gamemakers";
 import { indieGamesJapan } from "./indiegamesjapan";
 import { igdaJapan } from "./igda-japan";
 import { indieGamesJpDev } from "./indiegamesjp-dev";
-import { megaVoxels, openGameArt, agateDragon, mastaFran } from "./game-art-sources";
+import {
+	megaVoxels,
+	openGameArt,
+	agateDragon,
+	mastaFran,
+} from "./game-art-sources";
 import {
 	fabienSanglard,
 	sirlin,
