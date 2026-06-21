@@ -326,14 +326,6 @@ const links: LinkEntry[] = [
 		desc: "Tommy Thompson 主持，专注 AI 在游戏开发中的应用与实际案例分析",
 	},
 	{
-		id: "link-yt-gdc",
-		title: "GDC (Game Developers Conference)",
-		url: "https://www.youtube.com/@GDC",
-		category: "其他",
-		lang: "en",
-		desc: "GDC 官方频道，收录历年开发者大会演讲录像，游戏设计/开发/行业全覆盖",
-	},
-	{
 		id: "link-yt-gameoveranalyser",
 		title: "Game Overanalyser",
 		url: "https://www.youtube.com/@GameOveranalyser",
@@ -411,14 +403,6 @@ const links: LinkEntry[] = [
 	},
 
 	/* ===== 游戏行业/演讲 ===== */
-	{
-		id: "link-gdc",
-		title: "GDC Vault",
-		url: "https://www.gdconf.com/",
-		category: "其他",
-		lang: "en",
-		desc: "游戏开发者大会演讲录像与幻灯片，了解游戏工业最新实践的第一现场",
-	},
 	{
 		id: "link-gamedeveloper",
 		title: "Game Developer",
@@ -1920,6 +1904,23 @@ const links: LinkEntry[] = [
 		category: "编程开发",
 		lang: "en",
 		desc: "wpbox.dev 提供的最新游戏开发资讯",
+	},
+
+	{
+		id: "link-yt-gdc",
+		title: "GDC (Game Developers Conference)",
+		url: "https://www.youtube.com/@GDC",
+		category: "其他",
+		lang: "en",
+		desc: "GDC 官方频道，收录历年开发者大会演讲录像，游戏设计/开发/行业全覆盖",
+	},
+	{
+		id: "link-gdc",
+		title: "GDC Vault",
+		url: "https://www.gdconf.com/",
+		category: "其他",
+		lang: "en",
+		desc: "游戏开发者大会演讲录像与幻灯片，了解游戏工业最新实践的第一现场",
 	},
 ];
 /**
