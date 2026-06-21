@@ -211,28 +211,9 @@ export default function App() {
 		return Object.entries(getLinksByCategory());
 	}, []);
 
-	/** 各语言1月内可见条目数 */
-	const langCounts = useMemo(() => {
-		const sources = data.sources as unknown as Record<string, NewsItem[]>;
-		const counts: Record<string, number> = { all: 0, zh: 0, en: 0, ja: 0 };
-		for (const [name, items] of Object.entries(sources)) {
-			if (name === "开发工具链接") continue;
-			const l = LANG_MAP[name] || "en";
-			for (const item of items) {
-				if (!item.url || !isWithinMonth(item.pubDate)) continue;
-				counts[l] = (counts[l] || 0) + 1;
-				counts.all += 1;
-			}
-		}
-		return counts;
-	}, []);
 
-	/** 总链接数 */
-	const linksCount = useMemo(() => {
-		return Object.values(getLinksByCategory()).flat().length;
-	}, []);
 
-	/** 按语言筛选后的1月内新闻列表 */
+	/** 按语言筛选后的最近50条新闻 */
 	const recentNews = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const items: (NewsItem & { sourceName: string })[] = [];
@@ -258,7 +239,7 @@ export default function App() {
 			return tb - ta;
 		});
 
-		return items;
+		return items.slice(0, 50);
 	}, [langFilter]);
 
 	const contentRef = useRef<HTMLDivElement>(null);
@@ -283,8 +264,6 @@ export default function App() {
 			<Navbar
 				view={view}
 				onViewChange={setView}
-				newsCount={langCounts.all}
-				linksCount={linksCount}
 				updatedAt={data.updatedAt}
 				quote={dailyQuote}
 				uiLang={uiLang}
@@ -292,7 +271,7 @@ export default function App() {
 			{view === "links" ? (
 				<main className="links-page">
 					<nav className="links-sidebar">
-						{linkCategories.map(([category, items]) => (
+						{linkCategories.map(([category]) => (
 							<a
 								key={category}
 								className="sidebar-link"
@@ -303,7 +282,6 @@ export default function App() {
 								}}
 							>
 								{category}
-								<span className="sidebar-count">{items.length}</span>
 							</a>
 						))}
 					</nav>
@@ -314,10 +292,7 @@ export default function App() {
 								id={`cat-${category}`}
 								className="link-category"
 							>
-								<h2 className="link-category-title">
-									{category}
-									<span className="cat-count">{items.length}</span>
-								</h2>
+								<h2 className="link-category-title">{category}</h2>
 								{items.map((link) => (
 									<a
 										key={link.id}
@@ -348,7 +323,6 @@ export default function App() {
 								onClick={() => setLangFilter(k)}
 							>
 								{FILTER_LABELS[k]}
-								<span className="sidebar-count">{langCounts[k]}</span>
 							</button>
 						))}
 					</nav>

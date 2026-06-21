@@ -11,8 +11,6 @@ import {
 interface NavbarProps {
 	view: "news" | "links";
 	onViewChange: (view: "news" | "links") => void;
-	newsCount: number;
-	linksCount: number;
 	updatedAt: string;
 	quote: Quote | null;
 	uiLang: UiLang;
@@ -21,8 +19,6 @@ interface NavbarProps {
 export default function Navbar({
 	view,
 	onViewChange,
-	newsCount,
-	linksCount,
 	updatedAt,
 	quote,
 	uiLang,
@@ -84,9 +80,6 @@ export default function Navbar({
 							onClick={() => onViewChange(v)}
 						>
 							{labels[v]}
-							<span className="tab-count">
-								{v === "news" ? newsCount : linksCount}
-							</span>
 						</button>
 					))}
 				</div>
