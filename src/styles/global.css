@@ -315,6 +315,7 @@ body::before {
 	display: flex;
 	max-width: 100%;
 	width: 100%;
+	height: calc(100vh - 56px);
 }
 
 /* 左侧分类导航 */

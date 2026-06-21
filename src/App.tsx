@@ -229,8 +229,7 @@ export default function App() {
 	function scrollToCategory(category: string) {
 		const el = document.getElementById(`cat-${category}`);
 		if (el && contentRef.current) {
-			const top = el.getBoundingClientRect().top - contentRef.current.getBoundingClientRect().top + contentRef.current.scrollTop - 12;
-			contentRef.current.scrollTo({ top, behavior: "smooth" });
+			el.scrollIntoView({ behavior: "smooth", block: "start" });
 		}
 	}
 
