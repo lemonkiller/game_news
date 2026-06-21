@@ -311,12 +311,19 @@ body::before {
 
 /* 新闻内容区覆盖 */
 .news-content {
-	padding: 20px 24px 32px;
+	padding: 16px 20px 32px;
 }
 
-/* 时间分组 */
 .time-group {
-	margin-bottom: 28px;
+	margin-bottom: 16px;
+}
+
+/* 时间分组卡片 */
+.time-group {
+	background: var(--bg-card);
+	border: 2px solid var(--gb-darkest);
+	box-shadow: var(--shadow);
+	overflow: hidden;
 }
 .time-title {
 	display: flex;
@@ -324,19 +331,16 @@ body::before {
 	gap: 10px;
 	font-family: var(--font-head);
 	font-size: 13px;
-	color: var(--gb-darkest);
-	padding: 6px 0;
-	margin-bottom: 6px;
+	color: var(--gb-lightest);
+	background: var(--bg-nav);
+	padding: 10px 16px;
 	border-bottom: 2px solid var(--gb-dark);
 	letter-spacing: 0.5px;
 }
 .time-count {
 	font-family: var(--font-body);
 	font-size: 16px;
-	color: var(--gb-dark);
-	background: var(--gb-light);
-	padding: 0px 8px;
-	border-radius: 2px;
+	color: var(--gb-light);
 }
 
 /* 新闻条目列表 */
@@ -345,15 +349,18 @@ body::before {
 	grid-template-columns: 160px 1fr 80px;
 	gap: 12px;
 	align-items: baseline;
-	padding: 8px 12px;
-	border-bottom: 1px solid rgba(48, 98, 48, 0.25);
+	padding: 10px 16px;
+	border-bottom: 1px solid var(--gb-dark);
 	text-decoration: none;
 	color: var(--gb-darkest);
 	font-size: 17px;
 	transition: background 0.08s;
 }
+.news-item:last-child {
+	border-bottom: none;
+}
 .news-item:hover {
-	background: var(--gb-light);
+	background: var(--gb-lightest);
 }
 .news-source {
 	font-family: var(--font-head);

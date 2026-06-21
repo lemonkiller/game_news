@@ -165,15 +165,15 @@ type LangFilter = "all" | "zh" | "en" | "ja";
 const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
 
 /** 判断条目属于哪个时间分组 */
-function getTimeGroup(pubDate: string | undefined): "today" | "month" | "earlier" {
+function getTimeGroup(pubDate: string | undefined): "d3" | "month" | "earlier" {
 	if (!pubDate) return "earlier";
 	const d = new Date(pubDate);
 	if (isNaN(d.getTime())) return "earlier";
-	const now = new Date();
-	const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-	const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-	if (d >= todayStart) return "today";
-	if (d >= monthStart) return "month";
+	const now = Date.now();
+	const diff = now - d.getTime();
+	const days = Math.floor(diff / 86400000);
+	if (days <= 3) return "d3";
+	if (days <= 30) return "month";
 	return "earlier";
 }
 
@@ -238,7 +238,7 @@ export default function App() {
 	const timeGroups = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const groups: Record<string, (NewsItem & { sourceName: string })[]> = {
-			today: [],
+			d3: [],
 			month: [],
 			earlier: [],
 		};
@@ -280,8 +280,8 @@ export default function App() {
 	}
 
 	const GROUP_LABELS: Record<string, string> = {
-		today: "今天",
-		month: "本月",
+		d3: "3天内",
+		month: "1月内",
 		earlier: "更早",
 	};
 
@@ -364,7 +364,7 @@ export default function App() {
 						))}
 					</nav>
 					<div className="links-content news-content">
-						{(["today", "month", "earlier"] as const).map((g) => {
+						{(["d3", "month", "earlier"] as const).map((g) => {
 							const items = timeGroups[g];
 							if (!items.length) return null;
 							return (
