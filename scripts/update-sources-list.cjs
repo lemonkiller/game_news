@@ -11,7 +11,7 @@ const fs = require("fs");
 const path = require("path");
 
 const DATA_PATH = path.join(process.cwd(), "data", "news.json");
-const OUTPUT_PATH = path.join(process.cwd(), "data", "sources-list.md");
+const OUTPUT_PATH = path.join(process.cwd(), "sources-list.md");
 const SOURCES_DIR = path.join(process.cwd(), "scripts", "sources");
 const APP_PATH = path.join(process.cwd(), "src", "App.tsx");
 
