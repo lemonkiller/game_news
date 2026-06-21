@@ -164,17 +164,13 @@ type LangFilter = "all" | "zh" | "en" | "ja";
 
 const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
 
-/** 判断条目属于哪个时间分组 */
-function getTimeGroup(pubDate: string | undefined): "d3" | "month" | "earlier" {
-	if (!pubDate) return "earlier";
+/** 判断是否在1个月内 */
+function isWithinMonth(pubDate: string | undefined): boolean {
+	if (!pubDate) return false;
 	const d = new Date(pubDate);
-	if (isNaN(d.getTime())) return "earlier";
-	const now = Date.now();
-	const diff = now - d.getTime();
-	const days = Math.floor(diff / 86400000);
-	if (days <= 3) return "d3";
-	if (days <= 30) return "month";
-	return "earlier";
+	if (isNaN(d.getTime())) return false;
+	const diff = Date.now() - d.getTime();
+	return diff <= 30 * 86400000;
 }
 
 /** 格式化时间显示 */
@@ -234,40 +230,33 @@ export default function App() {
 		return Object.values(getLinksByCategory()).flat().length;
 	}, []);
 
-	/** 按语言筛选并按时间分组的新闻列表 */
-	const timeGroups = useMemo(() => {
+	/** 按语言筛选后的1月内新闻列表 */
+	const recentNews = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
-		const groups: Record<string, (NewsItem & { sourceName: string })[]> = {
-			d3: [],
-			month: [],
-			earlier: [],
-		};
+		const items: (NewsItem & { sourceName: string })[] = [];
 
-		for (const [name, items] of Object.entries(sources)) {
+		for (const [name, sourceItems] of Object.entries(sources)) {
 			if (name === "开发工具链接") continue;
 			const l = LANG_MAP[name] || "en";
 			if (langFilter !== "all" && l !== langFilter) continue;
 
-			for (const item of items) {
+			for (const item of sourceItems) {
 				if (!item.url) continue;
-				const group = getTimeGroup(item.pubDate);
-				groups[group].push({
+				if (!isWithinMonth(item.pubDate)) continue;
+				items.push({
 					...item,
 					sourceName: item.sourceName || name,
 				});
 			}
 		}
 
-		// 每个分组内按时间倒序
-		for (const g of Object.keys(groups)) {
-			groups[g].sort((a, b) => {
-				const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
-				const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
-				return tb - ta;
-			});
-		}
+		items.sort((a, b) => {
+			const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+			const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+			return tb - ta;
+		});
 
-		return groups;
+		return items;
 	}, [langFilter]);
 
 	const contentRef = useRef<HTMLDivElement>(null);
@@ -279,11 +268,7 @@ export default function App() {
 		}
 	}
 
-	const GROUP_LABELS: Record<string, string> = {
-		d3: "3天内",
-		month: "1月内",
-		earlier: "更早",
-	};
+
 
 	return (
 		<div className="app">
@@ -364,35 +349,30 @@ export default function App() {
 						))}
 					</nav>
 					<div className="links-content news-content">
-						{(["d3", "month", "earlier"] as const).map((g) => {
-							const items = timeGroups[g];
-							if (!items.length) return null;
-							return (
-								<div key={g} className="time-group">
-									<h3 className="time-title">
-										{GROUP_LABELS[g]}
-										<span className="time-count">{items.length}</span>
-									</h3>
-									{items.map((item) => (
-										<a
-											key={item.id}
-											className="news-item"
-											href={item.url}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<span className="news-source">
-												{item.sourceName}
-											</span>
-											<span className="news-title">{item.title}</span>
-											<span className="news-time">
-												{formatItemTime(item.pubDate)}
-											</span>
-										</a>
-									))}
-								</div>
-							);
-						})}
+						<div className="time-group">
+							<h3 className="time-title">
+								1月内
+								<span className="time-count">{recentNews.length}</span>
+							</h3>
+							{recentNews.length === 0 && (
+								<div className="news-empty">暂无内容</div>
+							)}
+							{recentNews.map((item) => (
+								<a
+									key={item.id}
+									className="news-item"
+									href={item.url}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span className="news-source">{item.sourceName}</span>
+									<span className="news-title">{item.title}</span>
+									<span className="news-time">
+										{formatItemTime(item.pubDate)}
+									</span>
+								</a>
+							))}
+						</div>
 					</div>
 				</main>
 			)}
