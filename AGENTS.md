@@ -26,6 +26,54 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
 9. **合并后操作** -- 合并 master 后需检查 `link-sources.ts` 是否在 `index.ts` 的 `allSources` 中注册
 
+## 新增源的标准流程
+
+用户发来一个网站链接后，按以下步骤判定和处理：
+
+### 第一步：判断是否和游戏制作相关
+
+- **相关**：游戏开发/设计/发行/引擎/工具/社区/行业分析等
+- **不相关**：纯游戏评测/攻略/直播、泛科技/前端开发、大模型 AI 工具（不直接用于游戏开发）、纯硬件/电竞
+- 不确定时先问用户，不要自己判断
+
+### 第二步：判断有无 RSS 或 API
+
+| 条件 | 说明 | 归入标签 | 需注册位置 |
+|------|------|---------|-----------|
+| 有 RSS，能直接抓取 | 标准 RSS feed | **新闻** | `scripts/sources/*.ts` + `LANG_MAP` |
+| 有开放 API（HN/Reddit/Mastodon/Lemmy/GitHub/Bluesky 等） | 无需 Key 即可访问 | **社交** | `social/*.ts` + `SOCIAL_SOURCE_NAMES` + `SOCIAL_PLATFORM` |
+| 有 RSS 但有 Cloudflare/登录墙 | 本地不可达但 GH Actions 可达 | **新闻**，加注释说明 | 同上，测试加 `--proxy http://127.0.0.1:1226` |
+| 无 RSS 也无 API | 页面可直接访问（或通过代理） | **网址** | `link-sources.ts` 下合适分类 |
+
+测试方法：
+
+- RSS：`curl -s --max-time 8 "<feed_url>" | head -200`
+- API：`curl -s --max-time 8 "<api_url>" | head -200`
+- 从中国网络不可达时，加上 `--proxy http://127.0.0.1:1226` 再试
+- 两种都不可达，说明 GFW 墙外站点，依赖 GH Actions
+
+### 第三步：根据判定结果执行
+
+**归入新闻标签：**
+
+1. 在 `scripts/sources/` 下新建 `.ts`，实现 `NewsSource` 接口
+2. RSS 源用 `rss-parser.ts`，`fetch` 返回最多 5 条
+3. 注册到 `scripts/sources/index.ts` 的 `allSources`
+4. 在 `src/App.tsx` 的 `LANG_MAP` 中注册语言分类
+
+**归入社交标签：**
+
+1. 在 `scripts/sources/social/` 下新建 `.ts`，实现 `NewsSource` 接口
+2. API 源建议返回 10-25 条，单源超时可放宽到 15 秒
+3. 注册到 `scripts/sources/social/index.ts` 的 `socialSources` 数组
+4. 在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES`（Set）和 `SOCIAL_PLATFORM`（Record）中同时注册
+
+**归入网址标签：**
+
+1. 打开 `scripts/sources/link-sources.ts`
+2. 在 `links` 数组中新建条目，填写 id/title/url/category/lang/desc
+3. 选一个合适的现有分类（见上方「网址标签」分类表）。无法归入现有分类时，新增分类必须至少有 3 个条目，否则合并到**网站**分类
+
 ## 布局说明
 
 导航栏三个标签：新闻 / 社交 / 网址。三个标签的数据完全独立，一条内容只出现在一个标签中。
