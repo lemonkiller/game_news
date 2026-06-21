@@ -81,10 +81,7 @@ import { codingnow } from "./codingnow";
 import { zengrong } from "./zengrong";
 import { chuapp } from "./chuapp";
 import { blogNightingale } from "./blog-nightingale";
-import { fourGamer } from "./4gamer";
-import { automaton } from "./automaton";
-import { denfaminicogamer } from "./denfaminicogamer";
-import { insideGames } from "./inside-games";
+
 import { gamemakers } from "./gamemakers";
 import { indieGamesJapan } from "./indiegamesjapan";
 import { igdaJapan } from "./igda-japan";
@@ -177,10 +174,7 @@ export const allSources: NewsSource[] = [
 	chuapp,
 	blogNightingale,
 	/* 日文 */
-	fourGamer,
-	automaton,
-	denfaminicogamer,
-	insideGames,
+
 	gamemakers,
 	indieGamesJapan,
 	igdaJapan,

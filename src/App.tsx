@@ -70,7 +70,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"鵺 游戏设计": "zh",
 
 	"4Gamer.net": "ja",
-	AUTOMATON: "ja",
 	電ファミニコゲーマー: "ja",
 	インサイド: "ja",
 	ゲームメーカーズ: "ja",

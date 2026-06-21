@@ -1711,6 +1711,40 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "免费/开源游戏素材分享，模型/音效/UI 资源",
 	},
+
+	/* ===== 通用开发工具 ===== */
+	{
+		id: "link-opencode",
+		title: "OpenCode.ai",
+		url: "https://opencode.ai/",
+		category: "开发工具",
+		lang: "en",
+		desc: "AI 辅助编程平台",
+	},
+	{
+		id: "link-pi-dev",
+		title: "Pi Coding Agent",
+		url: "https://pi.dev/",
+		category: "开发工具",
+		lang: "en",
+		desc: "AI 编程助手，支持多模型协作",
+	},
+	{
+		id: "link-kiss-translator",
+		title: "Kiss Translator",
+		url: "https://chromewebstore.google.com/detail/kiss-translator/bdiifdefkgmcblbcghdlonllpjhhjgof",
+		category: "开发工具",
+		lang: "en",
+		desc: "Chrome 扩展，网页/代码翻译",
+	},
+	{
+		id: "link-sourcegit",
+		title: "SourceGit",
+		url: "https://sourcegit-scm.github.io/",
+		category: "开发工具",
+		lang: "en",
+		desc: "开源 Git GUI 客户端，跨平台",
+	},
 ];
 /**
  * 所有工具/资源链接（静态数据源）
