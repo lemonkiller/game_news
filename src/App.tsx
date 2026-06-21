@@ -164,6 +164,13 @@ type LangFilter = "all" | "zh" | "en" | "ja";
 
 const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
 
+const FILTER_LABELS: Record<LangFilter, string> = {
+	all: "全部",
+	zh: "中文",
+	en: "English",
+	ja: "日本語",
+};
+
 /** 判断是否在1个月内 */
 function isWithinMonth(pubDate: string | undefined): boolean {
 	if (!pubDate) return false;
@@ -198,14 +205,7 @@ export default function App() {
 
 	useEffect(() => {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-	}, []);
-
-	const FILTER_LABELS: Record<LangFilter, string> = {
-		all: "全部",
-		zh: "中文",
-		en: "English",
-		ja: "日本語",
-	};
+	}, [view]);
 
 	/** 所有链接数据（按分类分组） */
 	const linkCategories = useMemo(() => {
@@ -331,18 +331,14 @@ export default function App() {
 				<main className="links-page">
 					<nav className="links-sidebar">
 						{FILTER_KEYS.map((k) => (
-							<a
+							<button
 								key={k}
 								className={`sidebar-link${langFilter === k ? " active" : ""}`}
-								href="#"
-								onClick={(e) => {
-									e.preventDefault();
-									setLangFilter(k);
-								}}
+								onClick={() => setLangFilter(k)}
 							>
 								{FILTER_LABELS[k]}
 								<span className="sidebar-count">{langCounts[k]}</span>
-							</a>
+							</button>
 						))}
 					</nav>
 					<div className="links-content news-content">

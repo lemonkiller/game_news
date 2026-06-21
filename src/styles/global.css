@@ -273,12 +273,16 @@ body::before {
 }
 .sidebar-link {
 	display: block;
+	width: 100%;
+	text-align: left;
 	font-family: var(--font-body);
 	font-size: 16px;
 	padding: 12px 16px;
 	color: var(--gb-lightest);
-	text-decoration: none;
+	background: none;
+	border: none;
 	border-bottom: 1px solid var(--gb-darkest);
+	cursor: pointer;
 	transition: background 0.08s;
 	line-height: 1.3;
 }
