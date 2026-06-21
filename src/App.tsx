@@ -212,15 +212,18 @@ export default function App() {
 		return Object.entries(getLinksByCategory());
 	}, []);
 
-	/** 各语言条目数 */
+	/** 各语言1月内可见条目数 */
 	const langCounts = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const counts: Record<string, number> = { all: 0, zh: 0, en: 0, ja: 0 };
 		for (const [name, items] of Object.entries(sources)) {
 			if (name === "开发工具链接") continue;
 			const l = LANG_MAP[name] || "en";
-			counts[l] = (counts[l] || 0) + items.length;
-			counts.all += items.length;
+			for (const item of items) {
+				if (!item.url || !isWithinMonth(item.pubDate)) continue;
+				counts[l] = (counts[l] || 0) + 1;
+				counts.all += 1;
+			}
 		}
 		return counts;
 	}, []);
