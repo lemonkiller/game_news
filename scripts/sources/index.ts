@@ -86,6 +86,7 @@ import { gamemakers } from "./gamemakers";
 import { indieGamesJapan } from "./indiegamesjapan";
 import { igdaJapan } from "./igda-japan";
 import { indieGamesJpDev } from "./indiegamesjp-dev";
+import { gameDeveloper } from "./game-developer";
 import { hysblog } from "./hysblog";
 import { arashiyama } from "./arashiyama";
 import { aiming } from "./aiming";
@@ -175,6 +176,7 @@ export const allSources: NewsSource[] = [
 	blogNightingale,
 	/* 日文 */
 
+	gameDeveloper,
 	gamemakers,
 	indieGamesJapan,
 	igdaJapan,

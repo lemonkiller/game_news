@@ -4,7 +4,7 @@
 
 ## 新闻/社交源
 
-共 166 个源。
+共 167 个源。
 
 | 名称 | 类型 | 语言 | 文件 | 条数 | 最近更新 |
 |------|------|------|------|------|---------|
@@ -101,6 +101,7 @@
 | Game Coding Classics | 新闻 | en | scripts/sources/hysblog.ts | 5 | Sun, 24 No |
 | Game Dev Digest | 新闻 | en | - | 5 | Fri, 15 Ma |
 | Game Dev Essentials | 新闻 | en | scripts/sources/game-design-blogs.ts | 5 | Tue, 20 Ja |
+| Game Developer | 新闻 | en | scripts/sources/game-developer.ts | 0 | - |
 | Game Wisdom | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 19 Ju |
 | GameDev Academy | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 30 De |
 | Gamedev Unchained | 新闻 | en | scripts/sources/gamedev-unchained.ts | 5 | Tue, 16 Se |

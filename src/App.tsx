@@ -111,6 +111,7 @@ const LANG_MAP: Record<string, Lang> = {
 	BorisTheBrave: "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
+	"Game Developer": "en",
 	"Aseprite Blog": "en",
 	Panda3D: "en",
 

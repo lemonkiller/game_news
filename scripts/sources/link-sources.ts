@@ -1745,6 +1745,66 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "开源 Git GUI 客户端，跨平台",
 	},
+
+	/* ===== 游戏设计 ===== */
+	{
+		id: "link-designer-notes",
+		title: "Designer Notes",
+		url: "http://www.designer-notes.com/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "Soren Johnson（文明IV主设计师）的游戏设计播客/博客",
+	},
+	{
+		id: "link-keith-burgun",
+		title: "Keith Burgun",
+		url: "http://keithburgun.net/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "游戏设计理论家，著有《Game Design Theory》",
+	},
+	{
+		id: "link-gamedesign-aspect",
+		title: "Game Design Aspect",
+		url: "http://gamedesignaspect.blogspot.com/",
+		category: "叙事/关卡/UI",
+		lang: "en",
+		desc: "Sande Chen 的游戏编剧/设计博客",
+	},
+
+	/* ===== 网站 ===== */
+	{
+		id: "link-rami-ismail",
+		title: "Rami Ismail (LTPF)",
+		url: "https://ltpf.ramiismail.com/",
+		category: "网站",
+		lang: "en",
+		desc: "Vlambeer 联合创始人，独立游戏行业顾问与设计专栏",
+	},
+	{
+		id: "link-a16z-games",
+		title: "A16Z Games (Speedrun)",
+		url: "https://speedrun.substack.com/",
+		category: "网站",
+		lang: "en",
+		desc: "顶级 VC 的游戏行业分析 Newsletter",
+	},
+	{
+		id: "link-elite-game-devs",
+		title: "Elite Game Developers",
+		url: "https://elitegamedevelopers.substack.com/",
+		category: "网站",
+		lang: "en",
+		desc: "游戏开发者深度访谈与商业分析 Newsletter",
+	},
+	{
+		id: "link-cowlevel",
+		title: "奶牛关",
+		url: "https://cowlevel.net/",
+		category: "网站",
+		lang: "zh",
+		desc: "中文游戏设计/开发社区",
+	},
 ];
 /**
  * 所有工具/资源链接（静态数据源）
