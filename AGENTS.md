@@ -109,9 +109,9 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 | 标签 | 布局方式 | 数据源类型 |
 |------|---------|-----------|
-| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体，125 个源，845 条 |
+| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体，126 个源，845 条 |
 | 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API，41 个源，375 条 |
-| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，203 个 |
+| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，214 个 |
 
 - 所有标签共用同一套样式，保持字体/行高/间距一致
 - 新闻/社交标签条目显示：来源名 | 标题 | 时间
@@ -119,15 +119,15 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 ## 分类体系
 
-### 新闻标签（125 个 RSS/博客源，845 条）
+### 新闻标签（126 个 RSS/博客源，845 条）
 
 侧边栏按语言筛选：全部（最多 150 条）/ 中文 / English / 日本語（各 50 条）
 
 | 语言 | 源数 | 条数 | 代表性源 |
 |------|------|------|---------|
-| English | 约 110 | ~650 | GamesIndustry.biz、Unity Blog、Godot Blog、GDC、80 Level、GameFromScratch 等 |
+| English | 约 106 | ~650 | GamesIndustry.biz、Unity Blog、Godot Blog、Game Developer、80 Level、GameFromScratch 等 |
 | 中文 | 约 12 | ~105 | 机核网、游戏陀螺、触乐、Indienova、GameLook、Necromanov、ManiaHero 等 |
-| 日本語 | 约 9 | ~90 | 4Gamer.net、AUTOMATON、電ファミニコゲーマー、GameMakers、IGDA 日本等 |
+| 日本語 | 约 8 | ~90 | ゲームメーカーズ、IndieGamesJapan、IGDA 日本、ARASHIYAMA 等 |
 
 ### 社交标签（41 个论坛/社区/社交平台源，375 条）
 
@@ -172,12 +172,12 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | YouTube | 22 | 游戏开发/设计优质 YouTube 频道 |
 | 知乎专栏 | 19 | 游戏开发/设计知乎专栏合集 |
 | Reddit | 16 | 游戏开发相关子论坛合集 |
-| 游戏设计 | 15 | 游戏设计分析/理论/教程网站 |
-| 网站 | 14 | 游戏开发综合社区/新闻站（原社区+新闻+GDC 合并） |
-| B站 | 13 | 游戏开发/设计 B 站 UP 主 |
-| 叙事/关卡/UI | 12 | 叙事设计/关卡设计/UIUX 资源与工具 |
+| 游戏设计 | 17 | 游戏设计分析/理论/教程网站 |
+| 网站 | 18 | 游戏开发综合社区/新闻站（原社区+新闻+GDC 合并） |
+| B站 | 12 | 游戏开发/设计 B 站 UP 主 |
+| 叙事/关卡/UI | 13 | 叙事设计/关卡设计/UIUX 资源与工具 |
 | 美术工具 | 11 | Aseprite/Blender/Krita 等美术工具及官方博客 |
-| 开发工具 | 9 | 工具合集、CI/CD、编辑器、Awesome 列表 |
+| 开发工具 | 13 | 工具合集、CI/CD、编辑器、Awesome 列表 |
 | 编程开发 | 7 | 游戏编程/渲染/AI/公司技术博客 |
 | 素材资源 | 7 | 免费游戏素材站 |
 | 音频工具 | 5 | BGM/SFX 工具与素材 |
@@ -337,7 +337,7 @@ src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 - **Steam API**：已移除 Steam 标签（API 间歇不可达，无法稳定抓取）
 - **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions
 - **Substack**：Substack 博客使用 `/feed` 后缀，部分域名从国内网络不可达，依赖 GH Actions
-- **npm run fetch 超时**：150+ 源中有大量不可达，本地抓取可能超时
+- **npm run fetch 超时**：167+ 源中有大量不可达，本地抓取可能超时
 - **抓取失败保留旧数据**：fetch-all.ts 实现了读上次 news.json、若新数据为空或抓取报错则保留旧数据不覆盖的兜底逻辑
 - **新装依赖**：更新使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：需确保 `tsconfig.json` 的 `include` 包含 `data` 目录
