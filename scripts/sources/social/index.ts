@@ -13,7 +13,18 @@ import {
 } from "./github";
 import { mastodonGamedev } from "./mastodon";
 import { blueskyGameDev } from "./bluesky";
-import { lemmyGamedev, lemmyGodot } from "./lemmy";
+import {
+	lemmyGamedev,
+	lemmyGodot,
+	lemmyUnity,
+	lemmyGamedesign,
+	lemmyWorldGamedev,
+	lemmyWorldGodot,
+	lemmyWorldUnreal,
+	lemmyWorldIndiegaming,
+	lemmyShitGamedev,
+	lemmyShitUnreal,
+} from "./lemmy";
 
 export const socialSources = [
 	/* 社交/社区（高时效性短内容） */
@@ -33,4 +44,12 @@ export const socialSources = [
 	/* Lemmy 联邦讨论 */
 	lemmyGamedev,
 	lemmyGodot,
+	lemmyUnity,
+	lemmyGamedesign,
+	lemmyWorldGamedev,
+	lemmyWorldGodot,
+	lemmyWorldUnreal,
+	lemmyWorldIndiegaming,
+	lemmyShitGamedev,
+	lemmyShitUnreal,
 ];

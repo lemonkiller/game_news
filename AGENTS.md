@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 150+ 数据源，GB 四色绿风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 166+ 数据源，GB 四色绿风格。
 
 ## 沟通规范
 
@@ -15,9 +15,12 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 1. **搜索可用源** -- 使用 webaio 并行搜索中英日三语游戏开发/设计相关网站、博客、RSS
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
-3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
-4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组（注意 linkSource 也需注册）
-5. **更新前端映射** -- 在 `src/App.tsx` 中更新 `LANG_MAP`（新闻源）、`SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM`（社交源）
+3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口（社交源放 `social/` 目录）
+4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组（注意 linkSource 也需注册）；社交源在 `social/index.ts` 中导出 `socialSources` 数组
+5. **更新前端映射** --
+   - 新闻源：在 `src/App.tsx` 的 `LANG_MAP` 中注册语言分类
+   - 社交源：在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 中同时注册
+   - 新增的源名必须在对应映射中注册，否则不会显示
 6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过 + `npx tsc --noEmit` 类型检查
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
 8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
@@ -30,47 +33,77 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | 标签 | 布局方式 | 数据源类型 |
 |------|---------|-----------|
 | 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体，125 个源，845 条 |
-| 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API，25 个源，335 条 |
-| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，233 个 |
+| 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API，41 个源，375 条 |
+| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，203 个 |
 
-- 所有标签共用同一套 `news-item` 样式，保持字体/行高/间距一致
+- 所有标签共用同一套样式，保持字体/行高/间距一致
 - 新闻/社交标签条目显示：来源名 | 标题 | 时间
 - 网址标签条目显示：名称 | 描述 | 域名
 
 ## 分类体系
 
-### 新闻标签（125 个 RSS/博客源）
+### 新闻标签（125 个 RSS/博客源，845 条）
 
-| 语言 | 源数 | 条数 |
+侧边栏按语言筛选：全部（最多 150 条）/ 中文 / English / 日本語（各 50 条）
+
+| 语言 | 源数 | 条数 | 代表性源 |
+|------|------|------|---------|
+| English | 约 110 | ~650 | GamesIndustry.biz、Unity Blog、Godot Blog、GDC、80 Level、GameFromScratch 等 |
+| 中文 | 约 12 | ~105 | 机核网、游戏陀螺、触乐、Indienova、GameLook、Necromanov、ManiaHero 等 |
+| 日本語 | 约 9 | ~90 | 4Gamer.net、AUTOMATON、電ファミニコゲーマー、GameMakers、IGDA 日本等 |
+
+### 社交标签（41 个论坛/社区/社交平台源，375 条）
+
+侧边栏按平台筛选：全部（最多 150 条）/ 各平台名（50 条）。没有数据的平台不显示。
+
+| 平台 | 源数 | 条数 | 数据来源 |
+|------|------|------|---------|
+| Zenn | 11 | 103 | 日本技术博客社区（11 个标签） |
+| **Lemmy** | **10** | **83** | programming.dev(4) + lemmy.world(4) + sh.itjust.works(2) 联邦社区 |
+| Hacker News | 3 | 45 | Algolia 公开 API（游戏开发 + Show HN + 原 HN） |
+| GitHub | 4 | 45 | GitHub API 搜索 + Releases（Godot/Bevy/Flax） |
+| Mastodon | 1 | 40 | gamedev.place 实例实时公开时间线 |
+| Qiita | 6 | 24 | 日本技术百科社区（6 个标签） |
+| 论坛 | 4 | 10 | ResetEra + Reddit(3) |
+| Bluesky | 1 | 0 | 被墙，GH Actions 中可用 |
+
+注：Reddit/Bluesky 从中国网络不可达，数据量为 0，但 GH Actions 上可正常抓取。
+
+### Lemmy 联邦社区详情
+
+| 源名 | 实例 | 社区 |
 |------|------|------|
-| 中文 | 14 | 105 |
-| English | 96 | 570 |
-| 日本語 | 15 | 170 |
-| **合计** | **125** | **845** |
+| Lemmy 游戏开发 | programming.dev | c/gamedev |
+| Lemmy Godot | programming.dev | c/godot |
+| Lemmy Unity | programming.dev | c/unity |
+| Lemmy 游戏设计 | programming.dev | c/game_design |
+| Lemmy 游戏开发（lemmy.world） | lemmy.world | c/gamedev |
+| Lemmy Godot（lemmy.world） | lemmy.world | c/godot |
+| Lemmy Unreal Engine | lemmy.world | c/unrealengine |
+| Lemmy 独立游戏 | lemmy.world | c/indiegaming |
+| Lemmy 游戏开发（sh.itjust.works） | sh.itjust.works | c/gamedev |
+| Lemmy Unreal Engine（sh.itjust.works） | sh.itjust.works | c/unrealengine |
 
-侧边栏按语言筛选：全部（150 条）/ 中文（50 条）/ English（50 条）/ 日本語（50 条）
-
-### 社交标签（25 个论坛/社区/社交源）
-
-| 平台 | 条数 | 包含源 |
-|------|------|--------|
-| Zenn | 103 | 11 个 Zenn 标签（日本技术博客社区） |
-| Hacker News | 70 | 原 HN + 新增 2 个 HN 社交源 |
-| Lemmy | 50 | gamedev + godot 联邦讨论社区 |
-| Mastodon | 40 | gamedev.place 实例实时动态 |
-| GitHub | 38 | 游戏开发趋势 + Godot/Bevy/Flax Release |
-| Qiita | 24 | 6 个 Qiita 标签（日本技术百科社区） |
-| 论坛 | 10 | ResetEra |
-| Reddit/Bluesky | 0 | 被墙但 GH Actions 上可用 |
-| **合计** | **335** | **25 个源** |
-
-侧边栏按平台筛选：全部（150 条）/ 各平台名（50 条）。没有数据的平台不显示在侧边栏中。
-
-### 网址标签（233 个链接，12 个分类）
-
-社区(52)、博客(34)、游戏框架/引擎(30)、游戏设计(25)、编程开发(20)、叙事/关卡/UI(16)、新闻(14)、开发工具(14)、美术工具(14)、素材资源(7)、音频工具(5)、其他(2)
+### 网址标签（203 个链接，14 个分类）
 
 侧边栏点击分类名，右侧滚动到对应位置。
+
+| 分类 | 数量 | 说明 |
+|------|------|------|
+| x.com | 34 | 游戏开发/设计名人 Twitter/X 账号，按 6 组分类 |
+| 游戏框架/引擎 | 23 | 引擎项目官网（Godot/Unity/Unreal/Defold/MonoGame 等） |
+| YouTube | 22 | 游戏开发/设计优质 YouTube 频道 |
+| 知乎专栏 | 19 | 游戏开发/设计知乎专栏合集 |
+| Reddit | 16 | 游戏开发相关子论坛合集 |
+| 游戏设计 | 15 | 游戏设计分析/理论/教程网站 |
+| 网站 | 14 | 游戏开发综合社区/新闻站（原社区+新闻+GDC 合并） |
+| B站 | 13 | 游戏开发/设计 B 站 UP 主 |
+| 叙事/关卡/UI | 12 | 叙事设计/关卡设计/UIUX 资源与工具 |
+| 美术工具 | 11 | Aseprite/Blender/Krita 等美术工具及官方博客 |
+| 开发工具 | 9 | 工具合集、CI/CD、编辑器、Awesome 列表 |
+| 编程开发 | 7 | 游戏编程/渲染/AI/公司技术博客 |
+| 素材资源 | 7 | 免费游戏素材站 |
+| 音频工具 | 5 | BGM/SFX 工具与素材 |
 
 ## 数据隔离逻辑（src/App.tsx）
 
@@ -80,22 +113,26 @@ social (socialNews)  = 仅 SOCIAL_SOURCE_NAMES 中的源
 links                = 仅开发工具链接源（按分类分组渲染）
 ```
 
-新增社交源时，需在 `SOCIAL_SOURCE_NAMES` Set 中添加源名，并在 `SOCIAL_PLATFORM` Record 中映射到平台分组。
+- `SOCIAL_SOURCE_NAMES`（Set）：标记哪些源属于社交标签
+- `SOCIAL_PLATFORM`（Record）：将社交源名映射到平台分组（用于侧边栏筛选）
+- `LANG_MAP`（Record）：将新闻源名映射到语言分类（zh/en/ja，默认 en）
+- 新增社交源时，须同时在 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 中注册
+- 新增新闻源时，在 `LANG_MAP` 中注册语言分类
 
 ## 源文件结构
 
 ```
 scripts/sources/
-  index.ts            ← 统一注册所有源到 allSources
+  index.ts            ← 统一注册所有源到 allSources，含 linkSource
   link-sources.ts     ← 网址静态链接（name 固定为 "开发工具链接"）
-  social/             ← 社交/社区源
+  social/
     index.ts          ← 导出 socialSources 数组
     hackernews.ts     ← HN Algolia 公开 API
     reddit.ts         ← Reddit JSON API（GH Actions 可用）
     github.ts         ← GitHub 搜索 + Releases API
     mastodon.ts       ← Mastodon 公开时间线
     bluesky.ts        ← Bluesky 公开搜索 API
-    lemmy.ts          ← Lemmy 联邦讨论 API
+    lemmy.ts          ← Lemmy 联邦讨论 API（多个实例/社区）
   *.ts                ← 其他 120+ 个传统 RSS 源文件
 ```
 
@@ -106,12 +143,12 @@ scripts/sources/
 - 实现 `NewsSource` 接口（name / lang / fetch）
 - name 用展示名（如 "触乐"、"4Gamer.net"）
 - lang 用对应分类（zh / en / ja）
-- fetch 返回 `NewsItem[]`，RSS 源最多 5 条，社交 API 源建议 25-50 条
+- fetch 返回 `NewsItem[]`，RSS 源最多 5 条，社交 API 源建议 10-25 条
 - 单源超时 10 秒（社交 API 源可放宽到 15 秒），失败不影响其他源
 - `link-sources.ts` 作为静态源返回 `LinkEntry[]`，需注册到 `index.ts` 的 `allSources`
 - 网址链接源（name 为 "开发工具链接"）只出现在"网址"标签下
 - 社交源放在 `scripts/sources/social/` 目录下，在 `social/index.ts` 中统一导出
-- 新增 RSS 源：在 `src/App.tsx` 的 `LANG_MAP` 注册、在 `data/news.json` 中留空后通过 fetch 自动填充
+- 新增 RSS 源：在 `src/App.tsx` 的 `LANG_MAP` 注册
 - 新增社交源：在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 注册
 - 添加无 RSS 的网站/工具/社区时，加入 `link-sources.ts` 对应分类
 - **lang 字段注意事项**：所有源必须使用 `"zh"`/`"en"`/`"ja"` 之一，不要用 `"community"`
@@ -121,8 +158,6 @@ scripts/sources/
 `scripts/utils/quotes.ts` 存放 99 条游戏开发/设计名言。
 
 ### 数据结构
-
-每条名言包含三个语言版本：
 
 ```typescript
 export interface Quote {
@@ -218,19 +253,18 @@ src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 
 ## 常见问题
 
-- **Reddit**：从中国网络不可达，但在 GH Actions 中可正常抓取（社交标签源）
-- **Cloudflare 防护**：部分源（Bluesky 等）被 Cloudflare 挡，本地和 GH Actions 都可能 403
+- **Reddit/Bluesky**：从中国网络不可达，但在 GH Actions 中可正常抓取（社交标签源）
+- **Cloudflare 防护**：部分源被 Cloudflare 挡，本地和 GH Actions 都可能 403
 - **GitHub API 频率限制**：未认证请求每小时 60 次，GH Actions 中内置认证可达 5000 次
-- **Twitter/X**：无免费公开 API，已放弃接入
+- **Twitter/X**：无免费公开 API，已放弃接入，改为静态链接
 - **Steam API**：已移除 Steam 标签（API 间歇不可达，无法稳定抓取）
 - **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions
 - **Substack**：Substack 博客使用 `/feed` 后缀，部分域名从国内网络不可达，依赖 GH Actions
-- **GitHub 分支保护**：主分支有保护，推送到 `feat/xxx` 分支再开 PR 合并
-- **Git 推送超时**：国内网络间歇性阻断 GitHub，可使用 `GIT_HTTP_TIMEOUT=3` 环境变量加速失败重试
-- **npm run fetch 超时**：150+ 源中有大量不可达，本地抓取可能超时。可用 node 脚本单独抓取特定源更新数据
+- **npm run fetch 超时**：150+ 源中有大量不可达，本地抓取可能超时
 - **抓取失败保留旧数据**：fetch-all.ts 实现了读上次 news.json、若新数据为空或抓取报错则保留旧数据不覆盖的兜底逻辑
 - **新装依赖**：更新使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：需确保 `tsconfig.json` 的 `include` 包含 `data` 目录
+- **Lemmy API**：不同版本的 Lemmy 返回结构不同，最新版 `score`/`comments` 在 `post.counts` 下，`url` 在 `post` 下。已统一始终链接到讨论帖，外部链接在描述中标注
 
 ## 项目设置
 
