@@ -12,23 +12,26 @@ export function detectLanguage(): UiLang {
 
 /** 标签页本地化标题 */
 export const TAB_LABELS: Record<UiLang, Record<string, string>> = {
-	zh: { news: "新闻", links: "网址" },
-	en: { news: "News", links: "Links" },
-	ja: { news: "ニュース", links: "URL" },
+	zh: { news: "新闻", social: "社交", links: "网址" },
+	en: { news: "News", social: "Social", links: "Links" },
+	ja: { news: "ニュース", social: "ソーシャル", links: "URL" },
 };
 
 /** 标签页悬停提示 */
 export const TAB_TIPS: Record<UiLang, Record<string, string>> = {
 	zh: {
 		news: "全部数据源按时间分组，可筛选语言",
+		social: "Reddit/HN/GitHub/Bluesky 等社交平台高时效内容",
 		links: "游戏开发工具/引擎/资源/学习链接分类索引",
 	},
 	en: {
 		news: "All sources grouped by time, filterable by language",
+		social: "Real-time content from Reddit/HN/GitHub/Bluesky",
 		links: "Game dev tools, engines, resources, and learning links",
 	},
 	ja: {
 		news: "全てのソースを時間別にグループ化、言語フィルター可能",
+		social: "Reddit/HN/GitHub/Bluesky のリアルタイムコンテンツ",
 		links: "ゲーム開発ツール/エンジン/リソース/学習リンク",
 	},
 };

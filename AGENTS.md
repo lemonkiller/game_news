@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 140+ 数据源，GB 四色绿风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 150+ 数据源，GB 四色绿风格。
 
 ## 沟通规范
 
@@ -17,7 +17,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
 3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口
 4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组（注意 linkSource 也需注册）
-5. **更新前端映射** -- 在 `src/App.tsx` 的 `LANG_MAP` 中添加语言分类映射；新增的源名必须在 `LANG_MAP` 中注册，否则不会显示
+5. **更新前端映射** -- 在 `src/App.tsx` 中更新 `LANG_MAP`（新闻源）、`SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM`（社交源）
 6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过 + `npx tsc --noEmit` 类型检查
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
 8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
@@ -25,32 +25,79 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 ## 布局说明
 
-| 标签 | 布局方式 | 数据源 |
-|------|---------|--------|
-| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 全部源合并，仅显示 1 个月内，全部=150条/单语言=50条 |
-| 网址 | 左侧分类导航 + 右侧按分类分组的链接列表 | `link-sources.ts` 静态链接 |
+导航栏三个标签：新闻 / 社交 / 网址。三个标签的数据完全独立，一条内容只出现在一个标签中。
 
-- 新闻页左侧语言筛选：全部 / 中文 / English / 日本語，点击切换内容
-- 网址页左侧分类导航：点击跳转到对应分类位置（无滚动条，约 12 个分类）
-- 新闻条目格式：来源 | 标题 | 时间
-- 网址条目格式：名称 | 描述 | 域名
-- 导航栏仅显示两个标签：新闻 / 网址，切换时名言随机变化
+| 标签 | 布局方式 | 数据源类型 |
+|------|---------|-----------|
+| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体，125 个源，845 条 |
+| 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API，25 个源，335 条 |
+| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，233 个 |
+
+- 所有标签共用同一套 `news-item` 样式，保持字体/行高/间距一致
+- 新闻/社交标签条目显示：来源名 | 标题 | 时间
+- 网址标签条目显示：名称 | 描述 | 域名
 
 ## 分类体系
 
-| 标签 | 筛选 | 说明 |
+### 新闻标签（125 个 RSS/博客源）
+
+| 语言 | 源数 | 条数 |
 |------|------|------|
-| 新闻（全部） | 语言 + 时间 | 所有语言合并，1月内，最多 150 条 |
-| 新闻（中文） | 语言 + 时间 | 仅中文源，1月内，最多 50 条 |
-| 新闻（English） | 语言 + 时间 | 仅英文源，1月内，最多 50 条 |
-| 新闻（日本語） | 语言 + 时间 | 仅日文源，1月内，最多 50 条 |
-| 网址 | 分类 | 静态链接，按分类分组展示 |
+| 中文 | 14 | 105 |
+| English | 96 | 570 |
+| 日本語 | 15 | 170 |
+| **合计** | **125** | **845** |
 
-## 网址链接分类（link-sources.ts）
+侧边栏按语言筛选：全部（150 条）/ 中文（50 条）/ English（50 条）/ 日本語（50 条）
 
-按以下 12 个分类组织，侧边栏无需滚动：
+### 社交标签（25 个论坛/社区/社交源）
 
-社区、博客、游戏框架/引擎、游戏设计、编程开发、叙事/关卡/UI、新闻、开发工具、美术工具、素材资源、音频工具、其他
+| 平台 | 条数 | 包含源 |
+|------|------|--------|
+| Zenn | 103 | 11 个 Zenn 标签（日本技术博客社区） |
+| Hacker News | 70 | 原 HN + 新增 2 个 HN 社交源 |
+| Lemmy | 50 | gamedev + godot 联邦讨论社区 |
+| Mastodon | 40 | gamedev.place 实例实时动态 |
+| GitHub | 38 | 游戏开发趋势 + Godot/Bevy/Flax Release |
+| Qiita | 24 | 6 个 Qiita 标签（日本技术百科社区） |
+| 论坛 | 10 | ResetEra |
+| Reddit/Bluesky | 0 | 被墙但 GH Actions 上可用 |
+| **合计** | **335** | **25 个源** |
+
+侧边栏按平台筛选：全部（150 条）/ 各平台名（50 条）。没有数据的平台不显示在侧边栏中。
+
+### 网址标签（233 个链接，12 个分类）
+
+社区(52)、博客(34)、游戏框架/引擎(30)、游戏设计(25)、编程开发(20)、叙事/关卡/UI(16)、新闻(14)、开发工具(14)、美术工具(14)、素材资源(7)、音频工具(5)、其他(2)
+
+侧边栏点击分类名，右侧滚动到对应位置。
+
+## 数据隔离逻辑（src/App.tsx）
+
+```
+news (recentNews)    = 所有源 - SOCIAL_SOURCE_NAMES 中的源 - 开发工具链接
+social (socialNews)  = 仅 SOCIAL_SOURCE_NAMES 中的源
+links                = 仅开发工具链接源（按分类分组渲染）
+```
+
+新增社交源时，需在 `SOCIAL_SOURCE_NAMES` Set 中添加源名，并在 `SOCIAL_PLATFORM` Record 中映射到平台分组。
+
+## 源文件结构
+
+```
+scripts/sources/
+  index.ts            ← 统一注册所有源到 allSources
+  link-sources.ts     ← 网址静态链接（name 固定为 "开发工具链接"）
+  social/             ← 社交/社区源
+    index.ts          ← 导出 socialSources 数组
+    hackernews.ts     ← HN Algolia 公开 API
+    reddit.ts         ← Reddit JSON API（GH Actions 可用）
+    github.ts         ← GitHub 搜索 + Releases API
+    mastodon.ts       ← Mastodon 公开时间线
+    bluesky.ts        ← Bluesky 公开搜索 API
+    lemmy.ts          ← Lemmy 联邦讨论 API
+  *.ts                ← 其他 120+ 个传统 RSS 源文件
+```
 
 ## 数据源规范
 
@@ -59,15 +106,15 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - 实现 `NewsSource` 接口（name / lang / fetch）
 - name 用展示名（如 "触乐"、"4Gamer.net"）
 - lang 用对应分类（zh / en / ja）
-- fetch 返回 `NewsItem[]`，RSS 源建议最多 5 条，linkSource 为静态全量
-- 单源超时 10 秒，失败不影响其他源
+- fetch 返回 `NewsItem[]`，RSS 源最多 5 条，社交 API 源建议 25-50 条
+- 单源超时 10 秒（社交 API 源可放宽到 15 秒），失败不影响其他源
 - `link-sources.ts` 作为静态源返回 `LinkEntry[]`，需注册到 `index.ts` 的 `allSources`
-- 网址链接源（linkSource 的 name 为 "开发工具链接"）只出现在"网址"标签下，不得出现在信息流中
-- 新添 RSS 源需同时在 `src/App.tsx` 的 `LANG_MAP` 注册、在 `data/news.json` 中留空后会通过 fetch 自动填充
+- 网址链接源（name 为 "开发工具链接"）只出现在"网址"标签下
+- 社交源放在 `scripts/sources/social/` 目录下，在 `social/index.ts` 中统一导出
+- 新增 RSS 源：在 `src/App.tsx` 的 `LANG_MAP` 注册、在 `data/news.json` 中留空后通过 fetch 自动填充
+- 新增社交源：在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 注册
 - 添加无 RSS 的网站/工具/社区时，加入 `link-sources.ts` 对应分类
-- **lang 字段注意事项**：
-  - community.ts 中的源过去使用 `lang: "community"`，现在必须改为 `lang: "zh"` / `"en"` / `"ja"` 之一，否则不会被 `LANG_MAP` 匹配
-  - 参见 zennGamedev 改为 `lang: "ja"` 的先例
+- **lang 字段注意事项**：所有源必须使用 `"zh"`/`"en"`/`"ja"` 之一，不要用 `"community"`
 
 ## 名言系统（三语版）
 
@@ -113,8 +160,6 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
 
 ## 黑名单（不要再添加的源）
 
-以下源已被移除或测试过但明确不适合本聚合站，记录以避免重复添加：
-
 ### 前端/网页开发类
 
 - freeCodeCamp（全栈/前端教程，非游戏开发）
@@ -131,6 +176,11 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
 
 - Ollama（本地 LLM 运行工具）
 - Anthropic Engineering Blog（Claude 工程博客）
+
+### 完全不可达
+
+- Ogre3D（RSS 彻底死亡）
+- NVIDIA Unreal Engine（RSS 彻底死亡）
 
 ## 多语言本地化系统（i18n）
 
@@ -155,15 +205,7 @@ src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 
 ### 修改 UI 字符串的位置
 
-所有 UI 字符串集中在 `src/i18n/index.ts`：
-
-```typescript
-export const NAV_TITLE: Record<UiLang, string> = { zh: "游戏新闻", en: "Game News", ja: "ゲームニュース" };
-export const TAB_LABELS: Record<UiLang, Record<string, string>> = { ... };
-export const TAB_TIPS: Record<UiLang, Record<string, string>> = { ... };
-```
-
-需要改动 UI 文案时只改这个文件即可。
+所有 UI 字符串集中在 `src/i18n/index.ts`。
 
 ### 新增语言支持
 
@@ -172,22 +214,23 @@ export const TAB_TIPS: Record<UiLang, Record<string, string>> = { ... };
 1. 在 `src/i18n/index.ts` 中 `UiLang` 类型加入 `"ko"`
 2. 在 `detectLanguage()` 中添加 `nav.startsWith("ko")` 判断
 3. 在所有 `Record<UiLang, ...>` 对象中添加 `ko` 条目
-4. 更新 `TAB_LABELS`、`TAB_TIPS`、`NAV_TITLE`、`NAV_SUBTITLE_PREFIX` 等
+4. 更新 `TAB_LABELS`（需加 social 键）、`TAB_TIPS`、`NAV_TITLE`、`NAV_SUBTITLE_PREFIX` 等
 
 ## 常见问题
 
-- **Reddit**：从中国网络不可达，已从信息流中移除，改为网址标签下的静态链接
-- **Cloudflare 防护**：部分源（Game Developer、Unreal Blog）被 Cloudflare 挡，本地和 GH Actions 都可能 403，暂时跳过
+- **Reddit**：从中国网络不可达，但在 GH Actions 中可正常抓取（社交标签源）
+- **Cloudflare 防护**：部分源（Bluesky 等）被 Cloudflare 挡，本地和 GH Actions 都可能 403
+- **GitHub API 频率限制**：未认证请求每小时 60 次，GH Actions 中内置认证可达 5000 次
+- **Twitter/X**：无免费公开 API，已放弃接入
 - **Steam API**：已移除 Steam 标签（API 间歇不可达，无法稳定抓取）
-- **中文网络屏蔽**：部分 Google 系源（Blogger）和 GFW 墙外站点本地不可达，依赖 GitHub Actions
-- **Substack**：Substack 博客使用 `/feed` 后缀，部分 Substack 域名从国内网络不可达，依赖 GH Actions
+- **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions
+- **Substack**：Substack 博客使用 `/feed` 后缀，部分域名从国内网络不可达，依赖 GH Actions
 - **GitHub 分支保护**：主分支有保护，推送到 `feat/xxx` 分支再开 PR 合并
 - **Git 推送超时**：国内网络间歇性阻断 GitHub，可使用 `GIT_HTTP_TIMEOUT=3` 环境变量加速失败重试
-- **npm run fetch 超时**：140+ 源中有大量不可达，本地抓取可能超时。可用 node 脚本单独抓取特定源更新数据
+- **npm run fetch 超时**：150+ 源中有大量不可达，本地抓取可能超时。可用 node 脚本单独抓取特定源更新数据
 - **抓取失败保留旧数据**：fetch-all.ts 实现了读上次 news.json、若新数据为空或抓取报错则保留旧数据不覆盖的兜底逻辑
-- **新装依赖**：更新 `html-scraper.ts` 等使用外部库的源时，需运行 `npm install` 安装对应包
+- **新装依赖**：更新使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：需确保 `tsconfig.json` 的 `include` 包含 `data` 目录
-- **RSS 源的 lang 字段**：community.ts 中的源必须使用 `"zh"`/`"en"`/`"ja"`，不要用 `"community"`
 
 ## 项目设置
 

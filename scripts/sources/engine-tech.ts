@@ -28,7 +28,6 @@ export const orfeasEl: NewsSource = {
 	},
 };
 
-
 /** Zenn（日本技术博客平台）的各引擎标签 */
 function makeZennSource(name: string, tag: string): NewsSource {
 	return {

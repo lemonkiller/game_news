@@ -157,6 +157,83 @@ const LANG_MAP: Record<string, Lang> = {
 
 const uiLang = detectLanguage();
 
+const SOCIAL_SOURCE_NAMES = new Set([
+	/* 新增实时社交 */
+	"Hacker News 游戏开发",
+	"HN Show 游戏",
+	"Reddit r/gamedev",
+	"Reddit r/godot",
+	"Reddit r/Unity3D",
+	"Reddit r/unrealengine",
+	"Mastodon 游戏开发",
+	"Bluesky 游戏开发",
+	"GitHub 游戏开发趋势",
+	"Godot Release",
+	"Bevy Release",
+	"Flax Release",
+	"Lemmy 游戏开发",
+	"Lemmy Godot",
+	/* 原新闻中的论坛/社区类 */
+	"Hacker News",
+	"ResetEra",
+	"Qiita ゲーム開発",
+	"Qiita ゲームデザイン",
+	"Qiita Godot",
+	"Qiita UnrealEngine",
+	"Qiita Unity",
+	"Qiita game AI",
+	"Zenn gamedev",
+	"Zenn 游戏引擎",
+	"Zenn UnrealEngine",
+	"Zenn Godot",
+	"Zenn Unity",
+	"Zenn Bevy",
+	"Zenn 游戏设计",
+	"Zenn 创作",
+	"Zenn UI/UX",
+	"Zenn 写作",
+	"Zenn UIUX设计",
+]);
+
+/** 社交源名 → 平台分组标签 */
+const SOCIAL_PLATFORM: Record<string, string> = {
+	/* 新增实时社交 */
+	"Hacker News 游戏开发": "Hacker News",
+	"HN Show 游戏": "Hacker News",
+	"Reddit r/gamedev": "论坛",
+	"Reddit r/godot": "论坛",
+	"Reddit r/Unity3D": "论坛",
+	"Reddit r/unrealengine": "论坛",
+	"Mastodon 游戏开发": "Mastodon",
+	"Bluesky 游戏开发": "Bluesky",
+	"GitHub 游戏开发趋势": "GitHub",
+	"Godot Release": "GitHub",
+	"Bevy Release": "GitHub",
+	"Flax Release": "GitHub",
+	"Lemmy 游戏开发": "Lemmy",
+	"Lemmy Godot": "Lemmy",
+	/* 原新闻中的论坛/社区类 */
+	"Hacker News": "Hacker News",
+	ResetEra: "论坛",
+	"Qiita ゲーム開発": "Qiita",
+	"Qiita ゲームデザイン": "Qiita",
+	"Qiita Godot": "Qiita",
+	"Qiita UnrealEngine": "Qiita",
+	"Qiita Unity": "Qiita",
+	"Qiita game AI": "Qiita",
+	"Zenn gamedev": "Zenn",
+	"Zenn 游戏引擎": "Zenn",
+	"Zenn UnrealEngine": "Zenn",
+	"Zenn Godot": "Zenn",
+	"Zenn Unity": "Zenn",
+	"Zenn Bevy": "Zenn",
+	"Zenn 游戏设计": "Zenn",
+	"Zenn 创作": "Zenn",
+	"Zenn UI/UX": "Zenn",
+	"Zenn 写作": "Zenn",
+	"Zenn UIUX设计": "Zenn",
+};
+
 type LangFilter = "all" | "zh" | "en" | "ja";
 
 const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
@@ -196,8 +273,9 @@ function formatItemTime(pubDate: string | undefined): string {
 }
 
 export default function App() {
-	const [view, setView] = useState<"news" | "links">("news");
+	const [view, setView] = useState<"news" | "links" | "social">("news");
 	const [langFilter, setLangFilter] = useState<LangFilter>("all");
+	const [socialFilter, setSocialFilter] = useState<string>("all");
 	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
 
 	useEffect(() => {
@@ -209,6 +287,46 @@ export default function App() {
 		return Object.entries(getLinksByCategory());
 	}, []);
 
+	/** 社交源列表（按平台筛选） */
+	const socialNews = useMemo(() => {
+		const sources = data.sources as unknown as Record<string, NewsItem[]>;
+		const items: (NewsItem & { sourceName: string })[] = [];
+
+		for (const [name, sourceItems] of Object.entries(sources)) {
+			if (!SOCIAL_SOURCE_NAMES.has(name)) continue;
+			const platform = SOCIAL_PLATFORM[name];
+			if (socialFilter !== "all" && platform !== socialFilter) continue;
+			for (const item of sourceItems) {
+				if (!item.url) continue;
+				items.push({
+					...item,
+					sourceName: item.sourceName || name,
+				});
+			}
+		}
+
+		items.sort((a, b) => {
+			const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+			const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+			return tb - ta;
+		});
+
+		const maxItems = socialFilter === "all" ? 150 : 50;
+		return items.slice(0, maxItems);
+	}, [socialFilter]);
+
+	/** 有数据的社交平台列表（用于动态生成侧边栏） */
+	const socialPlatforms = useMemo(() => {
+		const sources = data.sources as unknown as Record<string, NewsItem[]>;
+		const platforms = new Set<string>();
+		for (const [name, sourceItems] of Object.entries(sources)) {
+			if (!SOCIAL_SOURCE_NAMES.has(name)) continue;
+			const platform = SOCIAL_PLATFORM[name];
+			if (sourceItems.length > 0) platforms.add(platform);
+		}
+		return ["all", ...Array.from(platforms).sort()];
+	}, []);
+
 	/** 按语言筛选的新闻列表（全部150条/单语言50条） */
 	const recentNews = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
@@ -216,6 +334,7 @@ export default function App() {
 
 		for (const [name, sourceItems] of Object.entries(sources)) {
 			if (name === "开发工具链接") continue;
+			if (SOCIAL_SOURCE_NAMES.has(name)) continue;
 			const l = LANG_MAP[name] || "en";
 			if (langFilter !== "all" && l !== langFilter) continue;
 
@@ -308,6 +427,48 @@ export default function App() {
 								))}
 							</section>
 						))}
+					</div>
+				</main>
+			) : view === "social" ? (
+				<main className="links-page">
+					<nav className="links-sidebar">
+						{socialPlatforms.map((p) => (
+							<button
+								key={p}
+								className={`sidebar-link${socialFilter === p ? " active" : ""}`}
+								onClick={() => setSocialFilter(p)}
+							>
+								{p === "all" ? "全部" : p}
+							</button>
+						))}
+					</nav>
+					<div
+						ref={contentRef}
+						key={"social-" + socialFilter}
+						className="links-content"
+					>
+						<div className="time-group">
+							{socialNews.length === 0 && (
+								<div className="news-empty">
+									暂无内容（需在 GH Actions 中抓取）
+								</div>
+							)}
+							{socialNews.map((item) => (
+								<a
+									key={item.id}
+									className="news-item"
+									href={item.url}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span className="news-source">{item.sourceName}</span>
+									<span className="news-title">{item.title}</span>
+									<span className="news-time">
+										{formatItemTime(item.pubDate)}
+									</span>
+								</a>
+							))}
+						</div>
 					</div>
 				</main>
 			) : (
