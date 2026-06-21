@@ -211,7 +211,7 @@ export default function App() {
 		return Object.entries(getLinksByCategory());
 	}, []);
 
-	/** 按语言筛选后的最近50条新闻 */
+	/** 按语言筛选的新闻列表（全部150条/单语言50条） */
 	const recentNews = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
 		const items: (NewsItem & { sourceName: string })[] = [];
@@ -237,7 +237,8 @@ export default function App() {
 			return tb - ta;
 		});
 
-		return items.slice(0, 50);
+		const maxItems = langFilter === "all" ? 150 : 50;
+		return items.slice(0, maxItems);
 	}, [langFilter]);
 
 	const contentRef = useRef<HTMLDivElement>(null);
