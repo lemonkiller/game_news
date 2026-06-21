@@ -23,8 +23,8 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
    - 新增的源名必须在对应映射中注册，否则不会显示
 6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过 + `npx tsc --noEmit` 类型检查
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
-8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
-9. **合并后操作** -- 合并 master 后需检查 `link-sources.ts` 是否在 `index.ts` 的 `allSources` 中注册
+8. **提交推送** -- 在 `develop` 分支上开发和推送，`git add` + `git commit` + `git push origin master:develop`
+9. **合并后操作** -- 在 GitHub 上创建 PR 合并到 master，合并后需检查 `link-sources.ts` 是否在 `index.ts` 的 `allSources` 中注册
 10. **更新信息源列表** -- 每次新增/修改/删除信息源后，运行 `npm run fetch` 刷新数据，然后执行以下命令更新 `sources-list.md`：
 
     ```bash

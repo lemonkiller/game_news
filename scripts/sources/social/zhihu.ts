@@ -60,10 +60,12 @@ async function searchZhihu(query: string, label: string): Promise<NewsItem[]> {
 
 		return data.Data.Items.slice(0, 10).map((item, i) => {
 			// 清理 URL 中的 utm 参数
-			const cleanUrl = item.Url?.replace(/\?utm_.*$/, "") || "https://www.zhihu.com/";
+			const cleanUrl =
+				item.Url?.replace(/\?utm_.*$/, "") || "https://www.zhihu.com/";
 			// 截取内容摘要（最多 200 字）
 			const summary = item.ContentText
-				? item.ContentText.replace(/\s+/g, " ").slice(0, 200) + (item.ContentText.length > 200 ? "..." : "")
+				? item.ContentText.replace(/\s+/g, " ").slice(0, 200) +
+					(item.ContentText.length > 200 ? "..." : "")
 				: "";
 
 			return {
