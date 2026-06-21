@@ -28,6 +28,8 @@ jobs:
       - run: npm ci
       - name: 抓取所有数据源
         run: npm run fetch
+        env:
+          ZHIHU_ACCESS_SECRET: \${{ secrets.ZHIHU_ACCESS_SECRET }}
       - name: TypeScript 类型检查
         run: npx tsc --noEmit
       - name: 构建前端
