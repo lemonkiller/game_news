@@ -28,49 +28,6 @@ export const orfeasEl: NewsSource = {
 	},
 };
 
-export const ogre3d: NewsSource = {
-	name: "Ogre3D",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText("https://www.ogre3d.org/feed");
-		const items = parseRSS(xml);
-		return items.slice(0, 10).map((item) => ({
-			id: getGUID(item),
-			title: item.title,
-			url: item.link,
-			pubDate: item.pubDate,
-			extra: {
-				info: relativeTime(item.pubDate),
-				hover: item.description
-					? stripHtml(item.description).slice(0, 200)
-					: undefined,
-			},
-		}));
-	},
-};
-
-export const nvidiaUe: NewsSource = {
-	name: "NVIDIA Unreal Engine",
-	lang: "en",
-	fetch: async () => {
-		const xml = await fetchText(
-			"https://developer.nvidia.com/blog/tag/unreal-engine/feed/",
-		);
-		const items = parseRSS(xml);
-		return items.slice(0, 10).map((item) => ({
-			id: getGUID(item),
-			title: item.title,
-			url: item.link,
-			pubDate: item.pubDate,
-			extra: {
-				info: relativeTime(item.pubDate),
-				hover: item.description
-					? stripHtml(item.description).slice(0, 200)
-					: undefined,
-			},
-		}));
-	},
-};
 
 /** Zenn（日本技术博客平台）的各引擎标签 */
 function makeZennSource(name: string, tag: string): NewsSource {

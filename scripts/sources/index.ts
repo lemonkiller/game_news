@@ -112,8 +112,6 @@ import {
 import { unrealBlog, gridSageGames } from "./gamedev-news";
 import {
 	orfeasEl,
-	ogre3d,
-	nvidiaUe,
 	zennGameEngine,
 	zennUnreal,
 	zennGodot,
@@ -240,8 +238,6 @@ export const allSources: NewsSource[] = [
 	defold,
 	o3de,
 	orfeasEl,
-	ogre3d,
-	nvidiaUe,
 	/* 引擎技术博客（日文） */
 	zennGameEngine,
 	zennUnreal,

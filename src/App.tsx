@@ -43,8 +43,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Chaotican Writer": "en",
 	"New to Narrative": "en",
 	"Orfeas Eleftheriou": "en",
-	Ogre3D: "en",
-	"NVIDIA Unreal Engine": "en",
 	"Zenn 游戏引擎": "ja",
 	"Zenn UnrealEngine": "ja",
 	"Zenn Godot": "ja",
