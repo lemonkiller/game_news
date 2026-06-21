@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 166+ 数据源，GB 四色绿风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 167+ 数据源，GB 四色绿风格。
 
 ## 沟通规范
 
