@@ -250,7 +250,11 @@ export default function App() {
 					</nav>
 					<div className="links-content">
 						{linkCategories.map(([category, items]) => (
-							<section key={category} id={`cat-${category}`} className="link-category">
+							<section
+								key={category}
+								id={`cat-${category}`}
+								className="link-category"
+							>
 								<h2 className="link-category-title">
 									{category}
 									<span className="cat-count">{items.length}</span>
