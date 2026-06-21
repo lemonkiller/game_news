@@ -85,8 +85,9 @@ import { gamemakers } from "./gamemakers";
 import { indieGamesJapan } from "./indiegamesjapan";
 import { igdaJapan } from "./igda-japan";
 import { indieGamesJpDev } from "./indiegamesjp-dev";
+import { fabienSanglard, sirlin, lizEngland, twoDGameArtGuru, gamesByManuel } from "./new-blogs";
 import { gameDeveloper } from "./game-developer";
-import { hysblog } from "./hysblog";
+import { hysblog} from "./hysblog";
 import { arashiyama } from "./arashiyama";
 import { aiming } from "./aiming";
 import { greeTech } from "./gree-tech";
@@ -160,6 +161,11 @@ export const allSources: NewsSource[] = [
 	topHatGames,
 	lostGarden,
 	gamedevUnchained,
+	fabienSanglard,
+	sirlin,
+	lizEngland,
+	twoDGameArtGuru,
+	gamesByManuel,
 	/* 中文 */
 	gcores,
 	youxituoluo,

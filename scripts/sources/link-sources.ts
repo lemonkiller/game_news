@@ -1805,6 +1805,108 @@ const links: LinkEntry[] = [
 		lang: "zh",
 		desc: "中文游戏设计/开发社区",
 	},
+
+	/* ===== 编程开发 ===== */
+	{
+		id: "link-riot-eng",
+		title: "Riot Games Engineering",
+		url: "https://engineering.riotgames.com/",
+		category: "编程开发",
+		lang: "en",
+		desc: "Riot 技术博客，LOL/Valorant 的技术实践",
+	},
+	{
+		id: "link-fabien-sanglard",
+		title: "Fabien Sanglard",
+		url: "https://fabiensanglard.net/",
+		category: "编程开发",
+		lang: "en",
+		desc: "游戏引擎源码深度逆向分析（Quake/DOOM 等）",
+	},
+	{
+		id: "link-tom-looman",
+		title: "Tom Looman",
+		url: "https://www.tomlooman.com/",
+		category: "编程开发",
+		lang: "en",
+		desc: "Unreal Engine 系统教程与性能优化",
+	},
+	{
+		id: "link-internal-pointers",
+		title: "Internal Pointers",
+		url: "https://www.internalpointers.com/",
+		category: "编程开发",
+		lang: "en",
+		desc: "C++ 与编程底层技术深度文章",
+	},
+	{
+		id: "link-gabriel-gambetta",
+		title: "Gabriel Gambetta",
+		url: "https://www.gabrielgambetta.com/",
+		category: "编程开发",
+		lang: "en",
+		desc: "多人游戏联网与计算机图形学经典教程",
+	},
+	{
+		id: "link-adrian-courreges",
+		title: "Adrian Courreges",
+		url: "https://www.adriancourreges.com/",
+		category: "编程开发",
+		lang: "en",
+		desc: "3A 游戏图形技术拆解（MGS V/DOOM/战神等）",
+	},
+	{
+		id: "link-box2d",
+		title: "Box2D (Erin Catto)",
+		url: "https://box2d.org/",
+		category: "编程开发",
+		lang: "en",
+		desc: "物理引擎开发者博客，GDC 演讲",
+	},
+	{
+		id: "link-evan-todd",
+		title: "Evan Todd",
+		url: "https://etodd.io/",
+		category: "编程开发",
+		lang: "en",
+		desc: "「Poor Man's」系列，独立游戏工具开发",
+	},
+	{
+		id: "link-ben-ui",
+		title: "Ben UI",
+		url: "https://benui.ca/",
+		category: "编程开发",
+		lang: "en",
+		desc: "Unreal Engine C++ UI 教程",
+	},
+
+	/* ===== 游戏设计 ===== */
+	{
+		id: "link-liz-england",
+		title: "Liz England",
+		url: "https://lizengland.com/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "AAA 游戏设计师（Respawn/微软/Insomniac）",
+	},
+	{
+		id: "link-sirlin",
+		title: "Sirlin.net",
+		url: "https://www.sirlin.net/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "格斗游戏设计理论（Street Fighter HD Remix 设计师）",
+	},
+
+	/* ===== 游戏框架/引擎 ===== */
+	{
+		id: "link-chickensoft",
+		title: "Chickensoft",
+		url: "https://chickensoft.games/",
+		category: "游戏框架/引擎",
+		lang: "en",
+		desc: "Godot/C# 游戏架构博客",
+	},
 ];
 /**
  * 所有工具/资源链接（静态数据源）
