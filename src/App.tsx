@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import data from "../data/news.json";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -224,6 +224,16 @@ export default function App() {
 		return counts as Record<Lang, number>;
 	}, []);
 
+	const contentRef = useRef<HTMLDivElement>(null);
+
+	function scrollToCategory(category: string) {
+		const el = document.getElementById(`cat-${category}`);
+		if (el && contentRef.current) {
+			const top = el.getBoundingClientRect().top - contentRef.current.getBoundingClientRect().top + contentRef.current.scrollTop - 12;
+			contentRef.current.scrollTo({ top, behavior: "smooth" });
+		}
+	}
+
 	return (
 		<div className="app">
 			<Navbar
@@ -243,12 +253,16 @@ export default function App() {
 								key={category}
 								className="sidebar-link"
 								href={`#cat-${category}`}
+								onClick={(e) => {
+									e.preventDefault();
+									scrollToCategory(category);
+								}}
 							>
 								{category}
 							</a>
 						))}
 					</nav>
-					<div className="links-content">
+					<div ref={contentRef} className="links-content">
 						{linkCategories.map(([category, items]) => (
 							<section
 								key={category}
