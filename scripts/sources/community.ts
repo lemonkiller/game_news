@@ -197,17 +197,6 @@ export const redditGameEngines = makeRedditSource(
 
 /* ========== 英文论坛 ========== */
 
-export const resetera: NewsSource = {
-	name: "ResetEra",
-	lang: "community",
-	fetch: async () => {
-		const xml = await fetchText(
-			"https://www.resetera.com/forums/gaming.2/index.rss",
-		);
-		return toNewsItems(parseRSS(xml)).slice(0, 10);
-	},
-};
-
 /* ========== 中文游戏开发平台 ========== */
 
 async function fetchRSS(url: string): Promise<ReturnType<typeof toNewsItems>> {

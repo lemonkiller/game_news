@@ -22,7 +22,6 @@ import { concernedApe } from "./concerned-ape";
 import { capcomNews } from "./capcom-news";
 import { ludeon } from "./ludeon";
 import {
-	resetera,
 	qiitaGameDev,
 	qiitaGameDesign,
 	qiitaGodot,
@@ -217,7 +216,6 @@ export const allSources: NewsSource[] = [
 	keithBurgun,
 	gdkeys,
 	/* 社区 */
-	resetera,
 	qiitaGameDev,
 	qiitaGameDesign,
 	qiitaGodot,

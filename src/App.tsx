@@ -101,7 +101,6 @@ const LANG_MAP: Record<string, Lang> = {
 	"Push to Talk": "en",
 	Distractionware: "en",
 	设计者笔记: "zh",
-	ResetEra: "en",
 	"AI and Games": "en",
 	"NVIDIA Game Dev": "en",
 	"Sorceress Games": "en",
@@ -183,7 +182,6 @@ const SOCIAL_SOURCE_NAMES = new Set([
 	"Lemmy Unreal Engine（sh.itjust.works）",
 	/* 原新闻中的论坛/社区类 */
 	"Hacker News",
-	"ResetEra",
 	"Qiita ゲーム開発",
 	"Qiita ゲームデザイン",
 	"Qiita Godot",
@@ -230,7 +228,6 @@ const SOCIAL_PLATFORM: Record<string, string> = {
 	"Lemmy Unreal Engine（sh.itjust.works）": "Lemmy",
 	/* 原新闻中的论坛/社区类 */
 	"Hacker News": "Hacker News",
-	ResetEra: "论坛",
 	"Qiita ゲーム開発": "Qiita",
 	"Qiita ゲームデザイン": "Qiita",
 	"Qiita Godot": "Qiita",

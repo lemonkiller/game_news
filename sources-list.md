@@ -37,7 +37,7 @@
 | Reddit r/godot | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/Unity3D | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/unrealengine | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
-| ResetEra | 社交 | en | scripts/sources/community.ts | 10 | Mon, 15 Ju |
+| ResetEra | 社交 | en | - | 10 | Mon, 15 Ju |
 | Zenn 创作 | 社交 | en | scripts/sources/design-tech.ts | 3 | Tue, 14 Ap |
 | Zenn 写作 | 社交 | en | scripts/sources/design-tech.ts | 10 | Thu, 11 Ju |
 | Zenn 游戏设计 | 社交 | en | scripts/sources/design-tech.ts | 10 | Wed, 29 Ap |
