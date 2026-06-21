@@ -61,7 +61,15 @@ body::before {
 }
 
 /* === 导航栏（黑绿边框） === */
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	overflow: hidden;
+}
+
 .navbar {
+	flex-shrink: 0;
 	position: sticky;
 	top: 0;
 	z-index: 100;
@@ -244,9 +252,8 @@ body::before {
 .links-page {
 	flex: 1;
 	display: flex;
-	max-width: 100%;
 	width: 100%;
-	height: calc(100vh - 56px);
+	overflow: hidden;
 }
 
 /* 左侧分类导航 */
@@ -256,9 +263,6 @@ body::before {
 	background: var(--gb-dark);
 	border-right: 2px solid var(--gb-darkest);
 	padding: 8px 0;
-	position: sticky;
-	top: 56px;
-	height: calc(100vh - 56px);
 	overflow-y: auto;
 }
 .links-sidebar::-webkit-scrollbar {
@@ -287,14 +291,6 @@ body::before {
 }
 
 /* 侧边栏节标题 */
-.sidebar-section {
-	font-family: var(--font-body);
-	font-size: 16px;
-	padding: 14px 16px 6px;
-	color: var(--gb-light);
-	font-weight: bold;
-}
-
 /* 侧边栏计数 */
 .sidebar-count {
 	font-size: 14px;

@@ -268,8 +268,6 @@ export default function App() {
 		}
 	}
 
-
-
 	return (
 		<div className="app">
 			<Navbar
@@ -332,7 +330,6 @@ export default function App() {
 			) : (
 				<main className="links-page">
 					<nav className="links-sidebar">
-						<div className="sidebar-section">语言</div>
 						{FILTER_KEYS.map((k) => (
 							<a
 								key={k}
@@ -350,10 +347,6 @@ export default function App() {
 					</nav>
 					<div className="links-content news-content">
 						<div className="time-group">
-							<h3 className="time-title">
-								1月内
-								<span className="time-count">{recentNews.length}</span>
-							</h3>
 							{recentNews.length === 0 && (
 								<div className="news-empty">暂无内容</div>
 							)}
