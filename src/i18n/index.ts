@@ -12,38 +12,23 @@ export function detectLanguage(): UiLang {
 
 /** 标签页本地化标题 */
 export const TAB_LABELS: Record<UiLang, Record<string, string>> = {
-	zh: { all: "全部", zh: "中文", en: "English", ja: "日本語", links: "网址" },
-	en: {
-		all: "All",
-		zh: "Chinese",
-		en: "English",
-		ja: "日本語",
-		links: "Links",
-	},
-	ja: { all: "全て", zh: "中文", en: "English", ja: "日本語", links: "URL" },
+	zh: { news: "新闻", links: "网址" },
+	en: { news: "News", links: "Links" },
+	ja: { news: "ニュース", links: "URL" },
 };
 
 /** 标签页悬停提示 */
 export const TAB_TIPS: Record<UiLang, Record<string, string>> = {
 	zh: {
-		all: "全部数据源合并，按时间排序的完整信息流",
-		zh: "中文游戏开发/设计新闻与社区内容",
-		en: "英文游戏开发/设计新闻与社区内容",
-		ja: "日文游戏开发/设计新闻与社区内容",
+		news: "全部数据源按时间分组，可筛选语言",
 		links: "游戏开发工具/引擎/资源/学习链接分类索引",
 	},
 	en: {
-		all: "All sources merged, sorted by time",
-		zh: "Chinese game dev/design news and community",
-		en: "English game dev/design news and community",
-		ja: "Japanese game dev/design news and community",
+		news: "All sources grouped by time, filterable by language",
 		links: "Game dev tools, engines, resources, and learning links",
 	},
 	ja: {
-		all: "全てのソースを統合、時間順に表示",
-		zh: "中国語のゲーム開発/デザインニュース",
-		en: "英語のゲーム開発/デザインニュース",
-		ja: "日本語のゲーム開発/デザインニュース",
+		news: "全てのソースを時間別にグループ化、言語フィルター可能",
 		links: "ゲーム開発ツール/エンジン/リソース/学習リンク",
 	},
 };

@@ -3,10 +3,9 @@ import data from "../data/news.json";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
-import { relativeTime } from "../scripts/utils/rss-parser";
 import { getLinksByCategory } from "../scripts/sources/link-sources";
 import { quotes } from "../scripts/utils/quotes";
-import { detectLanguage, TAB_LABELS } from "./i18n";
+import { detectLanguage } from "./i18n";
 
 const LANG_MAP: Record<string, Lang> = {
 	"GamesIndustry.biz": "en",
@@ -161,68 +160,115 @@ const LANG_MAP: Record<string, Lang> = {
 
 const uiLang = detectLanguage();
 
+type LangFilter = "all" | "zh" | "en" | "ja";
+
+const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
+
+/** 判断条目属于哪个时间分组 */
+function getTimeGroup(pubDate: string | undefined): "today" | "month" | "earlier" {
+	if (!pubDate) return "earlier";
+	const d = new Date(pubDate);
+	if (isNaN(d.getTime())) return "earlier";
+	const now = new Date();
+	const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+	if (d >= todayStart) return "today";
+	if (d >= monthStart) return "month";
+	return "earlier";
+}
+
+/** 格式化时间显示 */
+function formatItemTime(pubDate: string | undefined): string {
+	if (!pubDate) return "";
+	const d = new Date(pubDate);
+	if (isNaN(d.getTime())) return pubDate;
+	const diff = Date.now() - d.getTime();
+	const mins = Math.floor(diff / 60000);
+	if (mins < 1) return "刚刚";
+	if (mins < 60) return `${mins} 分钟前`;
+	const hours = Math.floor(mins / 60);
+	if (hours < 24) return `${hours} 小时前`;
+	const days = Math.floor(hours / 24);
+	if (days < 30) return `${days} 天前`;
+	const month = d.getMonth() + 1;
+	const day = d.getDate();
+	return `${String(month).padStart(2, "0")}月${String(day).padStart(2, "0")}日`;
+}
+
 export default function App() {
-	const [lang, setLang] = useState<Lang>("all");
+	const [view, setView] = useState<"news" | "links">("news");
+	const [langFilter, setLangFilter] = useState<LangFilter>("all");
 	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
 
 	useEffect(() => {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-	}, [lang]);
+	}, []);
 
-	const labels = uiLang ? TAB_LABELS[uiLang] : TAB_LABELS.en;
-
-	const isLinks = lang === "links";
+	const FILTER_LABELS: Record<LangFilter, string> = {
+		all: "全部",
+		zh: "中文",
+		en: "English",
+		ja: "日本語",
+	};
 
 	/** 所有链接数据（按分类分组） */
 	const linkCategories = useMemo(() => {
-		if (!isLinks) return [];
 		return Object.entries(getLinksByCategory());
-	}, [isLinks]);
+	}, []);
 
-	/** 按时间线模式：合并所有源，排序，每 5 条一组 */
-	const timelineChunks = useMemo(() => {
-		const sources = data.sources as unknown as Record<string, NewsItem[]>;
-		const all: (NewsItem & { _ts: number })[] = [];
-
-		for (const [name, items] of Object.entries(sources)) {
-			const l = LANG_MAP[name] || "en";
-			if (name === "开发工具链接") continue; // 网址标签专用，不出现在信息流
-			if (lang !== "all" && l !== lang) continue;
-
-			for (const item of items) {
-				if (!item.url) continue; // 跳过无链接条目
-				const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
-				all.push({
-					...item,
-					sourceName: item.sourceName || name,
-					_ts: ts,
-				});
-			}
-		}
-
-		all.sort((a, b) => b._ts - a._ts);
-
-		const chunks: NewsItem[][] = [];
-		for (let i = 0; i < all.length; i += 5) {
-			chunks.push(all.slice(i, i + 5));
-		}
-		return chunks;
-	}, [lang]);
-
+	/** 各语言条目数 */
 	const langCounts = useMemo(() => {
 		const sources = data.sources as unknown as Record<string, NewsItem[]>;
-		const counts: Record<string, number> = { all: 0 };
+		const counts: Record<string, number> = { all: 0, zh: 0, en: 0, ja: 0 };
 		for (const [name, items] of Object.entries(sources)) {
+			if (name === "开发工具链接") continue;
 			const l = LANG_MAP[name] || "en";
 			counts[l] = (counts[l] || 0) + items.length;
 			counts.all += items.length;
 		}
-		const links = getLinksByCategory();
-		const linkCount = Object.values(links).flat().length;
-		counts.links = linkCount;
-		counts.all += linkCount;
-		return counts as Record<Lang, number>;
+		return counts;
 	}, []);
+
+	/** 总链接数 */
+	const linksCount = useMemo(() => {
+		return Object.values(getLinksByCategory()).flat().length;
+	}, []);
+
+	/** 按语言筛选并按时间分组的新闻列表 */
+	const timeGroups = useMemo(() => {
+		const sources = data.sources as unknown as Record<string, NewsItem[]>;
+		const groups: Record<string, (NewsItem & { sourceName: string })[]> = {
+			today: [],
+			month: [],
+			earlier: [],
+		};
+
+		for (const [name, items] of Object.entries(sources)) {
+			if (name === "开发工具链接") continue;
+			const l = LANG_MAP[name] || "en";
+			if (langFilter !== "all" && l !== langFilter) continue;
+
+			for (const item of items) {
+				if (!item.url) continue;
+				const group = getTimeGroup(item.pubDate);
+				groups[group].push({
+					...item,
+					sourceName: item.sourceName || name,
+				});
+			}
+		}
+
+		// 每个分组内按时间倒序
+		for (const g of Object.keys(groups)) {
+			groups[g].sort((a, b) => {
+				const ta = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+				const tb = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+				return tb - ta;
+			});
+		}
+
+		return groups;
+	}, [langFilter]);
 
 	const contentRef = useRef<HTMLDivElement>(null);
 
@@ -233,18 +279,24 @@ export default function App() {
 		}
 	}
 
+	const GROUP_LABELS: Record<string, string> = {
+		today: "今天",
+		month: "本月",
+		earlier: "更早",
+	};
+
 	return (
 		<div className="app">
 			<Navbar
-				lang={lang}
-				onLangChange={setLang}
-				counts={langCounts}
-				labels={labels}
+				view={view}
+				onViewChange={setView}
+				newsCount={langCounts.all}
+				linksCount={linksCount}
 				updatedAt={data.updatedAt}
 				quote={dailyQuote}
 				uiLang={uiLang}
 			/>
-			{isLinks ? (
+			{view === "links" ? (
 				<main className="links-page">
 					<nav className="links-sidebar">
 						{linkCategories.map(([category]) => (
@@ -293,27 +345,55 @@ export default function App() {
 					</div>
 				</main>
 			) : (
-				<main className="timeline">
-					{timelineChunks.map((chunk, i) => (
-						<div key={i} className="time-card">
-							{chunk.map((item) => (
-								<a
-									key={item.id}
-									className="time-row"
-									href={item.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									title={item.extra?.hover}
-								>
-									<span className="row-title">{item.title}</span>
-									<span className="row-source">{item.sourceName}</span>
-									<span className="row-time">
-										{item.extra?.info || relativeTime(item.pubDate)}
-									</span>
-								</a>
-							))}
-						</div>
-					))}
+				<main className="links-page">
+					<nav className="links-sidebar">
+						<div className="sidebar-section">语言</div>
+						{FILTER_KEYS.map((k) => (
+							<a
+								key={k}
+								className={`sidebar-link${langFilter === k ? " active" : ""}`}
+								href="#"
+								onClick={(e) => {
+									e.preventDefault();
+									setLangFilter(k);
+								}}
+							>
+								{FILTER_LABELS[k]}
+								<span className="sidebar-count">{langCounts[k]}</span>
+							</a>
+						))}
+					</nav>
+					<div className="links-content news-content">
+						{(["today", "month", "earlier"] as const).map((g) => {
+							const items = timeGroups[g];
+							if (!items.length) return null;
+							return (
+								<div key={g} className="time-group">
+									<h3 className="time-title">
+										{GROUP_LABELS[g]}
+										<span className="time-count">{items.length}</span>
+									</h3>
+									{items.map((item) => (
+										<a
+											key={item.id}
+											className="news-item"
+											href={item.url}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<span className="news-source">
+												{item.sourceName}
+											</span>
+											<span className="news-title">{item.title}</span>
+											<span className="news-time">
+												{formatItemTime(item.pubDate)}
+											</span>
+										</a>
+									))}
+								</div>
+							);
+						})}
+					</div>
 				</main>
 			)}
 			<Footer uiLang={uiLang} />

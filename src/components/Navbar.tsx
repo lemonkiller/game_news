@@ -1,28 +1,28 @@
-import type { Lang } from "../../scripts/utils/types";
 import type { Quote } from "../../scripts/utils/quotes";
 import type { UiLang } from "../i18n";
 import {
 	NAV_TITLE,
 	NAV_SUBTITLE_PREFIX,
 	NAV_TITLE_TIP,
+	TAB_LABELS,
 	TAB_TIPS,
 } from "../i18n";
 
 interface NavbarProps {
-	lang: Lang;
-	onLangChange: (lang: Lang) => void;
-	counts: Record<Lang, number>;
+	view: "news" | "links";
+	onViewChange: (view: "news" | "links") => void;
+	newsCount: number;
+	linksCount: number;
 	updatedAt: string;
-	labels: Record<string, string>;
 	quote: Quote | null;
 	uiLang: UiLang;
 }
 
 export default function Navbar({
-	lang,
-	onLangChange,
-	counts,
-	labels,
+	view,
+	onViewChange,
+	newsCount,
+	linksCount,
 	updatedAt,
 	quote,
 	uiLang,
@@ -44,7 +44,8 @@ export default function Navbar({
 		}
 	}
 
-	const tabs: Lang[] = ["all", "zh", "en", "ja", "links"];
+	const tabs: ("news" | "links")[] = ["news", "links"];
+	const labels = TAB_LABELS[uiLang] || TAB_LABELS.en;
 	const tabTips = TAB_TIPS[uiLang] || TAB_TIPS.en;
 	const title = NAV_TITLE[uiLang] || NAV_TITLE.en;
 	const subPrefix = NAV_SUBTITLE_PREFIX[uiLang] || NAV_SUBTITLE_PREFIX.en;
@@ -75,15 +76,17 @@ export default function Navbar({
 				</div>
 
 				<div className="navbar-tabs">
-					{tabs.map((l) => (
+					{tabs.map((v) => (
 						<button
-							key={l}
-							className={`tab ${lang === l ? "active" : ""}`}
-							title={tabTips[l]}
-							onClick={() => onLangChange(l)}
+							key={v}
+							className={`tab ${view === v ? "active" : ""}`}
+							title={tabTips[v]}
+							onClick={() => onViewChange(v)}
 						>
-							{labels[l]}
-							<span className="tab-count">{counts[l]}</span>
+							{labels[v]}
+							<span className="tab-count">
+								{v === "news" ? newsCount : linksCount}
+							</span>
 						</button>
 					))}
 				</div>
