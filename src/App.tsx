@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import data from "../data/news.json";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import type { NewsItem, Lang } from "../scripts/utils/types";
 import { getLinksByCategory } from "../scripts/sources/link-sources";
 import { quotes } from "../scripts/utils/quotes";
@@ -377,7 +376,6 @@ export default function App() {
 					</div>
 				</main>
 			)}
-			<Footer uiLang={uiLang} />
 		</div>
 	);
 }

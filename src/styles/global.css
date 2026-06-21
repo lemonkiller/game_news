@@ -377,6 +377,7 @@ body::before {
 }
 .news-title {
 	font-size: 17px;
+	font-family: inherit;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -387,6 +388,7 @@ body::before {
 }
 .news-time {
 	font-size: 13px;
+	font-family: inherit;
 	color: var(--gb-dark);
 	text-align: right;
 	white-space: nowrap;
@@ -460,6 +462,7 @@ body::before {
 
 .link-item-name {
 	font-size: 17px;
+	font-family: inherit;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
