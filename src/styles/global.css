@@ -355,10 +355,11 @@ body::before {
 	align-items: center;
 	padding: 10px 18px;
 	border-bottom: 1px solid var(--gb-dark);
-	text-decoration: none;
 	color: var(--gb-darkest);
 	cursor: pointer;
 	transition: background 0.08s;
+	text-decoration: none;
+	font-weight: 400;
 }
 .news-item:last-child {
 	border-bottom: none;
@@ -448,6 +449,7 @@ body::before {
 	cursor: pointer;
 	transition: background 0.08s;
 	text-decoration: none;
+	font-weight: 400;
 }
 .link-item:last-child {
 	border-bottom: none;

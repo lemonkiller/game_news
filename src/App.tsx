@@ -308,7 +308,7 @@ export default function App() {
 							</a>
 						))}
 					</nav>
-					<div ref={contentRef} className="links-content">
+					<div ref={contentRef} key="links" className="links-content">
 						{linkCategories.map(([category, items]) => (
 							<section
 								key={category}
@@ -353,7 +353,7 @@ export default function App() {
 							</button>
 						))}
 					</nav>
-					<div ref={contentRef} className="links-content">
+					<div ref={contentRef} key={langFilter} className="links-content">
 						<div className="time-group">
 							{recentNews.length === 0 && (
 								<div className="news-empty">暂无内容</div>
