@@ -13,6 +13,7 @@ import {
 } from "./github";
 import { mastodonGamedev } from "./mastodon";
 import { blueskyGameDev } from "./bluesky";
+import { zhihuGameDev, zhihuGameDesign, zhihuIndie } from "./zhihu";
 import {
 	lemmyGamedev,
 	lemmyGodot,
@@ -52,4 +53,8 @@ export const socialSources = [
 	lemmyWorldIndiegaming,
 	lemmyShitGamedev,
 	lemmyShitUnreal,
+	/* 知乎搜索 */
+	zhihuGameDev,
+	zhihuGameDesign,
+	zhihuIndie,
 ];

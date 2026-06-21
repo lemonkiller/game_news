@@ -189,6 +189,10 @@ const SOCIAL_SOURCE_NAMES = new Set([
 	"Lemmy 独立游戏",
 	"Lemmy 游戏开发（sh.itjust.works）",
 	"Lemmy Unreal Engine（sh.itjust.works）",
+	/* 知乎搜索 */
+	"知乎游戏开发",
+	"知乎游戏设计",
+	"知乎独立游戏",
 	/* 原新闻中的论坛/社区类 */
 	"Hacker News",
 	"Qiita ゲーム開発",
@@ -235,6 +239,9 @@ const SOCIAL_PLATFORM: Record<string, string> = {
 	"Lemmy 独立游戏": "Lemmy",
 	"Lemmy 游戏开发（sh.itjust.works）": "Lemmy",
 	"Lemmy Unreal Engine（sh.itjust.works）": "Lemmy",
+	"知乎游戏开发": "知乎",
+	"知乎游戏设计": "知乎",
+	"知乎独立游戏": "知乎",
 	/* 原新闻中的论坛/社区类 */
 	"Hacker News": "Hacker News",
 	"Qiita ゲーム開発": "Qiita",
