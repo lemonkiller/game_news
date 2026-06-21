@@ -25,6 +25,35 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
 8. **提交推送** -- 切到 `feat/xxx` 分支，`git add` + `git commit` + `git push`
 9. **合并后操作** -- 合并 master 后需检查 `link-sources.ts` 是否在 `index.ts` 的 `allSources` 中注册
+10. **更新信息源列表** -- 每次新增/修改/删除信息源后，运行 `npm run fetch` 刷新数据，然后执行以下命令更新 `data/sources-list.md`：
+
+    ```bash
+    node scripts/update-sources-list.cjs
+    ```
+
+    将修改提交到仓库
+
+## 信息源列表文件
+
+`data/sources-list.md` 是项目唯一的信息源登记册，记录所有新闻/社交/网址信息源的元数据。每次新增、修改或删除信息源时，必须同步更新此文件。
+
+### 字段说明
+
+| 字段 | 说明 |
+|------|------|
+| 名称 | 信息源展示名，对应 `name` 字段 |
+| 类型 | 新闻（RSS/博客）或 社交（API 论坛/社区） |
+| 语言 | zh / en / ja |
+| 文件 | 对应的源文件路径 |
+| 条数 | 最近一次抓取的条目数（0 表示无数据） |
+| 最近更新 | 最近一条内容的发布日期 |
+
+### 更新时间点
+
+- 新增 RSS/API 源 → 创建 .ts 文件后，更新列表
+- 删除源 → 删除 .ts 文件后，更新列表
+- 修改源名称/URL/语言 → 修改后，更新列表
+- 重新抓取数据后 → 运行列表更新脚本
 
 ## 新增源的标准流程
 
