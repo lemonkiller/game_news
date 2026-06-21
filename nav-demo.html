@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>方案示意 - 网址标签分类导航</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+      body {
+        background: #9bbc0f;
+        font-family: VT323, monospace;
+        color: #0f380f;
+        margin: 0;
+        padding: 20px 40px;
+      }
+
+      /* GB 配色 */
+      :root {
+        --gb-lightest: #9bbc0f;
+        --gb-light: #8bac0f;
+        --gb-dark: #306230;
+        --gb-darkest: #0f380f;
+      }
+
+      /* 顶部固定索引条 */
+      .index-bar {
+        position: sticky;
+        top: 0;
+        background: var(--gb-darkest);
+        padding: 12px 20px;
+        border: 2px solid var(--gb-light);
+        margin-bottom: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-family: "Press Start 2P", monospace;
+        font-size: 9px;
+        z-index: 10;
+      }
+      .index-bar a {
+        color: #9bbc0f;
+        text-decoration: none;
+        padding: 4px 10px;
+        border: 1px solid #306230;
+        transition: background 0.1s;
+      }
+      .index-bar a:hover {
+        background: #306230;
+      }
+
+      /* 分类容器 */
+      .category {
+        margin-bottom: 8px;
+        scroll-margin-top: 70px;
+      }
+
+      /* 粘性标题 */
+      .category-title {
+        position: sticky;
+        top: 52px;
+        background: var(--gb-darkest);
+        color: var(--gb-lightest);
+        font-family: "Press Start 2P", monospace;
+        font-size: 11px;
+        padding: 8px 14px;
+        border: 2px solid var(--gb-dark);
+        margin: 0 0 4px 0;
+        z-index: 9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .category-title .count {
+        font-family: VT323, monospace;
+        font-size: 14px;
+        color: var(--gb-light);
+      }
+
+      /* 链接列表 */
+      .link-item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 6px 14px;
+        border-bottom: 1px solid var(--gb-dark);
+        text-decoration: none;
+        color: var(--gb-darkest);
+        font-size: 18px;
+        transition: background 0.08s;
+      }
+      .link-item:hover {
+        background: var(--gb-light);
+      }
+      .link-item .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .link-item .url {
+        font-size: 14px;
+        color: var(--gb-dark);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1
+      style="
+        font-family: &quot;Press Start 2P&quot;;
+        font-size: 14px;
+        margin-bottom: 20px;
+      "
+    >
+      网址分类索引
+    </h1>
+
+    <!-- 顶部固定索引条 -->
+    <div class="index-bar">
+      <a href="#c0">社区</a>
+      <a href="#c1">设计/分析</a>
+      <a href="#c2">编程/架构</a>
+      <a href="#c3">渲染</a>
+      <a href="#c4">叙事工具</a>
+      <a href="#c5">UI/UX</a>
+      <a href="#c6">引擎</a>
+      <a href="#c7">工具</a>
+      <a href="#c8">美术</a>
+    </div>
+
+    <!-- 模拟分类数据 -->
+    <div class="category" id="c0">
+      <div class="category-title">社区 <span class="count">8 条</span></div>
+      <a class="link-item" href="#"
+        ><span class="name">GameDev.net</span
+        ><span class="url">gamedev.net</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">TIGSource</span
+        ><span class="url">tigsource.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Reddit r/gamedev</span
+        ><span class="url">reddit.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">itch.io</span><span class="url">itch.io</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">indienova</span
+        ><span class="url">indienova.com</span></a
+      >
+    </div>
+
+    <div class="category" id="c1">
+      <div class="category-title">
+        游戏设计/分析 <span class="count">12 条</span>
+      </div>
+      <a class="link-item" href="#"
+        ><span class="name">Game Maker's Toolkit</span
+        ><span class="url">youtube.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Design Doc</span
+        ><span class="url">youtube.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">GameScrye</span
+        ><span class="url">gamescrye.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Game Design Levels</span
+        ><span class="url">substack.com</span></a
+      >
+    </div>
+
+    <div class="category" id="c2">
+      <div class="category-title">
+        游戏编程/架构 <span class="count">15 条</span>
+      </div>
+      <a class="link-item" href="#"
+        ><span class="name">awesome-gamedev (magictools)</span
+        ><span class="url">github.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">GameDev-Resources</span
+        ><span class="url">github.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">awesome-game-engine-dev</span
+        ><span class="url">github.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">awesome-open-source-games</span
+        ><span class="url">github.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Zed Editor</span><span class="url">zed.dev</span></a
+      >
+    </div>
+
+    <div class="category" id="c6">
+      <div class="category-title">
+        游戏框架/引擎 <span class="count">20 条</span>
+      </div>
+      <a class="link-item" href="#"
+        ><span class="name">Godot Engine</span
+        ><span class="url">godotengine.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Unreal Engine</span
+        ><span class="url">unrealengine.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Unity</span><span class="url">unity.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">awesome-game-engines</span
+        ><span class="url">github.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Bevy Engine</span
+        ><span class="url">bevyengine.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">PlayCanvas</span
+        ><span class="url">playcanvas.com</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Fyrox</span><span class="url">fyrox.rs</span></a
+      >
+    </div>
+
+    <div class="category" id="c5">
+      <div class="category-title">
+        UI/UX 设计 <span class="count">5 条</span>
+      </div>
+      <a class="link-item" href="#"
+        ><span class="name">Game UI Database</span
+        ><span class="url">gameuidatabase.com</span></a
+      >
+    </div>
+
+    <div class="category" id="c8">
+      <div class="category-title">
+        图形/美术工具 <span class="count">18 条</span>
+      </div>
+      <a class="link-item" href="#"
+        ><span class="name">Aseprite</span
+        ><span class="url">aseprite.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Blender</span
+        ><span class="url">blender.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Krita</span><span class="url">krita.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">GIMP</span><span class="url">gimp.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Material Maker</span
+        ><span class="url">materialmaker.org</span></a
+      >
+      <a class="link-item" href="#"
+        ><span class="name">Piskel</span
+        ><span class="url">piskelapp.com</span></a
+      >
+    </div>
+  </body>
+</html>

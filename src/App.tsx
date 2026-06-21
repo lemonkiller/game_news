@@ -237,10 +237,24 @@ export default function App() {
 			/>
 			{isLinks ? (
 				<main className="links-page">
+					<nav className="links-sidebar">
+						{linkCategories.map(([category]) => (
+							<a
+								key={category}
+								className="sidebar-link"
+								href={`#cat-${category}`}
+							>
+								{category}
+							</a>
+						))}
+					</nav>
 					<div className="links-content">
 						{linkCategories.map(([category, items]) => (
-							<section key={category} className="link-category">
-								<h2 className="link-category-title">{category}</h2>
+							<section key={category} id={`cat-${category}`} className="link-category">
+								<h2 className="link-category-title">
+									{category}
+									<span className="cat-count">{items.length}</span>
+								</h2>
 								{items.map((link) => (
 									<a
 										key={link.id}

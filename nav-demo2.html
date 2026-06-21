@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>方案示意 - 左侧分类导航</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #9bbc0f;
+        font-family: VT323, monospace;
+        color: #0f380f;
+      }
+
+      :root {
+        --gb-lightest: #9bbc0f;
+        --gb-light: #8bac0f;
+        --gb-dark: #306230;
+        --gb-darkest: #0f380f;
+      }
+
+      /* === 模拟原有导航栏 === */
+      .navbar {
+        background: var(--gb-darkest);
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 2px solid var(--gb-dark);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+      .navbar .title {
+        font-family: "Press Start 2P", monospace;
+        font-size: 10px;
+        color: var(--gb-lightest);
+        white-space: nowrap;
+      }
+      .navbar .tabs {
+        display: flex;
+        gap: 4px;
+      }
+      .navbar .tab {
+        font-family: "Press Start 2P", monospace;
+        font-size: 8px;
+        padding: 4px 10px;
+        border: 1px solid var(--gb-dark);
+        background: transparent;
+        color: var(--gb-light);
+        cursor: pointer;
+      }
+      .navbar .tab.active {
+        background: var(--gb-dark);
+        color: var(--gb-lightest);
+      }
+
+      /* === 主体：侧边栏 + 内容 === */
+      .main {
+        display: flex;
+        min-height: calc(100vh - 44px);
+      }
+
+      /* 左侧分类导航 */
+      .sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        background: var(--gb-dark);
+        border-right: 2px solid var(--gb-darkest);
+        padding: 12px 0;
+        position: sticky;
+        top: 44px;
+        height: calc(100vh - 44px);
+        overflow-y: auto;
+      }
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gb-darkest);
+      }
+      .sidebar a {
+        display: block;
+        font-family: "Press Start 2P", monospace;
+        font-size: 8px;
+        padding: 10px 16px;
+        color: var(--gb-lightest);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gb-darkest);
+        transition: background 0.08s;
+      }
+      .sidebar a:hover,
+      .sidebar a.active {
+        background: var(--gb-darkest);
+      }
+      .sidebar a .count {
+        font-family: VT323, monospace;
+        font-size: 12px;
+        color: var(--gb-light);
+        float: right;
+      }
+
+      /* 右侧内容区 */
+      .content {
+        flex: 1;
+        padding: 20px 24px;
+        overflow-y: auto;
+      }
+
+      .category {
+        margin-bottom: 24px;
+        scroll-margin-top: 60px;
+      }
+      .category-title {
+        font-family: "Press Start 2P", monospace;
+        font-size: 12px;
+        color: var(--gb-darkest);
+        padding: 8px 0;
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--gb-dark);
+      }
+      .category-title .count {
+        font-family: VT323, monospace;
+        font-size: 16px;
+        color: var(--gb-dark);
+      }
+
+      .link-item {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 8px;
+        padding: 6px 10px;
+        border-bottom: 1px solid var(--gb-dark);
+        text-decoration: none;
+        color: var(--gb-darkest);
+        font-size: 18px;
+        transition: background 0.08s;
+      }
+      .link-item:hover {
+        background: var(--gb-light);
+      }
+      .link-item .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .link-item .desc {
+        font-size: 14px;
+        color: var(--gb-dark);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* 模拟数据占位 */
+      .demo-note {
+        font-family: "Press Start 2P", monospace;
+        font-size: 7px;
+        color: var(--gb-dark);
+        margin-bottom: 20px;
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+      <span class="title">游戏新闻</span>
+      <div class="tabs">
+        <button class="tab">全部</button>
+        <button class="tab">中文</button>
+        <button class="tab">English</button>
+        <button class="tab">日本語</button>
+        <button class="tab active">网址</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <!-- 左侧分类导航 -->
+      <div class="sidebar">
+        <a href="#c0" class="active">社区 <span class="count">8</span></a>
+        <a href="#c1">设计/分析 <span class="count">12</span></a>
+        <a href="#c2">行业/演讲 <span class="count">4</span></a>
+        <a href="#c3">商业/发行 <span class="count">3</span></a>
+        <a href="#c4">编程/架构 <span class="count">15</span></a>
+        <a href="#c5">渲染编程 <span class="count">6</span></a>
+        <a href="#c6">程序化生成 <span class="count">4</span></a>
+        <a href="#c7">叙事工具 <span class="count">8</span></a>
+        <a href="#c8">关卡设计 <span class="count">5</span></a>
+        <a href="#c9">世界观设计 <span class="count">3</span></a>
+        <a href="#c10">UI/UX 设计 <span class="count">5</span></a>
+        <a href="#c11">引擎 <span class="count">20</span></a>
+        <a href="#c12">CI/CD <span class="count">3</span></a>
+        <a href="#c13">素材资源 <span class="count">10</span></a>
+        <a href="#c14">音频工具 <span class="count">6</span></a>
+        <a href="#c15">美术工具 <span class="count">18</span></a>
+        <a href="#c16">通用工具 <span class="count">8</span></a>
+      </div>
+
+      <!-- 右侧内容 -->
+      <div class="content">
+        <div class="demo-note">
+          [ 点击左侧分类快速跳转 · 侧边栏随页面滚动保持可见 ]
+        </div>
+
+        <div class="category" id="c0">
+          <div class="category-title">社区 <span class="count">8 条</span></div>
+          <a class="link-item" href="#"
+            ><span class="name">GameDev.net</span
+            ><span class="desc">老牌游戏开发者社区</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">TIGSource</span
+            ><span class="desc">经典独立游戏论坛</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">indienova B站频道</span
+            ><span class="desc">独立游戏官方B站账号</span></a
+          >
+        </div>
+
+        <div class="category" id="c1">
+          <div class="category-title">
+            游戏设计/分析 <span class="count">12 条</span>
+          </div>
+          <a class="link-item" href="#"
+            ><span class="name">Game Maker's Toolkit</span
+            ><span class="desc">最著名的游戏设计分析频道</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">GameScrye</span
+            ><span class="desc">游戏设计与叙事设计博客</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Design Doc</span
+            ><span class="desc">系统化游戏设计论文式分析</span></a
+          >
+        </div>
+
+        <div class="category" id="c4">
+          <div class="category-title">
+            游戏编程/架构 <span class="count">15 条</span>
+          </div>
+          <a class="link-item" href="#"
+            ><span class="name">awesome-gamedev (ellisonleao)</span
+            ><span class="desc">游戏开发资源大全 13k stars</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">awesome-gamedev (skywind3000)</span
+            ><span class="desc">中文游戏开发资源列表</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">GameDev-Resources (Kavex)</span
+            ><span class="desc">分类清晰的游戏开发资源</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">awesome-game-engine-dev</span
+            ><span class="desc">引擎开发资源专精</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Awesome-Gamedev (FronkonGames)</span
+            ><span class="desc">代码/工具/教程集合</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">awesome-open-source-games</span
+            ><span class="desc">开源游戏源码合集 15k stars</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Zed Editor</span
+            ><span class="desc">高性能 Rust 编辑器</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">awesome-learn-gamedev</span
+            ><span class="desc">游戏开发学习资源路径</span></a
+          >
+        </div>
+
+        <div class="category" id="c11">
+          <div class="category-title">
+            游戏框架/引擎 <span class="count">20 条</span>
+          </div>
+          <a class="link-item" href="#"
+            ><span class="name">Godot Engine</span
+            ><span class="desc">最流行的开源游戏引擎</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Unreal Engine</span
+            ><span class="desc">AAA 级 3D 引擎</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Unity</span
+            ><span class="desc">全球最普及的 2D/3D 引擎</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">awesome-game-engines</span
+            ><span class="desc">游戏引擎/框架汇总列表</span></a
+          >
+          <a class="link-item" href="#"
+            ><span class="name">Fyrox</span
+            ><span class="desc">Rust 开源 3D 游戏引擎</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
