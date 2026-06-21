@@ -261,10 +261,18 @@ export default function App() {
 
 	const contentRef = useRef<HTMLDivElement>(null);
 
+	/** 切换标签时滚动到顶部 */
+	useEffect(() => {
+		if (contentRef.current) {
+			contentRef.current.scrollTop = 0;
+		}
+	}, [view]);
+
 	function scrollToCategory(category: string) {
 		const el = document.getElementById(`cat-${category}`);
 		if (el && contentRef.current) {
-			el.scrollIntoView({ behavior: "smooth", block: "start" });
+			const top = el.offsetTop - contentRef.current.offsetTop;
+			contentRef.current.scrollTo({ top, behavior: "smooth" });
 		}
 	}
 
@@ -282,7 +290,7 @@ export default function App() {
 			{view === "links" ? (
 				<main className="links-page">
 					<nav className="links-sidebar">
-						{linkCategories.map(([category]) => (
+						{linkCategories.map(([category, items]) => (
 							<a
 								key={category}
 								className="sidebar-link"
@@ -293,6 +301,7 @@ export default function App() {
 								}}
 							>
 								{category}
+								<span className="sidebar-count">{items.length}</span>
 							</a>
 						))}
 					</nav>
@@ -341,7 +350,7 @@ export default function App() {
 							</button>
 						))}
 					</nav>
-					<div className="links-content news-content">
+					<div ref={contentRef} className="links-content">
 						<div className="time-group">
 							{recentNews.length === 0 && (
 								<div className="news-empty">暂无内容</div>

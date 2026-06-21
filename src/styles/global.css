@@ -310,10 +310,6 @@ body::before {
 }
 
 /* 新闻内容区覆盖 */
-.news-content {
-	padding: 16px 20px 32px;
-}
-
 .time-group {
 	margin-bottom: 16px;
 }
