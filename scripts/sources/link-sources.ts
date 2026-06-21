@@ -1907,6 +1907,98 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "Godot/C# 游戏架构博客",
 	},
+
+	/* ===== 美术工具 ===== */
+	{
+		id: "link-lospec",
+		title: "Lospec",
+		url: "https://lospec.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "像素艺术社区，含调色板生成器/像素画教程数据库/编辑器工具集",
+	},
+	{
+		id: "link-pixeljoint",
+		title: "PixelJoint",
+		url: "https://pixeljoint.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "最老牌像素艺术社区，作品展示/挑战赛/教程",
+	},
+	{
+		id: "link-slynyrd",
+		title: "Slynyrd",
+		url: "https://www.slynyrd.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "像素画大师级教程（Pixelblog），覆盖配色/场景/角色/动画",
+	},
+	{
+		id: "link-retronator",
+		title: "Retronator",
+		url: "https://www.retronator.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "像素艺术每日新闻与游戏开发博客，含 Pixel Art Academy 开发日志",
+	},
+	{
+		id: "link-mega-voxels",
+		title: "Mega Voxels",
+		url: "https://www.megavoxels.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "像素/Voxel 3D 建模教程与工具",
+	},
+	{
+		id: "link-spritecraft",
+		title: "Spritecraft Learn",
+		url: "https://spritecraft-learn.com/",
+		category: "美术工具",
+		lang: "en",
+		desc: "免费游戏美术与像素画结构化学堂，含结构化课程",
+	},
+
+	/* ===== YouTube ===== */
+	{
+		id: "yt-adamcyounis",
+		title: "AdamCYounis",
+		url: "https://www.youtube.com/@AdamCYounis",
+		category: "YouTube",
+		lang: "en",
+		desc: "Aseprite 像素艺术教程标杆频道，从入门到高级动画",
+	},
+	{
+		id: "yt-brandon-james-greer",
+		title: "Brandon James Greer",
+		url: "https://www.youtube.com/@BrandonJGreer",
+		category: "YouTube",
+		lang: "en",
+		desc: "像素艺术/游戏美术教程，涵盖角色/场景/动画",
+	},
+	{
+		id: "yt-ansimuz",
+		title: "Ansimuz",
+		url: "https://www.youtube.com/@ansimuz",
+		category: "YouTube",
+		lang: "en",
+		desc: "像素艺术 + 独立游戏开发，免费素材与教程",
+	},
+	{
+		id: "yt-pixel-art-journey",
+		title: "Pixel Art Journey (Pedro Medeiros)",
+		url: "https://www.youtube.com/@PixelArtJourney",
+		category: "YouTube",
+		lang: "en",
+		desc: "像素画系统教程，Godot 引擎创始人之一主讲",
+	},
+	{
+		id: "yt-slynyrd",
+		title: "Slynyrd",
+		url: "https://www.youtube.com/@slynyrd",
+		category: "YouTube",
+		lang: "en",
+		desc: "像素画教程，同名博客联动，作品展示与技法讲解",
+	},
 ];
 /**
  * 所有工具/资源链接（静态数据源）
