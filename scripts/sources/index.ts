@@ -131,6 +131,7 @@ import {
 	zennWriting,
 } from "./design-tech";
 import { mickWest, qiitaGameAI, wpboxDev } from "./game-ai-sources";
+import { socialSources } from "./social";
 import { indie24, indieInformer, gameDiscoverCo } from "./indie-sources";
 import {
 	amdGpuOpen,
@@ -299,6 +300,8 @@ export const allSources: NewsSource[] = [
 	hanasaqutto,
 	canIPlayThat,
 	zennWriting,
+	/* 社交/社区源（高时效短内容） */
+	...socialSources,
 	/* 网址标签（无 RSS 工具/资源链接） */
 	linkSource,
 ];

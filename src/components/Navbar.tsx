@@ -9,8 +9,8 @@ import {
 } from "../i18n";
 
 interface NavbarProps {
-	view: "news" | "links";
-	onViewChange: (view: "news" | "links") => void;
+	view: "news" | "links" | "social";
+	onViewChange: (view: "news" | "links" | "social") => void;
 	updatedAt: string;
 	quote: Quote | null;
 	uiLang: UiLang;
@@ -40,7 +40,7 @@ export default function Navbar({
 		}
 	}
 
-	const tabs: ("news" | "links")[] = ["news", "links"];
+	const tabs: ("news" | "links" | "social")[] = ["news", "social", "links"];
 	const labels = TAB_LABELS[uiLang] || TAB_LABELS.en;
 	const tabTips = TAB_TIPS[uiLang] || TAB_TIPS.en;
 	const title = NAV_TITLE[uiLang] || NAV_TITLE.en;
