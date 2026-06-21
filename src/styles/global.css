@@ -413,6 +413,8 @@ body::before {
 .link-category {
 	margin-bottom: 24px;
 	border: 2px solid var(--gb-darkest);
+	background: var(--bg-card);
+	box-shadow: var(--shadow);
 	overflow: hidden;
 	scroll-margin-top: 12px;
 }
