@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 140+ 数据源，GB 四色绿像素风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 140+ 数据源，GB 四色绿风格。
 
 ## 沟通规范
 
@@ -27,34 +27,30 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 | 标签 | 布局方式 | 数据源 |
 |------|---------|--------|
-| 全部 | 时间线瀑布流，每卡 5 条，2 列排列 | 所有源合并按时间排序（排除网址源） |
-| 中文 | 同上 | zh 类源（含原社区中文源如 NGA） |
-| English | 同上 | en 类源（含原引擎/公司/社区英文源） |
-| 日本語 | 同上 | ja 类源（含原社区日文源如 Qiita、Zenn） |
-| 网址 | 按分类分组的静态链接列表 | 无 RSS 的开发工具/资源/社区/引擎链接 |
+| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 全部源合并，仅显示 1 个月内，全部=150条/单语言=50条 |
+| 网址 | 左侧分类导航 + 右侧按分类分组的链接列表 | `link-sources.ts` 静态链接 |
 
-- 所有标签：全部源合并，按 `pubDate` 降序，每 5 条切一块渲染为一张卡片
-- 无 `pubDate` 的条目也会展示（排序靠后）
-- 网址标签：按分类分组展示，每项含标题/描述/分类，右侧无内容
+- 新闻页左侧语言筛选：全部 / 中文 / English / 日本語，点击切换内容
+- 网址页左侧分类导航：点击跳转到对应分类位置（无滚动条，约 12 个分类）
+- 新闻条目格式：来源 | 标题 | 时间
+- 网址条目格式：名称 | 描述 | 域名
+- 导航栏仅显示两个标签：新闻 / 网址，切换时名言随机变化
 
 ## 分类体系
 
-| Lang 类型 | 标签名 | 说明 |
-|-----------|--------|------|
-| `all` | 全部 | 所有源合并（按时间排序） |
-| `zh` | 中文 | 中文游戏开发/设计源 + 原社区中文源 |
-| `en` | English | 英文游戏开发/设计源 + 原引擎/公司/社区英文源 |
-| `ja` | 日本語 | 日文游戏开发/设计源 + 原社区日文源 |
-| `links` | 网址 | 无 RSS 的静态链接分类索引 |
-
-- 每个源只属于一个语言分类，不会跨标签出现
-- Steam 标签已移除（API 间歇不可达，无法稳定抓取）
+| 标签 | 筛选 | 说明 |
+|------|------|------|
+| 新闻（全部） | 语言 + 时间 | 所有语言合并，1月内，最多 150 条 |
+| 新闻（中文） | 语言 + 时间 | 仅中文源，1月内，最多 50 条 |
+| 新闻（English） | 语言 + 时间 | 仅英文源，1月内，最多 50 条 |
+| 新闻（日本語） | 语言 + 时间 | 仅日文源，1月内，最多 50 条 |
+| 网址 | 分类 | 静态链接，按分类分组展示 |
 
 ## 网址链接分类（link-sources.ts）
 
-按动态性从上到下排列：
+按以下 12 个分类组织，侧边栏无需滚动：
 
-社区、游戏设计/分析、游戏行业/演讲、游戏商业/发行、游戏编程/架构、图形/渲染编程、程序化生成、叙事/对话工具、关卡设计、世界观设计、UI/UX 设计、游戏框架/引擎、CI/CD 与构建、素材资源、音频工具、图形/美术工具
+社区、博客、游戏框架/引擎、游戏设计、编程开发、叙事/关卡/UI、新闻、开发工具、美术工具、素材资源、音频工具、其他
 
 ## 数据源规范
 
@@ -66,7 +62,7 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 - fetch 返回 `NewsItem[]`，RSS 源建议最多 5 条，linkSource 为静态全量
 - 单源超时 10 秒，失败不影响其他源
 - `link-sources.ts` 作为静态源返回 `LinkEntry[]`，需注册到 `index.ts` 的 `allSources`
-- 网址链接源（linkSource 的 name 为 "开发工具链接"）只出现在"网址"标签下，不得出现在信息流中。App.tsx 的 timelineChunks 中需跳过 `name === "开发工具链接"`
+- 网址链接源（linkSource 的 name 为 "开发工具链接"）只出现在"网址"标签下，不得出现在信息流中
 - 新添 RSS 源需同时在 `src/App.tsx` 的 `LANG_MAP` 注册、在 `data/news.json` 中留空后会通过 fetch 自动填充
 - 添加无 RSS 的网站/工具/社区时，加入 `link-sources.ts` 对应分类
 - **lang 字段注意事项**：
@@ -106,6 +102,15 @@ export interface Quote {
 - 根据浏览器检测到的 UI 语言自动显示对应语言版本
 - 鼠标悬停名言显示作者和来源
 
+## 字体说明
+
+从 Press Start 2P / VT323 像素字体改为系统字体栈，确保中日英混排大小一致：
+
+```
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+             "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans JP", sans-serif;
+```
+
 ## 黑名单（不要再添加的源）
 
 以下源已被移除或测试过但明确不适合本聚合站，记录以避免重复添加：
@@ -137,16 +142,15 @@ export interface Quote {
 src/i18n/index.ts      ← 语言检测 + 所有 UI 字符串
 src/components/
   Navbar.tsx           ← 从 i18n 模块读取标题/标签/提示
-  Footer.tsx           ← 从 i18n 模块读取页脚文字
 src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 ```
 
 ### 工作原理
 
 1. `detectLanguage()` 读取 `navigator.language`，匹配 `zh` → 中文，`ja` → 日文，其他 → 英文（默认）
-2. 结果作为 `uiLang` 属性传递给 `Navbar` 和 `Footer`
+2. 结果作为 `uiLang` 属性传递给 `Navbar`
 3. 各组件根据 `uiLang` 从对应的语言映射中取字符串
-4. 标签名、导航标题、"更新于"前缀、时间格式、页脚全部跟随 `uiLang`
+4. 标签名、导航标题、"更新于"前缀、时间格式全部跟随 `uiLang`
 5. 名言根据 `uiLang` 自动切换 `q.zh` / `q.en` / `q.ja` 字段
 
 ### 修改 UI 字符串的位置
@@ -157,7 +161,6 @@ src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 export const NAV_TITLE: Record<UiLang, string> = { zh: "游戏新闻", en: "Game News", ja: "ゲームニュース" };
 export const TAB_LABELS: Record<UiLang, Record<string, string>> = { ... };
 export const TAB_TIPS: Record<UiLang, Record<string, string>> = { ... };
-export const FOOTER_TEXT: Record<UiLang, string> = { ... };
 ```
 
 需要改动 UI 文案时只改这个文件即可。
@@ -169,7 +172,7 @@ export const FOOTER_TEXT: Record<UiLang, string> = { ... };
 1. 在 `src/i18n/index.ts` 中 `UiLang` 类型加入 `"ko"`
 2. 在 `detectLanguage()` 中添加 `nav.startsWith("ko")` 判断
 3. 在所有 `Record<UiLang, ...>` 对象中添加 `ko` 条目
-4. 更新 `TAB_LABELS`、`TAB_TIPS`、`NAV_TITLE`、`NAV_SUBTITLE_PREFIX`、`FOOTER_TEXT` 等
+4. 更新 `TAB_LABELS`、`TAB_TIPS`、`NAV_TITLE`、`NAV_SUBTITLE_PREFIX` 等
 
 ## 常见问题
 
