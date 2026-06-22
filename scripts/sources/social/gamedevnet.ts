@@ -26,14 +26,16 @@ function parseRSS(xml: string): Array<{
 
 	while ((match = itemRegex.exec(xml)) !== null) {
 		const block = match[1];
-		const title = block.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1]
-			|| block.match(/<title>(.*?)<\/title>/)?.[1]
-			|| "";
+		const title =
+			block.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] ||
+			block.match(/<title>(.*?)<\/title>/)?.[1] ||
+			"";
 		const link = block.match(/<link>(.*?)<\/link>/)?.[1] || "";
 		const pubDate = block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || "";
-		const desc = block.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/)?.[1]
-			|| block.match(/<description>(.*?)<\/description>/)?.[1]
-			|| "";
+		const desc =
+			block.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/)?.[1] ||
+			block.match(/<description>(.*?)<\/description>/)?.[1] ||
+			"";
 		if (title && link) {
 			items.push({ title, link, pubDate, description: desc });
 		}
