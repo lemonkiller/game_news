@@ -11,7 +11,14 @@ import {
 	flaxRelease,
 	trendingGameDev,
 } from "./github";
-import { mastodonGamedev } from "./mastodon";
+import {
+	mastodonGamedev,
+	mastodonTagGamedev,
+	mastodonTagGodot,
+	mastodonTagUnity,
+	mastodonTagUnreal,
+	mastodonTagIndieDev,
+} from "./mastodon";
 import { blueskyGameDev } from "./bluesky";
 import { zhihuGameDev, zhihuGameDesign, zhihuIndie } from "./zhihu";
 import {
@@ -25,8 +32,19 @@ import {
 	lemmyWorldIndiegaming,
 	lemmyShitGamedev,
 	lemmyShitUnreal,
+	lemmyMLGamedev,
+	lemmyMLGodot,
+	lemmyWorldIndieDev,
+	lemmyWorldBevy,
 } from "./lemmy";
-
+import { lobstersGameDev } from "./lobsters";
+import { gamedevnetForum } from "./gamedevnet";
+import { gdseQuestions } from "./gdse";
+import { freeGameDev } from "./freegamedev";
+import { v2exGameDev } from "./v2ex";
+import { unityDiscussions } from "./unity-discussions";
+import { unrealForums } from "./unreal-forums";
+import { godotForum } from "./godot-forum";
 export const socialSources = [
 	/* 社交/社区（高时效性短内容） */
 	hackerNewsGameDev,
@@ -35,13 +53,24 @@ export const socialSources = [
 	redditGodot,
 	redditUnity3D,
 	redditUnreal,
+
+	/* Mastodon 实例 + 标签 */
 	mastodonGamedev,
+	mastodonTagGamedev,
+	mastodonTagGodot,
+	mastodonTagUnity,
+	mastodonTagUnreal,
+	mastodonTagIndieDev,
+
 	blueskyGameDev,
+	blueskyGameDev,
+
 	/* GitHub 源 */
 	trendingGameDev,
 	godotRelease,
 	bevyRelease,
 	flaxRelease,
+
 	/* Lemmy 联邦讨论 */
 	lemmyGamedev,
 	lemmyGodot,
@@ -53,8 +82,25 @@ export const socialSources = [
 	lemmyWorldIndiegaming,
 	lemmyShitGamedev,
 	lemmyShitUnreal,
+	lemmyMLGamedev,
+	lemmyMLGodot,
+	lemmyWorldIndieDev,
+	lemmyWorldBevy,
+
 	/* 知乎搜索 */
 	zhihuGameDev,
 	zhihuGameDesign,
 	zhihuIndie,
+
+	/* 新信息源 */
+	lobstersGameDev,
+	gamedevnetForum,
+	gdseQuestions,
+	freeGameDev,
+	v2exGameDev,
+
+	/* 引擎官方论坛（Discourse） */
+	unityDiscussions,
+	unrealForums,
+	godotForum,
 ];
