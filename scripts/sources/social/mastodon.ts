@@ -22,6 +22,8 @@ export function makeMastodonSource(
 	return {
 		name,
 		lang,
+		category: "social",
+		platform: "Mastodon",
 		fetch: async () => {
 			const data = await fetchJSON<MastodonPost[]>(
 				`https://${instance}/api/v1/timelines/public?limit=50limit=20&local=truelocal=true`,

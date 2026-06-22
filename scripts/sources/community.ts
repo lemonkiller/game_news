@@ -311,31 +311,43 @@ async function fetchAtom(url: string): Promise<ReturnType<typeof toNewsItems>> {
 export const qiitaGameDev: NewsSource = {
 	name: "Qiita ゲーム開発",
 	lang: "community",
+	category: "social",
+	platform: "Qiita",
 	fetch: () => fetchAtom("https://qiita.com/tags/ゲーム開発/feed"),
 };
 export const qiitaGameDesign: NewsSource = {
 	name: "Qiita ゲームデザイン",
 	lang: "community",
+	category: "social",
+	platform: "Qiita",
 	fetch: () => fetchAtom("https://qiita.com/tags/ゲームデザイン/feed"),
 };
 export const qiitaGodot: NewsSource = {
 	name: "Qiita Godot",
 	lang: "community",
+	category: "social",
+	platform: "Qiita",
 	fetch: () => fetchAtom("https://qiita.com/tags/Godot/feed"),
 };
 export const qiitaUnreal: NewsSource = {
 	name: "Qiita UnrealEngine",
 	lang: "community",
+	category: "social",
+	platform: "Qiita",
 	fetch: () => fetchAtom("https://qiita.com/tags/UnrealEngine/feed"),
 };
 export const qiitaUnity: NewsSource = {
 	name: "Qiita Unity",
 	lang: "community",
+	category: "social",
+	platform: "Qiita",
 	fetch: () => fetchAtom("https://qiita.com/tags/Unity/feed"),
 };
 export const zennGamedev: NewsSource = {
 	name: "Zenn gamedev",
 	lang: "ja",
+	category: "social",
+	platform: "Zenn",
 	fetch: async () => {
 		const xml = await fetchText("https://zenn.dev/topics/gamedev/feed");
 		return toNewsItems(parseRSS(xml)).slice(0, 10);

@@ -13,9 +13,11 @@ export interface NewsItem {
 
 /** 一个数据源 */
 export interface NewsSource {
-	name: string; // 列标题
-	lang: string; // 语言: 'zh' | 'en' | 'ja'
-	fetch(): Promise<NewsItem[]>;
+  name: string; // 列标题
+  lang: string; // 语言: 'zh' | 'en' | 'ja'
+  category?: "news" | "social"; // 源分类：新闻（RSS/博客）或社交（API/论坛）
+  platform?: string; // 社交源的平台分组名，如 "Hacker News"、"Lemmy"、"GitHub"
+  fetch(): Promise<NewsItem[]>;
 }
 
 /** 语言标签 */

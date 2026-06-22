@@ -18,6 +18,8 @@ export const mickWest: NewsSource = {
 export const qiitaGameAI: NewsSource = {
 	name: "Qiita game AI",
 	lang: "ja",
+	category: "social",
+	platform: "Qiita",
 	fetch: async () => {
 		const xml = await fetchText("https://qiita.com/tags/gameai/feed");
 		return toNewsItems(parseRSS(xml)).slice(0, 5);

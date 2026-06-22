@@ -33,6 +33,8 @@ function makeZennSource(name: string, tag: string): NewsSource {
 	return {
 		name,
 		lang: "ja",
+		category: "social",
+		platform: "Zenn",
 		fetch: async () => {
 			const xml = await fetchText(`https://zenn.dev/topics/${tag}/feed`);
 			const items = parseRSS(xml);

@@ -15,6 +15,8 @@ interface HNItem {
 export const hackerNewsGameDev: NewsSource = {
 	name: "Hacker News 游戏开发",
 	lang: "en",
+	category: "social",
+	platform: "Hacker News",
 	fetch: async () => {
 		const data = await fetchJSON<{ hits: HNItem[] }>(
 			"https://hn.algolia.com/api/v1/search?query=game+development&tags=story&hitsPerPage=25",
@@ -36,6 +38,8 @@ export const hackerNewsGameDev: NewsSource = {
 export const hackerNewsShow: NewsSource = {
 	name: "HN Show 游戏",
 	lang: "en",
+	category: "social",
+	platform: "Hacker News",
 	fetch: async () => {
 		const data = await fetchJSON<{ hits: HNItem[] }>(
 			"https://hn.algolia.com/api/v1/search?query=game&tags=show_hn&hitsPerPage=25",
