@@ -54,15 +54,15 @@
 | 24indie | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Thu, 18 Ju |
 | 2D Game Art Guru | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sun, 04 Ja |
 | 4Gamer.net | 新闻 | en | - | 20 | 2026-06-21 |
-| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Sat, 20 Ju |
+| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Mon, 22 Ju |
 | 博毅创为 | 新闻 | zh | scripts/sources/blog-liuwenyi.ts | 5 | 2024-01-30 |
-| 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Sun, 21 Ju |
+| 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Mon, 22 Ju |
 | 電ファミニコゲーマー | 新闻 | en | - | 20 | Sun, 21 Ju |
 | 狐王驾虎 | 新闻 | zh | scripts/sources/blog-owleat.ts | 5 | 2026-06-15 |
-| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Sun, 21 Ju |
+| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Mon, 22 Ju |
 | 设计者笔记 | 新闻 | zh | scripts/sources/design-blogs.ts | 5 | 2025-07-05 |
 | 鵺 游戏设计 | 新闻 | zh | scripts/sources/blog-nightingale.ts | 5 | 2022-10-26 |
-| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Sun, 21 Ju |
+| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Mon, 22 Ju |
 | 游戏陀螺 | 新闻 | zh | scripts/sources/youxituoluo.ts | 20 | Thu, 18 Ju |
 | 云风 | 新闻 | zh | scripts/sources/codingnow.ts | 5 | 2026-06-13 |
 | 增荣博客 | 新闻 | zh | scripts/sources/zengrong.ts | 5 | Wed, 10 Ju |
@@ -112,10 +112,10 @@
 | Gamedev Unchained | 新闻 | en | scripts/sources/gamedev-unchained.ts | 5 | Tue, 16 Se |
 | GameDiscoverCo | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Fri, 19 Ju |
 | GameFromScratch | 新闻 | en | scripts/sources/game-from-scratch.ts | 5 | Fri, 19 Ju |
-| GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Wed, 17 Ju |
+| GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Mon, 22 Ju |
 | Games by Manuel | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sat, 08 No |
 | Games by Mason | 新闻 | en | scripts/sources/games-by-mason.ts | 5 | Sun, 26 Ap |
-| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Fri, 19 Ju |
+| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Mon, 22 Ju |
 | GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 19 Ju |
 | GDKeys | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 06 Ja |
 | Generative GameDev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Thu, 09 Oc |
@@ -132,7 +132,7 @@
 | IndieGamesJapan | 新闻 | ja | scripts/sources/indiegamesjapan.ts | 15 | Wed, 10 Ju |
 | IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Fri, 19 Ju |
 | IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Thu, 18 Ju |
-| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Sun, 21 Ju |
+| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Mon, 22 Ju |
 | JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 19 Ju |
 | Jonas Meyer-Ohle | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 01 Ju |
 | Journal of Stuff | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-01-24 |
@@ -186,7 +186,7 @@
 | VS Code Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | 2026-06-24 |
 | wpbox.dev | 新闻 | en | scripts/sources/game-ai-sources.ts | 1 | 2025-05-02 |
 | インサイド | 新闻 | en | - | 20 | 2026-06-21 |
-| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Sun, 21 Ju |
+| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Mon, 22 Ju |
 
 ## 网址链接分类
 
@@ -194,17 +194,16 @@
 
 | 分类 | 数量 | 说明 |
 |------|------|------|
-| x.com | 34 | 游戏开发/设计名人 Twitter/X 账号 |
-| 游戏框架/引擎 | 23 | 引擎项目官网（Godot/Unity/Unreal/Defold/MonoGame 等） |
-| YouTube | 22 | 游戏开发/设计优质 YouTube 频道 |
-| 知乎专栏 | 19 | 游戏开发/设计知乎专栏合集 |
-| Reddit | 16 | 游戏开发相关子论坛合集 |
-| 游戏设计 | 17 | 游戏设计分析/理论/教程网站 |
-| 网站 | 18 | 游戏开发综合社区/新闻站（原社区+新闻+GDC 合并） |
-| B站 | 12 | 游戏开发/设计 B 站 UP 主 |
-| 叙事/关卡/UI | 13 | 叙事设计/关卡设计/UIUX 资源与工具 |
-| 美术工具 | 11 | Aseprite/Blender/Krita 等美术工具 |
-| 开发工具 | 13 | 工具合集、CI/CD、Awesome 列表 |
-| 编程开发 | 7 | 游戏编程/渲染/AI/公司技术博客 |
-| 素材资源 | 7 | 免费游戏素材站 |
-| 音频工具 | 5 | BGM/SFX 工具与素材 |
+| 行业动态 | 34 | 游戏行业名人 X/Twitter 账号 |
+| 开发社区 | 31 | 游戏开发综合社区/论坛/子论坛 |
+| 游戏设计 | 31 | 游戏机制/叙事/关卡/数值设计理论与资源 |
+| 视频/频道 | 25 | YouTube 游戏开发/设计优质频道与 GDC 演讲 |
+| 游戏引擎 | 24 | 各游戏引擎官网/文档/社区 |
+| 2D/3D 美术 | 17 | Aseprite/Blender/Krita 等美术工具及像素/建模资源 |
+| 编程 & 架构 | 16 | 游戏编程/渲染/AI/图形学技术教程与博客 |
+| 开发工具 | 13 | CI/CD/版本控制/调试器/编辑器与 Awesome List |
+| 中文资源 | 7 | 知乎专栏/B站/国内游戏开发社区 |
+| 素材资源 | 7 | 免费游戏素材/模型/音效/图标 |
+| 音频工具 | 5 | BGM/SFX 工具与音频素材 |
+| UI/UX 设计 | 1 | 游戏界面/交互/可用性设计资源 |
+| 发行/运营 | 1 | 游戏发行/推广/商店优化/本地化资源（待扩充） |
