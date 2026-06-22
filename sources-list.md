@@ -31,10 +31,10 @@
 | Lemmy Unreal Engine（sh.itjust.works） | 社交 | en | scripts/sources/social/lemmy.ts | 5 | 2025-06-06 |
 | Mastodon 游戏开发 | 社交 | en | scripts/sources/social/mastodon.ts | 40 | 2026-06-21 |
 | Qiita game AI | 社交 | ja | scripts/sources/game-ai-sources.ts | 4 | 2026-06-04 |
-| Qiita Godot | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-21 |
-| Qiita Unity | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-21 |
+| Qiita Godot | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-22 |
+| Qiita Unity | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-22 |
 | Qiita UnrealEngine | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-21 |
-| Qiita ゲーム開発 | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-21 |
+| Qiita ゲーム開発 | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-22 |
 | Qiita ゲームデザイン | 社交 | en | scripts/sources/community.ts | 4 | 2026-04-28 |
 | Reddit r/gamedev | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/godot | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
@@ -43,13 +43,13 @@
 | Zenn 创作 | 社交 | ja | scripts/sources/design-tech.ts | 3 | Tue, 14 Ap |
 | Zenn 写作 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Thu, 11 Ju |
 | Zenn 游戏设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Wed, 29 Ap |
-| Zenn 游戏引擎 | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sat, 20 Ju |
+| Zenn 游戏引擎 | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Mon, 22 Ju |
 | Zenn Bevy | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sun, 10 Ma |
-| Zenn gamedev | 社交 | ja | scripts/sources/community.ts | 10 | Fri, 19 Ju |
+| Zenn gamedev | 社交 | ja | scripts/sources/community.ts | 10 | Mon, 22 Ju |
 | Zenn Godot | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Mon, 08 Ju |
 | Zenn UI/UX | 社交 | ja | scripts/sources/design-tech.ts | 10 | Sat, 20 Ju |
 | Zenn UIUX设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Wed, 10 Ju |
-| Zenn Unity | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sun, 21 Ju |
+| Zenn Unity | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Mon, 22 Ju |
 | Zenn UnrealEngine | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sun, 14 Ju |
 | 24indie | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Thu, 18 Ju |
 | 2D Game Art Guru | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sun, 04 Ja |
@@ -111,12 +111,12 @@
 | GameDev Academy | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 30 De |
 | Gamedev Unchained | 新闻 | en | scripts/sources/gamedev-unchained.ts | 5 | Tue, 16 Se |
 | GameDiscoverCo | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Fri, 19 Ju |
-| GameFromScratch | 新闻 | en | scripts/sources/game-from-scratch.ts | 5 | Fri, 19 Ju |
+| GameFromScratch | 新闻 | en | scripts/sources/game-from-scratch.ts | 5 | Mon, 22 Ju |
 | GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Mon, 22 Ju |
 | Games by Manuel | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sat, 08 No |
 | Games by Mason | 新闻 | en | scripts/sources/games-by-mason.ts | 5 | Sun, 26 Ap |
 | GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Mon, 22 Ju |
-| GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 19 Ju |
+| GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 22 Ju |
 | GDKeys | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 06 Ja |
 | Generative GameDev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Thu, 09 Oc |
 | GitHub Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 19 Ju |
@@ -133,7 +133,7 @@
 | IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Fri, 19 Ju |
 | IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Thu, 18 Ju |
 | Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Mon, 22 Ju |
-| JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 19 Ju |
+| JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Mon, 22 Ju |
 | Jonas Meyer-Ohle | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 01 Ju |
 | Journal of Stuff | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-01-24 |
 | KAYAC Tech Blog | 新闻 | ja | scripts/sources/design-blogs.ts | 5 | 2026-04-17 |

@@ -118,3 +118,27 @@ export const lemmyShitUnreal = makeLemmySource(
 	"sh.itjust.works",
 	"unrealengine",
 );
+
+/** lemmy.ml 实例 */
+export const lemmyMLGamedev = makeLemmySource(
+	"Lemmy 游戏开发（lemmy.ml）",
+	"lemmy.ml",
+	"gamedev",
+);
+export const lemmyMLGodot = makeLemmySource(
+	"Lemmy Godot（lemmy.ml）",
+	"lemmy.ml",
+	"godot",
+);
+
+/** lemmy.world 新增社区 */
+export const lemmyWorldIndieDev = makeLemmySource(
+	"Lemmy 独立游戏开发（lemmy.world）",
+	"lemmy.world",
+	"indiedev",
+);
+export const lemmyWorldBevy = makeLemmySource(
+	"Lemmy Bevy（lemmy.world）",
+	"lemmy.world",
+	"bevy",
+);
