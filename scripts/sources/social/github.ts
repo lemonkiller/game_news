@@ -19,6 +19,8 @@ export function makeGitHubReleaseSource(
 	return {
 		name,
 		lang: "en",
+		category: "social",
+		platform: "GitHub",
 		fetch: async () => {
 			const releases = await fetchJSON<GHRelease[]>(
 				`https://api.github.com/repos/${owner}/${repo}/releases?per_page=10`,
@@ -44,6 +46,8 @@ export function makeGitHubTrendingSource(name: string): NewsSource {
 	return {
 		name,
 		lang: "en",
+		category: "social",
+		platform: "GitHub",
 		fetch: async () => {
 			// 搜索近期活跃的游戏开发仓库：含 topic 或关键词，仅限今年有更新的
 			const queries = [

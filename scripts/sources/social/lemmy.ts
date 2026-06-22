@@ -26,6 +26,8 @@ export function makeLemmySource(
 	return {
 		name,
 		lang: "en",
+		category: "social",
+		platform: "Lemmy",
 		fetch: async () => {
 			const data = await fetchJSON<{ posts: LemmyPost[] }>(
 				`https://${instance}/api/v3/post/list?community_name=${community}&limit=10&sort=Hot`,

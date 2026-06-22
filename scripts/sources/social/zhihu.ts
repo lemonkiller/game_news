@@ -89,6 +89,8 @@ async function searchZhihu(query: string, label: string): Promise<NewsItem[]> {
 export const zhihuGameDev: NewsSource = {
 	name: "知乎游戏开发",
 	lang: "zh",
+	category: "social",
+	platform: "知乎",
 	fetch: async () => searchZhihu("游戏开发", "gamedev"),
 };
 
@@ -96,6 +98,8 @@ export const zhihuGameDev: NewsSource = {
 export const zhihuGameDesign: NewsSource = {
 	name: "知乎游戏设计",
 	lang: "zh",
+	category: "social",
+	platform: "知乎",
 	fetch: async () => searchZhihu("游戏设计", "gamedesign"),
 };
 
@@ -103,5 +107,7 @@ export const zhihuGameDesign: NewsSource = {
 export const zhihuIndie: NewsSource = {
 	name: "知乎独立游戏",
 	lang: "zh",
+	category: "social",
+	platform: "知乎",
 	fetch: async () => searchZhihu("独立游戏", "indie"),
 };

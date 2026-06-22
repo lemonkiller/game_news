@@ -20,6 +20,8 @@ export function makeBlueskySource(name: string, query: string): NewsSource {
 	return {
 		name,
 		lang: "en",
+		category: "social",
+		platform: "Bluesky",
 		fetch: async () => {
 			const data = await fetchJSON<{ posts: BlueskyPost[] }>(
 				`https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=${encodeURIComponent(query)}&limit=50`,

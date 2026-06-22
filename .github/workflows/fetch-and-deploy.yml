@@ -2,7 +2,7 @@ name: Fetch and Deploy
 
 on:
   schedule:
-    - cron: "0 8,20 * * *"
+    - cron: "0 4,20 * * *"
   workflow_dispatch:
   push:
     branches: [master]
@@ -30,6 +30,8 @@ jobs:
         run: npm run fetch
         env:
           ZHIHU_ACCESS_SECRET: \${{ secrets.ZHIHU_ACCESS_SECRET }}
+      - name: 生成前端注册表
+        run: npm run generate-registry
       - name: TypeScript 类型检查
         run: npx tsc --noEmit
       - name: 构建前端

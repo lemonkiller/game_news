@@ -23,6 +23,8 @@ export function makeRedditSource(
 	return {
 		name,
 		lang: "en",
+		category: "social",
+		platform: "论坛",
 		fetch: async () => {
 			const data = await fetchJSON<{ data: { children: RedditPost[] } }>(
 				`https://www.reddit.com/r/${subreddit}/${type}.json?limit=15`,

@@ -2,6 +2,8 @@ import type { NewsSource } from "../utils/types";
 export const hackerNews: NewsSource = {
 	name: "Hacker News",
 	lang: "en",
+	category: "social",
+	platform: "Hacker News",
 	fetch: async () => {
 		const res = await fetch(
 			"https://hn.algolia.com/api/v1/search?query=game+development&tags=story&hitsPerPage=20",

@@ -17,18 +17,21 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 2. **测试 RSS** -- 用 Node.js fetch 测试每个候选源的可用性，记录结果
 3. **创建源文件** -- 在 `scripts/sources/` 下新建 `.ts` 文件，实现 `NewsSource` 接口（社交源放 `social/` 目录）
 4. **注册源** -- 在 `scripts/sources/index.ts` 中 import 并加入 `allSources` 数组（注意 linkSource 也需注册）；社交源在 `social/index.ts` 中导出 `socialSources` 数组
-5. **更新前端映射** --
-   - 新闻源：在 `src/App.tsx` 的 `LANG_MAP` 中注册语言分类
-   - 社交源：在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 中同时注册
-   - 新增的源名必须在对应映射中注册，否则不会显示
+5. **更新前端映射** -- 运行以下命令自动生成前端注册表：
+   ```bash
+   npm run generate-registry
+   ```
+   **不再需要手动修改** `src/App.tsx`。脚本从 `allSources` 的 `category`/`platform` 字段自动推导 `LANG_MAP`、`SOCIAL_SOURCE_NAMES`、`SOCIAL_PLATFORM`。
 6. **验证** -- `npm run fetch` 抓取数据 + `npm run build` 确认构建通过 + `npx tsc --noEmit` 类型检查
 7. **本地预览** -- `npm run dev` 启动 Vite dev server，看效果
 8. **提交推送** -- 在 `develop` 分支上开发和推送，`git add` + `git commit` + `git push origin master:develop`
 9. **合并后操作** -- 在 GitHub 上创建 PR 合并到 master，合并后需检查 `link-sources.ts` 是否在 `index.ts` 的 `allSources` 中注册
-10. **更新信息源列表** -- 每次新增/修改/删除信息源后，运行 `npm run fetch` 刷新数据，然后执行以下命令更新 `sources-list.md`：
+10. **更新信息源列表** -- 每次新增/修改/删除信息源后，按以下顺序更新：
 
     ```bash
-    node scripts/update-sources-list.cjs
+    npm run fetch          # 刷新数据
+    npm run generate-registry  # 重新生成前端映射
+    node scripts/update-sources-list.cjs  # 更新 sources-list.md
     ```
 
     将修改提交到仓库
@@ -88,14 +91,16 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 1. 在 `scripts/sources/` 下新建 `.ts`，实现 `NewsSource` 接口
 2. RSS 源用 `rss-parser.ts`，`fetch` 返回最多 5 条
 3. 注册到 `scripts/sources/index.ts` 的 `allSources`
-4. 在 `src/App.tsx` 的 `LANG_MAP` 中注册语言分类
+4. 运行 `npm run generate-registry` 自动生成前端 `LANG_MAP`
+   **不再需要手动编辑** `src/App.tsx` 的 `LANG_MAP`
 
 **归入社交标签：**
 
 1. 在 `scripts/sources/social/` 下新建 `.ts`，实现 `NewsSource` 接口
 2. API 源建议返回 10-25 条，单源超时可放宽到 15 秒
 3. 注册到 `scripts/sources/social/index.ts` 的 `socialSources` 数组
-4. 在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES`（Set）和 `SOCIAL_PLATFORM`（Record）中同时注册
+4. 运行 `npm run generate-registry` 自动生成 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM`
+   **不再需要手动编辑** `src/App.tsx`
 
 **归入网址标签：**
 
@@ -190,11 +195,10 @@ social (socialNews)  = 仅 SOCIAL_SOURCE_NAMES 中的源
 links                = 仅开发工具链接源（按分类分组渲染）
 ```
 
-- `SOCIAL_SOURCE_NAMES`（Set）：标记哪些源属于社交标签
-- `SOCIAL_PLATFORM`（Record）：将社交源名映射到平台分组（用于侧边栏筛选）
-- `LANG_MAP`（Record）：将新闻源名映射到语言分类（zh/en/ja，默认 en）
-- 新增社交源时，须同时在 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 中注册
-- 新增新闻源时，在 `LANG_MAP` 中注册语言分类
+- `SOCIAL_SOURCE_NAMES`（Set）：标记哪些源属于社交标签。由 `generate-registry` 从 `category: "social"` 自动生成。
+- `SOCIAL_PLATFORM`（Record）：将社交源名映射到平台分组（用于侧边栏筛选）。由 `generate-registry` 从 `platform` 字段自动生成。
+- `LANG_MAP`（Record）：将新闻源名映射到语言分类（zh/en/ja，默认 en）。由 `generate-registry` 从 `lang` 字段自动生成。
+- 新增源后只需运行 `npm run generate-registry`，上述映射自动更新，无需手动编辑 App.tsx。
 
 ## 源文件结构
 
@@ -225,9 +229,9 @@ scripts/sources/
 - `link-sources.ts` 作为静态源返回 `LinkEntry[]`，需注册到 `index.ts` 的 `allSources`
 - 网址链接源（name 为 "开发工具链接"）只出现在"网址"标签下
 - 社交源放在 `scripts/sources/social/` 目录下，在 `social/index.ts` 中统一导出
-- 新增 RSS 源：在 `src/App.tsx` 的 `LANG_MAP` 注册
-- 新增社交源：在 `src/App.tsx` 的 `SOCIAL_SOURCE_NAMES` 和 `SOCIAL_PLATFORM` 注册
-- 添加无 RSS 的网站/工具/社区时，加入 `link-sources.ts` 对应分类
+- 新增 RSS 源：注册到 `scripts/sources/index.ts` 的 `allSources`，然后运行 `npm run generate-registry`
+- 新增社交源：注册到 `scripts/sources/social/index.ts` 的 `socialSources`，然后运行 `npm run generate-registry`
+- **所有前端映射（LANG_MAP/SOCIAL_SOURCE_NAMES/SOCIAL_PLATFORM）由 `generate-registry` 自动生成，无需手动编辑 App.tsx**
 - **lang 字段注意事项**：所有源必须使用 `"zh"`/`"en"`/`"ja"` 之一，不要用 `"community"`
 
 ## 名言系统（三语版）
