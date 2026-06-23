@@ -4,7 +4,15 @@ import Navbar from "./components/Navbar";
 import type { NewsItem } from "../scripts/utils/types";
 import { getLinksByCategory } from "../scripts/sources/link-sources";
 import { quotes } from "../scripts/utils/quotes";
-import { detectLanguage } from "./i18n";
+import {
+	detectLanguage,
+	CATEGORY_NAMES,
+	formatItemTime,
+	FILTER_LABELS,
+	SOCIAL_FILTER_ALL,
+	EMPTY_TEXT,
+	SOCIAL_EMPTY_TEXT,
+} from "./i18n";
 import {
 	LANG_MAP,
 	SOCIAL_SOURCE_NAMES,
@@ -17,13 +25,6 @@ type LangFilter = "all" | "zh" | "en" | "ja";
 
 const FILTER_KEYS: LangFilter[] = ["all", "zh", "en", "ja"];
 
-const FILTER_LABELS: Record<LangFilter, string> = {
-	all: "全部",
-	zh: "中文",
-	en: "English",
-	ja: "日本語",
-};
-
 /** 判断是否在1个月内 */
 function isWithinMonth(pubDate: string | undefined): boolean {
 	if (!pubDate) return false;
@@ -33,29 +34,13 @@ function isWithinMonth(pubDate: string | undefined): boolean {
 	return diff <= 30 * 86400000;
 }
 
-/** 格式化时间显示 */
-function formatItemTime(pubDate: string | undefined): string {
-	if (!pubDate) return "";
-	const d = new Date(pubDate);
-	if (isNaN(d.getTime())) return pubDate;
-	const diff = Date.now() - d.getTime();
-	const mins = Math.floor(diff / 60000);
-	if (mins < 1) return "刚刚";
-	if (mins < 60) return `${mins} 分钟前`;
-	const hours = Math.floor(mins / 60);
-	if (hours < 24) return `${hours} 小时前`;
-	const days = Math.floor(hours / 24);
-	if (days < 30) return `${days} 天前`;
-	const month = d.getMonth() + 1;
-	const day = d.getDate();
-	return `${String(month).padStart(2, "0")}月${String(day).padStart(2, "0")}日`;
-}
-
 export default function App() {
 	const [view, setView] = useState<"news" | "links" | "social">("news");
 	const [langFilter, setLangFilter] = useState<LangFilter>("all");
 	const [socialFilter, setSocialFilter] = useState<string>("all");
-	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
+	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(
+		null,
+	);
 
 	useEffect(() => {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
@@ -176,7 +161,7 @@ export default function App() {
 									scrollToCategory(category);
 								}}
 							>
-								{category}
+								{CATEGORY_NAMES[uiLang][category] || category}
 							</a>
 						))}
 					</nav>
@@ -187,7 +172,9 @@ export default function App() {
 								id={`cat-${category}`}
 								className="link-category"
 							>
-								<h2 className="link-category-title">{category}</h2>
+								<h2 className="link-category-title">
+									{CATEGORY_NAMES[uiLang][category] || category}
+								</h2>
 								{items.map((link) => (
 									<a
 										key={link.id}
@@ -217,7 +204,7 @@ export default function App() {
 								className={`sidebar-link${socialFilter === p ? " active" : ""}`}
 								onClick={() => setSocialFilter(p)}
 							>
-								{p === "all" ? "全部" : p}
+								{p === "all" ? SOCIAL_FILTER_ALL[uiLang] : p}
 							</button>
 						))}
 					</nav>
@@ -229,7 +216,7 @@ export default function App() {
 						<div className="time-group">
 							{socialNews.length === 0 && (
 								<div className="news-empty">
-									暂无内容（需在 GH Actions 中抓取）
+									{SOCIAL_EMPTY_TEXT[uiLang]}
 								</div>
 							)}
 							{socialNews.map((item) => (
@@ -243,7 +230,7 @@ export default function App() {
 									<span className="news-source">{item.sourceName}</span>
 									<span className="news-title">{item.title}</span>
 									<span className="news-time">
-										{formatItemTime(item.pubDate)}
+										{formatItemTime(item.pubDate, uiLang)}
 									</span>
 								</a>
 							))}
@@ -259,14 +246,14 @@ export default function App() {
 								className={`sidebar-link${langFilter === k ? " active" : ""}`}
 								onClick={() => setLangFilter(k)}
 							>
-								{FILTER_LABELS[k]}
+								{FILTER_LABELS[uiLang][k]}
 							</button>
 						))}
 					</nav>
 					<div ref={contentRef} key={langFilter} className="links-content">
 						<div className="time-group">
 							{recentNews.length === 0 && (
-								<div className="news-empty">暂无内容</div>
+								<div className="news-empty">{EMPTY_TEXT[uiLang]}</div>
 							)}
 							{recentNews.map((item) => (
 								<a
@@ -279,7 +266,7 @@ export default function App() {
 									<span className="news-source">{item.sourceName}</span>
 									<span className="news-title">{item.title}</span>
 									<span className="news-time">
-										{formatItemTime(item.pubDate)}
+										{formatItemTime(item.pubDate, uiLang)}
 									</span>
 								</a>
 							))}
