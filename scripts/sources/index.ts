@@ -156,6 +156,7 @@ import {
 	pragmaticEngineer,
 } from "./dev-tools";
 import { gameDevEssentials } from "./game-design-blogs";
+import { gameMakerBlog } from "./gamemaker-blog";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -316,6 +317,7 @@ export const allSources: NewsSource[] = [
 	hanasaqutto,
 	canIPlayThat,
 	zennWriting,
+	gameMakerBlog,
 	/* 社交/社区源（高时效短内容） */
 	...socialSources,
 	/* 网址标签（无 RSS 工具/资源链接） */

@@ -10,6 +10,12 @@ import {
 	bevyRelease,
 	flaxRelease,
 	trendingGameDev,
+	raylibRelease,
+	monogameRelease,
+	love2dRelease,
+	strideRelease,
+	gdevelopRelease,
+	pygameRelease,
 } from "./github";
 import {
 	mastodonGamedev,
@@ -63,14 +69,20 @@ export const socialSources = [
 	mastodonTagIndieDev,
 
 	blueskyGameDev,
-	blueskyGameDev,
 
 	/* GitHub 源 */
 	trendingGameDev,
 	godotRelease,
 	bevyRelease,
 	flaxRelease,
+	raylibRelease,
+	monogameRelease,
+	love2dRelease,
+	strideRelease,
+	gdevelopRelease,
+	pygameRelease,
 
+	/* Lemmy 联邦讨论 */
 	/* Lemmy 联邦讨论 */
 	lemmyGamedev,
 	lemmyGodot,

@@ -427,7 +427,16 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "1800+ 游戏、73000+ 截图 UI 参考库，按屏幕类型/交互模式检索",
 	},
+	{
+		id: "link-padcrafter",
+		title: "PadCrafter",
+		url: "https://www.padcrafter.com/",
+		category: "UI/UX 设计",
+		lang: "en",
+		desc: "手柄/键盘按键布局在线设计工具，适合游戏 UI 原型",
+	},
 
+	/* ===== 游戏引擎 ===== */
 	/* ===== 游戏引擎 ===== */
 	{
 		id: "link-monogame",
@@ -629,7 +638,24 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "Lua 驱动的 2D 引擎（原 Corona SDK），快速原型+物理引擎集成",
 	},
+	{
+		id: "link-evergine",
+		title: "Evergine",
+		url: "https://evergine.com/",
+		category: "游戏引擎",
+		lang: "en",
+		desc: "跨平台 3D 引擎，支持 .NET，原名 Wave Engine，专注工业级渲染",
+	},
+	{
+		id: "link-pygame",
+		title: "PyGame",
+		url: "https://www.pygame.org/",
+		category: "游戏引擎",
+		lang: "en",
+		desc: "Python 游戏框架，适合快速原型和游戏编程教育",
+	},
 
+	/* ===== 开发工具 ===== */
 	/* ===== 开发工具 ===== */
 	{
 		id: "link-gameci",
