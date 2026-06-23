@@ -1,0 +1,22 @@
+{
+  "name": "game_news",
+  "version": "1.0.0",
+  "schema": "wiremate/v1",
+  "settings": {
+    "gridSize": 10,
+    "showGrid": true,
+    "showRulers": false,
+    "snapEnabled": true
+  },
+  "screens": [
+    {
+      "id": "s1",
+      "name": "首页",
+      "width": 375,
+      "height": 667,
+      "notes": "",
+      "children": []
+    }
+  ],
+  "flows": []
+}
