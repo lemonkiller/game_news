@@ -50,3 +50,7 @@ export const redditUnreal = makeRedditSource(
 	"Reddit r/unrealengine",
 	"unrealengine",
 );
+export const redditGameLocalization = makeRedditSource(
+	"Reddit r/gamelocalization",
+	"gamelocalization",
+);
