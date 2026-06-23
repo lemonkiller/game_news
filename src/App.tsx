@@ -38,9 +38,7 @@ export default function App() {
 	const [view, setView] = useState<"news" | "links" | "social">("news");
 	const [langFilter, setLangFilter] = useState<LangFilter>("all");
 	const [socialFilter, setSocialFilter] = useState<string>("all");
-	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(
-		null,
-	);
+	const [dailyQuote, setDailyQuote] = useState<(typeof quotes)[0] | null>(null);
 
 	useEffect(() => {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
@@ -215,9 +213,7 @@ export default function App() {
 					>
 						<div className="time-group">
 							{socialNews.length === 0 && (
-								<div className="news-empty">
-									{SOCIAL_EMPTY_TEXT[uiLang]}
-								</div>
+								<div className="news-empty">{SOCIAL_EMPTY_TEXT[uiLang]}</div>
 							)}
 							{socialNews.map((item) => (
 								<a
