@@ -186,13 +186,19 @@
     "V2EX 游戏开发": "zh",
     "Unity Discussions": "en",
     "Unreal Engine 论坛": "en",
-    "Godot 论坛": "en"
+    "Godot 论坛": "en",
+    "Polycount 论坛": "en",
+    "IndieDev 论坛": "en",
+    "GameMaker 社区": "en"
   },
   "socialNames": [
     "FreeGameDev.net",
     "GameDev.net 论坛",
+    "GameMaker 社区",
     "GDSE 最新问答",
     "Godot 论坛",
+    "IndieDev 论坛",
+    "Polycount 论坛",
     "Reddit r/gamedev",
     "Reddit r/godot",
     "Reddit r/Unity3D",
@@ -322,6 +328,9 @@
     "V2EX 游戏开发": "V2EX",
     "Unity Discussions": "论坛",
     "Unreal Engine 论坛": "论坛",
-    "Godot 论坛": "论坛"
+    "Godot 论坛": "论坛",
+    "Polycount 论坛": "论坛",
+    "IndieDev 论坛": "论坛",
+    "GameMaker 社区": "论坛"
   }
 }

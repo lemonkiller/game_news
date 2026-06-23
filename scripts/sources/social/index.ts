@@ -51,6 +51,9 @@ import { v2exGameDev } from "./v2ex";
 import { unityDiscussions } from "./unity-discussions";
 import { unrealForums } from "./unreal-forums";
 import { godotForum } from "./godot-forum";
+import { polycountForum } from "./polycount";
+import { indieDevForum } from "./indiedev-forum";
+import { gameMakerCommunity } from "./gamemaker-community";
 export const socialSources = [
 	/* 社交/社区（高时效性短内容） */
 	hackerNewsGameDev,
@@ -115,4 +118,9 @@ export const socialSources = [
 	unityDiscussions,
 	unrealForums,
 	godotForum,
+
+	/* 新增论坛 */
+	polycountForum,
+	indieDevForum,
+	gameMakerCommunity,
 ];

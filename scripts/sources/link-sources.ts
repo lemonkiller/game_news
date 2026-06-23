@@ -1857,15 +1857,21 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "独立游戏全流程制作与营销在线课程平台",
 	},
-
-	/* ===== UI/UX 设计 ===== */
 	{
-		id: "link-interfaceingame",
-		title: "Interface In Game",
-		url: "https://interfaceingame.com/",
+		id: "link-itch-publishing",
+		title: "itch.io 发布指南",
+		url: "https://itch.io/docs/creators/",
+		category: "发行/运营",
+		lang: "en",
+		desc: "itch.io 开发者文档：定价/折扣/Sales/社区运营等发布指南",
+	},
+	{
+		id: "link-game-icons",
+		title: "Game-Icons.net",
+		url: "https://game-icons.net/",
 		category: "UI/UX 设计",
 		lang: "en",
-		desc: "各类型游戏 UI 截图与视频参考数据库，按类型/风格分类检索",
+		desc: "4000+ 免费游戏图标 SVG 库，CC BY 3.0 许可，可自定义颜色大小",
 	},
 
 	/* ===== 音频工具 ===== */
@@ -1878,12 +1884,12 @@ const links: LinkEntry[] = [
 		desc: "跨平台游戏音频中间件，独立开发免费许可，Unity/Unreal/Godot 原生集成",
 	},
 	{
-		id: "link-beeperbox",
-		title: "BeepBox",
-		url: "https://www.beepbox.co/",
+		id: "link-chiptone",
+		title: "Chiptone / BFXR",
+		url: "https://bfxr.net/",
 		category: "音频工具",
 		lang: "en",
-		desc: "在线芯片音乐（Chiptune）制作工具，纯浏览器操作，音乐数据编码在 URL 中便于分享",
+		desc: "在线游戏音效生成器，BFXR 改进了 sfxr，支持更丰富音色和预设",
 	},
 
 	/* ===== 素材资源 ===== */
@@ -2004,6 +2010,22 @@ const links: LinkEntry[] = [
 		category: "2D/3D 美术",
 		lang: "en",
 		desc: "在线像素画编辑器，免费开源，支持精灵动画帧编辑与导出",
+	},
+	{
+		id: "link-spine",
+		title: "Spine",
+		url: "https://esotericsoftware.com/",
+		category: "动画/骨骼工具",
+		lang: "en",
+		desc: "2D 骨骼动画工具，游戏行业标准，支持网格变形/蒙皮/动画混合",
+	},
+	{
+		id: "link-dragonbones",
+		title: "DragonBones",
+		url: "https://dragonbones.github.io/",
+		category: "动画/骨骼工具",
+		lang: "en",
+		desc: "免费开源 2D 骨骼动画工具，支持 Unity/Cocos/Starling 等多种运行时",
 	},
 ];
 /**
