@@ -1970,7 +1970,7 @@ const links: LinkEntry[] = [
 		desc: "类卡牌游戏交互的游戏开发项目管理工具，支持看板/标签/里程碑",
 	},
 
-	/* ===== 动画/骨骼工具 ===== */
+	/* ===== 2D/3D 美术 ===== */
 	{
 		id: "link-dragonbones",
 		title: "DragonBones",
@@ -2015,19 +2015,11 @@ const links: LinkEntry[] = [
 		id: "link-spine",
 		title: "Spine",
 		url: "https://esotericsoftware.com/",
-		category: "动画/骨骼工具",
+		category: "2D/3D 美术",
 		lang: "en",
 		desc: "2D 骨骼动画工具，游戏行业标准，支持网格变形/蒙皮/动画混合",
 	},
-	{
-		id: "link-dragonbones",
-		title: "DragonBones",
-		url: "https://dragonbones.github.io/",
-		category: "动画/骨骼工具",
-		lang: "en",
-		desc: "免费开源 2D 骨骼动画工具，支持 Unity/Cocos/Starling 等多种运行时",
-	},
-];
+]
 /**
  * 所有工具/资源链接（静态数据源）
  * 在前端"网址"标签页中按分类展示

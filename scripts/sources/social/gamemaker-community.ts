@@ -21,8 +21,7 @@ function parseSMFRSS(xml: string): Array<{
 			block.match(/<title>(.*?)<\/title>/)?.[1] ||
 			"";
 		const link = block.match(/<link>(.*?)<\/link>/)?.[1] || "";
-		const pubDate =
-			block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || "";
+		const pubDate = block.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || "";
 		if (title && link) items.push({ title, link, pubDate });
 	}
 	return items;
