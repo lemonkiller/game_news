@@ -123,3 +123,35 @@ export const flaxRelease = makeGitHubReleaseSource(
 );
 
 export const trendingGameDev = makeGitHubTrendingSource("GitHub 游戏开发趋势");
+
+/* 新增框架/库 Release */
+export const raylibRelease = makeGitHubReleaseSource(
+	"Raylib Release",
+	"raysan5",
+	"raylib",
+);
+export const monogameRelease = makeGitHubReleaseSource(
+	"MonoGame Release",
+	"MonoGame",
+	"MonoGame",
+);
+export const love2dRelease = makeGitHubReleaseSource(
+	"Love2D Release",
+	"love2d",
+	"love",
+);
+export const strideRelease = makeGitHubReleaseSource(
+	"Stride Release",
+	"stride3d",
+	"stride",
+);
+export const gdevelopRelease = makeGitHubReleaseSource(
+	"GDevelop Release",
+	"4ian",
+	"GDevelop",
+);
+export const pygameRelease = makeGitHubReleaseSource(
+	"PyGame Release",
+	"pygame",
+	"pygame",
+);

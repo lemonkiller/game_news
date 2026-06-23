@@ -427,7 +427,16 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "1800+ 游戏、73000+ 截图 UI 参考库，按屏幕类型/交互模式检索",
 	},
+	{
+		id: "link-padcrafter",
+		title: "PadCrafter",
+		url: "https://www.padcrafter.com/",
+		category: "UI/UX 设计",
+		lang: "en",
+		desc: "手柄/键盘按键布局在线设计工具，适合游戏 UI 原型",
+	},
 
+	/* ===== 游戏引擎 ===== */
 	/* ===== 游戏引擎 ===== */
 	{
 		id: "link-monogame",
@@ -629,7 +638,24 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "Lua 驱动的 2D 引擎（原 Corona SDK），快速原型+物理引擎集成",
 	},
+	{
+		id: "link-evergine",
+		title: "Evergine",
+		url: "https://evergine.com/",
+		category: "游戏引擎",
+		lang: "en",
+		desc: "跨平台 3D 引擎，支持 .NET，原名 Wave Engine，专注工业级渲染",
+	},
+	{
+		id: "link-pygame",
+		title: "PyGame",
+		url: "https://www.pygame.org/",
+		category: "游戏引擎",
+		lang: "en",
+		desc: "Python 游戏框架，适合快速原型和游戏编程教育",
+	},
 
+	/* ===== 开发工具 ===== */
 	/* ===== 开发工具 ===== */
 	{
 		id: "link-gameci",
@@ -1831,15 +1857,21 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "独立游戏全流程制作与营销在线课程平台",
 	},
-
-	/* ===== UI/UX 设计 ===== */
 	{
-		id: "link-interfaceingame",
-		title: "Interface In Game",
-		url: "https://interfaceingame.com/",
+		id: "link-itch-publishing",
+		title: "itch.io 发布指南",
+		url: "https://itch.io/docs/creators/",
+		category: "发行/运营",
+		lang: "en",
+		desc: "itch.io 开发者文档：定价/折扣/Sales/社区运营等发布指南",
+	},
+	{
+		id: "link-game-icons",
+		title: "Game-Icons.net",
+		url: "https://game-icons.net/",
 		category: "UI/UX 设计",
 		lang: "en",
-		desc: "各类型游戏 UI 截图与视频参考数据库，按类型/风格分类检索",
+		desc: "4000+ 免费游戏图标 SVG 库，CC BY 3.0 许可，可自定义颜色大小",
 	},
 
 	/* ===== 音频工具 ===== */
@@ -1852,12 +1884,12 @@ const links: LinkEntry[] = [
 		desc: "跨平台游戏音频中间件，独立开发免费许可，Unity/Unreal/Godot 原生集成",
 	},
 	{
-		id: "link-beeperbox",
-		title: "BeepBox",
-		url: "https://www.beepbox.co/",
+		id: "link-chiptone",
+		title: "Chiptone / BFXR",
+		url: "https://bfxr.net/",
 		category: "音频工具",
 		lang: "en",
-		desc: "在线芯片音乐（Chiptune）制作工具，纯浏览器操作，音乐数据编码在 URL 中便于分享",
+		desc: "在线游戏音效生成器，BFXR 改进了 sfxr，支持更丰富音色和预设",
 	},
 
 	/* ===== 素材资源 ===== */
@@ -1938,7 +1970,7 @@ const links: LinkEntry[] = [
 		desc: "类卡牌游戏交互的游戏开发项目管理工具，支持看板/标签/里程碑",
 	},
 
-	/* ===== 动画/骨骼工具 ===== */
+	/* ===== 2D/3D 美术 ===== */
 	{
 		id: "link-dragonbones",
 		title: "DragonBones",
@@ -1979,7 +2011,15 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "在线像素画编辑器，免费开源，支持精灵动画帧编辑与导出",
 	},
-];
+	{
+		id: "link-spine",
+		title: "Spine",
+		url: "https://esotericsoftware.com/",
+		category: "2D/3D 美术",
+		lang: "en",
+		desc: "2D 骨骼动画工具，游戏行业标准，支持网格变形/蒙皮/动画混合",
+	},
+]
 /**
  * 所有工具/资源链接（静态数据源）
  * 在前端"网址"标签页中按分类展示
