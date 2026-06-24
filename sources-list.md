@@ -54,7 +54,7 @@
 | 24indie | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Thu, 18 Ju |
 | 2D Game Art Guru | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sun, 04 Ja |
 | 4Gamer.net | 新闻 | en | - | 20 | 2026-06-21 |
-| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Mon, 22 Ju |
+| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Tue, 23 Ju |
 | 博毅创为 | 新闻 | zh | scripts/sources/blog-liuwenyi.ts | 5 | 2024-01-30 |
 | 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Mon, 22 Ju |
 | 電ファミニコゲーマー | 新闻 | en | - | 20 | Sun, 21 Ju |
@@ -115,7 +115,7 @@
 | GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Mon, 22 Ju |
 | Games by Manuel | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sat, 08 No |
 | Games by Mason | 新闻 | en | scripts/sources/games-by-mason.ts | 5 | Sun, 26 Ap |
-| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Mon, 22 Ju |
+| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Tue, 23 Ju |
 | GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 22 Ju |
 | GDKeys | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 06 Ja |
 | Generative GameDev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Thu, 09 Oc |
@@ -131,7 +131,7 @@
 | IndieDevGames | 新闻 | en | scripts/sources/design-tech.ts | 10 | Fri, 12 Ju |
 | IndieGamesJapan | 新闻 | ja | scripts/sources/indiegamesjapan.ts | 15 | Wed, 10 Ju |
 | IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Fri, 19 Ju |
-| IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Thu, 18 Ju |
+| IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Tue, 23 Ju |
 | Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Mon, 22 Ju |
 | JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Mon, 22 Ju |
 | Jonas Meyer-Ohle | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 01 Ju |

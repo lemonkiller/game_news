@@ -5,6 +5,7 @@ import {
 	redditUnity3D,
 	redditUnreal,
 	redditGameLocalization,
+	redditQualityAssurance,
 } from "./reddit";
 import {
 	godotRelease,
@@ -64,6 +65,7 @@ export const socialSources = [
 	redditUnity3D,
 	redditUnreal,
 	redditGameLocalization,
+	redditQualityAssurance,
 
 	/* Mastodon 实例 + 标签 */
 	mastodonGamedev,

@@ -54,3 +54,7 @@ export const redditGameLocalization = makeRedditSource(
 	"Reddit r/gamelocalization",
 	"gamelocalization",
 );
+export const redditQualityAssurance = makeRedditSource(
+	"Reddit r/QualityAssurance",
+	"QualityAssurance",
+);
