@@ -1,12 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import data from "../data/news.json";
 import Navbar from "./components/Navbar";
 import { quotes } from "../scripts/utils/quotes";
 import { detectLanguage } from "./i18n";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import NewsTab from "./components/NewsTab";
-import SocialTab from "./components/SocialTab";
-import LinksTab from "./components/LinksTab";
+
+const NewsTab = lazy(() => import("./components/NewsTab"));
+const SocialTab = lazy(() => import("./components/SocialTab"));
+const LinksTab = lazy(() => import("./components/LinksTab"));
 
 const uiLang = detectLanguage();
 
@@ -52,11 +53,17 @@ export default function App() {
 					uiLang={uiLang}
 				/>
 				{view === "links" ? (
-					<LinksTab uiLang={uiLang} />
+					<Suspense fallback={<div className="links-content" />}>
+						<LinksTab uiLang={uiLang} />
+					</Suspense>
 				) : view === "social" ? (
-					<SocialTab uiLang={uiLang} />
+					<Suspense fallback={<div className="links-content" />}>
+						<SocialTab uiLang={uiLang} />
+					</Suspense>
 				) : (
-					<NewsTab uiLang={uiLang} />
+					<Suspense fallback={<div className="links-content" />}>
+						<NewsTab uiLang={uiLang} />
+					</Suspense>
 				)}
 			</div>
 		</ErrorBoundary>

@@ -18,7 +18,15 @@ export class ErrorBoundary extends Component<Props, State> {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<div className="app" style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+				<div
+					className="app"
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						height: "100vh",
+					}}
+				>
 					<p style={{ fontSize: 18, color: "var(--gb-lightest)" }}>
 						数据加载异常，请稍后刷新
 					</p>

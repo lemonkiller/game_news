@@ -1,11 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import data from "../../data/news.json";
 import type { NewsItem } from "../../scripts/utils/types";
-import {
-	formatItemTime,
-	SOCIAL_FILTER_ALL,
-	SOCIAL_EMPTY_TEXT,
-} from "../i18n";
+import { formatItemTime, SOCIAL_FILTER_ALL, SOCIAL_EMPTY_TEXT } from "../i18n";
 import type { UiLang } from "../i18n";
 import {
 	SOCIAL_SOURCE_NAMES,
