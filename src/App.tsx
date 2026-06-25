@@ -31,14 +31,14 @@ export default function App() {
 		setDailyQuote(quotes[Math.floor(Math.random() * quotes.length)]);
 	}, []);
 
-	// 监听浏览器后退/前进
+	// 初始 hash + 标签页标题
 	useEffect(() => {
-		const onHashChange = () => setView(viewFromHash());
-		window.addEventListener("hashchange", onHashChange);
-		// 初始 hash
+		document.title = "游戏新闻";
 		if (!window.location.hash) {
 			window.location.hash = "news";
 		}
+		const onHashChange = () => setView(viewFromHash());
+		window.addEventListener("hashchange", onHashChange);
 		return () => window.removeEventListener("hashchange", onHashChange);
 	}, []);
 
