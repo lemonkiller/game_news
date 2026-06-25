@@ -2165,9 +2165,40 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "2D 骨骼动画工具，游戏行业标准，支持网格变形/蒙皮/动画混合",
 	},
+	{
+		id: "link-gamedevmind",
+		title: "GameDevMind (gonglei007)",
+		url: "https://github.com/gonglei007/GameDevMind",
+		category: "开发工具",
+		lang: "zh",
+		desc: "最全面的游戏开发技术图谱，涵盖客户端/服务端/美术/设计/运营全方向",
+	},
+	{
+		id: "link-nomoyu-daily",
+		title: "不摸鱼的独立开发者日报",
+		url: "https://daily.nomoyu.com/",
+		category: "行业动态",
+		lang: "zh",
+		desc: "中文独立开发者每日资讯聚合，工具/开源项目/文章推荐",
+	},
+	{
+		id: "link-relish-games",
+		title: "Relish Games",
+		url: "https://relishgames.com/journal/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "独立游戏开发趋势分析与实战指南，AI 辅助工作流/引擎选择/发行策略",
+	},
+	{
+		id: "link-sunstrike-studios",
+		title: "SunStrike Studios Blog",
+		url: "https://sunstrikestudios.com/en/blog/",
+		category: "2D/3D 美术",
+		lang: "en",
+		desc: "游戏美术外包公司博客，分享 3D 美术/外包流程/开发协同经验",
+	},
 ]
 /**
- * 所有工具/资源链接（静态数据源）
  * 在前端"网址"标签页中按分类展示
  */
 export const linkSource: NewsSource = {
