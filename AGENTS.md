@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语 167+ 数据源，GB 四色绿风格。
+GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub Actions，纯静态零运维。覆盖中英日三语大量游戏开发/设计数据源，GB 四色绿风格。
 
 ## 沟通规范
 
@@ -127,9 +127,11 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 | 标签 | 布局方式 | 数据源类型 |
 |------|---------|-----------|
-| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体，126 个源，845 条 |
-| 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API，41 个源，375 条 |
-| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引，214 个 |
+| 标签 | 布局方式 | 数据源类型 |
+|------|---------|-----------|
+| 新闻 | 左侧语言筛选 + 右侧单列列表，按时间倒序 | 传统 RSS/博客/媒体 |
+| 社交 | 左侧平台筛选 + 右侧单列列表，按时间倒序 | 论坛/社区/社交平台 API |
+| 网址 | 左侧分类导航 + 右侧按分类分组链接 | 无 RSS 的静态链接索引 |
 
 - 所有标签共用同一套样式，保持字体/行高/间距一致
 - 新闻/社交标签条目显示：来源名 | 标题 | 时间
@@ -137,29 +139,30 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 
 ## 分类体系
 
-### 新闻标签（126 个 RSS/博客源，845 条）
+### 新闻标签
 
 侧边栏按语言筛选：全部（最多 150 条）/ 中文 / English / 日本語（各 50 条）
 
-| 语言 | 源数 | 条数 | 代表性源 |
-|------|------|------|---------|
-| English | 约 106 | ~650 | GamesIndustry.biz、Unity Blog、Godot Blog、Game Developer、80 Level、GameFromScratch 等 |
-| 中文 | 约 12 | ~105 | 机核网、游戏陀螺、触乐、Indienova、GameLook、Necromanov、ManiaHero 等 |
-| 日本語 | 约 8 | ~90 | ゲームメーカーズ、IndieGamesJapan、IGDA 日本、ARASHIYAMA 等 |
+| 语言 | 代表性源 |
+|------|---------|
+| English | GamesIndustry.biz、Unity Blog、Godot Blog、Game Developer、80 Level、GameFromScratch 等 |
+| 中文 | 机核网、游戏陀螺、触乐、Indienova、GameLook、Necromanov、ManiaHero 等 |
+| 日本語 | ゲームメーカーズ、IndieGamesJapan、IGDA 日本、ARASHIYAMA 等 |
 
-### 社交标签（41 个论坛/社区/社交平台源，375 条）
+### 社交标签
 
 侧边栏按平台筛选：全部（最多 150 条）/ 各平台名（50 条）。没有数据的平台不显示。
 
-| 平台 | 源数 | 条数 | 数据来源 |
-|------|------|------|---------|
-| Zenn | 11 | 103 | 日本技术博客社区（11 个标签） |
-| **Lemmy** | **10** | **83** | programming.dev(4) + lemmy.world(4) + sh.itjust.works(2) 联邦社区 |
-| Hacker News | 3 | 45 | Algolia 公开 API（游戏开发 + Show HN + 原 HN） |
-| GitHub | 4 | 45 | GitHub API 搜索 + Releases（Godot/Bevy/Flax） |
-| Mastodon | 1 | 40 | gamedev.place 实例实时公开时间线 |
-| Qiita | 6 | 24 | 日本技术百科社区（6 个标签） |
-| 论坛 | 4 | 10 | ResetEra + Reddit(3) |
+| 平台 | 代表源 |
+|------|--------|
+| Zenn | 日本技术博客社区（多个标签） |
+| Lemmy | 多个联邦实例的 gamedev/godot/unity 等社区 |
+| Hacker News | Algolia 公开 API（游戏开发 + Show HN） |
+| GitHub | GitHub API 搜索 + Releases（Godot/Bevy/Flax 等） |
+| Mastodon | gamedev.place 实例实时公开时间线 + 话题标签 |
+| Qiita | 日本技术百科社区（多个游戏开发标签） |
+| 论坛 | Reddit 子版块 + ResetEra |
+| Bluesky | 被墙，GH Actions 中可用 |
 | Bluesky | 1 | 0 | 被墙，GH Actions 中可用 |
 
 注：Reddit/Bluesky 从中国网络不可达，数据量为 0，但 GH Actions 上可正常抓取。
@@ -179,40 +182,33 @@ GameDev News 是一个游戏开发资讯聚合站，基于 GitHub Pages + GitHub
 | Lemmy 游戏开发（sh.itjust.works） | sh.itjust.works | c/gamedev |
 | Lemmy Unreal Engine（sh.itjust.works） | sh.itjust.works | c/unrealengine |
 
-### 网址标签（233 个链接，12 个分类）
+### 网址标签
 
 侧边栏点击分类名，右侧滚动到对应位置。按游戏开发职能组织：
 
-| 分类 | 数量 | 说明 |
-|------|------|------|
-| 行业动态 | 35 | 游戏行业名人 X/Twitter 账号 |
-| 开发社区 | 33 | 游戏开发综合社区/论坛/子论坛 |
-| 游戏设计 | 33 | 游戏机制/叙事/关卡/数值设计理论与资源 |
-| 游戏引擎 | 29 | 各游戏引擎官网/文档/社区（含 PICO-8/GB Studio/RPG Maker） |
-| 视频/频道 | 26 | YouTube 游戏开发/设计优质频道与 GDC 演讲 |
-| 2D/3D 美术 | 22 | Aseprite/Blender/Krita 等美术工具及像素/建模/骨骼动画资源 |
-| 编程 & 架构 | 17 | 游戏编程/渲染/AI/图形学技术教程与博客 |
-| 开发工具 | 15 | CI/CD/版本控制/调试器/项目管理和 Awesome List |
-| 素材资源 | 9 | 免费/付费游戏素材/模型/音效/图标 |
-| 音频工具 | 7 | BGM/SFX 工具与音频中间件 |
-| 发行/运营 | 5 | 游戏发行/商店管理/推广/营销资源 |
-| UI/UX 设计 | 2 | 游戏界面/交互/可用性设计资源与参考数据库 |
-## 数据隔离逻辑（src/App.tsx）
-
-```
-news (recentNews)    = 所有源 - SOCIAL_SOURCE_NAMES 中的源 - 开发工具链接
-social (socialNews)  = 仅 SOCIAL_SOURCE_NAMES 中的源
-links                = 仅开发工具链接源（按分类分组渲染）
-```
+| 分类 | 说明 |
+|------|------|
+| 行业动态 | 游戏行业名人 X/Twitter 账号 |
+| 开发社区 | 游戏开发综合社区/论坛/子论坛 |
+| 游戏设计 | 游戏机制/叙事/关卡/数值设计理论与资源 |
+| 游戏引擎 | 各游戏引擎官网/文档/社区（含 PICO-8/GB Studio/RPG Maker） |
+| 视频/频道 | YouTube 游戏开发/设计优质频道与 GDC 演讲 |
+| 2D/3D 美术 | Aseprite/Blender/Krita 等美术工具及像素/建模/骨骼动画资源 |
+| 编程 & 架构 | 游戏编程/渲染/AI/图形学技术教程与博客 |
+| 开发工具 | CI/CD/版本控制/调试器/项目管理和 Awesome List |
+| 素材资源 | 免费/付费游戏素材/模型/音效/图标 |
+| 音频工具 | BGM/SFX 工具与音频中间件 |
+| 发行/运营 | 游戏发行/商店管理/推广/营销资源 |
+| 游戏本地化 | 本地化工具/平台/社区/博客 |
+| 游戏测试 | 游戏 QA/测试工具/社区/平台 |
+| UI/UX 设计 | 游戏界面/交互/可用性设计资源与参考数据库 |
+| 网站 | 其他未归入上述分类的站点 |
+## 前端架构
 
 - `SOCIAL_SOURCE_NAMES`（Set）：标记哪些源属于社交标签。由 `generate-registry` 从 `category: "social"` 自动生成。
 - `SOCIAL_PLATFORM`（Record）：将社交源名映射到平台分组（用于侧边栏筛选）。由 `generate-registry` 从 `platform` 字段自动生成。
 - `LANG_MAP`（Record）：将新闻源名映射到语言分类（zh/en/ja，默认 en）。由 `generate-registry` 从 `lang` 字段自动生成。
-- 新增源后只需运行 `npm run generate-registry`，上述映射自动更新，无需手动编辑 App.tsx。
-
-## 源文件结构
-
-```
+- 新增源后只需运行 `npm run generate-registry`，上述映射自动更新，无需手动编辑前端代码。
 scripts/sources/
   index.ts            ← 统一注册所有源到 allSources，含 linkSource
   link-sources.ts     ← 网址静态链接（name 固定为 "开发工具链接"）
@@ -224,7 +220,7 @@ scripts/sources/
     mastodon.ts       ← Mastodon 公开时间线
     bluesky.ts        ← Bluesky 公开搜索 API
     lemmy.ts          ← Lemmy 联邦讨论 API（多个实例/社区）
-  *.ts                ← 其他 120+ 个传统 RSS 源文件
+  *.ts                ← 传统 RSS 源文件
 ```
 
 ## 数据源规范
@@ -318,7 +314,11 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
 src/i18n/index.ts      ← 语言检测 + 所有 UI 字符串
 src/components/
   Navbar.tsx           ← 从 i18n 模块读取标题/标签/提示
-src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
+  NewsTab.tsx          ← 从 i18n 读取新闻标签 UI 字符串
+  SocialTab.tsx        ← 从 i18n 读取社交标签 UI 字符串
+  LinksTab.tsx         ← 从 i18n 读取网址分类名
+  Footer.tsx           ← 从 i18n 读取页脚文字
+src/App.tsx            ← 根组件，只做视图分发 + hash 路由
 ```
 
 ### 工作原理
@@ -351,7 +351,7 @@ src/App.tsx            ← 根组件，调用 detectLanguage() 并向下传递
 - **Steam API**：已移除 Steam 标签（API 间歇不可达，无法稳定抓取）
 - **中文网络屏蔽**：部分 Google 系源和 GFW 墙外站点本地不可达，依赖 GitHub Actions
 - **Substack**：Substack 博客使用 `/feed` 后缀，部分域名从国内网络不可达，依赖 GH Actions
-- **npm run fetch 超时**：167+ 源中有大量不可达，本地抓取可能超时
+- **npm run fetch 超时**：源中有大量不可达，本地抓取可能超时
 - **抓取失败保留旧数据**：fetch-all.ts 实现了读上次 news.json、若新数据为空或抓取报错则保留旧数据不覆盖的兜底逻辑
 - **新装依赖**：更新使用外部库的源时，需运行 `npm install` 安装对应包
 - **npx tsc --noEmit**：需确保 `tsconfig.json` 的 `include` 包含 `data` 目录
