@@ -84,6 +84,7 @@ export const LANG_MAP: Record<string, Lang> = {
 	"BorisTheBrave": "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
+	"Game News Round-Up": "en",
 	"AMD GPUOpen": "en",
 	"Blender Dev Blog": "en",
 	"Blender News": "en",

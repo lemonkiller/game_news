@@ -155,9 +155,10 @@ import {
 	stackOverflowBlog,
 	pragmaticEngineer,
 } from "./dev-tools";
-import { gameDevEssentials } from "./game-design-blogs";
 import { gameMakerBlog } from "./gamemaker-blog";
 import { locpick } from "./locpick";
+import { gameNewsRoundup } from "./game-news-roundup";
+import { gameDevEssentials } from "./game-design-blogs";
 
 export const allSources: NewsSource[] = [
 	/* 英文 */
@@ -284,6 +285,7 @@ export const allSources: NewsSource[] = [
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,
+	gameNewsRoundup,
 	/* 开发工具 */
 	amdGpuOpen,
 	blenderDevBlog,
