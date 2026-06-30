@@ -203,6 +203,14 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "关卡设计与系统一致性分析，探讨游戏不同系统如何协同工作（Substack 域名受限）",
 	},
+	{
+		id: "link-open-game-mechanics",
+		title: "Open Game Mechanics Dataset",
+		url: "https://thaelith.github.io/open-game-mechanics-dataset/site/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "引擎无关的开放游戏机制数据集，按分类浏览数百种游戏机制及参数",
+	},
 
 	/* ===== 视频/频道 ===== */
 	{
