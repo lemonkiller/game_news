@@ -52,9 +52,9 @@ export const NAV_SUBTITLE_PREFIX: Record<UiLang, string> = {
 
 /** 导航栏 tooltip */
 export const NAV_TITLE_TIP: Record<UiLang, string> = {
-	zh: "游戏开发资讯聚合，覆盖中英日三语 190+ 数据源",
-	en: "Game dev news aggregator covering 190+ sources in CN/EN/JP",
-	ja: "中英日190以上のゲーム開発ソースを集約",
+	zh: "游戏开发资讯聚合，覆盖中英日三语 194+ 数据源",
+	en: "Game dev news aggregator covering 194+ sources in CN/EN/JP",
+	ja: "中英日194以上のゲーム開発ソースを集約",
 };
 
 /** 页脚 */
