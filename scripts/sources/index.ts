@@ -159,7 +159,8 @@ import { gameMakerBlog } from "./gamemaker-blog";
 import { locpick } from "./locpick";
 import { gameNewsRoundup } from "./game-news-roundup";
 import { gameDevEssentials } from "./game-design-blogs";
-
+import { donkeyspace } from "./donkeyspace";
+import { digitalMindNews } from "./digital-mind-news";
 export const allSources: NewsSource[] = [
 	/* 英文 */
 	gamesIndustry,
@@ -282,6 +283,8 @@ export const allSources: NewsSource[] = [
 	generativeGamedev,
 	ryanFitzpatrick,
 	borisTheBrave,
+	donkeyspace,
+	digitalMindNews,
 	/* 行业综合新闻 */
 	unrealBlog,
 	gridSageGames,

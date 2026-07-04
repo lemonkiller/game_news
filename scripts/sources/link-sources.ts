@@ -2327,6 +2327,38 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "AI 游戏自动化测试平台，支持 Unity/Unreal/Godot，Unity Verified Solution",
 	},
+	{
+		id: "link-awesome-ai-tools-game-dev",
+		title: "Awesome AI Tools for Game Dev",
+		url: "https://github.com/simoninithomas/awesome-ai-tools-for-game-dev",
+		category: "AI 开发工具",
+		lang: "en",
+		desc: "精选 AI 游戏开发工具合集，涵盖资产生成/纹理/代码/语音/动画等分类",
+	},
+	{
+		id: "link-awesome-game-ai",
+		title: "Awesome Game AI",
+		url: "https://github.com/datamllab/awesome-game-ai",
+		category: "AI 开发工具",
+		lang: "en",
+		desc: "游戏 AI 资源合集，专注多智能体学习/强化学习/博弈论",
+	},
+	{
+		id: "link-hf-ml-for-games",
+		title: "Hugging Face ML for Games",
+		url: "https://huggingface.co/blog/ml-for-games-5",
+		category: "AI 开发工具",
+		lang: "en",
+		desc: "Hugging Face 出品的 AI for Game Development 系列教程，5 天用 AI 工具构建完整游戏",
+	},
+	{
+		id: "link-hushflow-ai-gaming",
+		title: "HushFlow AI Gaming Directory",
+		url: "https://best-ai-blogs.hushflowai.com/ai-for-gaming",
+		category: "AI 开发工具",
+		lang: "en",
+		desc: "35+ AI 游戏开发博客精选目录，按 NPC/程序化生成/生成式管线分类",
+	},
 ]
 /**
  * 在前端"网址"标签页中按分类展示
