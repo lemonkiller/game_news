@@ -82,6 +82,8 @@ export const LANG_MAP: Record<string, Lang> = {
 	"Generative GameDev": "en",
 	"Ryan Fitzpatrick": "en",
 	"BorisTheBrave": "en",
+	"Donkeyspace": "en",
+	"Digital Mind News": "en",
 	"Unreal Engine Blog": "en",
 	"Grid Sage Games": "en",
 	"Game News Round-Up": "en",
