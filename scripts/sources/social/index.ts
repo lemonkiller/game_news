@@ -20,6 +20,12 @@ import {
 	pygameRelease,
 	uncivRelease,
 	tripleaRelease,
+	openTTDRelease,
+	openRCT2Release,
+	corsixTHRelease,
+	widelandsRelease,
+	freeColRelease,
+	openLocoRelease,
 } from "./github";
 import {
 	mastodonGamedev,
@@ -100,6 +106,14 @@ export const socialSources = [
 	/* 大战略/4X 开源项目 Release */
 	uncivRelease,
 	tripleaRelease,
+
+	/* 殖民模拟 / 城市建设 / 基地建设类开源项目 Release */
+	openTTDRelease,
+	openRCT2Release,
+	corsixTHRelease,
+	widelandsRelease,
+	freeColRelease,
+	openLocoRelease,
 
 	/* Lemmy 联邦讨论 */
 	/* Lemmy 联邦讨论 */

@@ -169,6 +169,11 @@ const linkCats = [
 	["音频工具", 5, "BGM/SFX 工具与音频素材"],
 	["UI/UX 设计", 1, "游戏界面/交互/可用性设计资源"],
 	["发行/运营", 1, "游戏发行/推广/商店优化/本地化资源（待扩充）"],
+	[
+		"殖民模拟 / 基地建设",
+		48,
+		"殖民模拟/城市建设/基地建设类游戏论坛/Wiki/社区/视频",
+	],
 ];
 
 // 生成 Markdown
@@ -184,7 +189,7 @@ for (const r of rows) {
 
 md += "\n## 网址链接分类\n\n";
 md +=
-	"网址标签下的链接按 14 个分类组织。具体条目见 `scripts/sources/link-sources.ts`。\n\n";
+	"网址标签下的链接按 15 个分类组织。具体条目见 `scripts/sources/link-sources.ts`。\n\n";
 md += "| 分类 | 数量 | 说明 |\n";
 md += "|------|------|------|\n";
 for (const [cat, count, desc] of linkCats) {

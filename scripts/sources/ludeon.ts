@@ -8,7 +8,7 @@ import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
 export const ludeon: NewsSource = {
 	name: "Ludeon Studios",
-	lang: "company",
+	lang: "en",
 	fetch: async () => {
 		const xml = await fetchText("https://ludeon.com/blog/feed/");
 		const items = parseRSS(xml);

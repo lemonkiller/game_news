@@ -121,6 +121,7 @@ export const CATEGORY_NAMES: Record<UiLang, Record<string, string>> = {
 		"发行/运营": "发行/运营",
 		"UI/UX 设计": "UI/UX 设计",
 		网站: "网站",
+		"殖民模拟 / 基地建设": "殖民模拟 / 基地建设",
 	},
 	en: {
 		行业动态: "Industry",
@@ -139,6 +140,7 @@ export const CATEGORY_NAMES: Record<UiLang, Record<string, string>> = {
 		"发行/运营": "Publishing & Operations",
 		"UI/UX 设计": "UI/UX Design",
 		网站: "Websites",
+		"殖民模拟 / 基地建设": "Colony Sim / Base Building",
 	},
 	ja: {
 		行业动态: "業界動向",
@@ -157,6 +159,7 @@ export const CATEGORY_NAMES: Record<UiLang, Record<string, string>> = {
 		"发行/运营": "出版/運営",
 		"UI/UX 设计": "UI/UX デザイン",
 		网站: "ウェブサイト",
+		"殖民模拟 / 基地建设": "コロニーシム / 基地建設",
 	},
 };
 

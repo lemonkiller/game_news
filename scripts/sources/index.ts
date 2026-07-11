@@ -163,6 +163,7 @@ import { gameNewsRoundup } from "./game-news-roundup";
 import { gameDevEssentials } from "./game-design-blogs";
 import { donkeyspace } from "./donkeyspace";
 import { digitalMindNews } from "./digital-mind-news";
+import { factorioBlog } from "./colony-sim";
 export const allSources: NewsSource[] = [
 	/* 英文 */
 	gamesIndustry,
@@ -278,6 +279,7 @@ export const allSources: NewsSource[] = [
 	pocketCity,
 	jonasMeyerOhle,
 	cannibalHalfling,
+	factorioBlog,
 	/* 大战略/4X 游戏开发博客 */
 	oldWorldBlog,
 	designerNotesPodcast,

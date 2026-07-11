@@ -81,10 +81,10 @@
 | 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Fri, 10 Ju |
 | 電ファミニコゲーマー | 新闻 | en | - | 20 | Sun, 21 Ju |
 | 狐王驾虎 | 新闻 | zh | scripts/sources/blog-owleat.ts | 5 | 2026-06-15 |
-| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Fri, 10 Ju |
+| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Sat, 11 Ju |
 | 设计者笔记 | 新闻 | zh | scripts/sources/design-blogs.ts | 5 | 2025-07-05 |
 | 鵺 游戏设计 | 新闻 | zh | scripts/sources/blog-nightingale.ts | 5 | 2022-10-26 |
-| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Fri, 10 Ju |
+| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Sat, 11 Ju |
 | 游戏陀螺 | 新闻 | zh | scripts/sources/youxituoluo.ts | 20 | Fri, 10 Ju |
 | 云风 | 新闻 | zh | scripts/sources/codingnow.ts | 5 | 2026-07-10 |
 | 增荣博客 | 新闻 | zh | scripts/sources/zengrong.ts | 5 | Thu, 09 Ju |
@@ -159,7 +159,7 @@
 | IndieGamesJapan | 新闻 | ja | scripts/sources/indiegamesjapan.ts | 15 | Fri, 10 Ju |
 | IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Wed, 08 Ju |
 | IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Wed, 24 Ju |
-| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Fri, 10 Ju |
+| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Sat, 11 Ju |
 | JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 10 Ju |
 | Jonas Meyer-Ohle | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 01 Ju |
 | Journal of Stuff | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-01-24 |
@@ -215,11 +215,11 @@
 | VS Code Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | 2026-07-08 |
 | wpbox.dev | 新闻 | en | scripts/sources/game-ai-sources.ts | 1 | 2025-05-02 |
 | インサイド | 新闻 | en | - | 20 | 2026-06-21 |
-| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Fri, 10 Ju |
+| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Sat, 11 Ju |
 
 ## 网址链接分类
 
-网址标签下的链接按 14 个分类组织。具体条目见 `scripts/sources/link-sources.ts`。
+网址标签下的链接按 15 个分类组织。具体条目见 `scripts/sources/link-sources.ts`。
 
 | 分类 | 数量 | 说明 |
 |------|------|------|
@@ -236,3 +236,4 @@
 | 音频工具 | 5 | BGM/SFX 工具与音频素材 |
 | UI/UX 设计 | 1 | 游戏界面/交互/可用性设计资源 |
 | 发行/运营 | 1 | 游戏发行/推广/商店优化/本地化资源（待扩充） |
+| 殖民模拟 / 基地建设 | 48 | 殖民模拟/城市建设/基地建设类游戏论坛/Wiki/社区/视频 |
