@@ -18,6 +18,8 @@ import {
 	strideRelease,
 	gdevelopRelease,
 	pygameRelease,
+	uncivRelease,
+	tripleaRelease,
 } from "./github";
 import {
 	mastodonGamedev,
@@ -26,6 +28,9 @@ import {
 	mastodonTagUnity,
 	mastodonTagUnreal,
 	mastodonTagIndieDev,
+	mastodonTagStrategyGamedev,
+	mastodonTag4X,
+	mastodonTagGrandStrategy,
 } from "./mastodon";
 import { blueskyGameDev } from "./bluesky";
 import { zhihuGameDev, zhihuGameDesign, zhihuIndie } from "./zhihu";
@@ -74,6 +79,10 @@ export const socialSources = [
 	mastodonTagUnity,
 	mastodonTagUnreal,
 	mastodonTagIndieDev,
+	/* 大战略/4X 游戏开发标签 */
+	mastodonTagStrategyGamedev,
+	mastodonTag4X,
+	mastodonTagGrandStrategy,
 
 	blueskyGameDev,
 
@@ -88,6 +97,9 @@ export const socialSources = [
 	strideRelease,
 	gdevelopRelease,
 	pygameRelease,
+	/* 大战略/4X 开源项目 Release */
+	uncivRelease,
+	tripleaRelease,
 
 	/* Lemmy 联邦讨论 */
 	/* Lemmy 联邦讨论 */

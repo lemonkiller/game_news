@@ -2359,7 +2359,72 @@ const links: LinkEntry[] = [
 		lang: "en",
 		desc: "35+ AI 游戏开发博客精选目录，按 NPC/程序化生成/生成式管线分类",
 	},
-]
+	/* ===== 大战略/4X 游戏开发相关链接 ===== */
+	{
+		id: "link-civfanatics-dev",
+		title: "CivFanatics 策略游戏社区",
+		url: "https://forums.civfanatics.com/",
+		category: "开发社区",
+		lang: "en",
+		desc: "文明系列最大社区，含 Modding 教程、策略游戏设计讨论、地图编辑器资源",
+	},
+	{
+		id: "link-moddb-strategy",
+		title: "ModDB 策略/4X Mod",
+		url: "https://www.moddb.com/games/tag/strategy",
+		category: "开发社区",
+		lang: "en",
+		desc: "策略/4X 游戏 Mod 发布平台，可追踪 Mod 开发进度与 Devlog",
+	},
+	{
+		id: "link-itch-4x-dev",
+		title: "itch.io 4X 策略游戏开发",
+		url: "https://itch.io/games/tag-4x/tag-game-development",
+		category: "开发社区",
+		lang: "en",
+		desc: "itch.io 上 4X 策略游戏的开发中作品与 Devlog",
+	},
+	{
+		id: "link-bgg-strategy-design",
+		title: "BoardGameGeek 策略桌游设计",
+		url: "https://boardgamegeek.com/forum/7/board-game-design",
+		category: "游戏设计",
+		lang: "en",
+		desc: "BGG 桌游设计论坛，策略游戏机制/平衡性/数值设计讨论",
+	},
+	{
+		id: "link-paradox-modding-wiki",
+		title: "Paradox Modding Wiki",
+		url: "https://modding.paradoxwikis.com/",
+		category: "游戏设计",
+		lang: "en",
+		desc: "Paradox 游戏 Modding 官方 Wiki，含脚本/事件/UI 修改教程",
+	},
+	{
+		id: "link-youtube-quill18",
+		title: "Quill18 策略游戏开发",
+		url: "https://www.youtube.com/@Quill18",
+		category: "视频/频道",
+		lang: "en",
+		desc: "策略游戏开发实况与教程，涵盖 Unity/C# 大战略/4X 游戏制作",
+	},
+	{
+		id: "link-youtube-gmtk-strategy",
+		title: "GMTK 策略游戏设计",
+		url: "https://www.youtube.com/@GMTK",
+		category: "视频/频道",
+		lang: "en",
+		desc: "Game Maker's Toolkit 频道，含多期策略游戏机制分析视频",
+	},
+	{
+		id: "link-bilibili-gsg-dev",
+		title: "B站 大战略游戏开发",
+		url: "https://search.bilibili.com/all?keyword=%E5%A4%A7%E6%88%98%E7%95%A5%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91",
+		category: "视频/频道",
+		lang: "zh",
+		desc: "B站 大战略/4X 游戏开发相关视频与教程",
+	},
+];
 /**
  * 在前端"网址"标签页中按分类展示
  */

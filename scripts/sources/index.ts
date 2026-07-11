@@ -58,6 +58,8 @@ import {
 	gdkeys,
 } from "./design-blogs";
 
+import { oldWorldBlog } from "./old-world-blog";
+import { designerNotesPodcast } from "./designer-notes-podcast";
 import {
 	mechanicsAsMetaphor,
 	level99Strategy,
@@ -276,6 +278,9 @@ export const allSources: NewsSource[] = [
 	pocketCity,
 	jonasMeyerOhle,
 	cannibalHalfling,
+	/* 大战略/4X 游戏开发博客 */
+	oldWorldBlog,
+	designerNotesPodcast,
 	/* AI 游戏开发 */
 	aiAndGames,
 	nvidiaGameDev,

@@ -155,3 +155,15 @@ export const pygameRelease = makeGitHubReleaseSource(
 	"pygame",
 	"pygame",
 );
+
+/* 大战略/4X 开源项目 Release */
+export const uncivRelease = makeGitHubReleaseSource(
+	"Unciv Release",
+	"yairm210",
+	"Unciv",
+);
+export const tripleaRelease = makeGitHubReleaseSource(
+	"TripleA Release",
+	"triplea-game",
+	"triplea",
+);
