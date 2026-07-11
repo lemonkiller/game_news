@@ -18,6 +18,14 @@ import {
 	strideRelease,
 	gdevelopRelease,
 	pygameRelease,
+	uncivRelease,
+	tripleaRelease,
+	openTTDRelease,
+	openRCT2Release,
+	corsixTHRelease,
+	widelandsRelease,
+	freeColRelease,
+	openLocoRelease,
 } from "./github";
 import {
 	mastodonGamedev,
@@ -26,6 +34,9 @@ import {
 	mastodonTagUnity,
 	mastodonTagUnreal,
 	mastodonTagIndieDev,
+	mastodonTagStrategyGamedev,
+	mastodonTag4X,
+	mastodonTagGrandStrategy,
 } from "./mastodon";
 import { blueskyGameDev } from "./bluesky";
 import { zhihuGameDev, zhihuGameDesign, zhihuIndie } from "./zhihu";
@@ -74,6 +85,10 @@ export const socialSources = [
 	mastodonTagUnity,
 	mastodonTagUnreal,
 	mastodonTagIndieDev,
+	/* 大战略/4X 游戏开发标签 */
+	mastodonTagStrategyGamedev,
+	mastodonTag4X,
+	mastodonTagGrandStrategy,
 
 	blueskyGameDev,
 
@@ -88,6 +103,17 @@ export const socialSources = [
 	strideRelease,
 	gdevelopRelease,
 	pygameRelease,
+	/* 大战略/4X 开源项目 Release */
+	uncivRelease,
+	tripleaRelease,
+
+	/* 殖民模拟 / 城市建设 / 基地建设类开源项目 Release */
+	openTTDRelease,
+	openRCT2Release,
+	corsixTHRelease,
+	widelandsRelease,
+	freeColRelease,
+	openLocoRelease,
 
 	/* Lemmy 联邦讨论 */
 	/* Lemmy 联邦讨论 */

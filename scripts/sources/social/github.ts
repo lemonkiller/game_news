@@ -155,3 +155,47 @@ export const pygameRelease = makeGitHubReleaseSource(
 	"pygame",
 	"pygame",
 );
+
+/* 大战略/4X 开源项目 Release */
+export const uncivRelease = makeGitHubReleaseSource(
+	"Unciv Release",
+	"yairm210",
+	"Unciv",
+);
+export const tripleaRelease = makeGitHubReleaseSource(
+	"TripleA Release",
+	"triplea-game",
+	"triplea",
+);
+
+/* 殖民模拟 / 城市建设 / 基地建设类开源项目 Release */
+export const openTTDRelease = makeGitHubReleaseSource(
+	"OpenTTD Release",
+	"OpenTTD",
+	"OpenTTD",
+);
+export const openRCT2Release = makeGitHubReleaseSource(
+	"OpenRCT2 Release",
+	"OpenRCT2",
+	"OpenRCT2",
+);
+export const corsixTHRelease = makeGitHubReleaseSource(
+	"CorsixTH Release",
+	"CorsixTH",
+	"CorsixTH",
+);
+export const widelandsRelease = makeGitHubReleaseSource(
+	"Widelands Release",
+	"widelands",
+	"widelands",
+);
+export const freeColRelease = makeGitHubReleaseSource(
+	"FreeCol Release",
+	"FreeCol",
+	"freecol",
+);
+export const openLocoRelease = makeGitHubReleaseSource(
+	"OpenLoco Release",
+	"OpenLoco",
+	"OpenLoco",
+);

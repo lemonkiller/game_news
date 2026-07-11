@@ -111,3 +111,19 @@ export const mastodonTagIndieDev = makeMastodonTagSource(
 	"indiedev",
 );
 
+/* 大战略/4X 游戏开发标签 */
+export const mastodonTagStrategyGamedev = makeMastodonTagSource(
+	"Mastodon #strategygamedev",
+	"mastodon.gamedev.place",
+	"strategygamedev",
+);
+export const mastodonTag4X = makeMastodonTagSource(
+	"Mastodon #4x",
+	"mastodon.gamedev.place",
+	"4x",
+);
+export const mastodonTagGrandStrategy = makeMastodonTagSource(
+	"Mastodon #grandstrategy",
+	"mastodon.gamedev.place",
+	"grandstrategy",
+);
