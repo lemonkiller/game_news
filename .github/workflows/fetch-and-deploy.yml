@@ -47,14 +47,12 @@ jobs:
         uses: actions/deploy-pages@v4
 
   # 防止 GitHub 因仓库 60 天无提交而自动禁用定时抓取
-  # 原理：距上次提交超过 45 天时，通过 API 做一次空提交保活（不产生垃圾文件）
+  # 原理：通过 API 预先重新启用工作流（不产生任何提交）
   keepalive:
     name: Keepalive
-    if: ${{ always() }}
-    needs: fetch-and-deploy
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
     permissions:
       actions: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
+      - uses: liskin/gh-workflow-keepalive@v1
