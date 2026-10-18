@@ -1,34 +1,56 @@
+import {
+	parseRSS,
+	getGUID,
+	relativeTime,
+	stripHtml,
+	getTextContent,
+	decodeEntities,
+} from "../utils/rss-parser";
+import { fetchText } from "../utils/fetcher";
 import type { NewsSource } from "../utils/types";
+
+/** Bevy 官方博客（bevy.org，原 bevyengine.org 已 301 迁移） */
 export const bevy: NewsSource = {
 	name: "Bevy Engine",
-	lang: "engine",
+	lang: "en",
 	fetch: async () => {
-		const xml = await (
-			await fetch("https://bevyengine.org/atom.xml", {
-				headers: { "User-Agent": "Mozilla/5.0" },
-			})
-		).text();
-		const items: any[] = [];
-		const entryRegex = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-		let match;
-		while ((match = entryRegex.exec(xml)) !== null) {
-			const e = match[1];
-			const title = e.match(/<title[^>]*>([^<]*)<\/title>/)?.[1] || "";
-			const link = e.match(/<link[^>]*href="([^"]*)"/)?.[1] || "";
-			const id = e.match(/<id[^>]*>([^<]*)<\/id>/)?.[1] || title;
-			const date =
-				e.match(/<published[^>]*>([^<]*)<\/published>/)?.[1] ||
-				e.match(/<updated[^>]*>([^<]*)<\/updated>/)?.[1];
-			const desc = e.match(/<summary[^>]*>([^<]*)<\/summary>/)?.[1];
-			items.push({ title, link, id, date, desc });
-		}
-		return items.slice(0, 5).map((item: any) => ({
-			id: item.id,
-			title: item.title,
+		const xml = await fetchText("https://bevy.org/atom.xml");
+		const items = parseRSS(xml);
+		return items.slice(0, 5).map((item) => ({
+			id: getGUID(item),
+			title: decodeEntities(item.title),
 			url: item.link,
-			pubDate: item.date,
+			pubDate: item.pubDate,
 			extra: {
-				info: item.date ? new Date(item.date).toLocaleDateString("zh-CN") : "",
+				info: relativeTime(item.pubDate),
+				hover: item.description
+					? stripHtml(decodeEntities(getTextContent(item.description))).slice(0, 200)
+					: undefined,
+			},
+		}));
+	},
+};
+
+/** This Week in Bevy：社区双周精选通讯（thisweekinbevy.com） */
+export const thisWeekInBevy: NewsSource = {
+	name: "This Week in Bevy",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://thisweekinbevy.com/feed.xml");
+		const items = parseRSS(xml);
+		return items.slice(0, 5).map((item) => ({
+			id: getGUID(item),
+			title: decodeEntities(item.title),
+			url: item.link,
+			pubDate: item.pubDate,
+			extra: {
+				info: relativeTime(item.pubDate),
+				hover: item.description
+					? stripHtml(decodeEntities(getTextContent(item.description))).slice(
+							0,
+							200,
+						)
+					: undefined,
 			},
 		}));
 	},

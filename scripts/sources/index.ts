@@ -110,6 +110,7 @@ import {
 	haxeFlixel,
 	renpy,
 	bevy,
+	thisWeekInBevy,
 	godotBlog,
 } from "./engine-sources";
 import { linkSource } from "./link-sources";
@@ -258,6 +259,7 @@ export const allSources: NewsSource[] = [
 	haxeFlixel,
 	renpy,
 	bevy,
+	thisWeekInBevy,
 	godotBlog,
 	defold,
 	o3de,

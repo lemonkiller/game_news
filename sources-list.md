@@ -4,36 +4,45 @@
 
 ## 新闻/社交源
 
-共 208 个源。
+共 228 个源。
 
 | 名称 | 类型 | 语言 | 文件 | 条数 | 最近更新 |
 |------|------|------|------|------|---------|
 | 知乎独立游戏 | 社交 | zh | scripts/sources/social/zhihu.ts | 0 | - |
 | 知乎游戏开发 | 社交 | zh | scripts/sources/social/zhihu.ts | 0 | - |
 | 知乎游戏设计 | 社交 | zh | scripts/sources/social/zhihu.ts | 0 | - |
-| Bevy Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-06-18 |
+| Bevy Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-08 |
 | Bluesky 游戏开发 | 社交 | en | scripts/sources/social/bluesky.ts | 0 | - |
+| CorsixTH Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-08-28 |
 | Flax Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-05-18 |
-| GDevelop Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-06-30 |
-| GitHub 游戏开发趋势 | 社交 | en | scripts/sources/social/github.ts | 15 | 2026-07-10 |
-| Godot Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-06-18 |
+| FreeCol Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-12 |
+| FreeGameDev.net | 社交 | en | scripts/sources/social/freegamedev.ts | 15 | 2026-09-30 |
+| GameDev.net 论坛 | 社交 | en | scripts/sources/social/gamedevnet.ts | 15 | Sun, 18 Oc |
+| GameMaker 社区 | 社交 | en | scripts/sources/social/gamemaker-community.ts | 0 | - |
+| GDevelop Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-14 |
+| GDSE 最新问答 | 社交 | en | scripts/sources/social/gdse.ts | 15 | 2026-10-10 |
+| GitHub 游戏开发趋势 | 社交 | en | scripts/sources/social/github.ts | 15 | 2026-10-18 |
+| Godot 论坛 | 社交 | en | - | 15 | 2026-10-07 |
+| Godot Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-08-22 |
 | Hacker News | 社交 | en | scripts/sources/hacker-news.ts | 20 | 2024-11-13 |
 | Hacker News 游戏开发 | 社交 | en | scripts/sources/social/hackernews.ts | 25 | 2024-11-13 |
 | HN Show 游戏 | 社交 | en | scripts/sources/social/hackernews.ts | 25 | 2019-03-14 |
-| Lemmy 独立游戏 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-06-22 |
+| IndieDev 论坛 | 社交 | en | - | 15 | 2024-12-31 |
+| Lemmy 独立游戏 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-16 |
 | Lemmy 独立游戏开发（lemmy.world） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2023-07-01 |
-| Lemmy 游戏开发 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-07-10 |
-| Lemmy 游戏开发（lemmy.ml） | 社交 | en | scripts/sources/social/lemmy.ts | 0 | - |
-| Lemmy 游戏开发（lemmy.world） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-07-08 |
-| Lemmy 游戏开发（sh.itjust.works） | 社交 | en | scripts/sources/social/lemmy.ts | 7 | 2024-01-25 |
-| Lemmy 游戏设计 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2025-07-03 |
+| Lemmy 游戏开发 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-18 |
+| Lemmy 游戏开发（lemmy.ml） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-06-25 |
+| Lemmy 游戏开发（lemmy.world） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-06 |
+| Lemmy 游戏开发（sh.itjust.works） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-15 |
+| Lemmy 游戏设计 | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-09-11 |
 | Lemmy Bevy（lemmy.world） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-06-19 |
-| Lemmy Godot | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-07-09 |
-| Lemmy Godot（lemmy.ml） | 社交 | en | scripts/sources/social/lemmy.ts | 0 | - |
+| Lemmy Godot | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-15 |
+| Lemmy Godot（lemmy.ml） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-06-18 |
 | Lemmy Godot（lemmy.world） | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-03-01 |
-| Lemmy Unity | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-07-03 |
+| Lemmy Unity | 社交 | en | scripts/sources/social/lemmy.ts | 10 | 2026-10-16 |
 | Lemmy Unreal Engine | 社交 | en | scripts/sources/social/lemmy.ts | 1 | 2025-03-25 |
 | Lemmy Unreal Engine（sh.itjust.works） | 社交 | en | scripts/sources/social/lemmy.ts | 5 | 2025-06-06 |
+| Lobsters 游戏开发 | 社交 | en | scripts/sources/social/lobsters.ts | 15 | 2026-10-15 |
 | Love2D Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2023-12-03 |
 | Mastodon #4x | 社交 | en | - | 0 | - |
 | Mastodon #gamedev | 社交 | en | - | 0 | - |
@@ -44,75 +53,84 @@
 | Mastodon #unity | 社交 | en | - | 0 | - |
 | Mastodon #unrealengine | 社交 | en | - | 0 | - |
 | Mastodon 游戏开发 | 社交 | en | scripts/sources/social/mastodon.ts | 40 | 2026-06-21 |
-| MonoGame Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-07-10 |
+| MonoGame Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-07 |
+| OpenLoco Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-09-18 |
+| OpenRCT2 Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-10 |
+| OpenTTD Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-09-20 |
+| Polycount 论坛 | 社交 | en | scripts/sources/social/polycount.ts | 0 | - |
 | PyGame Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2024-09-29 |
-| Qiita game AI | 社交 | ja | scripts/sources/game-ai-sources.ts | 4 | 2026-06-04 |
-| Qiita Godot | 社交 | en | scripts/sources/community.ts | 4 | 2026-07-09 |
-| Qiita Unity | 社交 | en | scripts/sources/community.ts | 4 | 2026-07-11 |
-| Qiita UnrealEngine | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-30 |
-| Qiita ゲーム開発 | 社交 | en | scripts/sources/community.ts | 4 | 2026-07-11 |
+| Qiita game AI | 社交 | ja | scripts/sources/game-ai-sources.ts | 4 | 2026-08-04 |
+| Qiita Godot | 社交 | en | scripts/sources/community.ts | 4 | 2026-10-15 |
+| Qiita Unity | 社交 | en | scripts/sources/community.ts | 4 | 2026-10-18 |
+| Qiita UnrealEngine | 社交 | en | scripts/sources/community.ts | 4 | 2026-09-29 |
+| Qiita ゲーム開発 | 社交 | en | scripts/sources/community.ts | 4 | 2026-10-18 |
 | Qiita ゲームデザイン | 社交 | en | scripts/sources/community.ts | 4 | 2026-06-29 |
-| Raylib Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-04-23 |
+| Raylib Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-15 |
+| Reddit r/bevy | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/gamedev | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/gamelocalization | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/godot | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/QualityAssurance | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/Unity3D | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
 | Reddit r/unrealengine | 社交 | en | scripts/sources/social/reddit.ts | 0 | - |
-| Stride Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-07-04 |
-| TripleA Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-07-08 |
-| Unciv Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-07-09 |
+| Stride Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-17 |
+| TripleA Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-17 |
+| Unciv Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-17 |
+| Unity Discussions | 社交 | en | - | 15 | 2026-10-18 |
+| Unreal Engine 论坛 | 社交 | en | - | 15 | 2021-03-24 |
+| V2EX 游戏开发 | 社交 | zh | scripts/sources/social/v2ex.ts | 10 | 2026-10-18 |
+| Widelands Release | 社交 | en | scripts/sources/social/github.ts | 10 | 2026-10-15 |
 | Zenn 创作 | 社交 | ja | scripts/sources/design-tech.ts | 3 | Tue, 14 Ap |
-| Zenn 写作 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Wed, 01 Ju |
-| Zenn 游戏设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Mon, 22 Ju |
-| Zenn 游戏引擎 | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Thu, 09 Ju |
-| Zenn Bevy | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sun, 10 Ma |
-| Zenn gamedev | 社交 | ja | scripts/sources/community.ts | 10 | Fri, 10 Ju |
-| Zenn Godot | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Wed, 08 Ju |
-| Zenn UI/UX | 社交 | ja | scripts/sources/design-tech.ts | 10 | Fri, 10 Ju |
-| Zenn UIUX设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Wed, 10 Ju |
-| Zenn Unity | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Fri, 10 Ju |
-| Zenn UnrealEngine | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Thu, 09 Ju |
-| 24indie | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Thu, 18 Ju |
+| Zenn 写作 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Fri, 16 Oc |
+| Zenn 游戏设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Wed, 07 Oc |
+| Zenn 游戏引擎 | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sat, 17 Oc |
+| Zenn Bevy | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Wed, 16 Se |
+| Zenn gamedev | 社交 | ja | scripts/sources/community.ts | 10 | Sun, 18 Oc |
+| Zenn Godot | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sat, 17 Oc |
+| Zenn UI/UX | 社交 | ja | scripts/sources/design-tech.ts | 10 | Fri, 09 Oc |
+| Zenn UIUX设计 | 社交 | ja | scripts/sources/design-tech.ts | 10 | Sun, 06 Se |
+| Zenn Unity | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sat, 17 Oc |
+| Zenn UnrealEngine | 社交 | ja | scripts/sources/engine-tech.ts | 10 | Sun, 04 Oc |
+| 24indie | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Fri, 02 Oc |
 | 2D Game Art Guru | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Fri, 03 Ju |
 | 4Gamer.net | 新闻 | en | - | 20 | 2026-06-21 |
-| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Sat, 11 Ju |
+| 80 Level | 新闻 | en | scripts/sources/80-level.ts | 10 | Sat, 17 Oc |
 | 博毅创为 | 新闻 | zh | scripts/sources/blog-liuwenyi.ts | 5 | 2024-01-30 |
-| 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Fri, 10 Ju |
+| 触乐 | 新闻 | zh | scripts/sources/chuapp.ts | 5 | Sat, 17 Oc |
 | 電ファミニコゲーマー | 新闻 | en | - | 20 | Sun, 21 Ju |
 | 狐王驾虎 | 新闻 | zh | scripts/sources/blog-owleat.ts | 5 | 2026-06-15 |
-| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Sat, 11 Ju |
+| 机核网 | 新闻 | zh | scripts/sources/gcores.ts | 20 | Sun, 18 Oc |
 | 设计者笔记 | 新闻 | zh | scripts/sources/design-blogs.ts | 5 | 2025-07-05 |
 | 鵺 游戏设计 | 新闻 | zh | scripts/sources/blog-nightingale.ts | 5 | 2022-10-26 |
-| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Sat, 11 Ju |
-| 游戏陀螺 | 新闻 | zh | scripts/sources/youxituoluo.ts | 20 | Fri, 10 Ju |
-| 云风 | 新闻 | zh | scripts/sources/codingnow.ts | 5 | 2026-07-10 |
-| 增荣博客 | 新闻 | zh | scripts/sources/zengrong.ts | 5 | Thu, 09 Ju |
-| Agate Dragon | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Fri, 02 Ja |
-| AI and Games | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Fri, 10 Ju |
-| Aiming 開発者ブログ | 新闻 | ja | scripts/sources/aiming.ts | 5 | Wed, 10 Ju |
-| Alan Zucconi | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Thu, 04 Se |
-| AMD GPUOpen | 新闻 | en | scripts/sources/dev-tools.ts | 10 | Wed, 24 Ju |
+| 游戏茶馆 | 新闻 | zh | scripts/sources/youxichaguan.ts | 10 | Fri, 16 Oc |
+| 游戏陀螺 | 新闻 | zh | scripts/sources/youxituoluo.ts | 20 | Fri, 16 Oc |
+| 云风 | 新闻 | zh | scripts/sources/codingnow.ts | 5 | 2026-10-11 |
+| 增荣博客 | 新闻 | zh | scripts/sources/zengrong.ts | 5 | Fri, 02 Oc |
+| Agate Dragon | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Sun, 13 Se |
+| AI and Games | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Wed, 14 Oc |
+| Aiming 開発者ブログ | 新闻 | ja | scripts/sources/aiming.ts | 5 | Fri, 04 Se |
+| Alan Zucconi | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sat, 15 Au |
+| AMD GPUOpen | 新闻 | en | scripts/sources/dev-tools.ts | 10 | Tue, 06 Oc |
 | Applibot Tech | 新闻 | ja | scripts/sources/design-blogs.ts | 5 | Sun, 01 De |
 | ARASHIYAMA | 新闻 | ja | scripts/sources/arashiyama.ts | 5 | Sun, 14 Ju |
-| Aseprite Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Tue, 30 Ju |
+| Aseprite Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Wed, 22 Ju |
 | AUTOMATON | 新闻 | en | - | 20 | Sun, 21 Ju |
-| Bevy Engine | 新闻 | en | scripts/sources/bevy.ts | 5 | 2026-06-19 |
-| Blender Dev Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 01 Ma |
-| Blender News | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Wed, 08 Ju |
-| BorisTheBrave | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Sun, 05 Ju |
-| Can I Play That? | 新闻 | en | scripts/sources/design-tech.ts | 5 | Wed, 08 Ju |
-| Cannibal Halfling | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Fri, 10 Ju |
-| Capcom | 新闻 | en | scripts/sources/capcom-news.ts | 5 | Thu, 02 Ju |
+| Bevy Engine | 新闻 | en | scripts/sources/bevy.ts | 5 | 2026-10-08 |
+| Blender Dev Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Wed, 14 Oc |
+| Blender News | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Tue, 13 Oc |
+| BorisTheBrave | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Sun, 18 Oc |
+| Can I Play That? | 新闻 | en | scripts/sources/design-tech.ts | 5 | Fri, 16 Oc |
+| Cannibal Halfling | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Sat, 17 Oc |
+| Capcom | 新闻 | en | scripts/sources/capcom-news.ts | 5 | Tue, 29 Se |
 | Captain of Industry | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 04 Ma |
-| Catnap Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Wed, 03 Ju |
+| Catnap Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 27 Se |
 | Chaotican Writer | 新闻 | en | scripts/sources/design-tech.ts | 10 | Mon, 08 Ju |
 | ChaoticStupid | 新闻 | en | scripts/sources/chaotic-stupid.ts | 5 | Tue, 26 Ja |
-| Cliffski | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 05 Ju |
+| Cliffski | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 13 Oc |
 | ConcernedApe | 新闻 | en | scripts/sources/concerned-ape.ts | 5 | Thu, 09 Ju |
-| Dan Felder | 新闻 | en | scripts/sources/dan-felder.ts | 5 | Wed, 24 Ju |
+| Dan Felder | 新闻 | en | scripts/sources/dan-felder.ts | 5 | Thu, 15 Oc |
 | Defold Engine | 新闻 | en | scripts/sources/defold.ts | 5 | - |
-| Designer Notes | 新闻 | en | scripts/sources/designer-notes-podcast.ts | 5 | Mon, 06 Ju |
+| Designer Notes | 新闻 | en | scripts/sources/designer-notes-podcast.ts | 5 | Wed, 07 Oc |
 | Dev.to 渲染 | 新闻 | en | - | 10 | Thu, 18 Ju |
 | Dev.to 游戏引擎 | 新闻 | en | - | 10 | Wed, 10 Ju |
 | Dev.to Godot | 新闻 | en | - | 10 | Thu, 18 Ju |
@@ -123,44 +141,45 @@
 | Dev.to WebGPU | 新闻 | en | - | 10 | Thu, 18 Ju |
 | Digital Mind News | 新闻 | en | scripts/sources/digital-mind-news.ts | 5 | Wed, 01 Ju |
 | Distractionware | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 14 De |
-| Donkeyspace | 新闻 | en | scripts/sources/donkeyspace.ts | 0 | - |
+| Donkeyspace | 新闻 | en | scripts/sources/donkeyspace.ts | 5 | Tue, 06 Oc |
 | Dorophone | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Fri, 28 Ma |
-| Fabien Sanglard | 新闻 | en | scripts/sources/new-blogs.ts | 5 | 28 Jun 202 |
-| Flax Engine | 新闻 | en | scripts/sources/flax-engine.ts | 5 | Thu, 18 Ju |
+| Fabien Sanglard | 新闻 | en | scripts/sources/new-blogs.ts | 5 | 21 Aug 202 |
+| Factorio Blog | 新闻 | en | scripts/sources/colony-sim.ts | 5 | 2026-10-09 |
+| Flax Engine | 新闻 | en | scripts/sources/flax-engine.ts | 5 | Wed, 30 Se |
 | Frictional Games | 新闻 | en | scripts/sources/frictional.ts | 5 | Wed, 27 Ma |
 | Game Coding Classics | 新闻 | ja | scripts/sources/hysblog.ts | 5 | Sun, 24 No |
 | Game Dev Digest | 新闻 | en | - | 5 | Fri, 15 Ma |
 | Game Dev Essentials | 新闻 | en | scripts/sources/game-design-blogs.ts | 5 | Tue, 20 Ja |
-| Game Developer | 新闻 | en | scripts/sources/game-developer.ts | 0 | - |
-| Game News Round-Up | 新闻 | en | scripts/sources/game-news-roundup.ts | 5 | Fri, 10 Ju |
-| Game Wisdom | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 10 Ju |
-| GameDev Academy | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 30 De |
+| Game Developer | 新闻 | en | scripts/sources/game-developer.ts | 5 | Thu, 15 Oc |
+| Game News Round-Up | 新闻 | en | scripts/sources/game-news-roundup.ts | 5 | Thu, 15 Oc |
+| Game Wisdom | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sat, 17 Oc |
+| GameDev Academy | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 18 Oc |
 | Gamedev Unchained | 新闻 | en | scripts/sources/gamedev-unchained.ts | 5 | Tue, 16 Se |
-| GameDiscoverCo | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Tue, 07 Ju |
-| GameFromScratch | 新闻 | en | scripts/sources/game-from-scratch.ts | 5 | Thu, 09 Ju |
-| GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Fri, 10 Ju |
-| GameMaker 博客 | 新闻 | en | scripts/sources/gamemaker-blog.ts | 0 | - |
+| GameDiscoverCo | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Fri, 16 Oc |
+| GameFromScratch | 新闻 | en | scripts/sources/game-from-scratch.ts | 5 | Fri, 16 Oc |
+| GameLook | 新闻 | zh | scripts/sources/gamelook.ts | 5 | Fri, 16 Oc |
+| GameMaker 博客 | 新闻 | en | scripts/sources/gamemaker-blog.ts | 5 | Wed, 07 Oc |
 | Games by Manuel | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Sat, 08 No |
-| Games by Mason | 新闻 | en | scripts/sources/games-by-mason.ts | 5 | Sun, 26 Ap |
-| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Fri, 10 Ju |
-| GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 10 Ju |
-| GDKeys | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 06 Ja |
+| Games by Mason | 新闻 | en | scripts/sources/games-by-mason.ts | 5 | Thu, 15 Oc |
+| GamesIndustry.biz | 新闻 | en | scripts/sources/games-industry.ts | 20 | Fri, 16 Oc |
+| GameWorld Observer | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Fri, 16 Oc |
+| GDKeys | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 04 Oc |
 | Generative GameDev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Thu, 09 Oc |
-| GitHub Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 10 Ju |
-| Godot Blog | 新闻 | en | scripts/sources/godot-blog.ts | 5 | Thu, 09 Ju |
-| Godot Releases | 新闻 | en | scripts/sources/godot-releases.ts | 10 | 2026-06-18 |
-| GREE Tech | 新闻 | ja | scripts/sources/gree-tech.ts | 5 | Mon, 06 Ju |
+| GitHub Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Thu, 15 Oc |
+| Godot Blog | 新闻 | en | scripts/sources/godot-blog.ts | 5 | Thu, 15 Oc |
+| Godot Releases | 新闻 | en | scripts/sources/godot-releases.ts | 10 | 2026-08-22 |
+| GREE Tech | 新闻 | ja | scripts/sources/gree-tech.ts | 5 | Fri, 16 Oc |
 | Grid Sage Games | 新闻 | en | scripts/sources/gamedev-news.ts | 5 | Thu, 18 De |
 | hanasaqutto | 新闻 | ja | scripts/sources/design-tech.ts | 5 | Wed, 25 Ma |
 | HaxeFlixel | 新闻 | en | scripts/sources/haxeflixel.ts | 5 | 2026-02-25 |
-| IGDA Japan | 新闻 | ja | scripts/sources/igda-japan.ts | 10 | Sat, 04 Ju |
-| Indie Informer | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Tue, 07 Ju |
-| IndieDevGames | 新闻 | en | scripts/sources/design-tech.ts | 10 | Thu, 09 Ju |
-| IndieGamesJapan | 新闻 | ja | scripts/sources/indiegamesjapan.ts | 15 | Fri, 10 Ju |
-| IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Wed, 08 Ju |
-| IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Wed, 24 Ju |
-| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Sat, 11 Ju |
-| JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 10 Ju |
+| IGDA Japan | 新闻 | ja | scripts/sources/igda-japan.ts | 10 | Wed, 07 Oc |
+| Indie Informer | 新闻 | en | scripts/sources/indie-sources.ts | 5 | Fri, 16 Oc |
+| IndieDevGames | 新闻 | en | scripts/sources/design-tech.ts | 10 | Thu, 17 Se |
+| IndieGamesJapan | 新闻 | ja | scripts/sources/indiegamesjapan.ts | 15 | Wed, 07 Oc |
+| IndieGamesJp.dev | 新闻 | ja | scripts/sources/indiegamesjp-dev.ts | 10 | Fri, 16 Oc |
+| IndieGamesPlus | 新闻 | en | scripts/sources/indie-games-plus.ts | 5 | Fri, 16 Oc |
+| Indienova 独立游戏 | 新闻 | zh | scripts/sources/indienova.ts | 5 | Sun, 18 Oc |
+| JetBrains Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 16 Oc |
 | Jonas Meyer-Ohle | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 01 Ju |
 | Journal of Stuff | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-01-24 |
 | KAYAC Tech Blog | 新闻 | ja | scripts/sources/design-blogs.ts | 5 | 2026-06-30 |
@@ -170,52 +189,53 @@
 | Liz England | 新闻 | en | scripts/sources/new-blogs.ts | 1 | Sat, 09 Ju |
 | Locpick Blog | 新闻 | en | scripts/sources/locpick.ts | 5 | Thu, 25 Ju |
 | Lost Garden | 新闻 | en | scripts/sources/lost-garden.ts | 5 | Sat, 24 Ma |
-| Ludeon Studios | 新闻 | en | scripts/sources/ludeon.ts | 5 | Mon, 08 Ju |
+| Ludeon Studios | 新闻 | en | scripts/sources/ludeon.ts | 5 | Mon, 12 Oc |
 | ManiaHero | 新闻 | zh | scripts/sources/mania-hero.ts | 5 | Wed, 01 Oc |
 | Más Bandwidth | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Wed, 08 Ju |
 | MastaFran | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Tue, 07 Ju |
 | Mechanics as Metaphor | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Tue, 20 Ju |
-| Mega Voxels | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Fri, 30 Ja |
+| Mega Voxels | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Fri, 16 Oc |
 | Mick West | 新闻 | en | scripts/sources/game-ai-sources.ts | 5 | Tue, 17 No |
 | Necromanov | 新闻 | zh | scripts/sources/necromanov.ts | 5 | Sun, 01 Ma |
-| New to Narrative | 新闻 | en | scripts/sources/design-tech.ts | 10 | Tue, 02 Ju |
+| New to Narrative | 新闻 | en | scripts/sources/design-tech.ts | 10 | Tue, 14 Ju |
 | Nicky Case | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 14 Ma |
-| NVIDIA Game Dev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | 2026-07-10 |
+| NVIDIA Game Dev | 新闻 | en | scripts/sources/ai-sources.ts | 5 | 2026-10-16 |
 | NVIDIA Unreal Engine | 新闻 | en | - | 0 | - |
 | O3DE | 新闻 | en | scripts/sources/o3de.ts | 5 | Fri, 06 Ma |
 | Ogre3D | 新闻 | en | - | 0 | - |
-| Old World 开发博客 | 新闻 | en | scripts/sources/old-world-blog.ts | 5 | Wed, 01 Ju |
+| Old World 开发博客 | 新闻 | en | scripts/sources/old-world-blog.ts | 5 | Wed, 07 Oc |
 | OpenGameArt | 新闻 | en | scripts/sources/game-art-sources.ts | 5 | Mon, 09 Fe |
 | Orfeas Eleftheriou | 新闻 | en | scripts/sources/engine-tech.ts | 10 | Sat, 31 Au |
 | Panda3D | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Thu, 25 De |
-| PlayTank | 新闻 | en | scripts/sources/play-tank.ts | 5 | Sat, 13 Ju |
+| PlayTank | 新闻 | en | scripts/sources/play-tank.ts | 5 | Wed, 12 Au |
 | Pocket City | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Mon, 31 Ma |
-| Pragmatic Engineer | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Thu, 09 Ju |
+| Pragmatic Engineer | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Thu, 15 Oc |
 | Psychology of Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 04 Ma |
-| Push to Talk | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 31 Ma |
+| Push to Talk | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 20 Ju |
 | Rampant Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Mon, 01 Ma |
 | randomascii | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Tue, 11 No |
 | Raph Koster | 新闻 | en | scripts/sources/raph-koster.ts | 5 | Wed, 26 No |
-| Rat King | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sun, 05 Ju |
-| Raw Fury | 新闻 | en | scripts/sources/raw-fury.ts | 5 | Thu, 09 Ju |
-| Red Blob Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-05-02 |
+| Rat King | 新闻 | en | scripts/sources/design-blogs.ts | 5 | Sat, 17 Oc |
+| Raw Fury | 新闻 | en | scripts/sources/raw-fury.ts | 5 | Thu, 15 Oc |
+| Red Blob Games | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2026-10-06 |
 | Ren'Py | 新闻 | en | - | 1 | - |
 | ResetEra | 新闻 | en | - | 10 | Mon, 15 Ju |
-| Ryan Fitzpatrick | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Sat, 27 Ju |
-| SEGA Tech Blog | 新闻 | ja | scripts/sources/design-blogs.ts | 5 | 2024-08-26 |
+| Ryan Fitzpatrick | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Wed, 23 Se |
+| SEGA Tech Blog | 新闻 | ja | scripts/sources/design-blogs.ts | 5 | 2026-10-13 |
 | Sirlin.net | 新闻 | en | scripts/sources/new-blogs.ts | 5 | Tue, 14 Ja |
 | Slembcke | 新闻 | en | scripts/sources/design-blogs.ts | 5 | 2023-02-12 |
 | Sorceress Games | 新闻 | en | scripts/sources/ai-sources.ts | 5 | Fri, 10 Ju |
-| Stack Overflow Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 10 Ju |
-| Strategy Game Studio | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Thu, 25 Ju |
+| Stack Overflow Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | Fri, 16 Oc |
+| Strategy Game Studio | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Fri, 02 Oc |
+| This Week in Bevy | 新闻 | en | scripts/sources/bevy.ts | 5 | 2026-01-12 |
 | Top Hat Games | 新闻 | en | scripts/sources/top-hat-games.ts | 3 | Fri, 29 Ma |
-| Transport Fever 3 | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Thu, 09 Ju |
-| Unity Blog | 新闻 | en | scripts/sources/engine-blogs.ts | 20 | Fri, 03 Ju |
-| Unreal Engine Blog | 新闻 | en | scripts/sources/gamedev-news.ts | 10 | Fri, 26 Ju |
-| VS Code Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | 2026-07-08 |
+| Transport Fever 3 | 新闻 | en | scripts/sources/sim-strategy.ts | 5 | Thu, 08 Oc |
+| Unity Blog | 新闻 | en | scripts/sources/engine-blogs.ts | 20 | Fri, 16 Oc |
+| Unreal Engine Blog | 新闻 | en | scripts/sources/gamedev-news.ts | 10 | Thu, 15 Oc |
+| VS Code Blog | 新闻 | en | scripts/sources/dev-tools.ts | 5 | 2026-10-21 |
 | wpbox.dev | 新闻 | en | scripts/sources/game-ai-sources.ts | 1 | 2025-05-02 |
 | インサイド | 新闻 | en | - | 20 | 2026-06-21 |
-| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Sat, 11 Ju |
+| ゲームメーカーズ | 新闻 | ja | scripts/sources/gamemakers.ts | 20 | Sun, 18 Oc |
 
 ## 网址链接分类
 

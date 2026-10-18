@@ -50,6 +50,7 @@ export const redditUnreal = makeRedditSource(
 	"Reddit r/unrealengine",
 	"unrealengine",
 );
+export const redditBevy = makeRedditSource("Reddit r/bevy", "bevy");
 export const redditGameLocalization = makeRedditSource(
 	"Reddit r/gamelocalization",
 	"gamelocalization",

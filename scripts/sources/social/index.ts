@@ -4,6 +4,7 @@ import {
 	redditGodot,
 	redditUnity3D,
 	redditUnreal,
+	redditBevy,
 	redditGameLocalization,
 	redditQualityAssurance,
 } from "./reddit";
@@ -75,6 +76,7 @@ export const socialSources = [
 	redditGodot,
 	redditUnity3D,
 	redditUnreal,
+	redditBevy,
 	redditGameLocalization,
 	redditQualityAssurance,
 
