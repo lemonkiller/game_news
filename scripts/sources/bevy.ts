@@ -30,3 +30,28 @@ export const bevy: NewsSource = {
 		}));
 	},
 };
+
+/** This Week in Bevy：社区双周精选通讯（thisweekinbevy.com） */
+export const thisWeekInBevy: NewsSource = {
+	name: "This Week in Bevy",
+	lang: "en",
+	fetch: async () => {
+		const xml = await fetchText("https://thisweekinbevy.com/feed.xml");
+		const items = parseRSS(xml);
+		return items.slice(0, 5).map((item) => ({
+			id: getGUID(item),
+			title: decodeEntities(item.title),
+			url: item.link,
+			pubDate: item.pubDate,
+			extra: {
+				info: relativeTime(item.pubDate),
+				hover: item.description
+					? stripHtml(decodeEntities(getTextContent(item.description))).slice(
+							0,
+							200,
+						)
+					: undefined,
+			},
+		}));
+	},
+};

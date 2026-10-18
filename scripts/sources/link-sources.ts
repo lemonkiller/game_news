@@ -527,6 +527,22 @@ const links: LinkEntry[] = [
 		desc: "MIT 开源 2D/3D 游戏引擎，节点化架构+GDScript/C#/C++ 多语言",
 	},
 	{
+		id: "link-bevy",
+		title: "Bevy Engine",
+		url: "https://bevy.org/",
+		category: "游戏引擎",
+		lang: "en",
+		desc: "Rust 数据驱动开源游戏引擎，ECS 架构，迭代极快的社区明星项目",
+	},
+	{
+		id: "link-bevy-cn",
+		title: "Bevy 中文文档",
+		url: "https://bevy.rust-lang.net.cn/",
+		category: "游戏引擎",
+		lang: "zh",
+		desc: "Bevy 引擎中文教程与文档（社区翻译维护）",
+	},
+	{
 		id: "link-godot-cn",
 		title: "Godot 中国站",
 		url: "https://www.godot-cn.com/",
