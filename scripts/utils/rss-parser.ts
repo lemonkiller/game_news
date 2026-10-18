@@ -110,3 +110,33 @@ export function stripHtml(html: string): string {
 		.replace(/\s+/g, " ")
 		.trim();
 }
+
+const NAMED_ENTITIES: Record<string, string> = {
+	amp: "&",
+	lt: "<",
+	gt: ">",
+	quot: '"',
+	apos: "'",
+	nbsp: " ",
+	mdash: "—",
+	ndash: "–",
+	hellip: "…",
+	rsquo: "’",
+	lsquo: "‘",
+	rdquo: "”",
+	ldquo: "“",
+	copy: "©",
+	reg: "®",
+	trade: "™",
+};
+
+/** 解码 HTML/XML 实体（fast-xml-parser 只解码预定义实体，数字实体会保留原文） */
+export function decodeEntities(text: string): string {
+	if (!text.includes("&")) return text;
+	return text
+		.replace(/&#x([0-9a-fA-F]+);/g, (_, h) =>
+			String.fromCodePoint(parseInt(h, 16)),
+		)
+		.replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+		.replace(/&([a-zA-Z]+);/g, (m, name: string) => NAMED_ENTITIES[name] ?? m);
+}
