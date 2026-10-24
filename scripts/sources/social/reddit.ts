@@ -59,3 +59,11 @@ export const redditQualityAssurance = makeRedditSource(
 	"Reddit r/QualityAssurance",
 	"QualityAssurance",
 );
+export const redditRoguelikeDev = makeRedditSource(
+	"Reddit r/roguelikedev",
+	"roguelikedev",
+);
+export const redditProceduralGeneration = makeRedditSource(
+	"Reddit r/proceduralgeneration",
+	"proceduralgeneration",
+);

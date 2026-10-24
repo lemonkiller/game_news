@@ -165,6 +165,21 @@ import { gameDevEssentials } from "./game-design-blogs";
 import { donkeyspace } from "./donkeyspace";
 import { digitalMindNews } from "./digital-mind-news";
 import { factorioBlog } from "./colony-sim";
+import {
+	howToMarketAGame,
+	steamworksNews,
+	deconstructorOfFun,
+} from "./dev-business";
+import { naavik, mobilegamerBiz } from "./industry-new";
+import {
+	tomLooman,
+	emilyShort,
+	aSoundEffect,
+	demofox,
+	phaser,
+} from "./tech-blogs-new";
+import { uwaBlog } from "./uwa-blog";
+import { veloren } from "./veloren";
 export const allSources: NewsSource[] = [
 	/* 英文 */
 	gamesIndustry,
@@ -334,6 +349,24 @@ export const allSources: NewsSource[] = [
 	zennWriting,
 	gameMakerBlog,
 	locpick,
+
+	/* 发行/商业（面向开发者的营销与平台动态） */
+	howToMarketAGame,
+	steamworksNews,
+	deconstructorOfFun,
+	/* 行业分析（从业者视角商业媒体） */
+	naavik,
+	mobilegamerBiz,
+	/* 技术纵深（Unreal/叙事/音频/图形/Web 引擎） */
+	tomLooman,
+	emilyShort,
+	aSoundEffect,
+	demofox,
+	phaser,
+	/* 中文技术（Unity 性能优化） */
+	uwaBlog,
+	/* 开源项目开发日志（FOSS 优先） */
+	veloren,
 
 	/* 社交/社区源（高时效短内容） */
 	...socialSources,
