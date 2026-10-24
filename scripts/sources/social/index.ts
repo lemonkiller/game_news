@@ -7,6 +7,8 @@ import {
 	redditBevy,
 	redditGameLocalization,
 	redditQualityAssurance,
+	redditRoguelikeDev,
+	redditProceduralGeneration,
 } from "./reddit";
 import {
 	godotRelease,
@@ -79,6 +81,8 @@ export const socialSources = [
 	redditBevy,
 	redditGameLocalization,
 	redditQualityAssurance,
+	redditRoguelikeDev,
+	redditProceduralGeneration,
 
 	/* Mastodon 实例 + 标签 */
 	mastodonGamedev,

@@ -29,9 +29,15 @@ function saveResult(result: FetchResult) {
 async function main() {
 	const oldData = readOldData();
 
+	// 只保留当前已注册源的旧数据：过滤已删除源留下的幽灵条目
+	const filteredOldData: Record<string, NewsItem[]> = Object.fromEntries(
+		Object.entries(oldData).filter(([name]) =>
+			allSources.some((s) => s.name === name),
+		),
+	);
 	const result: FetchResult = {
 		updatedAt: new Date().toISOString(),
-		sources: { ...oldData },
+		sources: filteredOldData,
 		errors: {},
 	};
 
