@@ -12,7 +12,7 @@ export const howToMarketAGame: NewsSource = {
 	},
 };
 
-/** Steamworks 官方公告：Steam 平台工具/政策第一手信息（中国网络不可达，依赖 GH Actions） */
+/** Steamworks 官方公告：Steam 平台工具/政策第一手信息 */
 export const steamworksNews: NewsSource = {
 	name: "Steamworks 官方新闻",
 	lang: "en",
